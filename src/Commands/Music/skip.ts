@@ -6,6 +6,7 @@ export const command: Command = {
   aliases: [],
   run: async (client, message, args) => {
     global.queue.shift()
+    global.connection.destroy()
     message.channel.send('Missed :musical_note:')
   }
 }

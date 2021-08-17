@@ -1,4 +1,4 @@
-import { Client, Collection } from "discord.js";
+import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs'
 import { Command, Event, Config } from '../Interfaces'
 import ConfigJson from '../config.json'
