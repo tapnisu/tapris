@@ -24,6 +24,8 @@ export async function play(queue: string[], message: Message) {
   global.connection.subscribe(player)
 
   player.on(AudioPlayerStatus.Idle, () => {
+    queue.shift()
+
     if (queue == []) return global.connection.destroy()
 
     play(queue, message)
