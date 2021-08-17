@@ -1,3 +1,4 @@
+import { play } from '../../Functions/music'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -7,6 +8,7 @@ export const command: Command = {
   run: async (client, message, args) => {
     global.queue.shift()
     global.connection.destroy()
+    play(global.queue, message)
     message.channel.send('Missed :musical_note:')
   }
 }
