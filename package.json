@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "typescript": "^4.3.5"
+  },
+  "engines" : {
+    "node" : ">=16"
   }
 }
