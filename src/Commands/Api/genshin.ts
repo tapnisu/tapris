@@ -88,7 +88,7 @@ export const command: Command = {
           inline: true
         }, {
           name: 'Base attack',
-          value: response.baseAttack,
+          value: response.baseAttack.toString(),
           inline: true
         })
         return message.channel.send({ embeds: [Embed] })
@@ -121,6 +121,6 @@ export const command: Command = {
         return message.channel.send({ embeds: [Embed] })
     }
 
-    message.channel.send('Error :no_entry_sign:')
+    return message.channel.send('Error :no_entry_sign:')
   }
 }

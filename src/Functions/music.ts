@@ -1,8 +1,8 @@
-import { Message } from 'discord.js'
+import { ColorResolvable, Message, MessageEmbed } from 'discord.js'
 import { AudioPlayerStatus,	StreamType,	createAudioPlayer, createAudioResource,	joinVoiceChannel } from '@discordjs/voice'
 import ytdl from 'ytdl-core'
 
-export async function play(queue: string[], message: Message) {
+export async function play(queue: string[], message: Message, client) {
   if (queue[0] == undefined) return message.channel.send('Queue is emptry :no_entry_sign:')
   if (!message.member.voice.channel) return message.channel.send('You are not in channel :no_entry_sign:')
 
@@ -18,7 +18,24 @@ export async function play(queue: string[], message: Message) {
 
   let info = await ytdl.getInfo(queue[0])
 
-  message.channel.send(`Starting playing: ${info.videoDetails.title} :musical_note:`)
+  const Embed = new MessageEmbed()
+			.setColor(client.config.botColor as ColorResolvable)
+      .setTitle(info.videoDetails.title)      
+      .setURL(info.videoDetails.video_url)
+      .setDescription(info.videoDetails.description)
+			.addFields({
+				name: 'Likes',
+				value: info.videoDetails.likes.toString(),
+				inline: true
+      }, {
+				name: 'Dislikes',
+				value: info.videoDetails.dislikes.toString(),
+				inline: true
+      })
+      .setImage(info.videoDetails.thumbnails[0].url as unknown as string)
+      .setTimestamp()
+
+  message.channel.send({ embeds: [Embed] })
 
   player.play(resource)
   global.connection.subscribe(player)
@@ -28,6 +45,6 @@ export async function play(queue: string[], message: Message) {
 
     if (queue == []) return global.connection.destroy()
 
-    play(queue, message)
+    play(queue, message, client)
   })
 }

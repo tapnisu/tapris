@@ -7,26 +7,29 @@ export const command: Command = {
   description: 'Translates text',
   aliases: ['target language', 'text'],
   run: async (client, message, args) => {
+    let response
+
     if (!args || args.length < 2) return message.channel.send('You did not supply enough arguments :no_entry_sign:')
 
     let requestLanguage = args.shift().toLowerCase()
 
-    try {
-      // Translate
-      let response = await translate(args.join(' '), { to: requestLanguage })
+    // Translate
 
-      // Send result
-      const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
-        .setTitle(`Text in ${requestLanguage}`)
-        .setDescription(response.text)
-        .addField('Original language', response.from.language.iso)
-        .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL())  
-        .setTimestamp()
-      
-      return message.channel.send({ embeds: [Embed] })
+    try {
+      response = await translate(args.join(' '), { to: requestLanguage })
     } catch {
       return message.channel.send('Error :no_entry_sign:')
     }
+
+    // Send result
+    const Embed = new MessageEmbed()
+      .setColor(client.config.botColor as ColorResolvable)
+      .setTitle(`Text in ${requestLanguage}`)
+      .setDescription(response.text)
+      .addField('Original language', response.from.language.iso)
+      .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL())  
+      .setTimestamp()
+    
+    return message.channel.send({ embeds: [Embed] })
   }
 }

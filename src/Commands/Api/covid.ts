@@ -16,9 +16,7 @@ export const command: Command = {
 		response.Country = 'World'
 
 		// Make request valid via translate
-		let request = (await translate(args.join(' '), {
-			to: 'en'
-		})).text.split(' ').join('-').toLowerCase()
+		let request = (await translate(args.join(' '), { to: 'en'	})).text.split(' ').join('-').toLowerCase()
 
 		// Find request
 		if (args) responseAll.Countries.forEach(country => {

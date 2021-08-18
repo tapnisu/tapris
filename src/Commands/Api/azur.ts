@@ -7,9 +7,14 @@ export const command: Command = {
   description: 'Get data about Azur Lane',
   aliases: ['name'],
   run: async (client, message, args) => {
+    let response
     let request = args.join('_').toLowerCase()
 
-    let response = await (await fetch(`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`)).json()
+    try {
+      response = await (await fetch(`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`)).json()
+    } catch {
+      message.channel.send('Error :no_entry_sign:')
+    }
 
     const Embed = new MessageEmbed()
       .setColor(client.config.botColor as ColorResolvable)

@@ -8,7 +8,7 @@ export const command: Command = {
   run: async (client, message, args) => {
     global.queue.shift()
     global.connection.destroy()
-    play(global.queue, message)
+    play(global.queue, message, client)
     message.channel.send('Missed :musical_note:')
   }
 }

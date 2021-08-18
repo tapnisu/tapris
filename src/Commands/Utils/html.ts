@@ -8,6 +8,8 @@ export const command: Command = {
   run: async (client, message, args) => {
     let text: string = convert(args.join(' '), { wordwrap: 130 })
 
+    if (!text) return message.channel.send('Error :no_entry_sign:')
+
     return message.channel.send(text)
   }
 }
