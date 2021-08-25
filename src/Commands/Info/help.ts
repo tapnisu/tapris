@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 
 export const command: Command = {
   name: 'help',
@@ -7,7 +7,7 @@ export const command: Command = {
   aliases: [],
   run: async (client, message, args) => {
     const Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle('Help')
       .setDescription(`Help for the <@!${client.user.id}>!`)
 

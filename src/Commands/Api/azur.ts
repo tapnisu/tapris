@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
@@ -17,7 +17,7 @@ export const command: Command = {
     }
 
     const Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle(response.name)
       .setURL(`https://azurlane.koumakan.jp/${request}`)
       .setDescription(response.rarity)

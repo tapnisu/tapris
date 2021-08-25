@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
@@ -26,7 +26,7 @@ export const command: Command = {
 
     if (response) {
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(`Name: ${response.name}, ID: ${response.num}`)
         .setDescription(`Types: ${response.types.join(' / ')}`)
         .setThumbnail(`https://play.pokemonshowdown.com/sprites/ani/${response.name.replace('-Y', 'y').replace('-X', 'x').toLowerCase()}.gif`)
@@ -158,7 +158,7 @@ export const command: Command = {
 
     if (response) {
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(`Name: ${args.join(' ').split('-').join(' ').toLowerCase()}, ID: ${response.num}`)
         .setDescription(response.shortDesc)
         .addFields({
@@ -196,7 +196,7 @@ export const command: Command = {
 
     if (response) {
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(`Name: ${response.name}, ID: ${response.num}`)
         .setDescription(response.shortDesc)
       return message.channel.send({ embeds: [Embed] })
@@ -210,7 +210,7 @@ export const command: Command = {
 
     if (response) {
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(`Name: ${response.name}, ID: ${response.num}`)
         .setDescription(response.shortDesc)
         .addFields({

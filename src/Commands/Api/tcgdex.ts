@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
@@ -10,7 +10,7 @@ export const command: Command = {
     let response = await (await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${args.join('&%20').toLowerCase()}`)).json()
 
     const Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle(`${response.data[0].supertype}: ${response.data[0].name}`)
       .setDescription(`${response.data[0].set.series}: ${response.data[0].set.name}`)
       .setThumbnail(response.data[0].set.images.symbol)

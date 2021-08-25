@@ -1,4 +1,4 @@
-import { ColorResolvable, Message, MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 import { AudioPlayerStatus,	StreamType,	createAudioPlayer, createAudioResource,	joinVoiceChannel } from '@discordjs/voice'
 import ytdl from 'ytdl-core'
 
@@ -19,7 +19,7 @@ export async function play(queue: string[], message: Message, client) {
   let info = await ytdl.getInfo(queue[0])
 
   const Embed = new MessageEmbed()
-			.setColor(client.config.botColor as ColorResolvable)
+			.setColor(client.config.botColor)
       .setTitle(info.videoDetails.title)      
       .setURL(info.videoDetails.video_url)
       .setDescription(info.videoDetails.description)

@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import translate from '@iamtraction/google-translate'
 import fetch from 'node-fetch'
 
@@ -25,7 +25,7 @@ export const command: Command = {
 
 		// Send result
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor as ColorResolvable)
+			.setColor(client.config.botColor)
 			.setTitle(response.Country)
 			.setURL('https://xn--80aesfpebagmfblc0a.xn--p1ai/')
 			.addFields({

@@ -1,4 +1,4 @@
-import { Client, Collection } from 'discord.js';
+import { Client, Collection } from 'discord.js'
 import { readdirSync } from 'fs'
 import { Command, Event, Config } from '../Interfaces'
 import ConfigJson from '../config.json'
@@ -6,8 +6,8 @@ import ConfigJson from '../config.json'
 class ExtendedClient extends Client {
   public commands: Collection<string, Command> = new Collection()
   public events: Collection<string, Event> = new Collection()
-  public config: Config = ConfigJson
   public aliases: Collection<string, Command> = new Collection()
+  public config: Config = ConfigJson as Config
 
   public async init() {
     this.login(this.config.token)

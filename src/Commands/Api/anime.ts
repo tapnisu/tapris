@@ -12,7 +12,7 @@ export const command: Command = {
     if (response.data == []) return message.channel.send('Error :no_entry_sign:')
 
     const Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle(`Name: ${response.data[0].attributes.canonicalTitle}`)
       .setDescription(response.data[0].attributes.description)
       .setImage(response.data[0].attributes.posterImage.original)

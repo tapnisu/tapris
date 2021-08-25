@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 
 export const command: Command = {
   name: 'server',
@@ -7,7 +7,7 @@ export const command: Command = {
   aliases: [],
   run: async (client, message, args) => {
     let Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle(message.guild.name)
       .setThumbnail(`https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png`)
       .setDescription('Info about server')

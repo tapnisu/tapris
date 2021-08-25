@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
@@ -19,7 +19,7 @@ export const command: Command = {
       }
 
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(response.name)
         .setDescription(response.description)
         .setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
@@ -62,7 +62,7 @@ export const command: Command = {
       }
 
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(response.name)
         .setDescription(response.passiveDesc)
         .setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
@@ -104,7 +104,7 @@ export const command: Command = {
       }
 
       const Embed = new MessageEmbed()
-        .setColor(client.config.botColor as ColorResolvable)
+        .setColor(client.config.botColor)
         .setTitle(response.name)
         .setDescription(`Max rarity: ${rarity}`)
         .setThumbnail(`https://api.genshin.dev/artifacts/${name}/flower-of-life.png`)

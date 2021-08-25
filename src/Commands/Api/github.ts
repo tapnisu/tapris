@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
@@ -9,7 +9,7 @@ export const command: Command = {
   run: async (client, message, args) => {
     let response = await (await fetch(`https://api.github.com/users/${args.join('%20')}`)).json()
     const Embed = new MessageEmbed()
-      .setColor(client.config.botColor as ColorResolvable)
+      .setColor(client.config.botColor)
       .setTitle(response.name)
       .setURL(response.html_url)
       .setDescription(response.login)
