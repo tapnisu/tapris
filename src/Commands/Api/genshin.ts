@@ -3,124 +3,154 @@ import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 
 export const command: Command = {
-  name: 'genshin',
-  description: 'Get info about character / weapon / set of artifacts',
-  aliases: ['name'],
-  run: async (client, message, args) => {
-    let name = args.join(' ').split(' ').join('-').toLowerCase()
+	name: 'genshin',
+	description: 'Get info about character / weapon / set of artifacts',
+	aliases: ['name'],
+	run: async (client, message, args) => {
+		let name = args.join('-').toLowerCase()
 
-    let response = await (await fetch(`https://api.genshin.dev/characters/${name.toLowerCase()}`)).json()
+		let response
+		try {
+			response = await (
+				await fetch(`https://api.genshin.dev/characters/${name.toLowerCase()}`)
+			).json()
+		} catch {
+			return message.channel.send('Error :no_entry_sign:')
+		}
 
-    if (response.name) {
-      let rarity = ''
+		if (response.name) {
+			let rarity = ''
 
-      for (let i = 0; i < response.rarity; i++) {
-        rarity += client.config.starEmoji
-      }
+			for (let i = 0; i < response.rarity; i++) {
+				rarity += client.config.starEmoji
+			}
 
-      const Embed = new MessageEmbed()
-        .setColor(client.config.botColor)
-        .setTitle(response.name)
-        .setDescription(response.description)
-        .setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
-        .addFields({
-          name: 'Rarity',
-          value: rarity,
-          inline: true
-        }, {
-          name: 'Nation',
-          value: response.nation,
-          inline: true
-        }, {
-          name: 'Birthday',
-          value: response.birthday.substr(response.birthday.length - 5),
-          inline: true
-        }, {
-          name: 'Constellation',
-          value: response.constellation,
-          inline: true
-        }, {
-          name: 'Vision',
-          value: response.vision,
-          inline: true
-        }, {
-          name: 'Weapon',
-          value: response.weapon,
-          inline: true
-        })
-      
-      return message.channel.send({ embeds: [Embed] })
-    }
+			const Embed = new MessageEmbed()
+				.setColor(client.config.botColor)
+				.setTitle(response.name)
+				.setDescription(response.description)
+				.setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
+				.addFields(
+					{
+						name: 'Rarity',
+						value: rarity,
+						inline: true
+					},
+					{
+						name: 'Nation',
+						value: response.nation,
+						inline: true
+					},
+					{
+						name: 'Birthday',
+						value: response.birthday.substr(response.birthday.length - 5),
+						inline: true
+					},
+					{
+						name: 'Constellation',
+						value: response.constellation,
+						inline: true
+					},
+					{
+						name: 'Vision',
+						value: response.vision,
+						inline: true
+					},
+					{
+						name: 'Weapon',
+						value: response.weapon,
+						inline: true
+					}
+				)
 
-    response = await (await fetch(`https://api.genshin.dev/weapons/${name}`)).json()
+			return message.channel.send({ embeds: [Embed] })
+		}
 
-    if (response.name) {
-      let rarity = ''
+		response = await (
+			await fetch(`https://api.genshin.dev/weapons/${name}`)
+		).json()
 
-      for (let i = 0; i < response.rarity; i++) {
-        rarity += client.config.starEmoji
-      }
+		if (response.name) {
+			let rarity = ''
 
-      const Embed = new MessageEmbed()
-        .setColor(client.config.botColor)
-        .setTitle(response.name)
-        .setDescription(response.passiveDesc)
-        .setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
-        .addFields({
-          name: 'Rarity',
-          value: rarity,
-          inline: true
-        }, {
-          name: 'Name',
-          value: response.passiveName,
-          inline: true
-        }, {
-          name: 'How to get',
-          value: response.location,
-          inline: true
-        }, {
-          name: 'Type',
-          value: response.type,
-          inline: true
-        }, {
-          name: 'Supporting stat',
-          value: response.subStat,
-          inline: true
-        }, {
-          name: 'Base attack',
-          value: response.baseAttack.toString(),
-          inline: true
-        })
-        return message.channel.send({ embeds: [Embed] })
-    }
+			for (let i = 0; i < response.rarity; i++) {
+				rarity += client.config.starEmoji
+			}
 
-    response = await (await fetch(`https://api.genshin.dev/artifacts/${name}`)).json()
+			const Embed = new MessageEmbed()
+				.setColor(client.config.botColor)
+				.setTitle(response.name)
+				.setDescription(response.passiveDesc)
+				.setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
+				.addFields(
+					{
+						name: 'Rarity',
+						value: rarity,
+						inline: true
+					},
+					{
+						name: 'Name',
+						value: response.passiveName,
+						inline: true
+					},
+					{
+						name: 'How to get',
+						value: response.location,
+						inline: true
+					},
+					{
+						name: 'Type',
+						value: response.type,
+						inline: true
+					},
+					{
+						name: 'Supporting stat',
+						value: response.subStat,
+						inline: true
+					},
+					{
+						name: 'Base attack',
+						value: response.baseAttack.toString(),
+						inline: true
+					}
+				)
+			return message.channel.send({ embeds: [Embed] })
+		}
 
-    if (response.name) {
-      let rarity = ''
+		response = await (
+			await fetch(`https://api.genshin.dev/artifacts/${name}`)
+		).json()
 
-      for (let i = 0; i < response.max_rarity; i++) {
-        rarity += client.config.starEmoji
-      }
+		if (response.name) {
+			let rarity = ''
 
-      const Embed = new MessageEmbed()
-        .setColor(client.config.botColor)
-        .setTitle(response.name)
-        .setDescription(`Max rarity: ${rarity}`)
-        .setThumbnail(`https://api.genshin.dev/artifacts/${name}/flower-of-life.png`)
-        .addFields({
-          name: '2 piece bonus',
-          value: response['2-piece_bonus'],
-          inline: true
-        }, {
-          name: '4 piece bonus',
-          value: response['4-piece_bonus'],
-          inline: true
-        })
+			for (let i = 0; i < response.max_rarity; i++) {
+				rarity += client.config.starEmoji
+			}
 
-        return message.channel.send({ embeds: [Embed] })
-    }
+			const Embed = new MessageEmbed()
+				.setColor(client.config.botColor)
+				.setTitle(response.name)
+				.setDescription(`Max rarity: ${rarity}`)
+				.setThumbnail(
+					`https://api.genshin.dev/artifacts/${name}/flower-of-life.png`
+				)
+				.addFields(
+					{
+						name: '2 piece bonus',
+						value: response['2-piece_bonus'],
+						inline: true
+					},
+					{
+						name: '4 piece bonus',
+						value: response['4-piece_bonus'],
+						inline: true
+					}
+				)
 
-    return message.channel.send('Error :no_entry_sign:')
-  }
+			return message.channel.send({ embeds: [Embed] })
+		}
+
+		return message.channel.send('Error :no_entry_sign:')
+	}
 }
