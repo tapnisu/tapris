@@ -35,6 +35,11 @@ export async function play(queue: string[], message: Message, client) {
 		.setDescription(info.videoDetails.description)
 		.addFields(
 			{
+				name: 'Views',
+				value: info.videoDetails.viewCount,
+				inline: true
+			},
+			{
 				name: 'Likes',
 				value: info.videoDetails.likes.toString(),
 				inline: true
@@ -45,7 +50,7 @@ export async function play(queue: string[], message: Message, client) {
 				inline: true
 			}
 		)
-		.setImage(info.videoDetails.thumbnails[0].url as unknown as string)
+		.setImage(info.videoDetails.thumbnails[0].url)
 		.setTimestamp()
 
 	message.channel.send({ embeds: [Embed] })
