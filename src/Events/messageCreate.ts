@@ -28,7 +28,7 @@ export const event: Event = {
 				if (field.name) stringField += `      Name: ${field.name}\n`
 				if (field.value) stringField += `      Value: ${field.value}\n`
 
-				allFields[allFields.length] = stringField
+				allFields.push(stringField)
 			})
 
 			if (allFields.length != 1) stringEmbed += `${allFields.join('')}`
@@ -39,7 +39,7 @@ export const event: Event = {
 			if (embed.author) stringEmbed += `  Author: ${embed.author.name}\n`
 			if (embed.footer) stringEmbed += `  Footer: ${embed.footer.iconURL}\n`
 
-			allEmbeds[allEmbeds.length] = stringEmbed
+			allEmbeds.push(stringEmbed)
 		})
 
 		if (allEmbeds.length != 0) console.log(allEmbeds.join(''))

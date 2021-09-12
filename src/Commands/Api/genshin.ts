@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'genshin',
@@ -12,11 +12,11 @@ export const command: Command = {
 
 			let response
 			try {
-				response = await (
-					await fetch(
+				response = (
+					await axios.get(
 						`https://api.genshin.dev/characters/${name.toLowerCase()}`
 					)
-				).json()
+				).data
 			} catch {
 				return message.channel.send('Error :no_entry_sign:')
 			}
@@ -69,9 +69,8 @@ export const command: Command = {
 				return message.channel.send({ embeds: [Embed] })
 			}
 
-			response = await (
-				await fetch(`https://api.genshin.dev/weapons/${name}`)
-			).json()
+			response = (await axios.get(`https://api.genshin.dev/weapons/${name}`))
+				.data
 
 			if (response.name) {
 				let rarity = ''
@@ -120,9 +119,8 @@ export const command: Command = {
 				return message.channel.send({ embeds: [Embed] })
 			}
 
-			response = await (
-				await fetch(`https://api.genshin.dev/artifacts/${name}`)
-			).json()
+			response = (await axios.get(`https://api.genshin.dev/artifacts/${name}`))
+				.data
 
 			if (response.name) {
 				let rarity = ''

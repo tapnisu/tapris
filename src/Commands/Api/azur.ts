@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'azur',
@@ -13,10 +13,10 @@ export const command: Command = {
 
 			try {
 				response = await (
-					await fetch(
+					await axios.get(
 						`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
 					)
-				).json()
+				).data
 			} catch {
 				message.channel.send('Error :no_entry_sign:')
 			}

@@ -1,17 +1,16 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
 import translate from '@iamtraction/google-translate'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'covid',
 	description: 'Covid-19 tracker',
-	aliases: [],
+	aliases: ['country name'],
 	run: async (client, message, args) => {
 		// Fetch covid info
-		let responseAll = await (
-			await fetch('https://api.covid19api.com/summary')
-		).json()
+		let responseAll = (await axios.get('https://api.covid19api.com/summary'))
+			.data
 
 		// Make default request World
 		let response = responseAll.Global
@@ -37,36 +36,36 @@ export const command: Command = {
 			.addFields(
 				{
 					name: 'New confirmed',
-					value: response.NewConfirmed,
+					value: response.NewConfirmed.toString(),
 					inline: true
 				},
 				{
 					name: 'New deaths',
-					value: response.NewDeaths,
+					value: response.NewDeaths.toString(),
 					inline: true
 				},
 				{
 					name: 'New recovered',
-					value: response.NewRecovered,
+					value: response.NewRecovered.toString(),
 					inline: true
 				},
 				{
 					name: 'Total confirmed',
-					value: response.TotalConfirmed,
+					value: response.TotalConfirmed.toString(),
 					inline: true
 				},
 				{
 					name: 'Total deaths',
-					value: response.TotalDeaths,
+					value: response.TotalDeaths.toString(),
 					inline: true
 				},
 				{
 					name: 'Total recovered',
-					value: response.TotalRecovered,
+					value: response.TotalRecovered.toString(),
 					inline: true
 				}
 			)
-			.setTimestamp()
+			.setTimestamp(response.Date)
 
 		return message.channel.send({ embeds: [Embed] })
 	}

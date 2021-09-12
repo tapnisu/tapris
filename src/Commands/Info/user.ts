@@ -13,8 +13,8 @@ export const command: Command = {
 		if (mentioned) user = mentioned
 		if (!mentioned) user = message.author
 
-		let channelEmbed: any = message.guild.members.cache.get(user.id).voice
-			.channel
+		let channelEmbed: string = message.guild.members.cache.get(user.id).voice
+			.channel?.name
 
 		if (channelEmbed == null) channelEmbed = 'Not in the channel'
 

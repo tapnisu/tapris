@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'github',
@@ -8,9 +8,9 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response = await (
-				await fetch(`https://api.github.com/users/${args.join('%20')}`)
-			).json()
+			let response = (
+				await axios.get(`https://api.github.com/users/${args.join('%20')}`)
+			).data
 
 			if (response.message == 'Not Found')
 				return message.channel.send('Error :no_entry_sign:')
@@ -47,8 +47,8 @@ export const command: Command = {
 			Embed.addField('Created at', response.created_at, true)
 
 			return message.channel.send({ embeds: [Embed] })
-		} catch (err) {
-			return message.channel.send('Error :no_entry_sign:' + err)
+		} catch {
+			return message.channel.send('Error :no_entry_sign:')
 		}
 	}
 }

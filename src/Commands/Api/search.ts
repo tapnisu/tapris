@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'search',
@@ -8,11 +8,11 @@ export const command: Command = {
 	aliases: ['query'],
 	run: async (client, message, args) => {
 		try {
-			let response = await (
-				await fetch(
+			let response = (
+				await axios.get(
 					`https://api.duckduckgo.com/?q=${args.join('%20')}&format=json`
 				)
-			).json()
+			).data
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)

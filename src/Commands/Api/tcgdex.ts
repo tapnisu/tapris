@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'tcgdex',
@@ -8,13 +8,13 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response = await (
-				await fetch(
+			let response = (
+				await axios.get(
 					`https://api.pokemontcg.io/v2/cards?q=name:${args
 						.join('&%20')
 						.toLowerCase()}`
 				)
-			).json()
+			).data
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
@@ -23,19 +23,13 @@ export const command: Command = {
 					`${response.data[0].set.series}: ${response.data[0].set.name}`
 				)
 				.setThumbnail(response.data[0].set.images.symbol)
-				.addFields(
-					{
-						name: 'Release date',
-						value: response.data[0].set.releaseDate,
-						inline: true
-					},
-					{
-						name: 'Rarity',
-						value: response.data[0].rarity,
-						inline: true
-					}
-				)
+				.addFields({
+					name: 'Rarity',
+					value: response.data[0].rarity,
+					inline: true
+				})
 				.setImage(response.data[0].images.large)
+				.setTimestamp(response.data[0].set.releaseDate)
 
 			return message.channel.send({ embeds: [Embed] })
 		} catch {

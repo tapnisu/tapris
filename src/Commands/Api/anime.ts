@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed, ColorResolvable } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'anime',
@@ -9,10 +9,10 @@ export const command: Command = {
 	run: async (client, message, args) => {
 		try {
 			let response = await (
-				await fetch(
+				await axios.get(
 					`https://kitsu.io/api/edge/anime?filter[text]=${args.join('%20')}`
 				)
-			).json()
+			).data
 
 			if (response.data.length == 0)
 				return message.channel.send('Error :no_entry_sign:')

@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'mineskin',
@@ -8,21 +8,17 @@ export const command: Command = {
 	aliases: [],
 	run: async (client, message, args) => {
 		try {
-			let response = await (
-				await fetch(`https://api.ashcon.app/mojang/v2/user/${args.join(' ')}`)
-			).json()
-			let usernames = ''
-
-			response.username_history.forEach((usernameObject) => {
-				usernames += usernameObject.username + ', '
-			})
+			let response = (
+				await axios.get(
+					`https://api.ashcon.app/mojang/v2/user/${args.join(' ')}`
+				)
+			).data
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
 				.setTitle(response.username)
 				.setDescription(`UUID: ${response.uuid}`)
 				.setImage(`${response.textures.skin.url}`)
-				.addFields({ name: 'All names', value: usernames })
 				.setTimestamp()
 
 			return message.channel.send({ embeds: [Embed] })

@@ -1,6 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'pokedex',
@@ -10,11 +10,11 @@ export const command: Command = {
 		try {
 			let response, gmax
 
-			let script = await (
-				await fetch(
+			let script = (
+				await axios.get(
 					'https://play.pokemonshowdown.com/data/pokedex.js?4076b733/'
 				)
-			).text()
+			).data
 
 			eval(script)
 
@@ -176,9 +176,11 @@ export const command: Command = {
 				return message.channel.send({ embeds: [Embed] })
 			}
 
-			script = await (
-				await fetch('https://play.pokemonshowdown.com/data/moves.js?2e0bee6d/')
-			).text()
+			script = (
+				await axios.get(
+					'https://play.pokemonshowdown.com/data/moves.js?2e0bee6d/'
+				)
+			).data
 
 			eval(script)
 
@@ -228,11 +230,11 @@ export const command: Command = {
 					)
 				return message.channel.send({ embeds: [Embed] })
 			}
-			script = await (
-				await fetch(
+			script = (
+				await axios.get(
 					'https://play.pokemonshowdown.com/data/abilities.js?a222a0d9/'
 				)
-			).text()
+			).data
 
 			eval(script)
 
@@ -247,9 +249,11 @@ export const command: Command = {
 				return message.channel.send({ embeds: [Embed] })
 			}
 
-			script = await (
-				await fetch('https://play.pokemonshowdown.com/data/items.js?3b87d391/')
-			).text()
+			script = (
+				await axios.get(
+					'https://play.pokemonshowdown.com/data/items.js?3b87d391/'
+				)
+			).data
 
 			eval(script)
 			response =

@@ -1,12 +1,12 @@
 import { Command } from '../../Interfaces'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: 'cat',
 	description: 'Get cat text',
 	aliases: [],
 	run: async (client, message, args) => {
-		let response = await (await fetch('https://nekos.life/api/v2/cat')).json()
+		let response = (await axios.get('https://nekos.life/api/v2/cat')).data
 
 		return message.channel.send(response.cat)
 	}

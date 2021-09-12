@@ -1,13 +1,13 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export const command: Command = {
 	name: '8ball',
 	description: 'Test your luck',
 	aliases: [],
 	run: async (client, message, args) => {
-		let response = await (await fetch('https://nekos.life/api/v2/8ball')).json()
+		let response = (await axios.get('https://nekos.life/api/v2/8ball')).data
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
