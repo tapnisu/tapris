@@ -8,18 +8,13 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response
 			let request = args.join('_').toLowerCase()
 
-			try {
-				response = await (
-					await axios.get(
-						`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
-					)
-				).data
-			} catch {
-				message.channel.send('Error :no_entry_sign:')
-			}
+			let response = (
+				await axios.get(
+					`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
+				)
+			).data
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)

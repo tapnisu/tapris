@@ -8,7 +8,7 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response = await (
+			let response = (
 				await axios.get(
 					`https://kitsu.io/api/edge/anime?filter[text]=${args.join('%20')}`
 				)
