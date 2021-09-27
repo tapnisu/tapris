@@ -9,8 +9,8 @@ export const command: Command = {
 		global.queue.shift()
 		global.connection.destroy()
 
-		play(global.queue, message, client)
-
 		message.channel.send('Missed :musical_note:')
+
+		return play(global.queue, message, client)
 	}
 }

@@ -7,5 +7,4 @@ export interface Config {
 	webLink: string
 	botColor: ColorResolvable
 	starEmoji: string
-	warframeLanguage: string
 }

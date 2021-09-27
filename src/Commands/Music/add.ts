@@ -9,9 +9,9 @@ export const command: Command = {
 	run: async (client, message, args) => {
 		if (validateURL(args[0])) global.queue.push(args[0])
 		if (!validateURL(args[0])) {
-			let result = await youtubeSr.search(args.join('+'), { limit: 1 })
+			let result = await youtubeSr.search(args.join(' '), { limit: 1 })
 
-			global.queue.push(result)
+			global.queue.push(`https://www.youtube.com/watch?v=${result[0].id}`)
 		}
 
 		return message.channel.send(`Added to queue :musical_note:`)

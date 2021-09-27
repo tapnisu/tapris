@@ -8,6 +8,6 @@ export const command: Command = {
 		global.queue = []
 		global.connection.destroy()
 
-		message.channel.send('Successfully quit the channel! :door:')
+		return message.channel.send('Successfully quit the channel! :door:')
 	}
 }

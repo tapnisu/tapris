@@ -9,7 +9,7 @@ import {
 import ytdl from 'ytdl-core'
 
 export async function play(queue: string[], message: Message, client) {
-	if (queue[0] == undefined)
+	if (queue.length == 0)
 		return message.channel.send('Queue is emptry :no_entry_sign:')
 	if (!message.member.voice.channel)
 		return message.channel.send('You are not in channel :no_entry_sign:')
