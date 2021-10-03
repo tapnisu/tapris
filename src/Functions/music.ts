@@ -63,6 +63,6 @@ export async function play(queue: string[], message: Message, client) {
 
 		if (queue.length == 0) return global.connection.destroy()
 
-		play(queue, message, client)
+		return play(queue, message, client)
 	})
 }

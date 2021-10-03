@@ -15,6 +15,6 @@ export const command: Command = {
 			.setTitle('Click to invite')
 			.setURL(link)
 
-		message.channel.send({ embeds: [Embed] })
+		return message.channel.send({ embeds: [Embed] })
 	}
 }

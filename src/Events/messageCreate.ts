@@ -1,6 +1,8 @@
 import { Event, Command } from '../Interfaces'
 import { Message } from 'discord.js'
 
+global.messageReload = {}
+
 export const event: Event = {
 	name: 'messageCreate',
 	run: (client, message: Message) => {
@@ -55,6 +57,30 @@ export const event: Event = {
 
 		const cmd = args.shift().toLowerCase()
 		if (!cmd) return
+
+		let time: number
+
+		if (
+			message.createdTimestamp -
+				global.messageReload[message.author.id] / 1000 >
+			client.config.commandsSpeed
+		)
+			time = Number(
+				(
+					(message.createdTimestamp - global.messageReload[message.author.id]) /
+					1000
+				).toFixed(1)
+			)
+
+		if (time < client.config.commandsSpeed)
+			return message.channel.send(
+				`You send messages to fast! You have to wait ${
+					client.config.commandsSpeed - time
+				} more seconds! :timer: `
+			)
+
+		global.messageReload[message.author.id] = message.createdTimestamp
+
 		const command = client.commands.get(cmd) || client.aliases.get(cmd)
 		if (command) (command as Command).run(client, message, args)
 	}
