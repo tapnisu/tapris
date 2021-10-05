@@ -10,7 +10,9 @@ export const command: Command = {
 		try {
 			let response = (
 				await axios.get(
-					`https://api.duckduckgo.com/?q=${args.join('%20')}&format=json`
+					`https://api.duckduckgo.com/?q=${encodeURI(
+						args.join(' ')
+					)}&format=json`
 				)
 			).data
 

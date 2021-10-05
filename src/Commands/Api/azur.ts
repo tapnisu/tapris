@@ -8,7 +8,7 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let request = args.join('_').toLowerCase()
+			let request = encodeURI(args.join('_').toLocaleLowerCase())
 
 			let response = (
 				await axios.get(

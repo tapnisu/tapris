@@ -1,15 +1,14 @@
 <p align="center">
-	<img width=200px height=200px src="./assets/icon.png" alt="Bot logo"></a>
+ <img width=200px height=200px src="./assets/icon.png" alt="Bot logo"></a>
 </p>
 
 <h1 align="center">Tapris</h1>
 <h3 align="center">Music, games data, fun commands</h3>
 
 <p align="center">
-	<a href="#overview">Overview</a>,
-	<a href="#install">Install</a>,
-	<a href="#functions">Functions</a>
-	
+ <a href="#overview">Overview</a>,
+ <a href="#install">Install</a>,
+ <a href="#functions">Functions</a>
 </p>
 
 # Overview
@@ -49,6 +48,7 @@ Now you have running bot! 🎉
 [Cat](#cat),
 [Coin](#coin),
 [Gun](#gun),
+[UwU](#uwu),
 [Help](#help),
 [Server](#server),
 [User](#user),
@@ -67,86 +67,122 @@ Now you have running bot! 🎉
 [Translate](#translate)
 
 ### Anime
-`>anime <name> ` - Sends anime description and image
+
+`>anime <name>` - Sends anime description and image
 
 ### Azur
-`>azur <name> ` - Get data about Azur Lane
+
+`>azur <name>` - Get data about Azur Lane
 
 ### Covid
-`>covid <country name> ` - Covid-19 tracker
 
-### gcodes
-`>gcodes <new / shoot> ` - Codes for genshin impact
+`>covid <country name>` - Covid-19 tracker
+
+### Gcodes
+
+`>gcodes <new / shoot>` - Codes for genshin impact
 
 ### Genshin
-`>genshin <name> ` - Get info about character / weapon / set of artifacts
+
+`>genshin <nam
+e>` - Get info about character / weapon / set of artifacts
 
 ### Github
-`>github <name> ` - Get data from Github
+
+`>github <name>` - Get data from Github
 
 ### Mineskin
-`>mineskin ` - Get minecraft skin & UUID
+
+`>mineskin` - Get minecraft skin & UUID
 
 ### Pokedex
-`>pokedex <name> ` - Get info about pokemon / atack / ability / item
+
+`>pokedex <name>` - Get info about pokemon / atack / ability / item
 
 ### Search
-`>search <query> ` - Get wikipedia data
+
+`>search <query>` - Get wikipedia data
 
 ### Tcgdex
-`>tcgdex <name> ` - Get pokemon card data TCG
+
+`>tcgdex <name>` - Get pokemon card data TCG
 
 ### 8ball
-`>8ball ` - Test your luck
+
+`>8ball` - Test your luck
 
 ### Cat
-`>cat ` - Get cat text and photo
+
+`>cat` - Get cat text and photo
 
 ### Coin
-`>coin ` - Flip a coin
+
+`>coin` - Flip a coin
 
 ### Gun
-`>gun <new / shoot> ` - Russian roulette
+
+`>gun <new / shoot>` - Russian roulette
+
+### UwU
+
+`>uwu <text>` - Get UwU text
 
 ### Help
-`>help ` - Shows this message
+
+`>help` - Shows this message
 
 ### Server
-`>server ` - Get info about server
+
+`>server` - Get info about server
 
 ### User
-`>user <ping> ` - Sends user information
+
+`>user <ping>` - Sends user information
 
 ### Ban
-`>ban <ping> ` - Ban the user
+
+`>ban <ping>` - Ban the user
 
 ### Kick
-`>kick <ping> ` - Kick the user
+
+`>kick <ping>` - Kick the user
 
 ### Unban
-`>unban <user id> ` - Unban the user
+
+`>unban <user id>` - Unban the user
 
 ### Add
-`>add <link / name> ` - Add YouTube Music to Queue## leave
-`>leave ` - Exit the voice channel
+
+`>add <link / name>` - Add YouTube Music to Queue## leave
+
+### Leave
+
+`>leave` - Exit the voice channel
 
 ### Skip
-`>skip ` - Skip current music
+
+`>skip` - Skip current music
 
 ### Start
-`>start ` - Play music from the queue
+
+`>start` - Play music from the queue
 
 ### Color
-`>color <color / random> ` - Shows color or generates color
+
+`>color <color / random>` - Shows color or generates color
 
 ### Html
-`>html <text> ` - Convert html to text
+
+`>html <text>` - Convert html to text
 
 ### Invite
-`>invite ` - Generates an invite
+
+`>invite` - Generates an invite
 
 ### Password
-`>password ` - Password generator
+
+`>password` - Password generator
 
 ### Translate
-`>translate <target language> <text> ` - Translates text
+
+`>translate <target language> <text>` - Translates text

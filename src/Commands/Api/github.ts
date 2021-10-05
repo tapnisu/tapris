@@ -9,7 +9,9 @@ export const command: Command = {
 	run: async (client, message, args) => {
 		try {
 			let response = (
-				await axios.get(`https://api.github.com/users/${args.join('%20')}`)
+				await axios.get(
+					`https://api.github.com/users/${encodeURI(args.join(' '))}`
+				)
 			).data
 
 			if (response.message == 'Not Found')

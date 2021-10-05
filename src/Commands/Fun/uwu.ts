@@ -5,7 +5,7 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'uwu',
 	description: 'Get UwU text',
-	aliases: ['name'],
+	aliases: ['text'],
 	run: async (client, message, args) => {
 		if (args.length == 0)
 			return message.channel.send(
@@ -17,7 +17,7 @@ export const command: Command = {
 		try {
 			response = (
 				await axios.get(
-					`https://nekos.life/api/v2/owoify?text=${args.join('%20')}`
+					`https://nekos.life/api/v2/owoify?text=${encodeURI(args.join(' '))}`
 				)
 			).data
 		} catch {

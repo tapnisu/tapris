@@ -10,9 +10,9 @@ export const command: Command = {
 		try {
 			let response = (
 				await axios.get(
-					`https://api.pokemontcg.io/v2/cards?q=name:${args
-						.join('&%20')
-						.toLowerCase()}`
+					`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(
+						args.join(' ').toLocaleLowerCase()
+					)}`
 				)
 			).data
 

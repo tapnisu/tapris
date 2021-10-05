@@ -10,7 +10,9 @@ export const command: Command = {
 		try {
 			let response = (
 				await axios.get(
-					`https://kitsu.io/api/edge/anime?filter[text]=${args.join('%20')}`
+					`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(
+						args.join(' ')
+					)}`
 				)
 			).data
 

@@ -15,7 +15,6 @@ export const command: Command = {
 			)
 
 		// Translate
-
 		let request = {
 			lang: args.shift().toLowerCase(),
 			text: args.join(' ')
@@ -29,7 +28,6 @@ export const command: Command = {
 		}
 
 		// Send result
-
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
 			.setTitle(`Text in ${request.lang}`)

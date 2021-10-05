@@ -32,7 +32,6 @@ export const command: Command = {
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
 			.setTitle(response.Country)
-			.setURL('https://xn--80aesfpebagmfblc0a.xn--p1ai/')
 			.addFields(
 				{
 					name: 'New confirmed',

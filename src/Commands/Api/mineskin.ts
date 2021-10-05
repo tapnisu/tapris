@@ -10,7 +10,7 @@ export const command: Command = {
 		try {
 			let response = (
 				await axios.get(
-					`https://api.ashcon.app/mojang/v2/user/${args.join(' ')}`
+					`https://api.ashcon.app/mojang/v2/user/${encodeURI(args.join(' '))}`
 				)
 			).data
 
