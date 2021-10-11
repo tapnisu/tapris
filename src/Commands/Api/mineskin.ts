@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
 
 export const command: Command = {
@@ -8,7 +9,7 @@ export const command: Command = {
 	aliases: [],
 	run: async (client, message, args) => {
 		try {
-			let response = (
+			var response: AshconResponse = (
 				await axios.get(
 					`https://api.ashcon.app/mojang/v2/user/${encodeURI(args.join(' '))}`
 				)

@@ -7,20 +7,20 @@ export const command: Command = {
 	description: 'Shows color or generates color',
 	aliases: ['color / random'],
 	run: async (client, message, args) => {
-		let colorString = args.join('')
+		var colorString = args.join('')
 
 		if (colorString == '') return message.channel.send('Args are empty!')
 		if (colorString == 'random') {
-			let hexCharset = 'ABCDEF0123456789'
+			var hexCharset = 'ABCDEF0123456789'
 
 			colorString = '#'
-			for (let i = 0, n = hexCharset.length; i < 6; ++i) {
+			for (var i = 0, n = hexCharset.length; i < 6; ++i) {
 				colorString += hexCharset.charAt(Math.floor(Math.random() * n))
 			}
 		}
 
-		let canvas = createCanvas(500, 500)
-		let ctx = canvas.getContext('2d')
+		var canvas = createCanvas(500, 500)
+		var ctx = canvas.getContext('2d')
 
 		ctx.fillStyle = colorString
 		ctx.fillRect(0, 0, canvas.width, canvas.height)

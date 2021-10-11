@@ -2,35 +2,60 @@
 	"name": "tapris",
 	"version": "1.0.0",
 	"main": "dist/index.js",
-	"author": "Zamur650",
-	"license": "MIT",
 	"scripts": {
 		"start": "node .",
 		"build": "tsc",
-		"buildWatch": "tsc -w",
-		"prettier": "npx prettier --write ."
+		"watch": "tsc -w",
+		"prettier": "npx prettier --write .",
+		"lint": "eslint ./src --ext .ts"
+	},
+	"keywords": [
+		"bot",
+		"discord"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Zamur650/tapris.git"
+	},
+	"author": {
+		"email": "alexiy.rybin@gmail.com",
+		"name": "Alexiy Rybin",
+		"url": "https://zamur650.github.io"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Zamur650/tapris/issues"
 	},
 	"engines": {
 		"node": ">=16"
 	},
 	"dependencies": {
-		"@discordjs/opus": "0.5.3",
+		"@discordjs/opus": "^0.6.0",
 		"@discordjs/voice": "^0.6.0",
 		"@iamtraction/google-translate": "^1.1.2",
 		"avconv": "^3.1.0",
-		"axios": "^0.21.4",
+		"axios": "^0.22.0",
 		"canvas": "^2.8.0",
-		"discord.js": "^13.1.0",
+		"discord.js": "^13.2.0",
 		"ffmpeg": "^0.0.4",
 		"ffmpeg-static": "^4.4.0",
 		"html-to-text": "^8.0.0",
 		"libsodium-wrappers": "^0.7.9",
-		"youtube-sr": "^4.1.7",
+		"youtube-sr": "^4.1.8",
 		"ytdl-core": "^4.9.1"
 	},
 	"devDependencies": {
-		"@types/node": "^16.10.2",
+		"@types/node": "^16.10.3",
 		"prettier": "^2.4.1",
 		"typescript": "^4.4.3"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"tabWidth": 2,
+		"useTabs": true,
+		"parser": "typescript",
+		"arrowParens": "always",
+		"trailingComma": "none"
 	}
 }

@@ -1,33 +1,32 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { Artifact, Character, Weapon } from '../../Interfaces/GenshinDev'
 import axios from 'axios'
 
 export const command: Command = {
 	name: 'genshin',
-	description: 'Get info about character / weapon / set of artifacts',
-	aliases: ['name'],
+	description: 'Get info about character / weapon / artifacts set',
+	aliases: ['character / weapon / artifacts set'],
 	run: async (client, message, args) => {
-		let name = encodeURI(args.join('-').toLocaleLowerCase())
+		var name = encodeURI(args.join('-').toLocaleLowerCase())
 
-		let response
-		try {
-			response = (await axios.get(`https://api.genshin.dev/characters/${name}`))
-				.data
-		} catch {
-			return message.channel.send('Error :no_entry_sign:')
-		}
+		var response: any = await axios.get(
+			`https://api.genshin.dev/characters/${name}`
+		)
 
-		if (response.name) {
-			let rarity = ''
+		if (response.data.name) {
+			var character: Character = response.data
 
-			for (let i = 0; i < response.rarity; i++) {
+			var rarity = ''
+
+			for (var i = 0; i < character.rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
-				.setTitle(response.name)
-				.setDescription(response.description)
+				.setTitle(character.name)
+				.setDescription(character.description)
 				.setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
 				.addFields(
 					{
@@ -37,27 +36,27 @@ export const command: Command = {
 					},
 					{
 						name: 'Nation',
-						value: response.nation,
+						value: character.nation,
 						inline: true
 					},
 					{
 						name: 'Birthday',
-						value: response.birthday.substr(response.birthday.length - 5),
+						value: character.birthday.substr(character.birthday.length - 5),
 						inline: true
 					},
 					{
 						name: 'Constellation',
-						value: response.constellation,
+						value: character.constellation,
 						inline: true
 					},
 					{
 						name: 'Vision',
-						value: response.vision,
+						value: character.vision,
 						inline: true
 					},
 					{
 						name: 'Weapon',
-						value: response.weapon,
+						value: character.weapon,
 						inline: true
 					}
 				)
@@ -65,19 +64,21 @@ export const command: Command = {
 			return message.channel.send({ embeds: [Embed] })
 		}
 
-		response = (await axios.get(`https://api.genshin.dev/weapons/${name}`)).data
+		response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
 
-		if (response.name) {
-			let rarity = ''
+		if (response.data.name) {
+			var weapon: Weapon = response.data
 
-			for (let i = 0; i < response.rarity; i++) {
+			var rarity = ''
+
+			for (var i = 0; i < response.rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
-				.setTitle(response.name)
-				.setDescription(response.passiveDesc)
+				.setTitle(weapon.name)
+				.setDescription(weapon.passiveDesc)
 				.setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
 				.addFields(
 					{
@@ -87,46 +88,47 @@ export const command: Command = {
 					},
 					{
 						name: 'Name',
-						value: response.passiveName,
+						value: weapon.passiveName,
 						inline: true
 					},
 					{
 						name: 'How to get',
-						value: response.location,
+						value: weapon.location,
 						inline: true
 					},
 					{
 						name: 'Type',
-						value: response.type,
+						value: weapon.type,
 						inline: true
 					},
 					{
 						name: 'Supporting stat',
-						value: response.subStat,
+						value: weapon.subStat,
 						inline: true
 					},
 					{
 						name: 'Base attack',
-						value: response.baseAttack.toString(),
+						value: weapon.baseAttack.toString(),
 						inline: true
 					}
 				)
 			return message.channel.send({ embeds: [Embed] })
 		}
 
-		response = (await axios.get(`https://api.genshin.dev/artifacts/${name}`))
-			.data
+		response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
 
-		if (response.name) {
-			let rarity = ''
+		if (response.data.name) {
+			var artifact: Artifact = response.data
 
-			for (let i = 0; i < response.max_rarity; i++) {
+			var rarity = ''
+
+			for (var i = 0; i < response.max_rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
-				.setTitle(response.name)
+				.setTitle(artifact.name)
 				.setDescription(`Max rarity: ${rarity}`)
 				.setThumbnail(
 					`https://api.genshin.dev/artifacts/${name}/flower-of-life.png`
@@ -134,12 +136,12 @@ export const command: Command = {
 				.addFields(
 					{
 						name: '2 piece bonus',
-						value: response['2-piece_bonus'],
+						value: artifact['2-piece_bonus'],
 						inline: true
 					},
 					{
 						name: '4 piece bonus',
-						value: response['4-piece_bonus'],
+						value: artifact['4-piece_bonus'],
 						inline: true
 					}
 				)

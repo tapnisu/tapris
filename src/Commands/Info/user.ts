@@ -6,14 +6,14 @@ export const command: Command = {
 	description: 'Sends user information',
 	aliases: ['ping'],
 	run: async (client, message, args) => {
-		let mentioned = message.mentions.users.first()
+		var mentioned = message.mentions.users.first()
 
-		let user
+		var user
 
 		if (mentioned) user = mentioned
 		if (!mentioned) user = message.author
 
-		let channelEmbed: string = message.guild.members.cache.get(user.id).voice
+		var channelEmbed: string = message.guild.members.cache.get(user.id).voice
 			.channel?.name
 
 		if (channelEmbed == null) channelEmbed = 'Not in the channel'

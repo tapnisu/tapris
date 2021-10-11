@@ -1,9 +1,0 @@
-{
-  "semi": false,
-  "singleQuote": true,
-  "tabWidth": 2,
-	"useTabs": true,
-  "parser": "typescript",
-  "arrowParens": "always",
-  "trailingComma": "none"
-}

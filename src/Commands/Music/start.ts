@@ -6,6 +6,6 @@ export const command: Command = {
 	description: 'Play music from the queue',
 	aliases: [],
 	run: async (client, message, args) => {
-		return play(global.queue, message, client)
+		return play(client, message)
 	}
 }

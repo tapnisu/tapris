@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed, ColorResolvable } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
+import { KitsuResponseItem } from '../../Interfaces/Kitsu'
 import axios from 'axios'
 
 export const command: Command = {
@@ -7,59 +8,56 @@ export const command: Command = {
 	description: 'Sends anime description and image',
 	aliases: ['name'],
 	run: async (client, message, args) => {
-		try {
-			let response = (
-				await axios.get(
-					`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(
-						args.join(' ')
-					)}`
-				)
-			).data
+		if (args.length == 0)
+			return message.channel.send(
+				'You did not supply enough arguments :no_entry_sign:'
+			)
 
-			if (response.data.length == 0)
-				return message.channel.send('Error :no_entry_sign:')
+		var response: any = await axios.get(
+			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(
+				args.join(' ')
+			)}`
+		)
 
-			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
-				.setTitle(`Name: ${response.data[0].attributes.canonicalTitle}`)
-				.setDescription(response.data[0].attributes.description)
-				.setImage(response.data[0].attributes.posterImage.original)
-				.addFields(
-					{
-						name: 'Rating',
-						value: response.data[0].attributes.averageRating,
-						inline: true
-					},
-					{
-						name: 'Age rating',
-						value: response.data[0].attributes.ageRatingGuide,
-						inline: true
-					},
-					{
-						name: 'NSFW',
-						value: response.data[0].attributes.nsfw.toString(),
-						inline: true
-					},
-					{
-						name: 'Episode count',
-						value: response.data[0].attributes.episodeCount.toString(),
-						inline: true
-					},
-					{
-						name: 'Episode length',
-						value: response.data[0].attributes.episodeLength.toString(),
-						inline: true
-					},
-					{
-						name: 'Start date',
-						value: response.data[0].attributes.startDate,
-						inline: true
-					}
-				)
+		if (response.data.data.length == 0)
+			return message.channel.send('Anime not found! :no_entry_sign:')
 
-			return message.channel.send({ embeds: [Embed] })
-		} catch {
-			return message.channel.send('Error :no_entry_sign:')
-		}
+		var anime: KitsuResponseItem = response.data.data[0]
+
+		const Embed = new MessageEmbed()
+			.setColor(client.config.botColor)
+			.setTitle(`Name: ${anime.attributes.canonicalTitle}`)
+			.setDescription(anime.attributes.description)
+			.setImage(anime.attributes.posterImage.original)
+			.addFields(
+				{
+					name: 'Rating',
+					value: anime.attributes.averageRating,
+					inline: true
+				},
+				{
+					name: 'Age rating',
+					value: anime.attributes.ageRatingGuide,
+					inline: true
+				},
+				{
+					name: 'NSFW',
+					value: anime.attributes.nsfw.toString(),
+					inline: true
+				},
+				{
+					name: 'Episode count',
+					value: anime.attributes.episodeCount.toString(),
+					inline: true
+				},
+				{
+					name: 'Episode length',
+					value: anime.attributes.episodeLength.toString(),
+					inline: true
+				}
+			)
+			.setTimestamp(new Date(anime.attributes.startDate))
+
+		return message.channel.send({ embeds: [Embed] })
 	}
 }

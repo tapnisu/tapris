@@ -12,7 +12,7 @@ export const command: Command = {
 			.setDescription(`Help for the <@!${client.user.id}>!`)
 
 		client.commands.forEach((command) => {
-			let aliasesList = ''
+			var aliasesList = ''
 
 			command.aliases.forEach(
 				(aliase) => (aliasesList += `<${aliase.toString()}> `)

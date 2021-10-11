@@ -8,9 +8,9 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response, gmax
+			var response, gmax
 
-			let script = (
+			var script = (
 				await axios.get(
 					'https://play.pokemonshowdown.com/data/pokedex.js?4076b733/'
 				)

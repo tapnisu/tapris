@@ -1,6 +1,7 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
 import translate from '@iamtraction/google-translate'
+import { Country, CovidResponse } from '../../Interfaces/Covid'
 import axios from 'axios'
 
 export const command: Command = {
@@ -9,62 +10,61 @@ export const command: Command = {
 	aliases: ['country name'],
 	run: async (client, message, args) => {
 		// Fetch covid info
-		let responseAll = (await axios.get('https://api.covid19api.com/summary'))
-			.data
-
-		// Make default request World
-		let response = responseAll.Global
-		response.Country = 'World'
+		var responseAll: CovidResponse = (
+			await axios.get('https://api.covid19api.com/summary')
+		).data
 
 		// Make request valid via translate
-		let request = (await translate(args.join(' '), { to: 'en' })).text
+		var request = (await translate(args.join(' '), { to: 'en' })).text
 			.split(' ')
 			.join('-')
 			.toLowerCase()
 
-		// Find request
-		if (args)
-			responseAll.Countries.forEach((country) => {
-				if (country.Slug == request) response = country
-			})
-
 		// Send result
+		var data: any = responseAll.Global
+
+		responseAll.Countries.forEach((country: Country) => {
+			if (country.Slug == request) {
+				data = country
+			}
+		})
+
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
-			.setTitle(response.Country)
+			.setTitle(data.Country ? data.Country : 'World')
 			.addFields(
 				{
 					name: 'New confirmed',
-					value: response.NewConfirmed.toString(),
+					value: data.NewConfirmed.toString(),
 					inline: true
 				},
 				{
 					name: 'New deaths',
-					value: response.NewDeaths.toString(),
+					value: data.NewDeaths.toString(),
 					inline: true
 				},
 				{
 					name: 'New recovered',
-					value: response.NewRecovered.toString(),
+					value: data.NewRecovered.toString(),
 					inline: true
 				},
 				{
 					name: 'Total confirmed',
-					value: response.TotalConfirmed.toString(),
+					value: data.TotalConfirmed.toString(),
 					inline: true
 				},
 				{
 					name: 'Total deaths',
-					value: response.TotalDeaths.toString(),
+					value: data.TotalDeaths.toString(),
 					inline: true
 				},
 				{
 					name: 'Total recovered',
-					value: response.TotalRecovered.toString(),
+					value: data.TotalRecovered.toString(),
 					inline: true
 				}
 			)
-			.setTimestamp(response.Date)
+			.setTimestamp(new Date(data.Date))
 
 		return message.channel.send({ embeds: [Embed] })
 	}

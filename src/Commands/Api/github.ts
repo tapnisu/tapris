@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { GithubResponse } from '../../Interfaces/Github'
 import axios from 'axios'
 
 export const command: Command = {
@@ -8,49 +9,45 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response = (
-				await axios.get(
-					`https://api.github.com/users/${encodeURI(args.join(' '))}`
-				)
-			).data
-
-			if (response.message == 'Not Found')
-				return message.channel.send('Error :no_entry_sign:')
-
-			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
-				.setURL(response.html_url)
-				.setThumbnail(response?.avatar_url)
-				.addFields(
-					{ name: 'Type', value: response?.type, inline: true },
-					{
-						name: 'Public repositories',
-						value: response.public_repos.toString(),
-						inline: true
-					},
-					{
-						name: 'Gists',
-						value: response.public_gists.toString(),
-						inline: true
-					}
-				)
-				.setTimestamp()
-
-			if (response.name == null) Embed.setTitle(response.login)
-			if (response.name != null)
-				Embed.setTitle(`${response.name} (${response.login})`)
-
-			if (response.bio) Embed.setDescription(response.bio)
-			if (response.location) Embed.addField('Location', response.location, true)
-			if (response.blog) Embed.addField('Blog', response.blog, true)
-			if (response.twitter_username)
-				Embed.addField('Twitter', `@${response.twitter_username}`, true)
-
-			Embed.addField('Created at', response.created_at, true)
-
-			return message.channel.send({ embeds: [Embed] })
+			var response: any = await axios.get(
+				`https://api.github.com/users/${encodeURI(args.join(' '))}`
+			)
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return message.channel.send('User not found! :no_entry_sign:')
 		}
+
+		var user: GithubResponse = response.data
+
+		const Embed = new MessageEmbed()
+			.setColor(client.config.botColor)
+			.setURL(user.html_url)
+			.setThumbnail(user?.avatar_url)
+			.addFields(
+				{ name: 'Type', value: user?.type, inline: true },
+				{
+					name: 'Public repositories',
+					value: user.public_repos.toString(),
+					inline: true
+				},
+				{
+					name: 'Gists',
+					value: user.public_gists.toString(),
+					inline: true
+				}
+			)
+			.setTimestamp()
+
+		if (user.name == null) Embed.setTitle(user.login)
+		if (user.name != null) Embed.setTitle(`${user.name} (${user.login})`)
+
+		if (user.bio) Embed.setDescription(user.bio)
+		if (user.location) Embed.addField('Location', user.location, true)
+		if (user.blog) Embed.addField('Blog', user.blog, true)
+		if (user.twitter_username)
+			Embed.addField('Twitter', `@${user.twitter_username}`, true)
+
+		Embed.addField('Created at', user.created_at, true)
+
+		return message.channel.send({ embeds: [Embed] })
 	}
 }

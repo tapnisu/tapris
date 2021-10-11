@@ -6,7 +6,7 @@ export const command: Command = {
 	description: 'Get info about server',
 	aliases: [],
 	run: async (client, message, args) => {
-		let Embed = new MessageEmbed()
+		var Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
 			.setTitle(message.guild.name)
 			.setThumbnail(

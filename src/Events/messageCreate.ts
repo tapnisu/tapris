@@ -10,10 +10,10 @@ export const event: Event = {
 			`${message?.guild.name}, ${message.author.username}: ${message.content}`
 		)
 
-		let allEmbeds = []
+		var allEmbeds = []
 
 		message.embeds.forEach((embed) => {
-			let stringEmbed = 'Embed:\n'
+			var stringEmbed = 'Embed:\n'
 
 			if (embed.title) stringEmbed += `  Title: ${embed.title}\n`
 			if (embed.description)
@@ -22,10 +22,10 @@ export const event: Event = {
 			if (embed.color) stringEmbed += `  Color: ${embed.color}\n`
 			if (embed.timestamp) stringEmbed += `  Url: ${embed.timestamp}\n`
 
-			let allFields = ['  Fields:\n']
+			var allFields = ['  Fields:\n']
 
 			embed.fields.forEach((field) => {
-				let stringField = '    Field:\n'
+				var stringField = '    Field:\n'
 
 				if (field.name) stringField += `      Name: ${field.name}\n`
 				if (field.value) stringField += `      Value: ${field.value}\n`
@@ -58,7 +58,7 @@ export const event: Event = {
 		const cmd = args.shift().toLowerCase()
 		if (!cmd) return
 
-		let time: number
+		var time: number
 
 		if (
 			message.createdTimestamp -

@@ -15,12 +15,12 @@ export const command: Command = {
 			)
 
 		// Translate
-		let request = {
+		var request = {
 			lang: args.shift().toLowerCase(),
 			text: args.join(' ')
 		}
 
-		let response
+		var response
 		try {
 			response = await translate(request.text, { to: request.lang })
 		} catch {

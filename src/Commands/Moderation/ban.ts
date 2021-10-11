@@ -5,7 +5,7 @@ export const command: Command = {
 	description: 'Ban the user',
 	aliases: ['ping'],
 	run: async (client, message, args) => {
-		let member = message.mentions.users.first()
+		var member = message.mentions.users.first()
 		if (
 			!message.member.permissions.has('ADMINISTRATOR') ||
 			!message.member.permissions.has('BAN_MEMBERS')
@@ -14,7 +14,7 @@ export const command: Command = {
 		if (!member)
 			return message.channel.send('User is not found! :no_entry_sign:')
 
-		let target = message.guild.members.cache.get(member.id)
+		var target = message.guild.members.cache.get(member.id)
 
 		if (target.roles.highest.position >= message.member.roles.highest.position)
 			return message.channel.send(

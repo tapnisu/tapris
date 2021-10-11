@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { UwuResponse } from '../../Interfaces/Nekoslife'
 import axios from 'axios'
 
 export const command: Command = {
@@ -12,17 +13,11 @@ export const command: Command = {
 				'You did not supply enough arguments :no_entry_sign:'
 			)
 
-		let response
-
-		try {
-			response = (
-				await axios.get(
-					`https://nekos.life/api/v2/owoify?text=${encodeURI(args.join(' '))}`
-				)
-			).data
-		} catch {
-			return message.channel.send('Error!')
-		}
+		var response: UwuResponse = (
+			await axios.get(
+				`https://nekos.life/api/v2/owoify?text=${encodeURI(args.join(' '))}`
+			)
+		).data
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)

@@ -4,29 +4,31 @@ import {
 	StreamType,
 	createAudioPlayer,
 	createAudioResource,
-	joinVoiceChannel
+	joinVoiceChannel,
+	DiscordGatewayAdapterCreator
 } from '@discordjs/voice'
 import ytdl from 'ytdl-core'
 
-export async function play(queue: string[], message: Message, client) {
-	if (queue.length == 0)
-		return message.channel.send('Queue is emptry :no_entry_sign:')
+export const play = async (client, message: Message) => {
+	if (client.music.queue.length == 0)
+		return message.channel.send('Queue is empty :no_entry_sign:')
 	if (!message.member.voice.channel)
 		return message.channel.send('You are not in channel :no_entry_sign:')
 
-	global.connection = joinVoiceChannel({
+	client.music.connection = joinVoiceChannel({
 		channelId: message.member.voice.channel.id,
 		guildId: message.guildId,
-		adapterCreator: message.guild.voiceAdapterCreator
+		adapterCreator: message.guild
+			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 	})
 
-	const stream = ytdl(queue[0], { filter: 'audioonly' })
+	const stream = ytdl(client.music.queue[0], { filter: 'audioonly' })
 	const resource = createAudioResource(stream, {
 		inputType: StreamType.Arbitrary
 	})
 	const player = createAudioPlayer()
 
-	let info = await ytdl.getInfo(queue[0])
+	var info = await ytdl.getInfo(client.music.queue[0])
 
 	const Embed = new MessageEmbed()
 		.setColor(client.config.botColor)
@@ -41,28 +43,23 @@ export async function play(queue: string[], message: Message, client) {
 			},
 			{
 				name: 'Likes',
-				value: info.videoDetails.likes.toString(),
-				inline: true
-			},
-			{
-				name: 'Dislikes',
-				value: info.videoDetails.dislikes.toString(),
+				value: `${info.videoDetails.likes} / ${info.videoDetails.dislikes}`,
 				inline: true
 			}
 		)
 		.setImage(info.videoDetails.thumbnails[0].url)
-		.setTimestamp()
+		.setTimestamp(new Date(info.videoDetails.publishDate))
 
 	message.channel.send({ embeds: [Embed] })
 
 	player.play(resource)
-	global.connection.subscribe(player)
+	client.music.connection.subscribe(player)
 
 	player.on(AudioPlayerStatus.Idle, () => {
-		queue.shift()
+		client.music.queue.shift()
 
-		if (queue.length == 0) return global.connection.destroy()
+		if (client.music.queue.length == 0) return client.music.connection.destroy()
 
-		return play(queue, message, client)
+		return play(client, message)
 	})
 }

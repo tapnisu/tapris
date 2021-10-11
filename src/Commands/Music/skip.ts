@@ -6,11 +6,11 @@ export const command: Command = {
 	description: 'Skip current music',
 	aliases: [],
 	run: async (client, message, args) => {
-		global.queue.shift()
-		global.connection.destroy()
+		client.music.queue.shift()
+		client.music.connection.destroy()
 
 		message.channel.send('Missed :musical_note:')
 
-		return play(global.queue, message, client)
+		return play(client, message)
 	}
 }

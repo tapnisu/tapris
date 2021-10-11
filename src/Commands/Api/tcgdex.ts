@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { Datum, PokemontcgResponse } from '../../Interfaces/Pokemontcg'
 import axios from 'axios'
 
 export const command: Command = {
@@ -8,28 +9,26 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			let response = (
-				await axios.get(
-					`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(
-						args.join(' ').toLocaleLowerCase()
-					)}`
-				)
-			).data
+			var response: PokemontcgResponse = await axios.get(
+				`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(
+					args.join(' ').toLocaleLowerCase()
+				)}`
+			)
+
+			var data: Datum = response.data[0]
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
-				.setTitle(`${response.data[0].supertype}: ${response.data[0].name}`)
-				.setDescription(
-					`${response.data[0].set.series}: ${response.data[0].set.name}`
-				)
-				.setThumbnail(response.data[0].set.images.symbol)
+				.setTitle(`${data.supertype}: ${data.name}`)
+				.setDescription(`${data.set.series}: ${data.set.name}`)
+				.setThumbnail(data.set.images.symbol)
 				.addFields({
 					name: 'Rarity',
-					value: response.data[0].rarity,
+					value: data.rarity,
 					inline: true
 				})
-				.setImage(response.data[0].images.large)
-				.setTimestamp(response.data[0].set.releaseDate)
+				.setImage(data.images.large)
+				.setTimestamp(new Date(data.set.releaseDate))
 
 			return message.channel.send({ embeds: [Embed] })
 		} catch {
