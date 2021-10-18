@@ -1,6 +1,7 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import { KitsuResponseItem } from '../../Interfaces/Kitsu'
+import { AxiosResponse } from '../../Interfaces/Axios'
+import { KitsuResponseItem, KitsuResponse } from '../../Interfaces/Kitsu'
 import axios from 'axios'
 
 export const command: Command = {
@@ -13,16 +14,18 @@ export const command: Command = {
 				'You did not supply enough arguments :no_entry_sign:'
 			)
 
-		var response: any = await axios.get(
+		const response: AxiosResponse = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(
 				args.join(' ')
 			)}`
 		)
 
-		if (response.data.data.length == 0)
+		const kitsuResponse: KitsuResponse = response.data as KitsuResponse
+
+		if (kitsuResponse.data.length == 0)
 			return message.channel.send('Anime not found! :no_entry_sign:')
 
-		var anime: KitsuResponseItem = response.data.data[0]
+		const anime: KitsuResponseItem = kitsuResponse.data[0]
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)

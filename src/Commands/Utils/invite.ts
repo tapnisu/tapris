@@ -6,7 +6,7 @@ export const command: Command = {
 	description: 'Generates an invite',
 	aliases: [],
 	run: async (client, message, args) => {
-		var link: string = await client.generateInvite({
+		const link: string = await client.generateInvite({
 			scopes: ['bot', 'applications.commands']
 		})
 

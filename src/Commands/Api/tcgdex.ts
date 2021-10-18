@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { AxiosResponse } from '../../Interfaces/Axios'
 import { Datum, PokemontcgResponse } from '../../Interfaces/Pokemontcg'
 import axios from 'axios'
 
@@ -9,13 +10,15 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			var response: PokemontcgResponse = await axios.get(
+			let response: AxiosResponse = await axios.get(
 				`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(
 					args.join(' ').toLocaleLowerCase()
 				)}`
 			)
 
-			var data: Datum = response.data[0]
+			response = response.data as PokemontcgResponse
+
+			const data: Datum = response.data[0]
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)

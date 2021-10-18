@@ -8,18 +8,19 @@ export const command: Command = {
 	description: 'Get info about character / weapon / artifacts set',
 	aliases: ['character / weapon / artifacts set'],
 	run: async (client, message, args) => {
-		var name = encodeURI(args.join('-').toLocaleLowerCase())
+		const name = encodeURI(args.join('-').toLocaleLowerCase())
 
-		var response: any = await axios.get(
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		let response: any = await axios.get(
 			`https://api.genshin.dev/characters/${name}`
 		)
 
 		if (response.data.name) {
-			var character: Character = response.data
+			const character: Character = response.data
 
-			var rarity = ''
+			let rarity = ''
 
-			for (var i = 0; i < character.rarity; i++) {
+			for (let i = 0; i < character.rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
@@ -67,11 +68,11 @@ export const command: Command = {
 		response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
 
 		if (response.data.name) {
-			var weapon: Weapon = response.data
+			const weapon: Weapon = response.data
 
-			var rarity = ''
+			let rarity = ''
 
-			for (var i = 0; i < response.rarity; i++) {
+			for (let i = 0; i < response.rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
@@ -118,11 +119,11 @@ export const command: Command = {
 		response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
 
 		if (response.data.name) {
-			var artifact: Artifact = response.data
+			const artifact: Artifact = response.data
 
-			var rarity = ''
+			let rarity = ''
 
-			for (var i = 0; i < response.max_rarity; i++) {
+			for (let i = 0; i < response.max_rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 

@@ -18,7 +18,7 @@ export interface Country {
 	NewRecovered: number
 	TotalRecovered: number
 	Date: string
-	Premium: Premium
+	Premium: unknown
 }
 
 export interface Global {
@@ -30,5 +30,3 @@ export interface Global {
 	TotalRecovered: number
 	Date: string
 }
-
-export interface Premium {}

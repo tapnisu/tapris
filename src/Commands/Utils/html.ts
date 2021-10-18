@@ -6,7 +6,7 @@ export const command: Command = {
 	description: 'Convert html to text',
 	aliases: ['text'],
 	run: async (client, message, args) => {
-		var text: string = convert(args.join(' '), { wordwrap: 130 })
+		const text: string = convert(args.join(' '), { wordwrap: 130 })
 
 		if (!text) return message.channel.send('Error :no_entry_sign:')
 

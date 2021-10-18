@@ -28,7 +28,7 @@ export const play = async (client, message: Message) => {
 	})
 	const player = createAudioPlayer()
 
-	var info = await ytdl.getInfo(client.music.queue[0])
+	const info = await ytdl.getInfo(client.music.queue[0])
 
 	const Embed = new MessageEmbed()
 		.setColor(client.config.botColor)

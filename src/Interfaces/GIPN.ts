@@ -28,8 +28,10 @@ export enum ImagePath {
 }
 
 export enum Name {
+	// eslint-disable-next-line quotes
 	AdventurerSExperience = "Adventurer's Experience",
 	FineEnhancementOre = 'Fine Enhancement Ore',
+	// eslint-disable-next-line quotes
 	HeroSWit = "Hero's Wit",
 	Mora = 'Mora',
 	MysticEnhancementOre = 'Mystic Enhancement Ore',

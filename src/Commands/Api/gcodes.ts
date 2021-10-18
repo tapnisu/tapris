@@ -1,18 +1,19 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import { Code, GIPNResponse } from '../../Interfaces/GIPN'
+import { AxiosResponse } from '../../Interfaces/Axios'
+import { Code } from '../../Interfaces/GIPN'
 import axios from 'axios'
 
 export const command: Command = {
 	name: 'gcodes',
 	description: 'Codes for genshin impact',
-	aliases: ['new / shoot'],
+	aliases: [],
 	run: async (client, message, args) => {
-		var response: GIPNResponse = (
-			await axios.get(
-				'https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json'
-			)
-		).data
+		const response: AxiosResponse = await axios.get(
+			'https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json'
+		)
+
+		const codes: Code[] = response.data.CODES
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
@@ -20,12 +21,12 @@ export const command: Command = {
 			.setDescription('You can activate them in game, and get rewards!')
 			.setURL('https://genshin.mihoyo.com/en/gift')
 
-		response.CODES.forEach((code: Code) => {
+		codes.forEach((code) => {
 			if (code.is_expired == false) {
-				var rewards = []
+				let rewards: string[] = []
 
 				code.reward_array.forEach((reward) => {
-					rewards.push(`${reward.name}: ${reward.count}`)
+					rewards = [...rewards, `${reward.name}: ${reward.count}`]
 				})
 
 				Embed.addField(code.code, rewards.join('\n'), true)

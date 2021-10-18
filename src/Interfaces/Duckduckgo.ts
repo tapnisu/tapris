@@ -17,7 +17,7 @@ export interface DuckduckgoResponse {
 	Infobox: string
 	Redirect: string
 	RelatedTopics: RelatedTopic[]
-	Results: any[]
+	Results: unknown[]
 	Type: string
 	meta: Meta
 }

@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { AxiosResponse } from '../../Interfaces/Axios'
 import { GithubResponse } from '../../Interfaces/Github'
 import axios from 'axios'
 
@@ -8,15 +9,17 @@ export const command: Command = {
 	description: 'Get data from Github',
 	aliases: ['name'],
 	run: async (client, message, args) => {
+		let response: AxiosResponse
+
 		try {
-			var response: any = await axios.get(
+			response = await axios.get(
 				`https://api.github.com/users/${encodeURI(args.join(' '))}`
 			)
 		} catch {
 			return message.channel.send('User not found! :no_entry_sign:')
 		}
 
-		var user: GithubResponse = response.data
+		const user: GithubResponse = response.data
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)

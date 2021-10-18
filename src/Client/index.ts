@@ -19,12 +19,13 @@ class ExtendedClient extends Client {
 	public async init() {
 		this.login(this.config.token)
 
-		readdirSync(`dist/Commands`).forEach((dir) => {
+		readdirSync('dist/Commands').forEach((dir) => {
 			const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>
 				file.endsWith('.js')
 			)
 
 			for (const file of commands) {
+				// eslint-disable-next-line @typescript-eslint/no-var-requires
 				const { command } = require(`${__dirname}/../Commands/${dir}/${file}`)
 
 				this.commands.set(command.name, command)

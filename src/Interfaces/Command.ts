@@ -2,7 +2,8 @@ import Client from '../Client'
 import { Message } from 'discord.js'
 
 interface Run {
-	(client: Client, message: Message, args: string[])
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	(client: Client, message: Message, args: any[])
 }
 
 export interface Command {

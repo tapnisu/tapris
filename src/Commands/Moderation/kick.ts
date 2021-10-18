@@ -5,7 +5,8 @@ export const command: Command = {
 	description: 'Kick the user',
 	aliases: ['ping'],
 	run: async (client, message, args) => {
-		var member = message.mentions.users.first()
+		const member = message.mentions.users.first()
+
 		if (
 			!message.member.permissions.has('ADMINISTRATOR') ||
 			!message.member.permissions.has('KICK_MEMBERS')
@@ -14,7 +15,7 @@ export const command: Command = {
 		if (!member)
 			return message.channel.send('User is not found !:no_entry_sign:')
 
-		var target = message.guild.members.cache.get(member.id)
+		const target = message.guild.members.cache.get(member.id)
 
 		if (target.roles.highest.position >= message.member.roles.highest.position)
 			return message.channel.send(

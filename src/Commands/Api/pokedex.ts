@@ -8,15 +8,12 @@ export const command: Command = {
 	aliases: ['name'],
 	run: async (client, message, args) => {
 		try {
-			var response, gmax
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			let response: any = await axios.get(
+				'https://play.pokemonshowdown.com/data/pokedex.js?4076b733/'
+			)
 
-			var script = (
-				await axios.get(
-					'https://play.pokemonshowdown.com/data/pokedex.js?4076b733/'
-				)
-			).data
-
-			eval(script)
+			let script = eval(response.data)
 
 			if (parseInt(args[0]).toString() == args[0]) {
 				Object.keys(exports.BattlePokedex).forEach((pokemonName) => {
@@ -153,6 +150,8 @@ export const command: Command = {
 						inline: true
 					})
 				}
+
+				let gmax
 
 				if (response.cannotDynamax == undefined) {
 					gmax = 'True'

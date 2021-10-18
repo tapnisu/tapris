@@ -10,10 +10,10 @@ export const event: Event = {
 			`${message?.guild.name}, ${message.author.username}: ${message.content}`
 		)
 
-		var allEmbeds = []
+		let allEmbeds = []
 
 		message.embeds.forEach((embed) => {
-			var stringEmbed = 'Embed:\n'
+			let stringEmbed = 'Embed:\n'
 
 			if (embed.title) stringEmbed += `  Title: ${embed.title}\n`
 			if (embed.description)
@@ -22,15 +22,15 @@ export const event: Event = {
 			if (embed.color) stringEmbed += `  Color: ${embed.color}\n`
 			if (embed.timestamp) stringEmbed += `  Url: ${embed.timestamp}\n`
 
-			var allFields = ['  Fields:\n']
+			let allFields = ['  Fields:\n']
 
 			embed.fields.forEach((field) => {
-				var stringField = '    Field:\n'
+				let stringField = '    Field:\n'
 
 				if (field.name) stringField += `      Name: ${field.name}\n`
 				if (field.value) stringField += `      Value: ${field.value}\n`
 
-				allFields.push(stringField)
+				allFields = [...allFields, stringField]
 			})
 
 			if (allFields.length != 1) stringEmbed += `${allFields.join('')}`
@@ -41,7 +41,7 @@ export const event: Event = {
 			if (embed.author) stringEmbed += `  Author: ${embed.author.name}\n`
 			if (embed.footer) stringEmbed += `  Footer: ${embed.footer.iconURL}\n`
 
-			allEmbeds.push(stringEmbed)
+			allEmbeds = [...allEmbeds, stringEmbed]
 		})
 
 		if (allEmbeds.length != 0) console.log(allEmbeds.join(''))
@@ -58,7 +58,7 @@ export const event: Event = {
 		const cmd = args.shift().toLowerCase()
 		if (!cmd) return
 
-		var time: number
+		let time: number
 
 		if (
 			message.createdTimestamp -

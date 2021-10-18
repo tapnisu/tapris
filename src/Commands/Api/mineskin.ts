@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
 
@@ -9,17 +10,17 @@ export const command: Command = {
 	aliases: [],
 	run: async (client, message, args) => {
 		try {
-			var response: AshconResponse = (
-				await axios.get(
-					`https://api.ashcon.app/mojang/v2/user/${encodeURI(args.join(' '))}`
-				)
-			).data
+			const response: AxiosResponse = await axios.get(
+				`https://api.ashcon.app/mojang/v2/user/${encodeURI(args.join(' '))}`
+			)
+
+			const user: AshconResponse = response.data
 
 			const Embed = new MessageEmbed()
 				.setColor(client.config.botColor)
-				.setTitle(response.username)
-				.setDescription(`UUID: ${response.uuid}`)
-				.setImage(`${response.textures.skin.url}`)
+				.setTitle(user.username)
+				.setDescription(`UUID: ${user.uuid}`)
+				.setImage(`${user.textures.skin.url}`)
 				.setTimestamp()
 
 			return message.channel.send({ embeds: [Embed] })

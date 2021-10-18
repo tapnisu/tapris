@@ -31,7 +31,7 @@ export interface Attributes {
 	coverImageTopOffset: number
 	titles: Titles
 	canonicalTitle: string
-	abbreviatedTitles: any[]
+	abbreviatedTitles: unknown[]
 	averageRating: string
 	ratingFrequencies: { [key: string]: string }
 	userCount: number

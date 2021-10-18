@@ -5,7 +5,6 @@ export const command: Command = {
 	description: 'Unban the user',
 	aliases: ['user id'],
 	run: async (client, message, args) => {
-		var member = message.mentions.users.first()
 		if (
 			!message.member.permissions.has('ADMINISTRATOR') ||
 			!message.member.permissions.has('BAN_MEMBERS')

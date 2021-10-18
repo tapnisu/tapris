@@ -1,5 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
+import { AxiosResponse } from '../../Interfaces/Axios'
 import { AzurResponse } from '../../Interfaces/Azur'
 import axios from 'axios'
 
@@ -8,16 +9,19 @@ export const command: Command = {
 	description: 'Get data about Azur Lane',
 	aliases: ['name'],
 	run: async (client, message, args) => {
-		var request = encodeURI(args.join('_').toLocaleLowerCase())
+		const request = encodeURI(args.join('_').toLocaleLowerCase())
 
-		var response: any = await axios.get(
-			`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
-		)
+		let response: AxiosResponse
 
-		if (response.data.length == 0)
+		try {
+			response = await axios.get(
+				`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
+			)
+		} catch {
 			return message.channel.send('Error :no_entry_sign:')
+		}
 
-		var ship: AzurResponse = response.data
+		const ship: AzurResponse = response.data as AzurResponse
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
