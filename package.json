@@ -7,7 +7,7 @@
 		"build": "npx tsc",
 		"build:watch": "npx tsc -w",
 		"format": "npx prettier --write .",
-		"lint": "eslint ./src --ext .ts"
+		"lint": "npx eslint ./src --ext .ts"
 	},
 	"keywords": [
 		"bot",
