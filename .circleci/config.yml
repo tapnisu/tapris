@@ -9,7 +9,6 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
-      - dependencies
       - run: |
           yarn
   lint:
@@ -23,6 +22,7 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
+      - dependencies
       - run: |
           yarn build  
 
