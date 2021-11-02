@@ -9,12 +9,14 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
+      - dependencies
       - run: |
           yarn
   lint:
     executor: my-custom-executor
     steps:
       - checkout
+      - dependencies
       - run: |
           yarn lint
   build:
@@ -27,6 +29,5 @@ jobs:
 workflows:
   my-custom-workflow:
     jobs:
-      - dependencies
       - lint
       - build
