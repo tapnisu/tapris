@@ -4,10 +4,10 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"start": "node .",
-		"build": "tsc",
-		"build:watch": "tsc -w",
+		"build": "npx tsc",
+		"build:watch": "npx tsc -w",
 		"format": "npx prettier --write .",
-		"lint": "eslint ./src --ext .ts"
+		"lint": "npx eslint ./src --ext .ts"
 	},
 	"keywords": [
 		"bot",
