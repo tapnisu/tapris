@@ -6,7 +6,6 @@ import ConfigJson from '../config.json'
 class ExtendedClient extends Client {
 	public commands: Collection<string, Command> = new Collection()
 	public events: Collection<string, Event> = new Collection()
-	public aliases: Collection<string, Command> = new Collection()
 	public config: Config = ConfigJson as Config
 	public music: Music = {
 		queue: [],
@@ -29,12 +28,6 @@ class ExtendedClient extends Client {
 				const { command } = require(`${__dirname}/../Commands/${dir}/${file}`)
 
 				this.commands.set(command.name, command)
-
-				if (command?.aliases.length != 0) {
-					command.aliases.forEach((aliases) => {
-						this.aliases.set(aliases, command)
-					})
-				}
 			}
 		})
 

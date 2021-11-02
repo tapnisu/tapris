@@ -4,8 +4,7 @@ import { MessageEmbed } from 'discord.js'
 export const command: Command = {
 	name: 'invite',
 	description: 'Generates an invite',
-	aliases: [],
-	run: async (client, message, args) => {
+	run: async (client, interaction) => {
 		const link: string = await client.generateInvite({
 			scopes: ['bot', 'applications.commands']
 		})
@@ -15,6 +14,6 @@ export const command: Command = {
 			.setTitle('Click to invite')
 			.setURL(link)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

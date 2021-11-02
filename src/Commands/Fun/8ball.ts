@@ -7,10 +7,9 @@ import axios from 'axios'
 export const command: Command = {
 	name: '8ball',
 	description: 'Test your luck',
-	aliases: [],
-	run: async (client, message, args) => {
+	run: async (client, interaction) => {
 		const response: AxiosResponse = await axios.get(
-			`https://nekos.life/api/v2/8ball?text=${encodeURI(args.join(' '))}}`
+			'https://nekos.life/api/v2/8ball'
 		)
 
 		const response8ball: Response8ball = response.data
@@ -20,6 +19,6 @@ export const command: Command = {
 			.setTitle(response8ball.response)
 			.setImage(response8ball.url)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

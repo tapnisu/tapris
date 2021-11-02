@@ -3,26 +3,32 @@ import { Command } from '../../Interfaces'
 export const command: Command = {
 	name: 'unban',
 	description: 'Unban the user',
-	aliases: ['user id'],
-	run: async (client, message, args) => {
-		if (
-			!message.member.permissions.has('ADMINISTRATOR') ||
-			!message.member.permissions.has('BAN_MEMBERS')
-		)
-			return message.channel.send('You can`t unban members! :no_entry_sign:')
-		if (!args[0])
-			return message.channel.send(
-				'You did not supply enough arguments :no_entry_sign:'
-			)
+	options: [
+		{
+			name: 'id',
+			description: 'User id to be unbanned',
+			type: 4,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const userMember = interaction.guild.members.cache.get(interaction.user.id)
+		const userId = String(interaction.options.getInteger('id'))
 
-		message.guild.members
-			.unban(args[0])
+		if (
+			!userMember.permissions.has('ADMINISTRATOR') ||
+			!userMember.permissions.has('BAN_MEMBERS')
+		)
+			return interaction.reply('You can`t unban members! :no_entry_sign:')
+
+		interaction.guild.members
+			.unban(userId)
 			.then(() => {
-				return message.channel.send(`<@!${args[0]}> was unbanned :door:`)
+				return interaction.reply(`<@!${userId}> was unbanned :door:`)
 			})
 			.catch(() => {
-				return message.channel.send(
-					`<@!${args[0]}> was **NOT** unbanned! :no_entry_sign: `
+				return interaction.reply(
+					`<@!${userId}> was **NOT** unbanned! :no_entry_sign: `
 				)
 			})
 	}

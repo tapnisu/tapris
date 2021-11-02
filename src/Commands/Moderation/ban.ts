@@ -3,33 +3,40 @@ import { Command } from '../../Interfaces'
 export const command: Command = {
 	name: 'ban',
 	description: 'Ban the user',
-	aliases: ['ping'],
-	run: async (client, message, args) => {
-		const member = message.mentions.users.first()
+	options: [
+		{
+			name: 'user',
+			description: 'User to be banned',
+			type: 6,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const member = interaction.options.getUser('user')
+		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
-			!message.member.permissions.has('ADMINISTRATOR') ||
-			!message.member.permissions.has('BAN_MEMBERS')
+			!userMember.permissions.has('ADMINISTRATOR') ||
+			!userMember.permissions.has('BAN_MEMBERS')
 		)
-			return message.channel.send('You can`t ban members! :no_entry_sign:')
-		if (!member)
-			return message.channel.send('User is not found! :no_entry_sign:')
+			return interaction.reply('You can`t ban members :no_entry_sign:')
+		if (!member) return interaction.reply('User is not found :no_entry_sign:')
 
-		const target = message.guild.members.cache.get(member.id)
+		const target = interaction.guild.members.cache.get(member.id)
 
-		if (target.roles.highest.position >= message.member.roles.highest.position)
-			return message.channel.send(
-				'User has higher (or same) role then you! :no_entry_sign:'
+		if (target.roles.highest.position >= userMember.roles.highest.position)
+			return interaction.reply(
+				'User has higher (or same) role then you :no_entry_sign:'
 			)
 
 		target
 			.ban()
 			.then(() => {
-				return message.channel.send(`<@!${member.id}> was banned :door:`)
+				return interaction.reply(`<@!${member.id}> was banned :door:`)
 			})
 			.catch(() => {
-				return message.channel.send(
-					`<@!${member.id}> was **NOT** banned! :no_entry_sign: `
+				return interaction.reply(
+					`<@!${member.id}> was **NOT** banned :no_entry_sign: `
 				)
 			})
 	}

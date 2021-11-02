@@ -6,15 +6,24 @@ const youtubeSr = require('youtube-sr').default
 export const command: Command = {
 	name: 'add',
 	description: 'Add YouTube Music to Queue',
-	aliases: ['link / name'],
-	run: async (client, message, args) => {
-		if (validateURL(args[0]))
-			client.music.queue = [...client.music.queue, args[0]]
-		if (!validateURL(args[0])) {
-			const result = await youtubeSr.search(args.join(' '), { limit: 1 })
+	options: [
+		{
+			name: 'music',
+			description: 'Name or link',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const musicItem = interaction.options.getString('music')
+
+		if (validateURL(musicItem))
+			client.music.queue = [...client.music.queue, musicItem]
+		if (!validateURL(musicItem)) {
+			const result = await youtubeSr.search(musicItem, { limit: 1 })
 
 			if (result.length == 0)
-				return message.channel.send('Music not found! :no_entry_sign:')
+				return interaction.reply('Music not found! :no_entry_sign:')
 
 			client.music.queue = [
 				...client.music.queue,
@@ -22,6 +31,6 @@ export const command: Command = {
 			]
 		}
 
-		return message.channel.send('Added to queue :musical_note:')
+		return interaction.reply('Added to queue :musical_note:')
 	}
 }

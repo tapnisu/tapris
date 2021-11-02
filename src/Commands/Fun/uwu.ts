@@ -7,15 +7,19 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'uwu',
 	description: 'Get UwU text',
-	aliases: ['text'],
-	run: async (client, message, args) => {
-		if (args.length == 0)
-			return message.channel.send(
-				'You did not supply enough arguments :no_entry_sign:'
-			)
+	options: [
+		{
+			name: 'text',
+			description: 'Text to be more UwU',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const text = interaction.options.getString('text')
 
 		const response: AxiosResponse = await axios.get(
-			`https://nekos.life/api/v2/owoify?text=${encodeURI(args.join(' '))}`
+			`https://nekos.life/api/v2/owoify?text=${encodeURI(text)}`
 		)
 
 		const uwuResponse: UwuResponse = response.data
@@ -24,6 +28,6 @@ export const command: Command = {
 			.setColor(client.config.botColor)
 			.setTitle(uwuResponse.owo)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

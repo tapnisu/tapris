@@ -6,9 +6,22 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'genshin',
 	description: 'Get info about character / weapon / artifacts set',
-	aliases: ['character / weapon / artifacts set'],
-	run: async (client, message, args) => {
-		const name = encodeURI(args.join('-').toLocaleLowerCase())
+	options: [
+		{
+			name: 'name',
+			description: 'Name of character / weapon / artifact',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const name = encodeURI(
+			interaction.options
+				.getString('name')
+				.split(' ')
+				.join('-')
+				.toLocaleLowerCase()
+		)
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		let response: any = await axios.get(
@@ -62,7 +75,7 @@ export const command: Command = {
 					}
 				)
 
-			return message.channel.send({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		}
 
 		response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
@@ -113,7 +126,7 @@ export const command: Command = {
 						inline: true
 					}
 				)
-			return message.channel.send({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		}
 
 		response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
@@ -147,9 +160,9 @@ export const command: Command = {
 					}
 				)
 
-			return message.channel.send({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		}
 
-		return message.channel.send('Error :no_entry_sign:')
+		return interaction.reply('Error :no_entry_sign:')
 	}
 }

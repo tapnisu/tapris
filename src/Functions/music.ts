@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from 'discord.js'
+import { CommandInteraction, MessageEmbed } from 'discord.js'
 import {
 	AudioPlayerStatus,
 	StreamType,
@@ -9,16 +9,16 @@ import {
 } from '@discordjs/voice'
 import ytdl from 'ytdl-core'
 
-export const play = async (client, message: Message) => {
+export const play = async (client, interaction: CommandInteraction) => {
 	if (client.music.queue.length == 0)
-		return message.channel.send('Queue is empty :no_entry_sign:')
-	if (!message.member.voice.channel)
-		return message.channel.send('You are not in channel :no_entry_sign:')
+		return interaction.channel.send('Queue is empty :no_entry_sign:')
+	if (!interaction.member.voice.channel)
+		return interaction.channel.send('You are not in channel :no_entry_sign:')
 
 	client.music.connection = joinVoiceChannel({
-		channelId: message.member.voice.channel.id,
-		guildId: message.guildId,
-		adapterCreator: message.guild
+		channelId: interaction.member.voice.channel.id,
+		guildId: interaction.guildId,
+		adapterCreator: interaction.guild
 			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 	})
 
@@ -50,7 +50,7 @@ export const play = async (client, message: Message) => {
 		.setImage(info.videoDetails.thumbnails[0].url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 
-	message.channel.send({ embeds: [Embed] })
+	interaction.channel.send({ embeds: [Embed] })
 
 	player.play(resource)
 	client.music.connection.subscribe(player)
@@ -60,6 +60,6 @@ export const play = async (client, message: Message) => {
 
 		if (client.music.queue.length == 0) return client.music.connection.destroy()
 
-		return play(client, message)
+		return play(client, interaction)
 	})
 }

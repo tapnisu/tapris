@@ -15,8 +15,7 @@ interface CatApiResponse {
 export const command: Command = {
 	name: 'cat',
 	description: 'Get cat text and photo',
-	aliases: [],
-	run: async (client, message, args) => {
+	run: async (client, interaction) => {
 		const nekosResponse: CatResponse = (
 			(await axios.get('https://nekos.life/api/v2/cat')) as AxiosResponse
 		).data
@@ -31,6 +30,6 @@ export const command: Command = {
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

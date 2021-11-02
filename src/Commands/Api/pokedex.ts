@@ -5,8 +5,17 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'pokedex',
 	description: 'Get info about pokemon / atack / ability / item',
-	aliases: ['name'],
-	run: async (client, message, args) => {
+	options: [
+		{
+			name: 'name',
+			description: 'Name of pokemon / atack / ability / item',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const request = interaction.options.getString('name')
+
 		try {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			let response: any = await axios.get(
@@ -15,14 +24,16 @@ export const command: Command = {
 
 			let script = eval(response.data)
 
-			if (parseInt(args[0]).toString() == args[0]) {
+			if (parseInt(request).toString() == request) {
 				Object.keys(exports.BattlePokedex).forEach((pokemonName) => {
-					if (exports.BattlePokedex[pokemonName].num.toString() == args[0])
+					if (exports.BattlePokedex[pokemonName].num.toString() == request)
 						return (response = exports.BattlePokedex[pokemonName])
 				})
 			} else {
 				response =
-					exports.BattlePokedex[args.join('').split('-').join('').toLowerCase()]
+					exports.BattlePokedex[
+						request.split(' ').join('').split('-').join('').toLowerCase()
+					]
 			}
 
 			if (response) {
@@ -172,7 +183,7 @@ export const command: Command = {
 					}
 				)
 
-				return message.channel.send({ embeds: [Embed] })
+				return interaction.reply({ embeds: [Embed] })
 			}
 
 			script = (
@@ -184,15 +195,20 @@ export const command: Command = {
 			eval(script)
 
 			response =
-				exports.BattleMovedex[args.join('').split('-').join('').toLowerCase()]
+				exports.BattleMovedex[
+					request.split(' ').join('').split('-').join('').toLowerCase()
+				]
 
 			if (response) {
 				const Embed = new MessageEmbed()
 					.setColor(client.config.botColor)
 					.setTitle(
-						`Name: ${args.join(' ').split('-').join(' ').toLowerCase()}, ID: ${
-							response.num
-						}`
+						`Name: ${request
+							.split(' ')
+							.join(' ')
+							.split('-')
+							.join(' ')
+							.toLowerCase()}, ID: ${response.num}`
 					)
 					.setDescription(response.shortDesc)
 					.addFields(
@@ -227,7 +243,7 @@ export const command: Command = {
 							inline: true
 						}
 					)
-				return message.channel.send({ embeds: [Embed] })
+				return interaction.reply({ embeds: [Embed] })
 			}
 			script = (
 				await axios.get(
@@ -238,14 +254,16 @@ export const command: Command = {
 			eval(script)
 
 			response =
-				exports.BattleAbilities[args.join('').split('-').join('').toLowerCase()]
+				exports.BattleAbilities[
+					request.split(' ').join('').split('-').join('').toLowerCase()
+				]
 
 			if (response) {
 				const Embed = new MessageEmbed()
 					.setColor(client.config.botColor)
 					.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 					.setDescription(response.shortDesc)
-				return message.channel.send({ embeds: [Embed] })
+				return interaction.reply({ embeds: [Embed] })
 			}
 
 			script = (
@@ -256,7 +274,9 @@ export const command: Command = {
 
 			eval(script)
 			response =
-				exports.BattleItems[args.join('').split('-').join('').toLowerCase()]
+				exports.BattleItems[
+					request.split(' ').join('').split('-').join('').toLowerCase()
+				]
 
 			if (response) {
 				const Embed = new MessageEmbed()
@@ -268,12 +288,12 @@ export const command: Command = {
 						value: response.fling.basePower.toString(),
 						inline: true
 					})
-				return message.channel.send({ embeds: [Embed] })
+				return interaction.reply({ embeds: [Embed] })
 			}
 
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error :no_entry_sign:')
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error :no_entry_sign:')
 		}
 	}
 }

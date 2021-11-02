@@ -3,33 +3,39 @@ import { Command } from '../../Interfaces'
 export const command: Command = {
 	name: 'kick',
 	description: 'Kick the user',
-	aliases: ['ping'],
-	run: async (client, message, args) => {
-		const member = message.mentions.users.first()
+	options: [
+		{
+			name: 'user',
+			description: 'User to be kicked',
+			type: 6,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const member = interaction.options.getUser('user')
+		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
-			!message.member.permissions.has('ADMINISTRATOR') ||
-			!message.member.permissions.has('KICK_MEMBERS')
+			!userMember.permissions.has('ADMINISTRATOR') ||
+			!userMember.permissions.has('KICK_MEMBERS')
 		)
-			return message.channel.send('You can`t kick members! :no_entry_sign:')
-		if (!member)
-			return message.channel.send('User is not found !:no_entry_sign:')
+			return interaction.channel.send('You can`t kick members :no_entry_sign:')
 
-		const target = message.guild.members.cache.get(member.id)
+		const target = interaction.guild.members.cache.get(member.id)
 
-		if (target.roles.highest.position >= message.member.roles.highest.position)
-			return message.channel.send(
-				'User has higher role then you! :no_entry_sign:'
+		if (target.roles.highest.position >= userMember.roles.highest.position)
+			return interaction.reply(
+				'User has higher (or same) role then you :no_entry_sign:'
 			)
 
 		target
 			.kick()
 			.then(() => {
-				return message.channel.send(`<@!${member.id}> was deleted :door: `)
+				return interaction.channel.send(`<@!${member.id}> was kicked :door: `)
 			})
 			.catch(() => {
-				return message.channel.send(
-					`<@!${member.id}> was **NOT** deleted! :no_entry_sign: `
+				return interaction.channel.send(
+					`<@!${member.id}> was **NOT** kicked :no_entry_sign: `
 				)
 			})
 	}

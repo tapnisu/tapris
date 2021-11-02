@@ -7,23 +7,25 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'anime',
 	description: 'Sends anime description and image',
-	aliases: ['name'],
-	run: async (client, message, args) => {
-		if (args.length == 0)
-			return message.channel.send(
-				'You did not supply enough arguments :no_entry_sign:'
-			)
+	options: [
+		{
+			name: 'name',
+			description: 'Name of anime',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const request = interaction.options.getString('name')
 
 		const response: AxiosResponse = await axios.get(
-			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(
-				args.join(' ')
-			)}`
+			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(request)}`
 		)
 
 		const kitsuResponse: KitsuResponse = response.data as KitsuResponse
 
 		if (kitsuResponse.data.length == 0)
-			return message.channel.send('Anime not found! :no_entry_sign:')
+			return interaction.reply('Anime not found! :no_entry_sign:')
 
 		const anime: KitsuResponseItem = kitsuResponse.data[0]
 
@@ -61,6 +63,6 @@ export const command: Command = {
 			)
 			.setTimestamp(new Date(anime.attributes.startDate))
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

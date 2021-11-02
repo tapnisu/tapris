@@ -4,34 +4,38 @@ import { MessageEmbed } from 'discord.js'
 export const command: Command = {
 	name: 'server',
 	description: 'Get info about server',
-	aliases: [],
-	run: async (client, message, args) => {
+	run: async (client, interaction) => {
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
-			.setTitle(message.guild.name)
+			.setTitle(interaction.guild.name)
 			.setThumbnail(
-				`https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png`
+				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
 			)
 			.setDescription('Info about server')
 			.addFields(
-				{ name: 'Owner', value: `<@!${message.guild.ownerId}>`, inline: true },
+				{
+					name: 'Owner',
+					value: `<@!${interaction.guild.ownerId}>`,
+					inline: true
+				},
 				{
 					name: 'Number of participants',
-					value: message.guild.memberCount.toString(),
+					value: interaction.guild.memberCount.toString(),
 					inline: true
 				},
 				{
 					name: 'Number of emoticons',
-					value: message.guild.emojis.cache.size.toString(),
+					value: interaction.guild.emojis.cache.size.toString(),
 					inline: true
 				},
 				{
 					name: 'Number of roles',
-					value: (message.guild.roles.cache.size - 1).toString(),
+					value: (interaction.guild.roles.cache.size - 1).toString(),
 					inline: true
 				},
-				{ name: 'ID', value: message.guild.id, inline: true }
+				{ name: 'ID', value: interaction.guild.id, inline: true }
 			)
-		return message.channel.send({ embeds: [Embed] })
+
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

@@ -7,9 +7,18 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'azur',
 	description: 'Get data about Azur Lane',
-	aliases: ['name'],
-	run: async (client, message, args) => {
-		const request = encodeURI(args.join('_').toLocaleLowerCase())
+	options: [
+		{
+			name: 'name',
+			description: 'Name of ship',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const request = encodeURI(
+			interaction.options.getString('name').toLowerCase()
+		)
 
 		let response: AxiosResponse
 
@@ -18,7 +27,7 @@ export const command: Command = {
 				`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
 			)
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error :no_entry_sign:')
 		}
 
 		const ship: AzurResponse = response.data as AzurResponse
@@ -36,6 +45,6 @@ export const command: Command = {
 				{ name: 'Voice acting', value: ship.voiceActress, inline: true }
 			)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

@@ -4,13 +4,12 @@ import { Command } from '../../Interfaces'
 export const command: Command = {
 	name: 'skip',
 	description: 'Skip current music',
-	aliases: [],
-	run: async (client, message, args) => {
+	run: async (client, interaction) => {
 		client.music.queue.shift()
-		client.music.connection.destroy()
+		client.music.connection?.destroy()
 
-		message.channel.send('Missed :musical_note:')
+		interaction.reply('Missed :musical_note:')
 
-		return play(client, message)
+		return play(client, interaction)
 	}
 }
