@@ -5,6 +5,12 @@ executors:
       - image: node:16
       
 jobs:
+  dependencies:
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          yarn
   lint:
     executor: my-custom-executor
     steps:
@@ -21,5 +27,6 @@ jobs:
 workflows:
   my-custom-workflow:
     jobs:
+      - dependencies
       - lint
       - build
