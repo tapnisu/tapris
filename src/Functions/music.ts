@@ -1,4 +1,4 @@
-import { CommandInteraction, MessageEmbed } from 'discord.js'
+import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js'
 import {
 	AudioPlayerStatus,
 	StreamType,
@@ -10,13 +10,15 @@ import {
 import ytdl from 'ytdl-core'
 
 export const play = async (client, interaction: CommandInteraction) => {
+	const member: GuildMember = interaction.member as GuildMember
+
 	if (client.music.queue.length == 0)
 		return interaction.channel.send('Queue is empty :no_entry_sign:')
-	if (!interaction.member.voice.channel)
+	if (!member.voice.channel)
 		return interaction.channel.send('You are not in channel :no_entry_sign:')
 
 	client.music.connection = joinVoiceChannel({
-		channelId: interaction.member.voice.channel.id,
+		channelId: member.voice.channel.id,
 		guildId: interaction.guildId,
 		adapterCreator: interaction.guild
 			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator

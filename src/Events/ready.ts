@@ -4,7 +4,7 @@ import { ApplicationCommandDataResolvable } from 'discord.js'
 export const event: Event = {
 	name: 'ready',
 	run: (client) => {
-		client.user.setActivity(`${client.config.prefix}help - help`)
+		client.user.setActivity('Type "/" to get help :>')
 
 		const commands = client.application?.commands
 

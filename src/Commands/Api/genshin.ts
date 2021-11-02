@@ -74,6 +74,7 @@ export const command: Command = {
 						inline: true
 					}
 				)
+				.setImage(`https://api.genshin.dev/characters/${name}/gacha-splash.png`)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
