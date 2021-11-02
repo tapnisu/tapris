@@ -7,11 +7,20 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'mineskin',
 	description: 'Get minecraft skin & UUID',
-	aliases: [],
-	run: async (client, message, args) => {
+	options: [
+		{
+			name: 'nickname',
+			description: 'Nickname of the user to be shown',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const nickname = interaction.options.getString('nickname')
+
 		try {
 			const response: AxiosResponse = await axios.get(
-				`https://api.ashcon.app/mojang/v2/user/${encodeURI(args.join(' '))}`
+				`https://api.ashcon.app/mojang/v2/user/${encodeURI(nickname)}`
 			)
 
 			const user: AshconResponse = response.data
@@ -23,9 +32,9 @@ export const command: Command = {
 				.setImage(`${user.textures.skin.url}`)
 				.setTimestamp()
 
-			return message.channel.send({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error :no_entry_sign:')
 		}
 	}
 }

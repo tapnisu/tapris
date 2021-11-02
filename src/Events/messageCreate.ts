@@ -1,4 +1,4 @@
-import { Event, Command } from '../Interfaces'
+import { Event } from '../Interfaces'
 import { Message } from 'discord.js'
 
 global.messageReload = {}
@@ -45,43 +45,5 @@ export const event: Event = {
 		})
 
 		if (allEmbeds.length != 0) console.log(allEmbeds.join(''))
-
-		if (message.author.bot) return
-		if (!message.guild) return
-		if (!message.content.startsWith(client.config.prefix)) return
-
-		const args = message.content
-			.slice(client.config.prefix.length)
-			.trim()
-			.split(/ +/g)
-
-		const cmd = args.shift().toLowerCase()
-		if (!cmd) return
-
-		let time: number
-
-		if (
-			message.createdTimestamp -
-				global.messageReload[message.author.id] / 1000 >
-			client.config.commandsSpeed
-		)
-			time = Number(
-				(
-					(message.createdTimestamp - global.messageReload[message.author.id]) /
-					1000
-				).toFixed(1)
-			)
-
-		if (time < client.config.commandsSpeed)
-			return message.channel.send(
-				`You send messages to fast! You have to wait ${
-					client.config.commandsSpeed - time
-				} more seconds! :timer: `
-			)
-
-		global.messageReload[message.author.id] = message.createdTimestamp
-
-		const command = client.commands.get(cmd) || client.aliases.get(cmd)
-		if (command) (command as Command).run(client, message, args)
 	}
 }

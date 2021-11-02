@@ -3,31 +3,40 @@ import { Command } from '../../Interfaces'
 export const command: Command = {
 	name: 'gun',
 	description: 'Russian roulette',
-	aliases: ['new / shoot'],
-	run: async (client, message, args) => {
-		if (args[0] == 'new') {
+	options: [
+		{
+			name: 'command',
+			description: 'What to do with gun',
+			choices: [
+				{ name: 'Create new drum', value: 'new' },
+				{ name: 'Try to shoot at head', value: 'shoot' }
+			],
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const command = interaction.options.getString('command')
+
+		if (command == 'new') {
 			client.gun.drum = [false, false, false, false, false, false]
 			client.gun.drum[Math.floor(Math.random() * 6)] = true
 
-			return message.channel.send('Gun is reloaded!')
+			return interaction.reply('Gun is reloaded!')
 		}
 
-		if (args[0] == 'shoot') {
+		if (command == 'shoot') {
 			if (!client.gun.drum)
-				return message.channel.send('There is no gun :no_entry_sign:')
+				return interaction.reply('There is no gun :no_entry_sign:')
 
 			if (client.gun.drum.length == 0)
-				message.channel.send('Gun is empty! :grinning:')
+				interaction.reply('Gun is empty! :grinning:')
 			if (client.gun.drum[0] == true)
-				message.channel.send(':exploding_head: :gun: ')
+				interaction.reply(':exploding_head: :gun: ')
 
-			if (client.gun.drum[0] == false) message.channel.send(':grinning: :gun:')
+			if (client.gun.drum[0] == false) interaction.reply(':grinning: :gun:')
 
 			return client.gun.drum.shift()
 		}
-
-		return message.channel.send(
-			'You did not supply enough arguments :no_entry_sign:'
-		)
 	}
 }

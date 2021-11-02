@@ -8,17 +8,25 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'covid',
 	description: 'Covid-19 tracker',
-	aliases: ['country name'],
-	run: async (client, message, args) => {
+	options: [
+		{
+			name: 'country',
+			description: 'Name of country',
+			type: 3,
+			required: false
+		}
+	],
+	run: async (client, interaction) => {
 		const response: AxiosResponse = await axios.get(
 			'https://api.covid19api.com/summary'
 		)
 
-		// Fetch covid info
 		const responseAll: CovidResponse = response.data
 
 		// Make request valid via translate
-		const request = (await translate(args.join(' '), { to: 'en' })).text
+		const request = (
+			await translate(interaction.options.getString('country'), { to: 'en' })
+		).text
 			.split(' ')
 			.join('-')
 			.toLowerCase()
@@ -70,6 +78,6 @@ export const command: Command = {
 			)
 			.setTimestamp(new Date(data.Date))
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

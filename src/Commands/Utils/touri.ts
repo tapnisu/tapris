@@ -4,13 +4,22 @@ import { MessageEmbed } from 'discord.js'
 export const command: Command = {
 	name: 'touri',
 	description: 'Translate text into URI',
-	aliases: ['text'],
-	run: async (client, message, args) => {
+	options: [
+		{
+			name: 'text',
+			description: 'Text to be coded',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const text = interaction.options.getString('text')
+
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
-			.setTitle(encodeURI(args.join(' ')))
-			.addField('Original text', args.join(' '), true)
+			.setTitle(encodeURI(text))
+			.addField('Original text', text, true)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

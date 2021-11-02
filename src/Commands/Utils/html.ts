@@ -4,12 +4,19 @@ import { convert } from 'html-to-text'
 export const command: Command = {
 	name: 'html',
 	description: 'Convert html to text',
-	aliases: ['text'],
-	run: async (client, message, args) => {
-		const text: string = convert(args.join(' '), { wordwrap: 130 })
+	options: [
+		{
+			name: 'text',
+			description: 'Text to be coded',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const text = interaction.options.getString('text')
 
-		if (!text) return message.channel.send('Error :no_entry_sign:')
+		const response: string = convert(text, { wordwrap: 130 })
 
-		return message.channel.send(text)
+		return interaction.reply(response)
 	}
 }

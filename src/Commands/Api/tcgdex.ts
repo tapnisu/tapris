@@ -7,13 +7,20 @@ import axios from 'axios'
 export const command: Command = {
 	name: 'tcgdex',
 	description: 'Get pokemon card data TCG',
-	aliases: ['name'],
-	run: async (client, message, args) => {
+	options: [
+		{
+			name: 'name',
+			description: 'Card name',
+			type: 3,
+			required: true
+		}
+	],
+	run: async (client, interaction) => {
+		const name = interaction.options.getString('name')
+
 		try {
 			let response: AxiosResponse = await axios.get(
-				`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(
-					args.join(' ').toLocaleLowerCase()
-				)}`
+				`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
 			)
 
 			response = response.data as PokemontcgResponse
@@ -33,9 +40,9 @@ export const command: Command = {
 				.setImage(data.images.large)
 				.setTimestamp(new Date(data.set.releaseDate))
 
-			return message.channel.send({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error :no_entry_sign:')
 		}
 	}
 }

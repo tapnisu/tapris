@@ -4,21 +4,28 @@ import { MessageEmbed } from 'discord.js'
 export const command: Command = {
 	name: 'user',
 	description: 'Sends user information',
-	aliases: ['ping'],
-	run: async (client, message, args) => {
-		const mentioned = message.mentions.users.first()
+	options: [
+		{
+			name: 'user',
+			description: 'User to be shown',
+			type: 6,
+			required: false
+		}
+	],
+	run: async (client, interaction) => {
+		const user = interaction.options.getUser('user')
+			? interaction.options.getUser('user')
+			: interaction.user
 
-		const user = mentioned ? mentioned : message.author
-
-		let channelEmbed: string = message.guild.members.cache.get(user.id).voice
-			.channel?.name
+		let channelEmbed: string = interaction.guild.members.cache.get(user.id)
+			.voice.channel?.name
 
 		if (channelEmbed == null) channelEmbed = 'Not in the channel'
 
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
 			.setTitle(user.tag)
-			.setDescription(`Server member: ${message.guild.name}`)
+			.setDescription(`Server member: ${interaction.guild.name}`)
 			.setThumbnail(user.displayAvatarURL({ dynamic: true }))
 			.addFields(
 				{ name: 'Channel', value: channelEmbed },
@@ -26,6 +33,6 @@ export const command: Command = {
 			)
 			.setTimestamp()
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

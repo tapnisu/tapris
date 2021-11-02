@@ -5,40 +5,42 @@ import translate from '@iamtraction/google-translate'
 export const command: Command = {
 	name: 'translate',
 	description: 'Translates text',
-	aliases: ['target language', 'text'],
-	run: async (client, message, args) => {
-		args = args.join(' ').split('\n').join('\n').split(' ')
-
-		if (!args || args.length < 2)
-			return message.channel.send(
-				'You did not supply enough arguments :no_entry_sign:'
-			)
-
-		// Translate
-		const request = {
-			lang: args.shift().toLowerCase(),
-			text: args.join(' ')
+	options: [
+		{
+			name: 'language',
+			description: 'Target language',
+			type: 3,
+			required: true
+		},
+		{
+			name: 'text',
+			description: 'Text to be translated',
+			type: 3,
+			required: true
 		}
+	],
+	run: async (client, interaction) => {
+		const language = interaction.options.getString('language')
+		const text = interaction.options.getString('text')
 
-		let response
 		try {
-			response = await translate(request.text, { to: request.lang })
+			const response = await translate(text, { to: language })
+
+			// Send result
+			const Embed = new MessageEmbed()
+				.setColor(client.config.botColor)
+				.setTitle(`Text in ${language}`)
+				.setDescription(response.text)
+				.addField('Original language', response.from.language.iso)
+				.setFooter(
+					`${interaction.user.username}#${interaction.user.discriminator}`,
+					interaction.user.avatarURL()
+				)
+				.setTimestamp()
+
+			return interaction.reply({ embeds: [Embed] })
 		} catch {
-			return message.channel.send('Error :no_entry_sign:')
+			return interaction.reply('Error, language is not valid :no_entry_sign:')
 		}
-
-		// Send result
-		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
-			.setTitle(`Text in ${request.lang}`)
-			.setDescription(response.text)
-			.addField('Original language', response.from.language.iso)
-			.setFooter(
-				`${message.author.username}#${message.author.discriminator}`,
-				message.author.avatarURL()
-			)
-			.setTimestamp()
-
-		return message.channel.send({ embeds: [Embed] })
 	}
 }

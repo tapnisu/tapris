@@ -5,12 +5,18 @@ import { createCanvas } from 'canvas'
 export const command: Command = {
 	name: 'color',
 	description: 'Shows color or generates color',
-	aliases: ['color / random'],
-	run: async (client, message, args) => {
-		let colorString = args.join('')
+	options: [
+		{
+			name: 'color',
+			description: 'Color to be shown',
+			type: 3,
+			required: false
+		}
+	],
+	run: async (client, interaction) => {
+		let colorString = interaction.options.getString('color')
 
-		if (colorString == '') return message.channel.send('Args are empty!')
-		if (colorString == 'random') {
+		if (colorString == undefined) {
 			const hexCharset = 'ABCDEF0123456789'
 
 			colorString = '#'
@@ -48,6 +54,6 @@ export const command: Command = {
 			Embed.setColor(client.config.botColor)
 		}
 
-		return message.channel.send({ embeds: [Embed], files: [attachment] })
+		return interaction.reply({ embeds: [Embed], files: [attachment] })
 	}
 }

@@ -7,10 +7,19 @@ import { AxiosResponse } from '../../Interfaces/Axios'
 export const command: Command = {
 	name: 'search',
 	description: 'Get wikipedia data',
-	aliases: ['query'],
-	run: async (client, message, args) => {
+	/*options: [
+		{
+			name: 'text',
+			description: 'Text to be searched',
+			type: 'STRING',
+			required: true
+		}
+	],*/
+	run: async (client, interaction) => {
+		const text = interaction.options.getString('text')
+
 		const response: AxiosResponse = await axios.get(
-			`https://api.duckduckgo.com/?q=${encodeURI(args.join(' '))}&format=json`
+			`https://api.duckduckgo.com/?q=${encodeURI(text)}&format=json`
 		)
 
 		const responseData: DuckduckgoResponse = response.data
@@ -22,6 +31,6 @@ export const command: Command = {
 			.setDescription(responseData?.Abstract)
 			.setThumbnail(`https://api.duckduckgo.com/${responseData?.Image}`)
 
-		return message.channel.send({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }
