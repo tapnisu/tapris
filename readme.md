@@ -27,10 +27,10 @@ Type "/" to see commands!
 
 1. Set up your [config.json](src/config.json)
 
-1. Run `npm install` / `yarn` / `pnpm i`
+1. Run `yarn`
 
-1. Run `npm run build` / `yarn build` / `pnpm run build`
+1. Run `yarn build`
 
-1. Run `npm start` / `yarn start` / `pnpm run start`
+1. Run `yarn start`
 
 Now you have running bot! 🎉

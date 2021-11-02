@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/base:stable
+      - image: node:16
       
 jobs:
   lint:
@@ -22,4 +22,4 @@ workflows:
   my-custom-workflow:
     jobs:
       - lint
-      - build      
+      - build

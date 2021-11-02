@@ -31,7 +31,18 @@ export const command: Command = {
 				.setColor(client.config.botColor)
 				.setTitle(`Text in ${language}`)
 				.setDescription(response.text)
-				.addField('Original language', response.from.language.iso)
+				.addFields([
+					{
+						name: 'Original language',
+						value: response.from.language.iso,
+						inline: true
+					},
+					{
+						name: 'Original message',
+						value: text,
+						inline: true
+					}
+				])
 				.setFooter(
 					`${interaction.user.username}#${interaction.user.discriminator}`,
 					interaction.user.avatarURL()
