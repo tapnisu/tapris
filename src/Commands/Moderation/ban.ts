@@ -19,15 +19,23 @@ export const command: Command = {
 			!userMember.permissions.has('ADMINISTRATOR') ||
 			!userMember.permissions.has('BAN_MEMBERS')
 		)
-			return interaction.reply('You can`t ban members :no_entry_sign:')
-		if (!member) return interaction.reply('User is not found :no_entry_sign:')
+			return interaction.reply({
+				content: 'You can`t ban members :no_entry_sign:',
+				ephemeral: true
+			})
+		if (!member)
+			return interaction.reply({
+				content: 'User is not found :no_entry_sign:',
+				ephemeral: true
+			})
 
 		const target = interaction.guild.members.cache.get(member.id)
 
 		if (target.roles.highest.position >= userMember.roles.highest.position)
-			return interaction.reply(
-				'User has higher (or same) role then you :no_entry_sign:'
-			)
+			return interaction.reply({
+				content: 'User has higher (or same) role then you :no_entry_sign:',
+				ephemeral: true
+			})
 
 		target
 			.ban()
@@ -35,9 +43,10 @@ export const command: Command = {
 				return interaction.reply(`<@!${member.id}> was banned :door:`)
 			})
 			.catch(() => {
-				return interaction.reply(
-					`<@!${member.id}> was **NOT** banned :no_entry_sign: `
-				)
+				return interaction.reply({
+					content: `<@!${member.id}> was **NOT** banned :no_entry_sign:`,
+					ephemeral: true
+				})
 			})
 	}
 }

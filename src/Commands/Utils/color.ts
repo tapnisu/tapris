@@ -16,10 +16,11 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		let colorString = interaction.options.getString('color')
 
-		if (colorString == undefined) {
+		if (!colorString) {
 			const hexCharset = 'ABCDEF0123456789'
 
 			colorString = '#'
+
 			for (let i = 0, n = hexCharset.length; i < 6; ++i) {
 				colorString += hexCharset.charAt(Math.floor(Math.random() * n))
 			}
@@ -30,14 +31,14 @@ export const command: Command = {
 
 		ctx.fillStyle = colorString
 		ctx.fillRect(0, 0, canvas.width, canvas.height)
-		ctx.font = '30px Arial'
+		ctx.font = '50px Fira Code'
 		ctx.fillStyle = '#ffffff'
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 200)
-		ctx.font = '30px Arial'
+		ctx.font = '50px Fira Code'
 		ctx.fillStyle = '#000000'
 		ctx.textAlign = 'center'
-		ctx.fillText(colorString, 250, 300)
+		ctx.fillText(colorString, 250, 350)
 
 		const attachment: MessageAttachment = new MessageAttachment(
 			canvas.toBuffer(),

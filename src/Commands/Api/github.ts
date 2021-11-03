@@ -58,7 +58,10 @@ export const command: Command = {
 
 			return interaction.reply({ embeds: [Embed] })
 		} catch {
-			return interaction.reply('User not found! :no_entry_sign:')
+			return interaction.reply({
+				content: 'User not found :no_entry_sign:',
+				ephemeral: true
+			})
 		}
 	}
 }

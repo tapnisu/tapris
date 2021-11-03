@@ -25,7 +25,10 @@ export const command: Command = {
 		const kitsuResponse: KitsuResponse = response.data as KitsuResponse
 
 		if (kitsuResponse.data.length == 0)
-			return interaction.reply('Anime not found! :no_entry_sign:')
+			return interaction.reply({
+				content: 'Anime not found! :no_entry_sign:',
+				ephemeral: true
+			})
 
 		const anime: KitsuResponseItem = kitsuResponse.data[0]
 

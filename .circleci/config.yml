@@ -3,7 +3,7 @@ executors:
   my-custom-executor:
     docker:
       - image: node:16
-      
+
 jobs:
   lint:
     executor: my-custom-executor
@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run: |
           yarn
-          yarn build  
+          yarn build
 
 workflows:
   my-custom-workflow:

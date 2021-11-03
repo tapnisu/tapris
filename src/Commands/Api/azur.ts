@@ -27,7 +27,10 @@ export const command: Command = {
 				`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
 			)
 		} catch {
-			return interaction.reply('Error :no_entry_sign:')
+			return interaction.reply({
+				content: 'Error :no_entry_sign:',
+				ephemeral: true
+			})
 		}
 
 		const ship: AzurResponse = response.data as AzurResponse
