@@ -32,39 +32,54 @@ export const command: Command = {
 
 		const anime: KitsuResponseItem = kitsuResponse.data[0]
 
+		console.log(
+			anime.attributes?.episodeCount != null
+				? anime.attributes?.episodeCount?.toString()
+				: 'Unkown'
+		)
+
 		const Embed = new MessageEmbed()
 			.setColor(client.config.botColor)
-			.setTitle(`Name: ${anime.attributes.canonicalTitle}`)
-			.setDescription(anime.attributes.description)
-			.setImage(anime.attributes.posterImage.original)
+			.setTitle(`Name: ${anime.attributes?.canonicalTitle}`)
+			.setDescription(anime.attributes?.description)
+			.setImage(anime.attributes?.posterImage?.original)
 			.addFields(
 				{
 					name: 'Rating',
-					value: anime.attributes.averageRating,
+					value: anime.attributes?.averageRating,
 					inline: true
 				},
 				{
 					name: 'Age rating',
-					value: anime.attributes.ageRatingGuide,
+					value:
+						anime.attributes?.ageRatingGuide != null
+							? anime.attributes?.ageRatingGuide?.toString()
+							: 'Unkown',
 					inline: true
 				},
 				{
 					name: 'NSFW',
-					value: anime.attributes.nsfw.toString(),
+					value: anime.attributes?.nsfw?.toString(),
 					inline: true
 				},
 				{
 					name: 'Episode count',
-					value: anime.attributes.episodeCount.toString(),
+					value:
+						anime.attributes?.episodeCount != null
+							? anime.attributes?.episodeCount?.toString()
+							: 'Unkown',
 					inline: true
 				},
 				{
 					name: 'Episode length',
-					value: anime.attributes.episodeLength.toString(),
+					value:
+						anime.attributes?.episodeLength != null
+							? anime.attributes?.episodeLength.toString()
+							: 'Unkown',
 					inline: true
 				}
 			)
-			.setTimestamp(new Date(anime.attributes.startDate))
+			.setTimestamp(new Date(anime.attributes?.startDate))
 
 		return interaction.reply({ embeds: [Embed] })
 	}

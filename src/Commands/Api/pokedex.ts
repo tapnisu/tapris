@@ -292,12 +292,12 @@ export const command: Command = {
 			}
 
 			return interaction.reply({
-				content: 'Error :no_entry_sign:',
+				content: `${request} is not a valid pokemon / atack / ability / item`,
 				ephemeral: true
 			})
 		} catch {
 			return interaction.reply({
-				content: 'Error :no_entry_sign:',
+				content: `${request} is not a valid pokemon / atack / ability / item`,
 				ephemeral: true
 			})
 		}

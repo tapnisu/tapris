@@ -28,7 +28,7 @@ export const command: Command = {
 			)
 		} catch {
 			return interaction.reply({
-				content: 'Error :no_entry_sign:',
+				content: 'Ship not found :no_entry_sign:',
 				ephemeral: true
 			})
 		}

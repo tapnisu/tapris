@@ -1,6 +1,7 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
 import { Artifact, Character, Weapon } from '../../Interfaces/GenshinDev'
+import { AxiosResponse } from '../../Interfaces/Axios'
 import axios from 'axios'
 
 export const command: Command = {
@@ -23,12 +24,15 @@ export const command: Command = {
 				.toLocaleLowerCase()
 		)
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		let response: any = await axios.get(
-			`https://api.genshin.dev/characters/${name}`
-		)
+		let response: AxiosResponse
 
-		if (response.data.name) {
+		try {
+			response = await axios.get(`https://api.genshin.dev/characters/${name}`)
+		} catch {
+			response = undefined
+		}
+
+		if (response?.data.name) {
 			const character: Character = response.data
 
 			let rarity = ''
@@ -79,14 +83,18 @@ export const command: Command = {
 			return interaction.reply({ embeds: [Embed] })
 		}
 
-		response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
+		try {
+			response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
+		} catch {
+			response = undefined
+		}
 
-		if (response.data.name) {
+		if (response?.data.name) {
 			const weapon: Weapon = response.data
 
 			let rarity = ''
 
-			for (let i = 0; i < response.rarity; i++) {
+			for (let i = 0; i < weapon.rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
@@ -130,14 +138,18 @@ export const command: Command = {
 			return interaction.reply({ embeds: [Embed] })
 		}
 
-		response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
+		try {
+			response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
+		} catch {
+			response = undefined
+		}
 
-		if (response.data.name) {
+		if (response?.data.name) {
 			const artifact: Artifact = response.data
 
 			let rarity = ''
 
-			for (let i = 0; i < response.max_rarity; i++) {
+			for (let i = 0; i < artifact.max_rarity; i++) {
 				rarity += client.config.starEmoji
 			}
 
@@ -165,7 +177,7 @@ export const command: Command = {
 		}
 
 		return interaction.reply({
-			content: 'Error :no_entry_sign:',
+			content: 'Error, character / weapon / artifact not found',
 			ephemeral: true
 		})
 	}

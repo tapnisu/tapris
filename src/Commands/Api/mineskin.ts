@@ -35,7 +35,7 @@ export const command: Command = {
 			return interaction.reply({ embeds: [Embed] })
 		} catch {
 			return interaction.reply({
-				content: 'Error :no_entry_sign:',
+				content: 'User not found :no_entry_sign:',
 				ephemeral: true
 			})
 		}

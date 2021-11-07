@@ -42,7 +42,7 @@ export const command: Command = {
 						inline: true
 					}
 				)
-				.setTimestamp()
+				.setTimestamp(new Date(userData.created_at))
 
 			if (userData.name == null) Embed.setTitle(userData.login)
 			if (userData.name != null)
@@ -53,8 +53,6 @@ export const command: Command = {
 			if (userData.blog) Embed.addField('Blog', userData.blog, true)
 			if (userData.twitter_username)
 				Embed.addField('Twitter', `@${userData.twitter_username}`, true)
-
-			Embed.addField('Created at', userData.created_at, true)
 
 			return interaction.reply({ embeds: [Embed] })
 		} catch {
