@@ -17,7 +17,6 @@ export const command: Command = {
 		const request = interaction.options.getString('name')
 
 		try {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			let response: any = await axios.get(
 				'https://play.pokemonshowdown.com/data/pokedex.js?4076b733/'
 			)

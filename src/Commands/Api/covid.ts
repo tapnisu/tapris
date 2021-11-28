@@ -32,7 +32,6 @@ export const command: Command = {
 			.toLowerCase()
 
 		// Send result
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		let data: any = responseAll.Global
 
 		responseAll.Countries.forEach((country: Country) => {

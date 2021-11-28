@@ -1,5 +1,5 @@
 import { Event } from '../Interfaces'
-import { Message } from 'discord.js'
+import { Message, TextChannel } from 'discord.js'
 
 export const event: Event = {
 	name: 'messageCreate',
@@ -13,8 +13,10 @@ export const event: Event = {
 			second: '2-digit'
 		})
 
+		const channel = message.channel as TextChannel
+
 		console.log(
-			`[${date}] [${message?.guild.name} / ${message.author.tag}]: ${message.content}`
+			`[${date}] [${message.guild.name} / ${channel.name} / ${message.author.tag}]: ${message.content}`
 		)
 
 		let allEmbeds = []
