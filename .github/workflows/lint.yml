@@ -1,19 +1,35 @@
-name: Lint
+name: CI
 
 on: [push]
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Packages install
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Build
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
-      - uses: borales/actions-yarn@v2.3.0
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Packages install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - name: Lint
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: lint
