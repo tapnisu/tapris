@@ -5,6 +5,7 @@
 	"scripts": {
 		"start": "node .",
 		"build": "tsc",
+		"prod": "tsc && node .",
 		"build:watch": "tsc -w",
 		"format": "npx prettier --write .",
 		"lint": "eslint ./src --ext .ts"
