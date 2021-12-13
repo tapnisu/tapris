@@ -1899,12 +1899,10 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-youtube-sr@^4.1.10:
-  version "4.1.10"
-  resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.1.10.tgz#ca26d3a0010f5685af9a9b995aec67e8d0c6b108"
-  integrity sha512-o7v7UxMeHIzu0GVYGCYFcNrzEZg+LaIbqUzfVpuas5tBlnR8zcpRYZTkiJ8iegVnFMEdoMnvRFabN/jc0c52Tw==
-  dependencies:
-    node-fetch "^2.6.5"
+youtube-sr@^4.1.11:
+  version "4.1.11"
+  resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.1.11.tgz#aab2d154207823892ec410b3b47fbdf0c417e163"
+  integrity sha512-XX7ji49eKTHoDh+LpBvVrmg/h2gg9oJudwYi6+79z5XXfSRx+0Byf0FGm1omLX5zngZCWKMIoM9DnC303n1sUg==
 
 ytdl-core@^4.9.1:
   version "4.9.1"
