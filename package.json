@@ -40,7 +40,7 @@
 		"html-to-text": "^8.0.0",
 		"libsodium-wrappers": "^0.7.9",
 		"youtube-sr": "^4.1.11",
-		"ytdl-core": "^4.9.1"
+		"ytdl-core": "^4.9.2"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.0",
