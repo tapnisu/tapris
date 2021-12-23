@@ -7,14 +7,14 @@ import { AxiosResponse } from '../../Interfaces/Axios'
 export const command: Command = {
 	name: 'search',
 	description: 'Get wikipedia data',
-	/*options: [
+	options: [
 		{
 			name: 'text',
 			description: 'Text to be searched',
 			type: 'STRING',
 			required: true
 		}
-	],*/
+	],
 	run: async (client, interaction) => {
 		const text = interaction.options.getString('text')
 
