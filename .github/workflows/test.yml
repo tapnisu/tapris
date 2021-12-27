@@ -31,10 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          prettier_options: --write .
+          node-version: '16'
+      - name: Install packages
+        run: yarn install
+      - name: Run prettier
+        run: npx prettier --write .
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
