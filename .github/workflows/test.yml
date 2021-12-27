@@ -1,6 +1,6 @@
 name: Test CI
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build:
@@ -27,3 +27,24 @@ jobs:
         run: yarn install
       - name: Lint
         run: yarn run lint
+  format:
+    # Check if the PR is not from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.1
+        with:
+          prettier_options: --write .
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'Alexiy Rybin'
+          git config --global user.email 'alexiy.rybin@gmail.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated changes"
+          git push

@@ -6,7 +6,7 @@
 
 <p align="center">
  <a href="#overview">Overview</a>,
- <a href="#install">Install</a>,
+ <a href="#install">Install</a>
 </p>
 
 # Overview
