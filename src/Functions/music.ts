@@ -45,7 +45,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 			},
 			{
 				name: 'Likes',
-				value: `${info.videoDetails.likes} / ${info.videoDetails.dislikes}`,
+				value: String(info.videoDetails.likes),
 				inline: true
 			}
 		)
