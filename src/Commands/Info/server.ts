@@ -6,7 +6,7 @@ export const command: Command = {
 	description: 'Get info about server',
 	run: async (client, interaction) => {
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(interaction.guild.name)
 			.setThumbnail(
 				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`

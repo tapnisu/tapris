@@ -37,7 +37,7 @@ export const command: Command = {
 
 			if (response) {
 				const Embed = new MessageEmbed()
-					.setColor(client.config.botColor)
+					.setColor(client.env.BOT_COLOR)
 					.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 					.setDescription(`Types: ${response.types.join(' / ')}`)
 					.setThumbnail(
@@ -200,7 +200,7 @@ export const command: Command = {
 
 			if (response) {
 				const Embed = new MessageEmbed()
-					.setColor(client.config.botColor)
+					.setColor(client.env.BOT_COLOR)
 					.setTitle(
 						`Name: ${request
 							.split(' ')
@@ -259,7 +259,7 @@ export const command: Command = {
 
 			if (response) {
 				const Embed = new MessageEmbed()
-					.setColor(client.config.botColor)
+					.setColor(client.env.BOT_COLOR)
 					.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 					.setDescription(response.shortDesc)
 				return interaction.reply({ embeds: [Embed] })
@@ -279,7 +279,7 @@ export const command: Command = {
 
 			if (response) {
 				const Embed = new MessageEmbed()
-					.setColor(client.config.botColor)
+					.setColor(client.env.BOT_COLOR)
 					.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 					.setDescription(response.shortDesc)
 					.addFields({

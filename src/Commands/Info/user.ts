@@ -23,7 +23,7 @@ export const command: Command = {
 		if (channelEmbed == null) channelEmbed = 'Not in the channel'
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(user.tag)
 			.setDescription(`Server member: ${interaction.guild.name}`)
 			.setThumbnail(user.displayAvatarURL({ dynamic: true }))

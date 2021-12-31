@@ -15,7 +15,7 @@ export const command: Command = {
 		const codes: Code[] = response.data.CODES
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle('Genshin codes')
 			.setDescription('You can activate them in game, and get rewards!')
 			.setURL('https://genshin.mihoyo.com/en/gift')

@@ -28,7 +28,7 @@ export const command: Command = {
 
 			// Send result
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Text in ${language}`)
 				.setDescription(response.text)
 				.addFields([

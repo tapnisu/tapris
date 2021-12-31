@@ -16,7 +16,7 @@ export const command: Command = {
 		const text = interaction.options.getString('text')
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(encodeURI(text))
 			.addField('Original text', text, true)
 

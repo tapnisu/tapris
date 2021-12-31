@@ -26,7 +26,7 @@ export const command: Command = {
 			const user: AshconResponse = response.data
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(user.username)
 				.setDescription(`UUID: ${user.uuid}`)
 				.setImage(`${user.textures.skin.url}`)

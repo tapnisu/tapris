@@ -36,7 +36,7 @@ export const command: Command = {
 		const ship: AzurResponse = response.data as AzurResponse
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(ship.name)
 			.setURL(`https://azurlane.koumakan.jp/${request}`)
 			.setDescription(ship.rarity)

@@ -1,12 +1,12 @@
 import { Client, Collection } from 'discord.js'
 import { readdirSync } from 'fs'
-import { Command, Event, Config, Music, Gun } from '../Interfaces'
-import ConfigJson from '../config.json'
+import { Command, Event, Env, Music, Gun } from '../Interfaces'
+import env from './env'
 
 class ExtendedClient extends Client {
 	public commands: Collection<string, Command> = new Collection()
 	public events: Collection<string, Event> = new Collection()
-	public config: Config = ConfigJson as Config
+	public env: Env = env as unknown as Env
 	public music: Music = {
 		queue: [],
 		connection: undefined
@@ -16,7 +16,7 @@ class ExtendedClient extends Client {
 	}
 
 	public async init() {
-		this.login(this.config.token)
+		this.login(this.env.TOKEN)
 
 		readdirSync('dist/Commands').forEach(async (dir) => {
 			const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>

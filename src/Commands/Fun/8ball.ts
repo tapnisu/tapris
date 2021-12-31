@@ -15,7 +15,7 @@ export const command: Command = {
 		const response8ball: Response8ball = response.data
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(response8ball.response)
 			.setImage(response8ball.url)
 

@@ -28,7 +28,7 @@ export const command: Command = {
 			const data: Datum = response.data[0]
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(`${data.supertype}: ${data.name}`)
 				.setDescription(`${data.set.series}: ${data.set.name}`)
 				.setThumbnail(data.set.images.symbol)

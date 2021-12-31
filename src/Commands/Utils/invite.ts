@@ -25,7 +25,7 @@ export const command: Command = {
 		})
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle('Click to invite')
 			.setDescription(link)
 			.setURL(link)

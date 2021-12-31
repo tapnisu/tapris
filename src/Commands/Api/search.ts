@@ -25,7 +25,7 @@ export const command: Command = {
 		const responseData: DuckduckgoResponse = response.data
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(`Имя: ${responseData?.Heading}`)
 			.setURL(responseData?.AbstractURL)
 			.setDescription(responseData?.Abstract)

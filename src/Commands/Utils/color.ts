@@ -52,7 +52,7 @@ export const command: Command = {
 		try {
 			Embed.setColor(colorString as ColorResolvable)
 		} catch {
-			Embed.setColor(client.config.botColor)
+			Embed.setColor(client.env.BOT_COLOR)
 		}
 
 		return interaction.reply({ embeds: [Embed], files: [attachment] })

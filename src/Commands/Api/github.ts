@@ -26,7 +26,7 @@ export const command: Command = {
 			const userData: GithubResponse = response.data
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setURL(userData.html_url)
 				.setThumbnail(userData?.avatar_url)
 				.addFields(

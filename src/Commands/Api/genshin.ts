@@ -38,11 +38,11 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < character.rarity; i++) {
-				rarity += client.config.starEmoji
+				rarity += client.env.STAR_EMOJI
 			}
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(character.name)
 				.setDescription(character.description)
 				.setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
@@ -95,11 +95,11 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < weapon.rarity; i++) {
-				rarity += client.config.starEmoji
+				rarity += client.env.STAR_EMOJI
 			}
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(weapon.name)
 				.setDescription(weapon.passiveDesc)
 				.setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
@@ -150,11 +150,11 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < artifact.max_rarity; i++) {
-				rarity += client.config.starEmoji
+				rarity += client.env.STAR_EMOJI
 			}
 
 			const Embed = new MessageEmbed()
-				.setColor(client.config.botColor)
+				.setColor(client.env.BOT_COLOR)
 				.setTitle(artifact.name)
 				.setDescription(`Max rarity: ${rarity}`)
 				.setThumbnail(

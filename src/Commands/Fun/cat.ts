@@ -26,7 +26,7 @@ export const command: Command = {
 		).data
 
 		const Embed = new MessageEmbed()
-			.setColor(client.config.botColor)
+			.setColor(client.env.BOT_COLOR)
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url)
 

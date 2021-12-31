@@ -1,4 +1,4 @@
-import Client from '../Client'
+import Client from '../Core'
 import { CommandInteraction } from 'discord.js'
 
 interface Run {

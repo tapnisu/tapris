@@ -33,7 +33,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 	const info = await ytdl.getInfo(client.music.queue[0])
 
 	const Embed = new MessageEmbed()
-		.setColor(client.config.botColor)
+		.setColor(client.env.BOT_COLOR)
 		.setTitle(info.videoDetails.title)
 		.setURL(info.videoDetails.video_url)
 		.setDescription(info.videoDetails.description)

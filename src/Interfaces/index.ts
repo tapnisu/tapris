@@ -1,5 +1,5 @@
 export { Command } from './Command'
 export { Event } from './Event'
-export { Config } from './Config'
+export { Env } from './Env'
 export { Music } from './Music'
 export { Gun } from './Gun'
