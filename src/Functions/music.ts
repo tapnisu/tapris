@@ -32,6 +32,11 @@ export const play = async (client, interaction: CommandInteraction) => {
 
 	const info = await ytdl.getInfo(client.music.queue[0])
 
+	// Get length as string
+	const date = new Date(0)
+	date.setSeconds(Number(info.videoDetails.lengthSeconds))
+	const timeString = date.toISOString().substr(11, 8)
+
 	const Embed = new MessageEmbed()
 		.setColor(client.env.BOT_COLOR)
 		.setTitle(info.videoDetails.title)
@@ -46,6 +51,11 @@ export const play = async (client, interaction: CommandInteraction) => {
 			{
 				name: 'Likes',
 				value: String(info.videoDetails.likes),
+				inline: true
+			},
+			{
+				name: 'Length',
+				value: timeString,
 				inline: true
 			}
 		)
