@@ -8,7 +8,7 @@ class ExtendedClient extends Client {
 	public events: Collection<string, Event> = new Collection()
 	public env: Env = env as unknown as Env
 	public music: Music = {
-		queue: [],
+		queue: {},
 		connection: undefined
 	}
 	public gun: Gun = {

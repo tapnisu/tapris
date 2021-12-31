@@ -12,7 +12,10 @@ import ytdl from 'ytdl-core'
 export const play = async (client, interaction: CommandInteraction) => {
 	const member: GuildMember = interaction.member as GuildMember
 
-	if (client.music.queue.length == 0)
+	if (
+		client.music.queue[interaction.guildId] == undefined ||
+		client.music.queue[interaction.guildId] == []
+	)
 		return interaction.channel.send('Queue is empty :no_entry_sign:')
 	if (!member.voice.channel)
 		return interaction.channel.send('You are not in channel :no_entry_sign:')
@@ -24,13 +27,15 @@ export const play = async (client, interaction: CommandInteraction) => {
 			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 	})
 
-	const stream = ytdl(client.music.queue[0], { filter: 'audioonly' })
+	const stream = ytdl(client.music.queue[interaction.guildId][0], {
+		filter: 'audioonly'
+	})
 	const resource = createAudioResource(stream, {
 		inputType: StreamType.Arbitrary
 	})
 	const player = createAudioPlayer()
 
-	const info = await ytdl.getInfo(client.music.queue[0])
+	const info = await ytdl.getInfo(client.music.queue[interaction.guildId][0])
 
 	// Get length as string
 	const date = new Date(0)
@@ -70,7 +75,8 @@ export const play = async (client, interaction: CommandInteraction) => {
 	player.on(AudioPlayerStatus.Idle, () => {
 		client.music.queue.shift()
 
-		if (client.music.queue.length == 0) return client.music.connection.destroy()
+		if (client.music.queue[interaction.guildId] == [])
+			return client.music.connection.destroy()
 
 		return play(client, interaction)
 	})
