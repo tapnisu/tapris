@@ -18,19 +18,19 @@ Bot is name after Tapris from Gabriel DropOut.
 
 ## Basic
 
-You can invite bot by [this link]().
+You can invite bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
 ## Host by yourself
 
 1. Install [node.js](https://nodejs.org/)
 
-1. Set up your [config.json](src/config.json)
+1. Set up your [.env](.envexample)
 
-1. Run `yarn`
+1. Install dependencies via `yarn`
 
-1. Run `yarn build`
+1. Build via `yarn build`
 
-1. Run `yarn start`
+1. Start bot via `yarn start`
 
-Now you have running bot! 🎉
+Now you have running bot!
