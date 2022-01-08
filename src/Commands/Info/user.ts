@@ -23,7 +23,10 @@ export const command: Command = {
 			.setDescription(`Server member: ${interaction.guild.name}`)
 			.setThumbnail(user.displayAvatarURL({ dynamic: true }))
 			.addFields(
-				{ name: 'Channel', value: channelEmbed != null ? `<#${channelEmbed}>` : 'Not in channel'},
+				{
+					name: 'Channel',
+					value: channelEmbed != null ? `<#${channelEmbed}>` : 'Not in channel'
+				},
 				{ name: 'Id', value: user.id }
 			)
 			.setTimestamp()
