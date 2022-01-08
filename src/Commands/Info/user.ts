@@ -14,7 +14,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const user = interaction.options.getUser('user')
-		let channelEmbed: string = interaction.guild.members.cache.get(user.id)
+		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
 			.voice.channel?.id
 
 		const Embed = new MessageEmbed()
