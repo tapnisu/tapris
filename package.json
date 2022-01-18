@@ -33,7 +33,7 @@
 		"@iamtraction/google-translate": "^1.1.2",
 		"avconv": "^3.1.0",
 		"axios": "^0.24.0",
-		"canvas": "^2.8.0",
+		"canvas": "^2.9.0",
 		"discord.js": "^13.6.0",
 		"dotenv": "^11.0.0",
 		"ffmpeg": "^0.0.4",
