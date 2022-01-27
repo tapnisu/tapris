@@ -40,7 +40,7 @@
 		"ffmpeg-static": "^4.4.1",
 		"html-to-text": "^8.0.0",
 		"libsodium-wrappers": "^0.7.9",
-		"youtube-sr": "^4.1.12",
+		"youtube-sr": "^4.1.13",
 		"ytdl-core": "^4.10.0"
 	},
 	"devDependencies": {
