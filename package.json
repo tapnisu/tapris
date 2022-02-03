@@ -41,7 +41,7 @@
 		"html-to-text": "^8.0.0",
 		"libsodium-wrappers": "^0.7.9",
 		"youtube-sr": "^4.1.13",
-		"ytdl-core": "^4.10.0"
+		"ytdl-core": "^4.10.1"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.14",
