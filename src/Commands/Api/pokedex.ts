@@ -312,7 +312,7 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.desc)
-			
+
 			return interaction.reply({ embeds: [Embed] })
 		}
 	}
