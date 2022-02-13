@@ -112,7 +112,7 @@ export const command: Command = {
 					},
 					{
 						name: 'Abilities',
-						value: Object.entries(response.abilities).join('\n'),
+						value: Object.entries(response.abilities).map((ability) => ability[0] != 'H' ? ability[1] : `(${ability[1]})`).join('\n'),
 						inline: true
 					},
 					{
@@ -129,6 +129,7 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.evoLevel != undefined) {
 				Embed.addFields({
 					name: 'Evo Level',
@@ -136,6 +137,7 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.evoType != undefined) {
 				Embed.addFields({
 					name: 'Evo type',
@@ -143,6 +145,7 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.evoCondition != undefined) {
 				Embed.addFields({
 					name: 'Evo condition',
@@ -150,6 +153,7 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.evoItem != undefined) {
 				Embed.addFields({
 					name: 'Evo item',
@@ -157,6 +161,7 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.evos != undefined) {
 				Embed.addFields({
 					name: 'Evos',
@@ -164,27 +169,20 @@ export const command: Command = {
 					inline: true
 				})
 			}
+
 			if (response.otherFormes != undefined) {
 				Embed.addFields({
-					name: 'Other formes',
+					name: 'Other forms',
 					value: response.otherFormes.join('\n'),
 					inline: true
 				})
 			}
 
-			if (response.cannotDynamax == undefined) {
-				Embed.addFields({
-					name: 'Can G-MAX',
-					value: 'True',
-					inline: true
-				})
-			} else {
-				Embed.addFields({
-					name: 'Can G-MAX',
-					value: 'False',
-					inline: true
-				})
-			}
+			Embed.addFields({
+				name: 'Can G-MAX',
+				value: response.cannotDynamax == undefined ? 'True' : 'False',
+				inline: true
+			})
 
 			Embed.addFields({
 				name: 'Tier',
