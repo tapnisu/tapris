@@ -112,7 +112,11 @@ export const command: Command = {
 					},
 					{
 						name: 'Abilities',
-						value: Object.entries(response.abilities).map((ability) => ability[0] != 'H' ? ability[1] : `(${ability[1]})`).join('\n'),
+						value: Object.entries(response.abilities)
+							.map((ability) =>
+								ability[0] != 'H' ? ability[1] : `(${ability[1]})`
+							)
+							.join('\n'),
 						inline: true
 					},
 					{
