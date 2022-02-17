@@ -9,30 +9,42 @@ export const command: Command = {
 	description: 'Get info about character / weapon / artifacts set',
 	options: [
 		{
+			name: 'type',
+			description: 'character / weapon / artifact',
+			choices: [
+				{ name: 'character', value: 'character' },
+				{ name: 'weapon', value: 'weapon' },
+				{ name: 'artifact', value: 'artifact' }
+			],
+			type: 3,
+			required: true
+		},
+		{
 			name: 'name',
-			description: 'Name of character / weapon / artifact',
+			description: 'Name of target',
 			type: 3,
 			required: true
 		}
 	],
 	run: async (client, interaction) => {
-		const name = encodeURI(
+		const requestType = interaction.options.getString('type')
+		const request = encodeURI(
 			interaction.options
 				.getString('name')
 				.split(' ')
 				.join('-')
 				.toLocaleLowerCase()
-		)
+		) 
 
-		let response: AxiosResponse
+		if (requestType == 'character') {
+			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/characters/${request}`).catch(() =>  undefined)
 
-		try {
-			response = await axios.get(`https://api.genshin.dev/characters/${name}`)
-		} catch {
-			response = undefined
-		}
-
-		if (response?.data.name) {
+			if (!response)
+				return interaction.reply({
+					content: `${request} is not a valid character!`,
+					ephemeral: true
+				})
+			
 			const character: Character = response.data
 
 			let rarity = ''
@@ -45,7 +57,7 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(character.name)
 				.setDescription(character.description)
-				.setThumbnail(`https://api.genshin.dev/characters/${name}/icon.png`)
+				.setThumbnail(`https://api.genshin.dev/characters/${request}/icon.png`)
 				.addFields(
 					{
 						name: 'Rarity',
@@ -78,18 +90,20 @@ export const command: Command = {
 						inline: true
 					}
 				)
-				.setImage(`https://api.genshin.dev/characters/${name}/gacha-splash.png`)
+				.setImage(`https://api.genshin.dev/characters/${request}/gacha-splash.png`)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
 
-		try {
-			response = await axios.get(`https://api.genshin.dev/weapons/${name}`)
-		} catch {
-			response = undefined
-		}
+		if (requestType == 'weapon') {
+			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/weapons/${request}`).catch(() =>  undefined)
 
-		if (response?.data.name) {
+			if (!response)
+				return interaction.reply({
+					content: `${request} is not a valid weapon`,
+					ephemeral: true
+				})
+
 			const weapon: Weapon = response.data
 
 			let rarity = ''
@@ -102,7 +116,7 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(weapon.name)
 				.setDescription(weapon.passiveDesc)
-				.setThumbnail(`https://api.genshin.dev/weapons/${name}/icon.png`)
+				.setThumbnail(`https://api.genshin.dev/weapons/${request}/icon.png`)
 				.addFields(
 					{
 						name: 'Rarity',
@@ -138,13 +152,15 @@ export const command: Command = {
 			return interaction.reply({ embeds: [Embed] })
 		}
 
-		try {
-			response = await axios.get(`https://api.genshin.dev/artifacts/${name}`)
-		} catch {
-			response = undefined
-		}
+		if (requestType == 'artifact') {
+			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/artifacts/${request}`).catch(() =>  undefined)
 
-		if (response?.data.name) {
+			if (!response)
+				return interaction.reply({
+					content: `${request} is not a valid weapon`,
+					ephemeral: true
+				})
+
 			const artifact: Artifact = response.data
 
 			let rarity = ''
@@ -158,7 +174,7 @@ export const command: Command = {
 				.setTitle(artifact.name)
 				.setDescription(`Max rarity: ${rarity}`)
 				.setThumbnail(
-					`https://api.genshin.dev/artifacts/${name}/flower-of-life.png`
+					`https://api.genshin.dev/artifacts/${request}/flower-of-life.png`
 				)
 				.addFields(
 					{
@@ -175,10 +191,5 @@ export const command: Command = {
 
 			return interaction.reply({ embeds: [Embed] })
 		}
-
-		return interaction.reply({
-			content: 'Error, character / weapon / artifact not found',
-			ephemeral: true
-		})
 	}
 }
