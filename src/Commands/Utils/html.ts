@@ -7,7 +7,7 @@ export const command: Command = {
 	options: [
 		{
 			name: 'text',
-			description: 'Text to be coded',
+			description: 'Text to be decoded',
 			type: 3,
 			required: true
 		}
