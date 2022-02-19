@@ -9,14 +9,14 @@ export const command: Command = {
 	description: 'Get minecraft skin & UUID',
 	options: [
 		{
-			name: 'nickname',
-			description: 'Nickname of the user to be shown',
+			name: 'user',
+			description: 'User of the user to be shown',
 			type: 3,
 			required: true
 		}
 	],
 	run: async (client, interaction) => {
-		const nickname = interaction.options.getString('nickname')
+		const nickname = interaction.options.getString('user')
 
 		try {
 			const response: AxiosResponse = await axios.get(
