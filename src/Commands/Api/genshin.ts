@@ -34,17 +34,19 @@ export const command: Command = {
 				.split(' ')
 				.join('-')
 				.toLocaleLowerCase()
-		) 
+		)
 
 		if (requestType == 'character') {
-			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/characters/${request}`).catch(() =>  undefined)
+			const response: AxiosResponse = await axios
+				.get(`https://api.genshin.dev/characters/${request}`)
+				.catch(() => undefined)
 
 			if (!response)
 				return interaction.reply({
 					content: `${request} is not a valid character!`,
 					ephemeral: true
 				})
-			
+
 			const character: Character = response.data
 
 			let rarity = ''
@@ -90,13 +92,17 @@ export const command: Command = {
 						inline: true
 					}
 				)
-				.setImage(`https://api.genshin.dev/characters/${request}/gacha-splash.png`)
+				.setImage(
+					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
+				)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
 
 		if (requestType == 'weapon') {
-			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/weapons/${request}`).catch(() =>  undefined)
+			const response: AxiosResponse = await axios
+				.get(`https://api.genshin.dev/weapons/${request}`)
+				.catch(() => undefined)
 
 			if (!response)
 				return interaction.reply({
@@ -153,7 +159,9 @@ export const command: Command = {
 		}
 
 		if (requestType == 'artifact') {
-			const response: AxiosResponse = await axios.get(`https://api.genshin.dev/artifacts/${request}`).catch(() =>  undefined)
+			const response: AxiosResponse = await axios
+				.get(`https://api.genshin.dev/artifacts/${request}`)
+				.catch(() => undefined)
 
 			if (!response)
 				return interaction.reply({
