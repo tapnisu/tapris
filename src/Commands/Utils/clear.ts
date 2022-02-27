@@ -19,7 +19,7 @@ export const command: Command = {
 
 		if (!userMember.permissions.has('MANAGE_MESSAGES'))
 			return interaction.reply({
-				content: 'You can`t ban members :no_entry_sign:',
+				content: 'You can`t delete messages :no_entry_sign:',
 				ephemeral: true
 			})
 		if (amount > 100)

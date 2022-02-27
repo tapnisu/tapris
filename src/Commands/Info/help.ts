@@ -13,6 +13,28 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		const command = interaction.options.getString('command')
+
+		if (command) {
+			const Embed = new MessageEmbed()
+				.setColor(client.env.BOT_COLOR)
+				.setTitle(client.user.username)
+				.setDescription(`Server member: ${interaction.guild.name}`)
+				.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+
+			client.commands.forEach(command => {
+				Embed.addFields(
+					{
+						name: `/${command.name} ${command.options ? command.options.map((option) => `<${option.required ? '' : ''}${option.name} [${option.description}]>`).join(' ') : ''}`,
+						value: command.description,
+						inline: true
+					}
+				)
+			})
+
+			return interaction.reply({ embeds: [Embed] })
+		}
+
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
