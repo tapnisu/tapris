@@ -25,7 +25,13 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-1. Set up your [.env](.envexample)
+1. Set up your [.env](.env_example) (example in [.env](.env_example))
+
+```env
+TOKEN="bot token"
+BOT_COLOR="bot color (hex)"
+STAR_EMOJI="star emoji (:star:)"
+```
 
 1. Install dependencies via `yarn`
 
