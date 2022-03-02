@@ -41,7 +41,7 @@ jobs:
       - name: Run prettier
         run: yarn format
       - name: Run Lint --fix
-        run: yarn lint --fix
+        run: yarn lint:fix
       - uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

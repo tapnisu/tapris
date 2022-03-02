@@ -8,7 +8,8 @@
 		"prod": "tsc && node .",
 		"build:watch": "tsc -w",
 		"format": "npx prettier --write .",
-		"lint": "eslint ./src --ext .ts"
+		"lint": "eslint ./src --ext .ts",
+		"lint:fix": "eslint ./src --ext .ts --fix"
 	},
 	"author": {
 		"email": "alexiy.rybin@gmail.com",
