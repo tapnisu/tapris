@@ -28,6 +28,7 @@ jobs:
       - name: Lint
         run: yarn run lint
   format:
+    name: Format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -47,5 +48,9 @@ jobs:
       - name: Push changes
         if: steps.git-check.outputs.modified == 'true'
         run: |
+          git config --global user.name 'Alexiy Rybin'
+          git config --global user.email 'alexiy.rybin@gmail.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated changes"
           git commit -am "Formating"
           git push
