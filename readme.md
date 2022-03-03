@@ -25,7 +25,7 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-1. Set up your [.env](.env_example) (example in [.env](.env_example))
+1. Set up your [.env](.env_example) (example in [.env_example](.env_example))
 
 ```env
 TOKEN="bot token"
