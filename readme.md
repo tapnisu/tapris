@@ -30,7 +30,6 @@ Type "/" to see commands!
 ```env
 TOKEN="bot token"
 BOT_COLOR="bot color (hex)"
-STAR_EMOJI="star emoji (:star:)"
 ```
 
 1. Install dependencies via `yarn`

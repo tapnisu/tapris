@@ -52,7 +52,7 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < character.rarity; i++) {
-				rarity += client.env.STAR_EMOJI
+				rarity += ':star:'
 			}
 
 			const Embed = new MessageEmbed()
@@ -115,7 +115,7 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < weapon.rarity; i++) {
-				rarity += client.env.STAR_EMOJI
+				rarity += ':star:'
 			}
 
 			const Embed = new MessageEmbed()
@@ -174,7 +174,7 @@ export const command: Command = {
 			let rarity = ''
 
 			for (let i = 0; i < artifact.max_rarity; i++) {
-				rarity += client.env.STAR_EMOJI
+				rarity += ':star:'
 			}
 
 			const Embed = new MessageEmbed()
