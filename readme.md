@@ -1,5 +1,5 @@
 <p align="center">
- <img width=300px src="assets/icon.jpg" alt="Bot logo">
+ <img width=300px src="assets/avatar.png" alt="Bot logo">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Music, games data, slash commands</h3>
 </p>
