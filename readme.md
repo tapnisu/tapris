@@ -1,7 +1,7 @@
 <p align="center">
  <img width=300px src="assets/avatar.png" alt="Bot logo">
  <h1 align="center">Tapris</h1>
- <h3 align="center">Music, games data, slash commands</h3>
+ <h3 align="center">Multipurpose discord bot</h3>
 </p>
 
 <p align="center">
