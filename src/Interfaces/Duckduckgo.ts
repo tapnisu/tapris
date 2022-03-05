@@ -14,34 +14,62 @@ export interface DuckduckgoResponse {
 	ImageHeight: number
 	ImageIsLogo: number
 	ImageWidth: number
-	Infobox: string
+	Infobox: Infobox
 	Redirect: string
 	RelatedTopics: RelatedTopic[]
-	Results: unknown[]
+	Results: Result[]
 	Type: string
 	meta: Meta
 }
 
-export interface RelatedTopic {
-	FirstURL?: string
-	Icon?: Icon
-	Result?: string
-	Text?: string
-	Name?: string
-	Topics?: Topic[]
+export interface Infobox {
+	content: Content[]
 }
 
-export interface Icon {
+export interface Content {
+	data_type: string
+	label: string
+	value: Value
+	wiki_order: string
+}
+
+export interface Value {
+	altitude?: null
+	globe?: string
+	latitude?: number
+	longitude?: number
+	precision?: number
+	amount?: string
+	unit?: string
+	'entity-type'?: string
+	id?: string
+	'numeric-id'?: number
+}
+
+export interface RelatedTopic {
+	FirstURL: string
+	Icon: RelatedTopicIcon
+	Result: string
+	Text: string
+}
+
+export interface RelatedTopicIcon {
 	Height: string
 	URL: string
 	Width: string
 }
 
-export interface Topic {
+export interface Result {
 	FirstURL: string
-	Icon: Icon
+	Icon: ResultIcon
 	Result: string
 	Text: string
+}
+
+export interface ResultIcon {
+	Height: number
+	URL: string
+	Width: number
 }
 
 export interface Meta {
