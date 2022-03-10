@@ -1,4 +1,4 @@
-import { play } from '../../Functions/music'
+import { play } from '../../Exports/music'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
