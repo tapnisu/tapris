@@ -127,7 +127,9 @@ export const command: Command = {
 					},
 					{
 						name: 'Weaknesses',
-						value: calcWeaknesses(response.types).map((type) => `${type.name} x${type.scale}`).join(', '),
+						value: calcWeaknesses(response.types)
+							.map((type) => `${type.name} x${type.scale}`)
+							.join(', '),
 						inline: true
 					}
 				)

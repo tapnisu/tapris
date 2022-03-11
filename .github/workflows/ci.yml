@@ -40,7 +40,7 @@ jobs:
         run: yarn install
       - name: Run prettier
         run: yarn format
-      - name: Run Lint --fix
+      - name: Run lint fix
         run: yarn lint:fix
       - uses: mikeal/publish-to-github-action@master
         env:
