@@ -1,6 +1,7 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
 import axios from 'axios'
+import { calcWeaknesses } from '../../Exports/pokemonTypeChart'
 
 export const command: Command = {
 	name: 'pokedex',
@@ -122,6 +123,11 @@ export const command: Command = {
 					{
 						name: 'Egg groups',
 						value: response.eggGroups.join('\n'),
+						inline: true
+					},
+					{
+						name: 'Weaknesses',
+						value: calcWeaknesses(response.types).map((type) => `${type.name} x${type.scale}`).join(', '),
 						inline: true
 					}
 				)
