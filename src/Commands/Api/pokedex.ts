@@ -127,7 +127,8 @@ export const command: Command = {
 					},
 					{
 						name: 'Weaknesses',
-						value: calcWeaknesses(response.types).sort((a, b) => b.scale - a.scale)
+						value: calcWeaknesses(response.types)
+							.sort((a, b) => b.scale - a.scale)
 							.map((type) => `${type.name} x${type.scale}`)
 							.join(', '),
 						inline: true
