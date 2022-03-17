@@ -53,7 +53,7 @@ export const command: Command = {
 		} catch {
 			return interaction.createMessage({
 				content: 'Error, language is not valid :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 		}
 	}

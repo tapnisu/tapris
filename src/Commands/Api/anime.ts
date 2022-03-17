@@ -27,7 +27,7 @@ export const command: Command = {
 		if (kitsuResponse.data.length == 0)
 			return interaction.createMessage({
 				content: 'Anime not found! :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		const anime: KitsuResponseItem = kitsuResponse.data[0]

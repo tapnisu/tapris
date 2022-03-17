@@ -44,7 +44,7 @@ export const command: Command = {
 		} catch {
 			return interaction.createMessage({
 				content: 'Card not found :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 		}
 	}

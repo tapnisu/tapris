@@ -21,7 +21,7 @@ export const command: Command = {
 		)
 			return interaction.createMessage({
 				content: 'You can`t unban members! :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		interaction.guild.members
@@ -32,7 +32,7 @@ export const command: Command = {
 			.catch(() => {
 				return interaction.createMessage({
 					content: `<@!${userId}> was **NOT** unbanned! :no_entry_sign:`,
-					ephemeral: true
+					flags: 64
 				})
 			})
 	}

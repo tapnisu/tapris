@@ -27,7 +27,7 @@ export const command: Command = {
 		if (!responseData.Results[0])
 			return interaction.createMessage({
 				content: 'Can`t find results! :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		const Embed = new MessageEmbed()

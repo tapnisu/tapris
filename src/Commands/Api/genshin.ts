@@ -44,7 +44,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid character!`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const character: Character = response.data
@@ -107,7 +107,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid weapon`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const weapon: Weapon = response.data
@@ -166,7 +166,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid weapon`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const artifact: Artifact = response.data

@@ -21,12 +21,12 @@ export const command: Command = {
 		)
 			return interaction.createMessage({
 				content: 'You can`t ban members :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 		if (!member)
 			return interaction.createMessage({
 				content: 'User is not found :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		const target = interaction.guild.members.cache.get(member.id)
@@ -34,7 +34,7 @@ export const command: Command = {
 		if (target.roles.highest.position >= userMember.roles.highest.position)
 			return interaction.createMessage({
 				content: 'User has higher (or same) role then you :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		target
@@ -45,7 +45,7 @@ export const command: Command = {
 			.catch(() => {
 				return interaction.createMessage({
 					content: `<@!${member.id}> was **NOT** banned :no_entry_sign:`,
-					ephemeral: true
+					flags: 64
 				})
 			})
 	}

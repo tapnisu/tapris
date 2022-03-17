@@ -45,7 +45,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid pokemon!`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const Embed = new MessageEmbed()
@@ -222,7 +222,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid move!`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const Embed = new MessageEmbed()
@@ -288,7 +288,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid ability!`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const Embed = new MessageEmbed()
@@ -316,7 +316,7 @@ export const command: Command = {
 			if (!response)
 				return interaction.createMessage({
 					content: `${request} is not a valid item!`,
-					ephemeral: true
+					flags: 64
 				})
 
 			const Embed = new MessageEmbed()

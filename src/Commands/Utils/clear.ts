@@ -20,18 +20,18 @@ export const command: Command = {
 		if (!userMember.permissions.has('MANAGE_MESSAGES'))
 			return interaction.createMessage({
 				content: 'You can`t delete messages :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 		if (amount > 100)
 			return interaction.createMessage({
 				content:
 					'You cannot delete more than 100 posts at a time :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 		if (amount < 1)
 			return interaction.createMessage({
 				content: 'You must enter a number greater than 1 :no_entry_sign:',
-				ephemeral: true
+				flags: 64
 			})
 
 		channel
@@ -40,13 +40,13 @@ export const command: Command = {
 				interaction.createMessage({
 					content:
 						'You cannot delete messages older than 14 days :no_entry_sign:',
-					ephemeral: true
+					flags: 64
 				})
 			)
 			.then(() =>
 				interaction.createMessage({
 					content: `Deleted ${amount} messages :wastebasket:`,
-					ephemeral: true
+					flags: 64
 				})
 			)
 	}
