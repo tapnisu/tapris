@@ -1,5 +1,5 @@
 import Client from '../Core'
-import { ClientEvents } from 'discord.js'
+import { ClientEvents } from 'eris'
 
 interface Run {
 	(client: Client, ...args: any[])

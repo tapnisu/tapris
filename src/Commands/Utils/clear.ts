@@ -1,4 +1,4 @@
-import { TextChannel } from 'discord.js'
+import { TextChannel } from 'eris'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {

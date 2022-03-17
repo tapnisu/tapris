@@ -1,5 +1,5 @@
 import Client from '../Core'
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction } from 'eris'
 
 interface Run {
 	(client: Client, interaction: CommandInteraction)

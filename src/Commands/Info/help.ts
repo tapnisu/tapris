@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'eris'
 
 export const command: Command = {
 	name: 'help',
@@ -44,13 +44,13 @@ export const command: Command = {
 				name: `/${command.name} ${
 					command.options
 						? command.options
-							.map(
-								(option) =>
-									`<${option.required ? '' : ''}${option.name} [${
-										option.description
-									}]>`
-							)
-							.join(' ')
+								.map(
+									(option) =>
+										`<${option.required ? '' : ''}${option.name} [${
+											option.description
+										}]>`
+								)
+								.join(' ')
 						: ''
 				}`,
 				value: command.description,

@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { MessageEmbed } from 'eris'
 import { Artifact, Character, Weapon } from '../../Interfaces/GenshinDev'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import axios from 'axios'

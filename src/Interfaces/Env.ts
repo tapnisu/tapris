@@ -1,4 +1,4 @@
-import { ColorResolvable } from 'discord.js'
+import { ColorResolvable } from 'eris'
 
 export interface Env {
 	TOKEN: string

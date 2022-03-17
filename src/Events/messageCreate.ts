@@ -1,5 +1,5 @@
 import { Event } from '../Interfaces'
-import { Message, TextChannel } from 'discord.js'
+import { Message, TextChannel } from 'eris'
 
 export const event: Event = {
 	name: 'messageCreate',

@@ -1,4 +1,4 @@
-import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js'
+import { CommandInteraction, GuildMember, MessageEmbed } from 'eris'
 import {
 	AudioPlayerStatus,
 	StreamType,
@@ -13,21 +13,21 @@ export const play = async (client, interaction: CommandInteraction) => {
 	const member: GuildMember = interaction.member as GuildMember
 
 	if (
-		client.music.queue[interaction.guildId] == undefined ||
-		client.music.queue[interaction.guildId] == []
+		client.music.queue[interaction.guildID] == undefined ||
+		client.music.queue[interaction.guildID] == []
 	)
-		return interaction.channel.send('Queue is empty :no_entry_sign:')
+		return interaction.channel.createMessage('Queue is empty :no_entry_sign:')
 	if (!member.voice.channel)
 		return interaction.channel.send('You are not in channel :no_entry_sign:')
 
 	client.music.connection = joinVoiceChannel({
 		channelId: member.voice.channel.id,
-		guildId: interaction.guildId,
+		guildId: interaction.guildID,
 		adapterCreator: interaction.guild
 			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 	})
 
-	const stream = ytdl(client.music.queue[interaction.guildId][0], {
+	const stream = ytdl(client.music.queue[interaction.guildID][0], {
 		filter: 'audioonly'
 	})
 	const resource = createAudioResource(stream, {
@@ -35,7 +35,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 	})
 	const player = createAudioPlayer()
 
-	const info = await ytdl.getInfo(client.music.queue[interaction.guildId][0])
+	const info = await ytdl.getInfo(client.music.queue[interaction.guildID][0])
 
 	// Get length as string
 	const date = new Date(0)
@@ -67,7 +67,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 		.setImage(info.videoDetails.thumbnails[0].url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 
-	interaction.channel.send({ embeds: [Embed] })
+	interaction.channel.createMessage({ embeds: [Embed] })
 
 	player.play(resource)
 	client.music.connection.subscribe(player)
@@ -75,7 +75,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 	player.on(AudioPlayerStatus.Idle, () => {
 		client.music.queue.shift()
 
-		if (client.music.queue[interaction.guildId] == [])
+		if (client.music.queue[interaction.guildID] == [])
 			return client.music.connection.destroy()
 
 		return play(client, interaction)

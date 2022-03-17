@@ -1,4 +1,4 @@
-import { Client, Collection } from 'discord.js'
+import { Client, Collection } from 'eris'
 import { readdirSync } from 'fs'
 import { Command, Event, Env, Music, Gun } from '../Interfaces'
 import env from './env'

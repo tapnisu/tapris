@@ -1,5 +1,5 @@
 import { Event } from '../Interfaces'
-import { ApplicationCommandDataResolvable } from 'discord.js'
+import { ApplicationCommandDataResolvable } from 'eris'
 
 export const event: Event = {
 	name: 'ready',
