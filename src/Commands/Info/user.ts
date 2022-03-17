@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'eris'
+import { MessageEmbed } from 'discord.js'
 
 export const command: Command = {
 	name: 'user',

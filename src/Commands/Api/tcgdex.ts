@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'eris'
+import { MessageEmbed } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Datum, PokemontcgResponse } from '../../Interfaces/Pokemontcg'
 import axios from 'axios'

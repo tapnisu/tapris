@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'eris'
+import { MessageEmbed } from 'discord.js'
 import translate from '@iamtraction/google-translate'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Country, CovidResponse } from '../../Interfaces/Covid'
