@@ -1,17 +1,26 @@
 import { Event } from '../Interfaces'
-import { ApplicationCommandDataResolvable } from 'eris'
+import { readdirSync } from 'fs'
 
 export const event: Event = {
 	name: 'ready',
 	run: (client) => {
-		client.user.setActivity('Type "/" to check bot commands!')
+		client.editStatus('online', {name: 'Type "/" to check bot commands!'})
 
-		const commands = client.application?.commands
+		readdirSync('dist/Commands').forEach(async (dir) => {
+			const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>
+				file.endsWith('.js')
+			)
 
-		client.commands.forEach((command) => {
-			commands?.create(command as ApplicationCommandDataResolvable)
+			for (const file of commands) {
+				const { command } = await import(
+					`${__dirname}/../Commands/${dir}/${file}`
+				)
+
+				client.commands.set(command.name, command)
+				client.createCommand(command)
+			}
 		})
 
-		console.log(`${client.user.tag} is up!`)
+		console.log(`${client.user.username}#${client.user.discriminator} is up!`)
 	}
 }

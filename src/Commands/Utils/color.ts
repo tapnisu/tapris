@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageAttachment, MessageEmbed } from 'eris'
+import { ColorResolvable, MessageAttachment, MessageEmbed } from 'discord.js'
 import { createCanvas } from 'canvas'
 
 export const command: Command = {

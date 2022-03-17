@@ -15,9 +15,9 @@ export const event: Event = {
 
 		const channel = message.channel as TextChannel
 
-		console.log(
+		/*console.log(
 			`[${date}] [${message.guild.name} / ${channel.name} / ${message.author.tag}]: ${message.content}`
-		)
+		)*/
 
 		let allEmbeds = []
 
