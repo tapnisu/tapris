@@ -19,7 +19,7 @@ export const command: Command = {
 			!userMember.permissions.has('ADMINISTRATOR') ||
 			!userMember.permissions.has('BAN_MEMBERS')
 		)
-			return interaction.reply({
+			return interaction.createMessage({
 				content: 'You can`t unban members! :no_entry_sign:',
 				ephemeral: true
 			})
@@ -27,10 +27,10 @@ export const command: Command = {
 		interaction.guild.members
 			.unban(userId)
 			.then(() => {
-				return interaction.reply(`<@!${userId}> was unbanned :door:`)
+				return interaction.createMessage(`<@!${userId}> was unbanned :door:`)
 			})
 			.catch(() => {
-				return interaction.reply({
+				return interaction.createMessage({
 					content: `<@!${userId}> was **NOT** unbanned! :no_entry_sign:`,
 					ephemeral: true
 				})

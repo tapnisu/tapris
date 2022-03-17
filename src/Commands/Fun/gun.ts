@@ -22,19 +22,19 @@ export const command: Command = {
 			client.gun.drum = [false, false, false, false, false, false]
 			client.gun.drum[Math.floor(Math.random() * 6)] = true
 
-			return interaction.reply('Gun is reloaded!')
+			return interaction.createMessage('Gun is reloaded!')
 		}
 
 		if (command == 'shoot') {
 			if (!client.gun.drum)
-				return interaction.reply('There is no gun :no_entry_sign:')
+				return interaction.createMessage('There is no gun :no_entry_sign:')
 
 			if (client.gun.drum.length == 0)
-				interaction.reply('Gun is empty! :grinning:')
+				interaction.createMessage('Gun is empty! :grinning:')
 			if (client.gun.drum[0] == true)
-				interaction.reply(':exploding_head: :gun: ')
+				interaction.createMessage(':exploding_head: :gun: ')
 
-			if (client.gun.drum[0] == false) interaction.reply(':grinning: :gun:')
+			if (client.gun.drum[0] == false) interaction.createMessage(':grinning: :gun:')
 
 			return client.gun.drum.shift()
 		}

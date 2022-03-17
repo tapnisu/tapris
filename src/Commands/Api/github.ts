@@ -54,9 +54,9 @@ export const command: Command = {
 			if (userData.twitter_username)
 				Embed.addField('Twitter', `@${userData.twitter_username}`, true)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.createMessage({ embeds: [Embed] })
 		} catch {
-			return interaction.reply({
+			return interaction.createMessage({
 				content: 'User not found :no_entry_sign:',
 				ephemeral: true
 			})

@@ -8,7 +8,7 @@ export const command: Command = {
 		client.music.queue[interaction.guildId]?.shift()
 		client.music.connection?.destroy()
 
-		interaction.reply('Skipped :musical_note:')
+		interaction.createMessage('Skipped :musical_note:')
 
 		return play(client, interaction)
 	}

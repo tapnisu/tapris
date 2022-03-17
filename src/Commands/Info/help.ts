@@ -30,7 +30,7 @@ export const command: Command = {
 				})
 			})
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.createMessage({ embeds: [Embed] })
 		}
 
 		const Embed = new MessageEmbed()
@@ -58,6 +58,6 @@ export const command: Command = {
 			})
 		})
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }

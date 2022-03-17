@@ -29,7 +29,7 @@ export const command: Command = {
 			const result = await youtubeSr.search(musicItem, { limit: 1 })
 
 			if (result.length == 0)
-				return interaction.reply('Music not found! :no_entry_sign:')
+				return interaction.createMessage('Music not found! :no_entry_sign:')
 
 			client.music.queue[interaction.guildId] = [
 				...client.music.queue[interaction.guildId],
@@ -37,6 +37,6 @@ export const command: Command = {
 			]
 		}
 
-		return interaction.reply('Added to queue :musical_note:')
+		return interaction.createMessage('Added to queue :musical_note:')
 	}
 }

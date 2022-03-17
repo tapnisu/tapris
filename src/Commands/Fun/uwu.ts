@@ -28,6 +28,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(uwuResponse.owo)
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }

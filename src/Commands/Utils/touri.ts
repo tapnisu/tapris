@@ -13,13 +13,13 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const text = interaction.options.getString('text')
+		const text = interaction.data.options['text']
 
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(encodeURI(text))
 			.addField('Original text', text, true)
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }

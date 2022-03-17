@@ -1,4 +1,5 @@
-import { Client, Collection } from 'eris'
+import { Client } from 'eris'
+import { Collection } from '@discordjs/collection'
 import { readdirSync } from 'fs'
 import { Command, Event, Env, Music, Gun } from '../Interfaces'
 import env from './env'
@@ -16,7 +17,7 @@ class ExtendedClient extends Client {
 	}
 
 	public async init() {
-		this.login(this.env.TOKEN)
+		this.connect()
 
 		readdirSync('dist/Commands').forEach(async (dir) => {
 			const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>
@@ -29,6 +30,8 @@ class ExtendedClient extends Client {
 				)
 
 				this.commands.set(command.name, command)
+
+				this.createCommand(command)
 			}
 		})
 

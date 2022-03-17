@@ -32,6 +32,6 @@ export const command: Command = {
 			}
 		})
 
-		interaction.reply({ embeds: [Embed] })
+		interaction.createMessage({ embeds: [Embed] })
 	}
 }

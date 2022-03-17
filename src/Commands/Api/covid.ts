@@ -77,6 +77,6 @@ export const command: Command = {
 			)
 			.setTimestamp(new Date(data.Date))
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }

@@ -31,6 +31,6 @@ export const command: Command = {
 			)
 			.setTimestamp()
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }

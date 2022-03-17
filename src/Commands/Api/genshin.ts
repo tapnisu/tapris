@@ -42,7 +42,7 @@ export const command: Command = {
 				.catch(() => undefined)
 
 			if (!response)
-				return interaction.reply({
+				return interaction.createMessage({
 					content: `${request} is not a valid character!`,
 					ephemeral: true
 				})
@@ -96,7 +96,7 @@ export const command: Command = {
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
 				)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.createMessage({ embeds: [Embed] })
 		}
 
 		if (requestType == 'weapon') {
@@ -105,7 +105,7 @@ export const command: Command = {
 				.catch(() => undefined)
 
 			if (!response)
-				return interaction.reply({
+				return interaction.createMessage({
 					content: `${request} is not a valid weapon`,
 					ephemeral: true
 				})
@@ -155,7 +155,7 @@ export const command: Command = {
 						inline: true
 					}
 				)
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.createMessage({ embeds: [Embed] })
 		}
 
 		if (requestType == 'artifact') {
@@ -164,7 +164,7 @@ export const command: Command = {
 				.catch(() => undefined)
 
 			if (!response)
-				return interaction.reply({
+				return interaction.createMessage({
 					content: `${request} is not a valid weapon`,
 					ephemeral: true
 				})
@@ -197,7 +197,7 @@ export const command: Command = {
 					}
 				)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.createMessage({ embeds: [Embed] })
 		}
 	}
 }

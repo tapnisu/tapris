@@ -7,6 +7,6 @@ export const command: Command = {
 		const messages: string[] = [':coin: Tail!', ':eagle: Eagle!']
 		const random: number = Math.floor(Math.random() * 2)
 
-		return interaction.reply(messages[random])
+		return interaction.createMessage(messages[random])
 	}
 }

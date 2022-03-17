@@ -22,6 +22,6 @@ export const command: Command = {
 			password += charset.charAt(Math.floor(Math.random() * n))
 		}
 
-		return interaction.reply(`Password: ||${password}|| :keyboard:`)
+		return interaction.createMessage(`Password: ||${password}|| :keyboard:`)
 	}
 }

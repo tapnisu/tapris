@@ -27,7 +27,7 @@ export const command: Command = {
 				`https://raw.githubusercontent.com/alg-wiki/wikia/master/Ships/${request}.json`
 			)
 		} catch {
-			return interaction.reply({
+			return interaction.createMessage({
 				content: 'Ship not found :no_entry_sign:',
 				ephemeral: true
 			})
@@ -48,6 +48,6 @@ export const command: Command = {
 				{ name: 'Voice acting', value: ship.voiceActress, inline: true }
 			)
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.createMessage({ embeds: [Embed] })
 	}
 }
