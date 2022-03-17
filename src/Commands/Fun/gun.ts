@@ -34,7 +34,8 @@ export const command: Command = {
 			if (client.gun.drum[0] == true)
 				interaction.createMessage(':exploding_head: :gun: ')
 
-			if (client.gun.drum[0] == false) interaction.createMessage(':grinning: :gun:')
+			if (client.gun.drum[0] == false)
+				interaction.createMessage(':grinning: :gun:')
 
 			return client.gun.drum.shift()
 		}
