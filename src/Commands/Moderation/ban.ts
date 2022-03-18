@@ -9,10 +9,24 @@ export const command: Command = {
 			description: 'User to be banned',
 			type: 6,
 			required: true
+		},
+		{
+			name: 'reason',
+			description: 'Reason to be shown',
+			type: 3,
+			required: false
+		},
+		{
+			name: 'days',
+			description: 'Time for ban in days',
+			type: 4,
+			required: false
 		}
 	],
 	run: async (client, interaction) => {
 		const member = interaction.options.getUser('user')
+		const reason = interaction.options.getString('reason')
+		const days = interaction.options.getInteger('days')
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
@@ -38,7 +52,7 @@ export const command: Command = {
 			})
 
 		target
-			.ban()
+			.ban({reason: reason ? reason : null, days: days ? days : null})
 			.then(() => {
 				return interaction.reply(`<@!${member.id}> was banned :door:`)
 			})
