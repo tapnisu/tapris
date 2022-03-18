@@ -52,7 +52,7 @@ export const command: Command = {
 			})
 
 		target
-			.ban({reason: reason ? reason : null, days: days ? days : null})
+			.ban({ reason: reason ? reason : null, days: days ? days : null })
 			.then(() => {
 				return interaction.reply(`<@!${member.id}> was banned :door:`)
 			})
