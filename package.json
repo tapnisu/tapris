@@ -18,10 +18,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Zamur650/tapris.git"
+		"url": "git+https://github.com/uwury/tapris.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Zamur650/tapris/issues"
+		"url": "https://github.com/uwury/tapris/issues"
 	},
 	"keywords": [
 		"bot",
