@@ -27,28 +27,3 @@ jobs:
         run: yarn install
       - name: Lint
         run: yarn run lint
-  format:
-    name: Format
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install packages
-        run: yarn install
-      - name: Run prettier
-        run: yarn format
-      - name: Run lint fix
-        run: yarn lint:fix
-      - name: Check for modified files
-        id: git-check
-        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
-      - name: Push changes
-        if: steps.git-check.outputs.modified == 'true'
-        run: |
-          git config --global user.name 'Alexiy Rybin'
-          git config --global user.email 'alexiy.rybin@gmail.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Automated changes"
-          git push

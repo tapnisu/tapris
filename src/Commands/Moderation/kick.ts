@@ -9,10 +9,17 @@ export const command: Command = {
 			description: 'User to be kicked',
 			type: 6,
 			required: true
+		},
+		{
+			name: 'reason',
+			description: 'Reason to be shown',
+			type: 3,
+			required: false
 		}
 	],
 	run: async (client, interaction) => {
 		const member = interaction.options.getUser('user')
+		const reason = interaction.options.getString('reason')
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
@@ -33,7 +40,7 @@ export const command: Command = {
 			})
 
 		target
-			.kick()
+			.kick(reason ? reason : null)
 			.then(() => {
 				return interaction.createMessage(`<@!${member.id}> was kicked :door: `)
 			})
