@@ -2,8 +2,8 @@ import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
 
 export const command: Command = {
-	name: 'server',
-	description: 'Get info about server',
+	name: 'guild',
+	description: 'Get info about guild',
 	run: async (client, interaction) => {
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
@@ -11,7 +11,7 @@ export const command: Command = {
 			.setThumbnail(
 				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
 			)
-			.setDescription('Info about server')
+			.setDescription('Info about guild')
 			.addFields(
 				{
 					name: 'Owner',
