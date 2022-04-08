@@ -27,7 +27,7 @@ export const event: Event = {
 			]
 		})
 
-		const row = new MessageActionRow()
+		const buttonsRow = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
 					.setURL(link)
@@ -41,6 +41,6 @@ export const event: Event = {
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 			.setDescription(client.locales.guildCreate.description)
 		
-		return guild.systemChannel.send({ embeds: [embed], components: [row] })
+		return guild.systemChannel.send({ embeds: [embed], components: [buttonsRow] })
 	}
 }
