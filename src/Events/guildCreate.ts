@@ -1,16 +1,47 @@
 import { Event } from '../Interfaces'
-import { Guild, MessageEmbed } from 'discord.js'
+import { Guild, MessageEmbed, MessageActionRow, MessageButton } from 'discord.js'
 
 export const event: Event = {
 	name: 'guildCreate',
-	run: (client, guild: Guild) => {
-		console.log(`Joined ${guild.name} guild`)
+	run: async (client, guild: Guild) => {
+		console.log(`Joined ${guild.name} guild!`)
+
+		if (!guild.systemChannel) return
+
+		const link: string = await client.generateInvite({
+			scopes: ['bot', 'applications.commands'],
+			permissions: [
+				'KICK_MEMBERS',
+				'BAN_MEMBERS',
+				'PRIORITY_SPEAKER',
+				'VIEW_CHANNEL',
+				'SEND_MESSAGES',
+				'MANAGE_MESSAGES',
+				'ATTACH_FILES',
+				'READ_MESSAGE_HISTORY',
+				'CONNECT',
+				'SPEAK',
+				'USE_APPLICATION_COMMANDS',
+				'MANAGE_THREADS',
+				'SEND_MESSAGES_IN_THREADS'
+			]
+		})
+
+		const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setURL('https://discord.js.org')
+					.setLabel('Invite bot')
+					.setStyle('LINK')
+			)
 
 		const embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(guild.name)
+			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-
-		guild.systemChannel.send({ embeds: [embed] })
+			.setDescription(client.locales.guildCreate.description)
+			.setURL(link)
+		
+		return guild.systemChannel.send({ embeds: [embed], components: [row] })
 	}
 }

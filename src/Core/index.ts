@@ -2,6 +2,7 @@ import { Client, Collection } from 'discord.js'
 import { readdirSync } from 'fs'
 import { Command, Event, Env, Music, Gun } from '../Interfaces'
 import env from './env'
+import * as locales from '../Locales'
 
 class ExtendedClient extends Client {
 	public commands: Collection<string, Command> = new Collection()
@@ -14,6 +15,7 @@ class ExtendedClient extends Client {
 	public gun: Gun = {
 		drum: []
 	}
+	public locales = locales
 
 	public async init() {
 		this.login(this.env.TOKEN)
