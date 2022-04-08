@@ -30,7 +30,7 @@ export const event: Event = {
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
-					.setURL('https://discord.js.org')
+					.setURL(link)
 					.setLabel('Invite bot')
 					.setStyle('LINK')
 			)
@@ -40,7 +40,6 @@ export const event: Event = {
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 			.setDescription(client.locales.guildCreate.description)
-			.setURL(link)
 		
 		return guild.systemChannel.send({ embeds: [embed], components: [row] })
 	}

@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 
 export const command: Command = {
 	name: 'invite',
@@ -24,12 +24,18 @@ export const command: Command = {
 			]
 		})
 
+		const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setURL(link)
+					.setLabel('Invite bot')
+					.setStyle('LINK')
+			)
+
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle('Click to invite')
-			.setDescription(link)
-			.setURL(link)
+			.setTitle('Click button to invite')
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed], components: [row] })
 	}
 }
