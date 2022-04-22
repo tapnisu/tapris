@@ -1,5 +1,5 @@
 <p align="center">
- <img width=300px src="https://github.com/Zamur650/tapris/blob/main/assets/avatar.png" alt="Bot logo">
+ <img width=300px src="https://github.com/Zamur650/tapris/blob/main/assets/avatar.jpg" alt="Bot logo">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Multipurpose discord bot</h3>
 </p>
