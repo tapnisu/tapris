@@ -29,12 +29,12 @@ Type "/" to see commands!
 
 ```env
 TOKEN="bot token"
-BOT_COLOR="bot color (hex)"
+BOT_COLOR="bot color (#a9b8f6 as example)"
 ```
 
 1. Install dependencies via `yarn`
 
-1. Build via `yarn build`
+1. Build bot via `yarn build`
 
 1. Start bot via `yarn start`
 
