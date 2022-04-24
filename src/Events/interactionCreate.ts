@@ -1,4 +1,4 @@
-import { ButtonInteraction, CommandInteraction, Interaction } from 'discord.js'
+import { Interaction } from 'discord.js'
 import { Event, Command, Button } from '../Interfaces'
 
 export const event: Event = {
@@ -15,6 +15,5 @@ export const event: Event = {
 			const button = client.buttons.get(interaction.customId)
 			if (button) (button as Button).run(client, interaction)
 		}
-		
 	}
 }
