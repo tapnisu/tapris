@@ -15,13 +15,15 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const user = interaction.options.getUser('user')
 
-		const avatarUrl = user.displayAvatarURL({ dynamic: true })
+		const avatarUrl = user.displayAvatarURL({ size: 4096, dynamic: true })
 
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(`${user.tag}\`s avatar`)
+			.setAuthor({
+				iconURL: avatarUrl,
+				name: `${user.tag}\`s avatar`
+			})
 			.setImage(avatarUrl)
-			.setTimestamp()
 
 		const row = new MessageActionRow().addComponents(
 			new MessageButton()
