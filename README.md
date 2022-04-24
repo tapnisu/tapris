@@ -1,5 +1,5 @@
 <p align="center">
- <img width=300px src="https://github.com/Zamur650/tapris/blob/main/assets/avatar.png" alt="Bot logo">
+ <img width=300px src="https://github.com/uwury/tapris/blob/main/assets/avatar.png" alt="Bot logo">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Multipurpose discord bot</h3>
 </p>
@@ -25,7 +25,7 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-1. Set up your [.env](https://github.com/Zamur650/tapris/blob/main/.env_example) (example in [.env_example](https://github.com/Zamur650/tapris/blob/main/.env_example))
+1. Set up your [.env](https://github.com/uwury/tapris/blob/main/.env_example) (example in [.env_example](https://github.com/uwury/tapris/blob/main/.env_example))
 
 ```env
 TOKEN="bot token"
