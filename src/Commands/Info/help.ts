@@ -24,7 +24,7 @@ export const command: Command = {
 
 			command.options.forEach((option) => {
 				Embed.addFields({
-					name: `/${option.name}`,
+					name: `${option.name}`,
 					value: option.description ? option.description : 'none',
 					inline: true
 				})
