@@ -42,7 +42,7 @@
 		"html-to-text": "^8.2.0",
 		"libsodium-wrappers": "^0.7.10",
 		"waifu.js": "^1.0.0",
-		"youtube-sr": "^4.1.15",
+		"youtube-sr": "^4.1.17",
 		"ytdl-core": "^4.11.0"
 	},
 	"devDependencies": {

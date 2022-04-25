@@ -1595,9 +1595,9 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz"
 
-youtube-sr@^4.1.15:
-  version "4.1.15"
-  resolved "https://registry.npmjs.org/youtube-sr/-/youtube-sr-4.1.15.tgz"
+youtube-sr@^4.1.17:
+  version "4.1.17"
+  resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.1.17.tgz#bfdfe24b35d952cf2280dead1b3cd6e4d2ed4f80"
 
 ytdl-core@^4.11.0:
   version "4.11.0"
