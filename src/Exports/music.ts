@@ -64,7 +64,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 				inline: true
 			}
 		)
-		.setImage(info.videoDetails.thumbnails[0].url)
+		.setImage(info.videoDetails.thumbnails.at(-1).url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 
 	interaction.channel.send({ embeds: [Embed] })
