@@ -6,10 +6,8 @@ export const command: Command = {
 	description: 'Skip current music',
 	run: async (client, interaction) => {
 		client.music.queue[interaction.guildId]?.shift()
-		client.music.connection?.destroy()
 
 		interaction.reply('Skipped :musical_note:')
-
 		return play(client, interaction)
 	}
 }

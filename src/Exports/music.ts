@@ -75,9 +75,6 @@ export const play = async (client, interaction: CommandInteraction) => {
 	player.on(AudioPlayerStatus.Idle, () => {
 		client.music.queue.shift()
 
-		if (client.music.queue[interaction.guildId] == [])
-			return client.music.connection.destroy()
-
-		return play(client, interaction)
+		play(client, interaction)
 	})
 }
