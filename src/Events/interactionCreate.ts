@@ -12,7 +12,9 @@ export const event: Event = {
 		}
 
 		if (interaction.isButton()) {
-			const button = client.buttons.get(interaction.customId)
+			const button = client.buttons.find((button) =>
+				button.customId.test(interaction.customId)
+			)
 			if (button) (button as Button).run(client, interaction)
 		}
 	}

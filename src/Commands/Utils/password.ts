@@ -23,14 +23,16 @@ export const command: Command = {
 			password += charset.charAt(Math.floor(Math.random() * n))
 		}
 
-		const buttonsRow = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('password-new')
-					.setLabel('Create new')
-					.setStyle('PRIMARY')
-			)
+		const buttonsRow = new MessageActionRow().addComponents(
+			new MessageButton()
+				.setCustomId(`password_${passwordLength}`)
+				.setLabel('Create new')
+				.setStyle('PRIMARY')
+		)
 
-		return interaction.reply({content: `Password: ||${password}|| :keyboard:`, components: [buttonsRow] })
+		return interaction.reply({
+			content: `Password: ||${password}|| :keyboard:`,
+			components: [buttonsRow]
+		})
 	}
 }

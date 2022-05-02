@@ -6,6 +6,6 @@ interface Run {
 }
 
 export interface Button {
-	customId: string
+	customId: RegExp
 	run: Run
 }
