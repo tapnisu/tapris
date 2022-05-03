@@ -42,13 +42,11 @@ class ExtendedClient extends Client {
 				this.events.set(event.name, event)
 				this.on(event.name, event.run.bind(null, this))
 			})
-		
+
 		readdirSync('dist/Buttons')
 			.filter((file) => file.endsWith('.js'))
 			.forEach(async (file) => {
-				const { button } = await import(
-					`${__dirname}/../Buttons/${file}`
-				)
+				const { button } = await import(`${__dirname}/../Buttons/${file}`)
 
 				this.buttons.set(button.customId, button)
 			})

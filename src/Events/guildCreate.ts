@@ -1,5 +1,10 @@
 import { Event } from '../Interfaces'
-import { Guild, MessageEmbed, MessageActionRow, MessageButton } from 'discord.js'
+import {
+	Guild,
+	MessageEmbed,
+	MessageActionRow,
+	MessageButton
+} from 'discord.js'
 
 export const event: Event = {
 	name: 'guildCreate',
@@ -27,20 +32,19 @@ export const event: Event = {
 			]
 		})
 
-		const buttonsRow = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setURL(link)
-					.setLabel('Invite bot')
-					.setStyle('LINK')
-			)
+		const buttonsRow = new MessageActionRow().addComponents(
+			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
+		)
 
 		const embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 			.setDescription(client.locales.guildCreate.description)
-		
-		return guild.systemChannel.send({ embeds: [embed], components: [buttonsRow] })
+
+		return guild.systemChannel.send({
+			embeds: [embed],
+			components: [buttonsRow]
+		})
 	}
 }

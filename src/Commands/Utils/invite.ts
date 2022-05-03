@@ -24,13 +24,9 @@ export const command: Command = {
 			]
 		})
 
-		const row = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setURL(link)
-					.setLabel('Invite bot')
-					.setStyle('LINK')
-			)
+		const row = new MessageActionRow().addComponents(
+			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
+		)
 
 		const Embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
