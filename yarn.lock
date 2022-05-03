@@ -794,6 +794,11 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz"
 
+fuzzysort@^1.1.4:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/fuzzysort/-/fuzzysort-1.2.1.tgz#ea23d3c4d7726422888f538044fcea265644d54c"
+  integrity sha512-egTSF3U6H6T9tXtAhEm5P5guSSDjd96/NUWrbmoGlIu3ATMdXra13gwQdEFRY6ehsFe8xec7UnQz+k34CGWCIg==
+
 gauge@^3.0.0:
   version "3.0.1"
   resolved "https://registry.npmjs.org/gauge/-/gauge-3.0.1.tgz"
@@ -821,6 +826,14 @@ gauge@^4.0.0:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
     wide-align "^1.1.2"
+
+genshin-db@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/genshin-db/-/genshin-db-4.1.1.tgz#4ac337b0c7dc1e0b00f096286b9436b210fe2775"
+  integrity sha512-/HV15INhCwVwwgaKpAWdzWs0+c9QSnI7ZVGiCumapYKvc/VWj5BnFy+ds0oBYBFcQuM46ezrmSFDOHWOpt8mKw==
+  dependencies:
+    fuzzysort "^1.1.4"
+    pako "^2.0.4"
 
 get-stream@^5.1.0:
   version "5.2.0"
@@ -1215,6 +1228,11 @@ optionator@^0.9.1:
 p-cancelable@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/p-cancelable/-/p-cancelable-2.1.1.tgz"
+
+pako@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/pako/-/pako-2.0.4.tgz#6cebc4bbb0b6c73b0d5b8d7e8476e2b2fbea576d"
+  integrity sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==
 
 parent-module@^1.0.0:
   version "1.0.1"

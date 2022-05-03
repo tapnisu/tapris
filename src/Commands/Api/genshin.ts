@@ -1,8 +1,6 @@
 import { Command } from '../../Interfaces'
 import { MessageEmbed } from 'discord.js'
-import { Artifact, Character, Weapon } from '../../Interfaces/GenshinDev'
-import { AxiosResponse } from '../../Interfaces/Axios'
-import axios from 'axios'
+import genshindb from 'genshin-db'
 
 export const command: Command = {
 	name: 'genshin',
@@ -32,28 +30,18 @@ export const command: Command = {
 			interaction.options
 				.getString('name')
 				.split(' ')
-				.join('-')
+				.join('')
 				.toLocaleLowerCase()
 		)
 
 		if (requestType == 'character') {
-			const response: AxiosResponse = await axios
-				.get(`https://api.genshin.dev/characters/${request}`)
-				.catch(() => undefined)
+			const character = genshindb.characters(request)
 
-			if (!response)
+			if (!character)
 				return interaction.reply({
 					content: `${request} is not a valid character!`,
 					ephemeral: true
 				})
-
-			const character: Character = response.data
-
-			let rarity = ''
-
-			for (let i = 0; i < character.rarity; i++) {
-				rarity += ':star:'
-			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.env.BOT_COLOR)
@@ -63,17 +51,22 @@ export const command: Command = {
 				.addFields(
 					{
 						name: 'Rarity',
-						value: rarity,
+						value: ':star:'.repeat(Number(character.rarity)),
 						inline: true
 					},
 					{
 						name: 'Nation',
-						value: character.nation,
+						value: character.region,
+						inline: true
+					},
+					{
+						name: 'Affiliation',
+						value: character.affiliation,
 						inline: true
 					},
 					{
 						name: 'Birthday',
-						value: character.birthday.substr(character.birthday.length - 5),
+						value: character.birthday,
 						inline: true
 					},
 					{
@@ -82,120 +75,130 @@ export const command: Command = {
 						inline: true
 					},
 					{
-						name: 'Vision',
-						value: character.vision,
+						name: 'Element',
+						value: character.element,
 						inline: true
 					},
 					{
-						name: 'Weapon',
-						value: character.weapon,
+						name: 'Weapon type',
+						value: character.weapontype,
+						inline: true
+					},
+					{
+						name: 'Sub stat',
+						value: character.substat,
+						inline: true
+					},
+					{
+						name: 'Appearance',
+						value: character.version,
 						inline: true
 					}
 				)
 				.setImage(
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
 				)
+				.setURL(character.url.fandom)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
 
 		if (requestType == 'weapon') {
-			const response: AxiosResponse = await axios
-				.get(`https://api.genshin.dev/weapons/${request}`)
-				.catch(() => undefined)
+			const weapon = genshindb.weapons(request)
 
-			if (!response)
+			if (!weapon)
 				return interaction.reply({
-					content: `${request} is not a valid weapon`,
+					content: `${request} is not a valid weapon!`,
 					ephemeral: true
 				})
-
-			const weapon: Weapon = response.data
-
-			let rarity = ''
-
-			for (let i = 0; i < weapon.rarity; i++) {
-				rarity += ':star:'
-			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(weapon.name)
-				.setDescription(weapon.passiveDesc)
-				.setThumbnail(`https://api.genshin.dev/weapons/${request}/icon.png`)
+				.setDescription(weapon.effect)
+				.setThumbnail(
+					`https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.icon}.png`
+				)
 				.addFields(
 					{
 						name: 'Rarity',
-						value: rarity,
+						value: ':star:'.repeat(Number(weapon.rarity)),
 						inline: true
 					},
 					{
-						name: 'Name',
-						value: weapon.passiveName,
-						inline: true
-					},
-					{
-						name: 'How to get',
-						value: weapon.location,
+						name: weapon.effectname,
+						value: weapon.effect,
 						inline: true
 					},
 					{
 						name: 'Type',
-						value: weapon.type,
+						value: weapon.weapontype,
 						inline: true
 					},
 					{
-						name: 'Supporting stat',
-						value: weapon.subStat,
+						name: weapon.substat,
+						value: weapon.subvalue,
 						inline: true
 					},
 					{
 						name: 'Base attack',
-						value: weapon.baseAttack.toString(),
+						value: weapon.baseatk.toString(),
+						inline: true
+					},
+					{
+						name: 'Appearance',
+						value: weapon.version,
 						inline: true
 					}
 				)
+				.setImage(
+					`https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
+				)
+				.setURL(weapon.url.fandom)
+
 			return interaction.reply({ embeds: [Embed] })
 		}
 
 		if (requestType == 'artifact') {
-			const response: AxiosResponse = await axios
-				.get(`https://api.genshin.dev/artifacts/${request}`)
-				.catch(() => undefined)
+			const artifact = genshindb.artifacts(request)
 
-			if (!response)
+			if (!artifact)
 				return interaction.reply({
-					content: `${request} is not a valid weapon`,
+					content: `${request} is not a valid artifact!`,
 					ephemeral: true
 				})
-
-			const artifact: Artifact = response.data
-
-			let rarity = ''
-
-			for (let i = 0; i < artifact.max_rarity; i++) {
-				rarity += ':star:'
-			}
 
 			const Embed = new MessageEmbed()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(artifact.name)
-				.setDescription(`Max rarity: ${rarity}`)
+				.setDescription(
+					artifact.flower
+						? artifact.flower.description
+						: artifact.circlet.description
+				)
 				.setThumbnail(
-					`https://api.genshin.dev/artifacts/${request}/flower-of-life.png`
+					artifact.flower
+						? `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.flower}.png`
+						: `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.circlet}.png`
 				)
 				.addFields(
 					{
+						name: 'Rarity',
+						value: ':star:'.repeat(Number(artifact.rarity)),
+						inline: true
+					},
+					{
 						name: '2 piece bonus',
-						value: artifact['2-piece_bonus'],
+						value: artifact['2pc'] ? artifact['2pc'] : 'None',
 						inline: true
 					},
 					{
 						name: '4 piece bonus',
-						value: artifact['4-piece_bonus'],
+						value: artifact['4pc'] ? artifact['4pc'] : 'None',
 						inline: true
 					}
 				)
+				.setURL(artifact.url.fandom)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
