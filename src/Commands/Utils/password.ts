@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton } from 'discord.js'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -23,15 +23,24 @@ export const command: Command = {
 			password += charset.charAt(Math.floor(Math.random() * n))
 		}
 
-		const buttonsRow = new MessageActionRow().addComponents(
+		const buttonsRow = new MessageActionRow().addComponents([
 			new MessageButton()
 				.setCustomId(`password_${passwordLength}`)
 				.setLabel('Create new')
-				.setStyle('PRIMARY')
-		)
+				.setStyle('PRIMARY'),
+			new MessageButton()
+				.setCustomId('delete_message')
+				.setLabel('Delete')
+				.setStyle('DANGER')
+		])
+
+		const embed = new MessageEmbed()
+			.setColor(client.env.BOT_COLOR)
+			.setTitle('Password')
+			.setDescription(password)
 
 		return interaction.reply({
-			content: `Password: ||${password}|| :keyboard:`,
+			embeds: [embed],
 			components: [buttonsRow]
 		})
 	}
