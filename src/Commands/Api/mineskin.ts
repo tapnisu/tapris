@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
@@ -25,14 +25,22 @@ export const command: Command = {
 
 			const user: AshconResponse = response.data
 
+			const row = new MessageActionRow().addComponents(
+				new MessageButton()
+					.setURL(user.textures.skin.url)
+					.setLabel('Original image')
+					.setStyle('LINK')
+			)
+
 			const Embed = new MessageEmbed()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(user.username)
 				.setDescription(`UUID: ${user.uuid}`)
-				.setImage(`${user.textures.skin.url}`)
-				.setTimestamp()
+				.setThumbnail(`https://crafatar.com/renders/head/${user.uuid}?overlay`)
+				.setImage(`https://crafatar.com/renders/body/${user.uuid}?overlay`)
+				.setURL(user.textures.skin.url)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed], components: [row] })
 		} catch {
 			return interaction.reply({
 				content: 'User not found :no_entry_sign:',
