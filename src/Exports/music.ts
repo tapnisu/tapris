@@ -13,8 +13,8 @@ export const play = async (client, interaction: CommandInteraction) => {
 	const member: GuildMember = interaction.member as GuildMember
 
 	if (
-		client.music.queue[interaction.guildId] == undefined ||
-		client.music.queue[interaction.guildId] == []
+		!client.music.queue[interaction.guildId] ||
+		client.music.queue[interaction.guildId].length == 0
 	)
 		return interaction.channel.send('Queue is empty :no_entry_sign:')
 	if (!member.voice.channel)
@@ -76,5 +76,11 @@ export const play = async (client, interaction: CommandInteraction) => {
 		client.music.queue[interaction.guildId].shift()
 
 		play(client, interaction)
+	})
+
+	player.on('error', () => {
+		client.music.queue[interaction.guildId].shift()
+
+		interaction.channel.send('Unkown error happend! :interrobang:')
 	})
 }

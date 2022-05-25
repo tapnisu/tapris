@@ -12,7 +12,7 @@ export const command: Command = {
 			description: 'Type of data you want to get',
 			choices: [
 				{ name: 'video url', value: 'video-url' },
-				{ name: 'name', value: 'video-title' },
+				{ name: 'video title', value: 'video-title' },
 				{ name: 'playlist url', value: 'playlist-url' }
 			],
 			type: 3,
@@ -29,7 +29,6 @@ export const command: Command = {
 		const type = interaction.options.getString('type')
 		const request = interaction.options.getString('request')
 
-
 		if (!client.music.queue?.[interaction.guildId])
 			client.music.queue[interaction.guildId] = []
 
@@ -39,9 +38,11 @@ export const command: Command = {
 					...client.music.queue[interaction.guildId],
 					request
 				]
+				
+			else return interaction.reply('Url is invalid! :no_entry_sign:')
 		}
 
-		if (type == 'name') {
+		if (type == 'video-title') {
 			const result = await youtubeSr.search(request, { limit: 1 })
 
 			if (result.length == 0)
