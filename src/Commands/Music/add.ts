@@ -8,33 +8,60 @@ export const command: Command = {
 	description: 'Add YouTube Music to Queue',
 	options: [
 		{
-			name: 'music',
-			description: 'Name or link',
+			name: 'type',
+			description: 'Type of data you want to get',
+			choices: [
+				{ name: 'video url', value: 'video-url' },
+				{ name: 'name', value: 'video-title' },
+				{ name: 'playlist url', value: 'playlist-url' }
+			],
+			type: 3,
+			required: true
+		},
+		{
+			name: 'request',
+			description: 'Video url / title / playlist url',
 			type: 3,
 			required: true
 		}
 	],
 	run: async (client, interaction) => {
-		const musicItem = interaction.options.getString('music')
+		const type = interaction.options.getString('type')
+		const request = interaction.options.getString('request')
+
 
 		if (!client.music.queue?.[interaction.guildId])
 			client.music.queue[interaction.guildId] = []
 
-		if (validateURL(musicItem))
-			client.music.queue[interaction.guildId] = [
-				...client.music.queue[interaction.guildId],
-				musicItem
-			]
-		if (!validateURL(musicItem)) {
-			const result = await youtubeSr.search(musicItem, { limit: 1 })
+		if (type == 'video-url') {
+			if (validateURL(request))
+				client.music.queue[interaction.guildId] = [
+					...client.music.queue[interaction.guildId],
+					request
+				]
+		}
+
+		if (type == 'name') {
+			const result = await youtubeSr.search(request, { limit: 1 })
 
 			if (result.length == 0)
 				return interaction.reply('Music not found! :no_entry_sign:')
 
 			client.music.queue[interaction.guildId] = [
 				...client.music.queue[interaction.guildId],
-				`https://www.youtube.com/watch?v=${result[0].id}`
+				result[0].id
 			]
+		}
+
+		if (type == 'playlist-url') {
+			try {
+				client.music.queue[interaction.guildId] = [
+					...client.music.queue[interaction.guildId],
+					...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(video => video.id)
+				]
+			}	catch {
+				return interaction.reply('Playlist not found! :no_entry_sign:')
+			}
 		}
 
 		return interaction.reply('Added to queue :musical_note:')
