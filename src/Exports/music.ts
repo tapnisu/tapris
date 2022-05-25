@@ -73,7 +73,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 	client.music.connection.subscribe(player)
 
 	player.on(AudioPlayerStatus.Idle, () => {
-		client.music.queue.shift()
+		client.music.queue[interaction.guildId].shift()
 
 		play(client, interaction)
 	})
