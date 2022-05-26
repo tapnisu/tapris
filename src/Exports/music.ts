@@ -80,8 +80,5 @@ export const play = async (client, interaction: CommandInteraction) => {
 
 	player.on('error', () => {
 		interaction.channel.send('Unkown error happend! :interrobang:')
-		client.music.queue[interaction.guildId].shift()
-
-		play(client, interaction)
 	})
 }
