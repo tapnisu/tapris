@@ -46,7 +46,11 @@ export const play = async (client, interaction: CommandInteraction) => {
 		.setColor(client.env.BOT_COLOR)
 		.setTitle(info.videoDetails.title)
 		.setURL(info.videoDetails.video_url)
-		.setDescription(info.videoDetails.description)
+		.setDescription(
+			info.videoDetails.description
+				? info.videoDetails.description
+				: 'No description provided'
+		)
 		.addFields(
 			{
 				name: 'Views',
