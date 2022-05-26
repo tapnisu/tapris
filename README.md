@@ -12,7 +12,7 @@
 # Overview
 
 Tapris is discord.js bot, made in [TypeScript](https://www.typescriptlang.org/).
-Bot is name after Tapris from Gabriel DropOut.
+Bot is named after Tapris from Gabriel DropOut.
 
 # Install
 
@@ -38,4 +38,4 @@ BOT_COLOR="bot color (#a9b8f6 as example)"
 
 1. Start bot via `yarn start`
 
-Now you have running bot!
+Now you have a running bot!
