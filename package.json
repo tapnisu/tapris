@@ -39,7 +39,7 @@
 		"dotenv": "^16.0.1",
 		"ffmpeg": "^0.0.4",
 		"ffmpeg-static": "^5.0.0",
-		"genshin-db": "^4.1.1",
+		"genshin-db": "^4.2.0",
 		"html-to-text": "^8.2.0",
 		"sodium": "^3.0.2",
 		"waifu.js": "^1.0.0",
