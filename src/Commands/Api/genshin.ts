@@ -98,8 +98,8 @@ export const command: Command = {
 				.setImage(
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
 				)
-			
-			if (character.url?.fandom) Embed.setURL(character.url.fandom)	
+
+			if (character.url?.fandom) Embed.setURL(character.url.fandom)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
@@ -156,7 +156,7 @@ export const command: Command = {
 					`https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
 				)
 
-      if (weapon.url?.fandom) Embed.setURL(weapon.url.fandom)
+			if (weapon.url?.fandom) Embed.setURL(weapon.url.fandom)
 
 			return interaction.reply({ embeds: [Embed] })
 		}
@@ -200,7 +200,7 @@ export const command: Command = {
 						inline: true
 					}
 				)
-		
+
 			if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom)
 
 			return interaction.reply({ embeds: [Embed] })

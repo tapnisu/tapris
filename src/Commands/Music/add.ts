@@ -38,7 +38,6 @@ export const command: Command = {
 					...client.music.queue[interaction.guildId],
 					request
 				]
-				
 			else return interaction.reply('Url is invalid! :no_entry_sign:')
 		}
 
@@ -58,9 +57,11 @@ export const command: Command = {
 			try {
 				client.music.queue[interaction.guildId] = [
 					...client.music.queue[interaction.guildId],
-					...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(video => video.id)
+					...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(
+						(video) => video.id
+					)
 				]
-			}	catch {
+			} catch {
 				return interaction.reply('Playlist not found! :no_entry_sign:')
 			}
 		}
