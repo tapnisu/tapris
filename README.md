@@ -11,14 +11,14 @@
 
 # Overview
 
-Tapris is discord.js bot, made in [TypeScript](https://www.typescriptlang.org/).
+Tapris is a discord.js bot, made in [TypeScript](https://www.typescriptlang.org/).
 Bot is named after Tapris from Gabriel DropOut.
 
 # Install
 
 ## Basic
 
-You can invite bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
+You can invite the bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
 ## Host by yourself
