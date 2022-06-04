@@ -3,7 +3,8 @@ import {
 	Guild,
 	MessageEmbed,
 	MessageActionRow,
-	MessageButton
+	MessageButton,
+	OAuth2Scopes
 } from 'discord.js'
 
 export const event: Event = {
@@ -13,24 +14,24 @@ export const event: Event = {
 
 		if (!guild.systemChannel) return
 
-		const link: string = await client.generateInvite({
-			scopes: ['bot', 'applications.commands'],
-			permissions: [
-				'KICK_MEMBERS',
-				'BAN_MEMBERS',
-				'PRIORITY_SPEAKER',
-				'VIEW_CHANNEL',
-				'SEND_MESSAGES',
-				'MANAGE_MESSAGES',
-				'ATTACH_FILES',
-				'READ_MESSAGE_HISTORY',
-				'CONNECT',
-				'SPEAK',
-				'USE_APPLICATION_COMMANDS',
-				'MANAGE_THREADS',
-				'SEND_MESSAGES_IN_THREADS'
-			]
-		})
+		const link: string = client.generateInvite({
+			scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
+            permissions: [
+                'KickMembers',
+                'BanMembers',
+                'PrioritySpeaker',
+                'ViewChannel',
+                'SendMessages',
+                'ManageMessages',
+                'AttachFiles',
+                'ReadMessageHistory',
+                'Connect',
+                'Speak',
+                'UseApplicationCommands',
+                'ManageThreads',
+                'SendMessagesInThreads'
+            ]
+        })
 
 		const buttonsRow = new MessageActionRow().addComponents(
 			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
@@ -39,7 +40,7 @@ export const event: Event = {
 		const embed = new MessageEmbed()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
-			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
 			.setDescription(client.locales.guildCreate.description)
 
 		return guild.systemChannel.send({
