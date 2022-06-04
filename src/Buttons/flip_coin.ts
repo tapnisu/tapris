@@ -1,23 +1,10 @@
 import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-import { Command } from '../../Interfaces'
+import { Button } from '../Interfaces'
 
-export const command: Command = {
-	name: 'coin',
-	description: 'Flip a coin',
-	options: [
-		{
-			name: 'choice',
-			description: 'Your selection',
-			choices: [
-				{ name: 'Coin', value: 'coin' },
-				{ name: 'Tail', value: 'tail' }
-			],
-			type: 3,
-			required: true
-		}
-	],
-	run: (client, interaction) => {
-		const choice = interaction.options.getString('choice')
+export const button: Button = {
+	customId: /flip_coin_(.*)/gi,
+	run: async (client, interaction) => {
+		const choice = interaction.customId.replace(/flip_coin_/, '')
 
 		const choices = ['сoin', 'tail']
 		const winner: string = choices[Math.floor(Math.random() * 2)]
@@ -40,6 +27,9 @@ export const command: Command = {
 				.setStyle('PRIMARY')
 		])
 
-		return interaction.reply({ embeds: [embed], components: [buttonsRow] })
+		return interaction.update({
+			embeds: [embed],
+			components: [buttonsRow]
+		})
 	}
 }
