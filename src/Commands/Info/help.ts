@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'help',
@@ -17,7 +17,7 @@ export const command: Command = {
 		const command = client.commands.get(request)
 
 		if (command) {
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(command.name)
 				.setDescription(command.description)
@@ -33,7 +33,7 @@ export const command: Command = {
 			return interaction.reply({ embeds: [Embed] })
 		}
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setDescription(`Server member: ${interaction.guild.name}`)

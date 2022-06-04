@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { DuckduckgoResponse } from '../../Interfaces/Duckduckgo'
 import axios from 'axios'
 import { AxiosResponse } from '../../Interfaces/Axios'
@@ -30,7 +30,7 @@ export const command: Command = {
 				ephemeral: true
 			})
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(responseData.Results[0].FirstURL)
 			.setURL(responseData.Results[0].FirstURL)

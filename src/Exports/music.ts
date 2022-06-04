@@ -1,4 +1,4 @@
-import { CommandInteraction, GuildMember, MessageEmbed } from 'discord.js'
+import { CommandInteraction, GuildMember, EmbedBuilder } from 'discord.js'
 import {
 	AudioPlayerStatus,
 	StreamType,
@@ -42,7 +42,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 	date.setSeconds(Number(info.videoDetails.lengthSeconds))
 	const timeString = date.toISOString().substr(11, 8)
 
-	const Embed = new MessageEmbed()
+	const Embed = new EmbedBuilder()
 		.setColor(client.env.BOT_COLOR)
 		.setTitle(info.videoDetails.title)
 		.setURL(info.videoDetails.video_url)

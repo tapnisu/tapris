@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import genshindb from 'genshin-db'
 
 export const command: Command = {
@@ -43,7 +43,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(character.name)
 				.setDescription(character.description)
@@ -113,7 +113,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(weapon.name)
 				.setDescription(weapon.effect)
@@ -170,7 +170,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(artifact.name)
 				.setDescription(

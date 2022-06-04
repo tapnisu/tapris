@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { CatResponse } from '../../Interfaces/Nekoslife'
 import axios from 'axios'
@@ -25,7 +25,7 @@ export const command: Command = {
 			)) as AxiosResponse
 		).data
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url)

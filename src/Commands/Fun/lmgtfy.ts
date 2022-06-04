@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'lmgtfy',
@@ -14,13 +14,15 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const question = interaction.options.getString('question')
-		const link = `https://lmgtfy.app/?q=${encodeURI(question.replace(/ /, '+'))}`
+		const link = `https://lmgtfy.app/?q=${encodeURI(
+			question.replace(/ /, '+')
+		)}`
 
 		const buttonsRow = new MessageActionRow().addComponents(
 			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
 		)
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(question)
 			.setURL(link)

@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import axios from 'axios'
 import { calcWeaknesses } from '../../Exports/pokemonTypeChart'
 
@@ -48,7 +48,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(`Types: ${response.types.join(' / ')}`)
@@ -225,7 +225,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(
 					`Name: ${request
@@ -291,7 +291,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.shortDesc)
@@ -319,7 +319,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.desc)

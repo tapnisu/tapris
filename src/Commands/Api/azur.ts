@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AzurResponse } from '../../Interfaces/Azur'
 import axios from 'axios'
@@ -35,7 +35,7 @@ export const command: Command = {
 
 		const ship: AzurResponse = response.data as AzurResponse
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(ship.name)
 			.setURL(`https://azurlane.koumakan.jp/${request}`)

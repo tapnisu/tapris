@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Code } from '../../Interfaces/GIPN'
 import axios from 'axios'
@@ -14,7 +14,7 @@ export const command: Command = {
 
 		const codes: Code[] = response.data.CODES
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Genshin codes')
 			.setDescription('You can activate them in game, and get rewards!')

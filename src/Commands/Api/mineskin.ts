@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
@@ -32,7 +32,7 @@ export const command: Command = {
 					.setStyle('LINK')
 			)
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(user.username)
 				.setDescription(`UUID: ${user.uuid}`)

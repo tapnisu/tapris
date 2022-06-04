@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -23,7 +23,7 @@ export const command: Command = {
 			client.gun.drum = [false, false, false, false, false, false]
 			client.gun.drum[Math.floor(Math.random() * 6)] = true
 
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle('Gun is reloaded!')
 
@@ -42,7 +42,7 @@ export const command: Command = {
 
 		if (command == 'shoot') {
 			if (client.gun.drum.length == 0) {
-				const embed = new MessageEmbed()
+				const embed = new EmbedBuilder()
 					.setColor(client.env.BOT_COLOR)
 					.setTitle('Gun is empty! :grinning:')
 
@@ -59,7 +59,7 @@ export const command: Command = {
 				})
 			}
 
-			const embed = new MessageEmbed().setColor(client.env.BOT_COLOR)
+			const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR)
 
 			const buttonsRow = new MessageActionRow().addComponents([
 				new MessageButton()

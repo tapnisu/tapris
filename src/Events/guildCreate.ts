@@ -1,7 +1,7 @@
 import { Event } from '../Interfaces'
 import {
 	Guild,
-	MessageEmbed,
+	EmbedBuilder,
 	MessageActionRow,
 	MessageButton,
 	OAuth2Scopes
@@ -16,28 +16,28 @@ export const event: Event = {
 
 		const link: string = client.generateInvite({
 			scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
-            permissions: [
-                'KickMembers',
-                'BanMembers',
-                'PrioritySpeaker',
-                'ViewChannel',
-                'SendMessages',
-                'ManageMessages',
-                'AttachFiles',
-                'ReadMessageHistory',
-                'Connect',
-                'Speak',
-                'UseApplicationCommands',
-                'ManageThreads',
-                'SendMessagesInThreads'
-            ]
-        })
+			permissions: [
+				'KickMembers',
+				'BanMembers',
+				'PrioritySpeaker',
+				'ViewChannel',
+				'SendMessages',
+				'ManageMessages',
+				'AttachFiles',
+				'ReadMessageHistory',
+				'Connect',
+				'Speak',
+				'UseApplicationCommands',
+				'ManageThreads',
+				'SendMessagesInThreads'
+			]
+		})
 
 		const buttonsRow = new MessageActionRow().addComponents(
 			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
 		)
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))

@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'avatar',
@@ -17,7 +17,7 @@ export const command: Command = {
 
 		const avatarUrl = user.displayAvatarURL({ size: 4096, dynamic: true })
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setAuthor({
 				iconURL: avatarUrl,

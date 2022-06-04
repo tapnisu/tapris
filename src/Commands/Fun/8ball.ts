@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Response8ball } from '../../Interfaces/Nekoslife'
 import axios from 'axios'
@@ -14,7 +14,7 @@ export const command: Command = {
 
 		const response8ball: Response8ball = response.data
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response8ball.response)
 			.setImage(response8ball.url)

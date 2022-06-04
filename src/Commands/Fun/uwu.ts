@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { UwuResponse } from '../../Interfaces/Nekoslife'
 import axios from 'axios'
@@ -24,7 +24,7 @@ export const command: Command = {
 
 		const uwuResponse: UwuResponse = response.data
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(uwuResponse.owo)
 

@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -34,7 +34,7 @@ export const command: Command = {
 				.setStyle('DANGER')
 		])
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Password')
 			.setDescription(password)

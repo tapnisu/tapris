@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'touri',
@@ -15,7 +15,7 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const text = interaction.options.getString('text')
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(encodeURI(text))
 			.addField('Original text', text, true)

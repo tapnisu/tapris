@@ -1,11 +1,11 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { Button } from '../Interfaces'
 
 export const button: Button = {
 	customId: /gun_shoot/,
 	run: async (client, interaction) => {
 		if (client.gun.drum.length == 0) {
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle('Gun is empty! :grinning:')
 
@@ -22,7 +22,7 @@ export const button: Button = {
 			})
 		}
 
-		const embed = new MessageEmbed().setColor(client.env.BOT_COLOR)
+		const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR)
 
 		const buttonsRow = new MessageActionRow().addComponents([
 			new MessageButton()

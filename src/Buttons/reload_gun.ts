@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { Button } from '../Interfaces'
 
 export const button: Button = {
@@ -7,7 +7,7 @@ export const button: Button = {
 		client.gun.drum = [false, false, false, false, false, false]
 		client.gun.drum[Math.floor(Math.random() * 6)] = true
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Gun is reloaded!')
 

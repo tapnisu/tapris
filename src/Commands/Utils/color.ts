@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageAttachment, MessageEmbed } from 'discord.js'
+import { ColorResolvable, MessageAttachment, EmbedBuilder } from 'discord.js'
 import { createCanvas } from 'canvas'
 
 export const command: Command = {
@@ -45,7 +45,7 @@ export const command: Command = {
 			'ColorHexSend.png'
 		)
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setTitle(colorString)
 			.setImage('attachment://ColorHexSend.png')
 

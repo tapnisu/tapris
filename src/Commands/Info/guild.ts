@@ -1,11 +1,11 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'guild',
 	description: 'Get info about guild',
 	run: async (client, interaction) => {
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(interaction.guild.name)
 			.setThumbnail(

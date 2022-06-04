@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { GithubResponse } from '../../Interfaces/Github'
 import axios from 'axios'
@@ -25,7 +25,7 @@ export const command: Command = {
 
 			const userData: GithubResponse = response.data
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setURL(userData.html_url)
 				.setThumbnail(userData?.avatar_url)

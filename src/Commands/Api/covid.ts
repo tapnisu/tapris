@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import translate from '@iamtraction/google-translate'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Country, CovidResponse } from '../../Interfaces/Covid'
@@ -40,7 +40,7 @@ export const command: Command = {
 			}
 		})
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(data.Country ? data.Country : 'World')
 			.addFields(

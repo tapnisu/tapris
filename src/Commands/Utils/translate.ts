@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import translate from '@iamtraction/google-translate'
 
 export const command: Command = {
@@ -27,7 +27,7 @@ export const command: Command = {
 			const response = await translate(text, { to: language })
 
 			// Send result
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Text in ${language}`)
 				.setDescription(response.text)

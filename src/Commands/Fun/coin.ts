@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -22,13 +22,13 @@ export const command: Command = {
 		const choices = ['сoin', 'tail']
 		const winner: string = choices[Math.floor(Math.random() * 2)]
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setTitle(`${winner == choices[0] ? choices[0] : choices[1]} won!`)
 			.setColor(client.env.BOT_COLOR)
 			.setDescription(
 				`${winner.toLocaleLowerCase() == choice ? 'You won!' : 'You lost!'}`
 			)
-		
+
 		const buttonsRow = new MessageActionRow().addComponents([
 			new MessageButton()
 				.setCustomId(`flip_coin_${choices[0]}`)

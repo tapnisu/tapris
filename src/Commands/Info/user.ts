@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'user',
@@ -17,7 +17,7 @@ export const command: Command = {
 		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
 			.voice.channel?.id
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(`${user.tag} ${user.bot ? '[bot]' : ''}`)
 			.setDescription(`Server member: ${interaction.guild.name}`)
