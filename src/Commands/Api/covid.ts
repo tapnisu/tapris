@@ -43,7 +43,7 @@ export const command: Command = {
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(data.Country ? data.Country : 'World')
-			.addFields(
+			.addFields([
 				{
 					name: 'New confirmed',
 					value: data.NewConfirmed.toString(),
@@ -73,7 +73,7 @@ export const command: Command = {
 					name: 'Total recovered',
 					value: data.TotalRecovered.toString(),
 					inline: true
-				}
+				}]
 			)
 			.setTimestamp(new Date(data.Date))
 

@@ -30,8 +30,8 @@ export const command: Command = {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
-			!userMember.permissions.has('ADMINISTRATOR') ||
-			!userMember.permissions.has('BAN_MEMBERS')
+			!userMember.permissions.has('Administrator') ||
+			!userMember.permissions.has('BanMembers')
 		)
 			return interaction.reply({
 				content: 'You can`t ban members :no_entry_sign:',

@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
 import { Button } from '../Interfaces'
 
 export const button: Button = {
@@ -14,15 +14,15 @@ export const button: Button = {
 			password += charset.charAt(Math.floor(Math.random() * n))
 		}
 
-		const buttonsRow = new MessageActionRow().addComponents([
-			new MessageButton()
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setCustomId(`password_${passwordLength}`)
 				.setLabel('Create new')
-				.setStyle('PRIMARY'),
-			new MessageButton()
+				.setStyle(ButtonStyle.Primary),
+			new ButtonBuilder()
 				.setCustomId('delete_message')
 				.setLabel('Delete')
-				.setStyle('DANGER')
+				.setStyle(ButtonStyle.Danger)
 		])
 
 		const embed = new EmbedBuilder()

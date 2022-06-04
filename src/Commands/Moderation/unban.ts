@@ -16,8 +16,8 @@ export const command: Command = {
 		const userId = String(interaction.options.getInteger('id'))
 
 		if (
-			!userMember.permissions.has('ADMINISTRATOR') ||
-			!userMember.permissions.has('BAN_MEMBERS')
+			!userMember.permissions.has('Administrator') ||
+			!userMember.permissions.has('BanMembers')
 		)
 			return interaction.reply({
 				content: 'You can`t unban members! :no_entry_sign:',

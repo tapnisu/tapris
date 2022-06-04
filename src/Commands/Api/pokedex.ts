@@ -58,7 +58,7 @@ export const command: Command = {
 						.replace('-X', 'x')
 						.toLowerCase()}.gif`
 				)
-				.addFields(
+				.addFields([
 					{
 						name: 'Height (m)',
 						value: response.heightm.toString(),
@@ -132,76 +132,76 @@ export const command: Command = {
 							.map((type) => `${type.name} x${type.scale}`)
 							.join(', '),
 						inline: true
-					}
+					}]
 				)
 
 			if (response.prevo != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Prevo',
 					value: response.prevo,
 					inline: true
-				})
+				}])
 			}
 
 			if (response.evoLevel != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Evo Level',
 					value: response.evoLevel.toString(),
 					inline: true
-				})
+				}])
 			}
 
 			if (response.evoType != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Evo type',
 					value: response.evoType,
 					inline: true
-				})
+				}])
 			}
 
 			if (response.evoCondition != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Evo condition',
 					value: response.evoCondition,
 					inline: true
-				})
+				}])
 			}
 
 			if (response.evoItem != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Evo item',
 					value: response.evoItem,
 					inline: true
-				})
+				}])
 			}
 
 			if (response.evos != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Evos',
 					value: response.evos.join('\n'),
 					inline: true
-				})
+				}])
 			}
 
 			if (response.otherFormes != undefined) {
-				Embed.addFields({
+				Embed.addFields([{
 					name: 'Other forms',
 					value: response.otherFormes.join('\n'),
 					inline: true
-				})
+				}])
 			}
 
-			Embed.addFields({
+			Embed.addFields([{
 				name: 'Can G-MAX',
 				value: response.cannotDynamax == undefined ? 'True' : 'False',
 				inline: true
-			})
+			}])
 
-			Embed.addFields({
+			Embed.addFields([{
 				name: 'Tier',
 				value: response.tier,
 				inline: true
-			})
+			}])
 
 			return interaction.reply({ embeds: [Embed] })
 		}
@@ -236,7 +236,7 @@ export const command: Command = {
 						.toLowerCase()}, ID: ${response.num}`
 				)
 				.setDescription(response.shortDesc)
-				.addFields(
+				.addFields([
 					{
 						name: 'Type',
 						value: response.type,
@@ -266,7 +266,7 @@ export const command: Command = {
 						name: 'Priority',
 						value: response.priority.toString(),
 						inline: true
-					}
+					}]
 				)
 			return interaction.reply({ embeds: [Embed] })
 		}

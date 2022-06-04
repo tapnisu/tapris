@@ -12,7 +12,7 @@ export const command: Command = {
 				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
 			)
 			.setDescription('Info about guild')
-			.addFields(
+			.addFields([
 				{
 					name: 'Owner',
 					value: `<@!${interaction.guild.ownerId}>`,
@@ -33,7 +33,7 @@ export const command: Command = {
 					value: (interaction.guild.roles.cache.size - 1).toString(),
 					inline: true
 				},
-				{ name: 'ID', value: interaction.guild.id, inline: true }
+				{ name: 'ID', value: interaction.guild.id, inline: true }]
 			)
 
 		return interaction.reply({ embeds: [Embed] })

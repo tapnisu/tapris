@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'lmgtfy',
@@ -18,8 +18,8 @@ export const command: Command = {
 			question.replace(/ /, '+')
 		)}`
 
-		const buttonsRow = new MessageActionRow().addComponents(
-			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
+		const buttonsRow = new ActionRowBuilder().addComponents(
+			[new ButtonBuilder().setURL(link).setLabel('Invite bot').setStyle(ButtonStyle.Link)]
 		)
 
 		const Embed = new EmbedBuilder()

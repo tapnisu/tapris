@@ -40,13 +40,13 @@ export const command: Command = {
 			.setTitle(ship.name)
 			.setURL(`https://azurlane.koumakan.jp/${request}`)
 			.setDescription(ship.rarity)
-			.addFields(
+			.addFields([
 				{ name: 'ID', value: ship.ID, inline: true },
 				{ name: 'Hull', value: ship.hull, inline: true },
 				{ name: 'Navy', value: ship.navy, inline: true },
 				{ name: 'Class', value: ship.class, inline: true },
 				{ name: 'Voice acting', value: ship.voiceActress, inline: true }
-			)
+			])
 
 		return interaction.reply({ embeds: [Embed] })
 	}

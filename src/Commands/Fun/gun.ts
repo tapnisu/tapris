@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -27,11 +27,11 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle('Gun is reloaded!')
 
-			const buttonsRow = new MessageActionRow().addComponents([
-				new MessageButton()
+			const buttonsRow = new ActionRowBuilder().addComponents([
+				new ButtonBuilder()
 					.setCustomId('gun_shoot')
 					.setLabel('Shoot')
-					.setStyle('PRIMARY')
+					.setStyle(ButtonStyle.Primary)
 			])
 
 			return interaction.reply({
@@ -46,11 +46,11 @@ export const command: Command = {
 					.setColor(client.env.BOT_COLOR)
 					.setTitle('Gun is empty! :grinning:')
 
-				const buttonsRow = new MessageActionRow().addComponents([
-					new MessageButton()
+				const buttonsRow = new ActionRowBuilder().addComponents([
+					new ButtonBuilder()
 						.setCustomId('reload_gun')
 						.setLabel('Reload gun')
-						.setStyle('PRIMARY')
+						.setStyle(ButtonStyle.Primary)
 				])
 
 				return interaction.reply({
@@ -61,11 +61,11 @@ export const command: Command = {
 
 			const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR)
 
-			const buttonsRow = new MessageActionRow().addComponents([
-				new MessageButton()
+			const buttonsRow = new ActionRowBuilder().addComponents([
+				new ButtonBuilder()
 					.setCustomId('gun_shoot')
 					.setLabel('Shoot')
-					.setStyle('PRIMARY')
+					.setStyle(ButtonStyle.Primary)
 			])
 
 			if (client.gun.drum[0]) embed.setTitle('You died...')

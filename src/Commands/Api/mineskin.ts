@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
@@ -25,11 +25,11 @@ export const command: Command = {
 
 			const user: AshconResponse = response.data
 
-			const row = new MessageActionRow().addComponents(
-				new MessageButton()
+			const row = new ActionRowBuilder().addComponents(
+				[new ButtonBuilder()
 					.setURL(user.textures.skin.url)
 					.setLabel('Original image')
-					.setStyle('LINK')
+					.setStyle(ButtonStyle.Link)]
 			)
 
 			const Embed = new EmbedBuilder()

@@ -2,9 +2,10 @@ import { Event } from '../Interfaces'
 import {
 	Guild,
 	EmbedBuilder,
-	MessageActionRow,
-	MessageButton,
-	OAuth2Scopes
+	ActionRowBuilder,
+	ButtonBuilder,
+	OAuth2Scopes,
+	ButtonStyle
 } from 'discord.js'
 
 export const event: Event = {
@@ -33,8 +34,8 @@ export const event: Event = {
 			]
 		})
 
-		const buttonsRow = new MessageActionRow().addComponents(
-			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
+		const buttonsRow = new ActionRowBuilder().addComponents(
+			[new ButtonBuilder().setURL(link).setLabel('Invite bot').setStyle(ButtonStyle.Link)]
 		)
 
 		const embed = new EmbedBuilder()

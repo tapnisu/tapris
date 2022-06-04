@@ -48,7 +48,7 @@ export const command: Command = {
 				.setTitle(character.name)
 				.setDescription(character.description)
 				.setThumbnail(`https://api.genshin.dev/characters/${request}/icon.png`)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(character.rarity)),
@@ -93,7 +93,7 @@ export const command: Command = {
 						name: 'Appearance',
 						value: character.version,
 						inline: true
-					}
+					}]
 				)
 				.setImage(
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
@@ -120,7 +120,7 @@ export const command: Command = {
 				.setThumbnail(
 					`https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.icon}.png`
 				)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(weapon.rarity)),
@@ -151,7 +151,7 @@ export const command: Command = {
 						value: weapon.version,
 						inline: true
 					}
-				)
+				])
 				.setImage(
 					`https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
 				)
@@ -183,7 +183,7 @@ export const command: Command = {
 						? `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.flower}.png`
 						: `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.circlet}.png`
 				)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(artifact.rarity)),
@@ -199,7 +199,7 @@ export const command: Command = {
 						value: artifact['4pc'] ? artifact['4pc'] : 'None',
 						inline: true
 					}
-				)
+				])
 
 			if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom)
 

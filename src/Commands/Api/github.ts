@@ -29,7 +29,7 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setURL(userData.html_url)
 				.setThumbnail(userData?.avatar_url)
-				.addFields(
+				.addFields([
 					{ name: 'Type', value: userData?.type, inline: true },
 					{
 						name: 'Public repositories',
@@ -40,7 +40,7 @@ export const command: Command = {
 						name: 'Gists',
 						value: userData.public_gists.toString(),
 						inline: true
-					}
+					}]
 				)
 				.setTimestamp(new Date(userData.created_at))
 
@@ -49,10 +49,10 @@ export const command: Command = {
 				Embed.setTitle(`${userData.name} (${userData.login})`)
 
 			if (userData.bio) Embed.setDescription(userData.bio)
-			if (userData.location) Embed.addField('Location', userData.location, true)
-			if (userData.blog) Embed.addField('Blog', userData.blog, true)
+			if (userData.location) Embed.addFields([{ name: 'Location', value: userData.location, inline: true }])
+			if (userData.blog) Embed.addFields([{ name: 'Blog', value: userData.blog, inline: true }])
 			if (userData.twitter_username)
-				Embed.addField('Twitter', `@${userData.twitter_username}`, true)
+				Embed.addFields([{ name: 'Twitter', value: `@${userData.twitter_username}`, inline: true}])
 
 			return interaction.reply({ embeds: [Embed] })
 		} catch {

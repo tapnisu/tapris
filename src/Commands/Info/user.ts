@@ -21,13 +21,13 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(`${user.tag} ${user.bot ? '[bot]' : ''}`)
 			.setDescription(`Server member: ${interaction.guild.name}`)
-			.setThumbnail(user.displayAvatarURL({ dynamic: true }))
-			.addFields(
+			.setThumbnail(user.displayAvatarURL({ forceStatic: false }))
+			.addFields([
 				{
 					name: 'Channel',
 					value: channelEmbed != null ? `<#${channelEmbed}>` : 'Not in channel'
 				},
-				{ name: 'Id', value: user.id }
+				{ name: 'Id', value: user.id }]
 			)
 			.setTimestamp()
 

@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -29,15 +29,15 @@ export const command: Command = {
 				`${winner.toLocaleLowerCase() == choice ? 'You won!' : 'You lost!'}`
 			)
 
-		const buttonsRow = new MessageActionRow().addComponents([
-			new MessageButton()
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setCustomId(`flip_coin_${choices[0]}`)
 				.setLabel(`Select ${choices[0]}`)
-				.setStyle('PRIMARY'),
-			new MessageButton()
+				.setStyle(ButtonStyle.Primary),
+			new ButtonBuilder()
 				.setCustomId(`flip_coin_${choices[1]}`)
 				.setLabel(`Select ${choices[1]}`)
-				.setStyle('PRIMARY')
+				.setStyle(ButtonStyle.Primary)
 		])
 
 		return interaction.reply({ embeds: [embed], components: [buttonsRow] })

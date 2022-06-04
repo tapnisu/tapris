@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton, EmbedBuilder } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
 import { Button } from '../Interfaces'
 
 export const button: Button = {
@@ -11,11 +11,11 @@ export const button: Button = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Gun is reloaded!')
 
-		const buttonsRow = new MessageActionRow().addComponents([
-			new MessageButton()
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setCustomId('gun_shoot')
 				.setLabel('Shoot')
-				.setStyle('PRIMARY')
+				.setStyle(ButtonStyle.Primary)
 		])
 
 		return interaction.update({

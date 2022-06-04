@@ -43,7 +43,7 @@ export const command: Command = {
 			.setTitle(`Name: ${anime.attributes?.canonicalTitle}`)
 			.setDescription(anime.attributes?.description)
 			.setImage(anime.attributes?.posterImage?.original)
-			.addFields(
+			.addFields([
 				{
 					name: 'Rating',
 					value: anime.attributes?.averageRating,
@@ -77,7 +77,7 @@ export const command: Command = {
 							? anime.attributes?.episodeLength.toString()
 							: 'Unkown',
 					inline: true
-				}
+				}]
 			)
 			.setTimestamp(new Date(anime.attributes?.startDate))
 

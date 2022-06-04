@@ -43,10 +43,6 @@ export const command: Command = {
 						inline: true
 					}
 				])
-				.setFooter(
-					`${interaction.user.username}#${interaction.user.discriminator}`,
-					interaction.user.avatarURL()
-				)
 				.setTimestamp()
 
 			return interaction.reply({ embeds: [Embed] })
