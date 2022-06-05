@@ -55,6 +55,6 @@ export const command: Command = {
 			Embed.setColor(client.env.BOT_COLOR)
 		}
 
-		return interaction.reply({ embeds: [Embed], files: [attachment] })
+		return interaction.followUp({ embeds: [Embed], files: [attachment] })
 	}
 }

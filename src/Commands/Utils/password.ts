@@ -44,7 +44,7 @@ export const command: Command = {
 			.setTitle('Password')
 			.setDescription(password)
 
-		return interaction.reply({
+		return interaction.followUp({
 			embeds: [embed],
 			components: [buttonsRow]
 		})

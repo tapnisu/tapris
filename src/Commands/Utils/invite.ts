@@ -41,6 +41,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Click button to invite')
 
-		return interaction.reply({ embeds: [Embed], components: [row] })
+		return interaction.followUp({ embeds: [Embed], components: [row] })
 	}
 }

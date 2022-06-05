@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const text = interaction.options.getString('text')
+		const text = interaction.options['text']
 
 		const response: AxiosResponse = await axios.get(
 			`https://nekos.life/api/v2/owoify?text=${encodeURI(text)}`
@@ -28,6 +28,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(uwuResponse.owo)
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.followUp({ embeds: [Embed] })
 	}
 }

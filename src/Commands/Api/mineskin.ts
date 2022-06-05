@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from 'discord.js'
+import {ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder} from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'
@@ -40,9 +40,9 @@ export const command: Command = {
 				.setImage(`https://crafatar.com/renders/body/${user.uuid}?overlay`)
 				.setURL(user.textures.skin.url)
 
-			return interaction.reply({ embeds: [Embed], components: [row] })
+			return interaction.followUp({ embeds: [Embed], components: [row] })
 		} catch {
-			return interaction.reply({
+			return interaction.followUp({
 				content: 'User not found :no_entry_sign:',
 				ephemeral: true
 			})

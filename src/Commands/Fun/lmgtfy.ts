@@ -35,6 +35,6 @@ export const command: Command = {
 			.setTitle(question)
 			.setURL(link)
 
-		return interaction.reply({ embeds: [Embed], components: [buttonsRow] })
+		return interaction.followUp({ embeds: [Embed], components: [buttonsRow] })
 	}
 }

@@ -39,7 +39,7 @@ export const command: Command = {
 					.setStyle(ButtonStyle.Primary)
 			])
 
-			return interaction.reply({
+			return interaction.followUp({
 				embeds: [embed],
 				components: [buttonsRow]
 			})
@@ -58,7 +58,7 @@ export const command: Command = {
 						.setStyle(ButtonStyle.Primary)
 				])
 
-				return interaction.reply({
+				return interaction.followUp({
 					embeds: [embed],
 					components: [buttonsRow]
 				})
@@ -74,10 +74,10 @@ export const command: Command = {
 			])
 
 			if (client.gun.drum[0]) embed.setTitle('You died...')
-			if (!client.gun.drum[0]) embed.setTitle('Nothing happend!')
+			if (!client.gun.drum[0]) embed.setTitle('Nothing happened!')
 
 			client.gun.drum.shift()
-			return interaction.reply({ embeds: [embed], components: [buttonsRow] })
+			return interaction.followUp({ embeds: [embed], components: [buttonsRow] })
 		}
 	}
 }

@@ -43,7 +43,7 @@ export const command: Command = {
 				]
 
 			if (!response)
-				return interaction.reply({
+				return interaction.followUp({
 					content: `${request} is not a valid pokemon!`,
 					ephemeral: true
 				})
@@ -221,7 +221,7 @@ export const command: Command = {
 				}
 			])
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		}
 		if (requestType == 'move') {
 			eval(
@@ -238,7 +238,7 @@ export const command: Command = {
 				]
 
 			if (!response)
-				return interaction.reply({
+				return interaction.followUp({
 					content: `${request} is not a valid move!`,
 					ephemeral: true
 				})
@@ -286,7 +286,7 @@ export const command: Command = {
 						inline: true
 					}
 				])
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		}
 
 		if (requestType == 'ability') {
@@ -304,7 +304,7 @@ export const command: Command = {
 				]
 
 			if (!response)
-				return interaction.reply({
+				return interaction.followUp({
 					content: `${request} is not a valid ability!`,
 					ephemeral: true
 				})
@@ -314,7 +314,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.shortDesc)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		}
 
 		if (requestType == 'item') {
@@ -332,7 +332,7 @@ export const command: Command = {
 				]
 
 			if (!response)
-				return interaction.reply({
+				return interaction.followUp({
 					content: `${request} is not a valid item!`,
 					ephemeral: true
 				})
@@ -342,7 +342,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.desc)
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		}
 	}
 }

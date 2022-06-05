@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export const command: Command = {
 	name: 'gcodes',
-	description: 'Codes for genshin impact',
+	description: 'Codes for Genshin Impact',
 	run: async (client, interaction) => {
 		const response: AxiosResponse = await axios.get(
 			'https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json'
@@ -34,6 +34,6 @@ export const command: Command = {
 			}
 		})
 
-		interaction.reply({ embeds: [Embed] })
+		return interaction.followUp({ embeds: [Embed] })
 	}
 }

@@ -64,9 +64,9 @@ export const command: Command = {
 					}
 				])
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		} catch {
-			return interaction.reply({
+			return interaction.followUp({
 				content: 'User not found :no_entry_sign:',
 				ephemeral: true
 			})

@@ -7,7 +7,7 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		client.music.queue[interaction.guildId]?.shift()
 
-		interaction.reply('Skipped :musical_note:')
+		interaction.followUp('Skipped :musical_note:')
 		return play(client, interaction)
 	}
 }

@@ -25,7 +25,7 @@ export const command: Command = {
 		const kitsuResponse: KitsuResponse = response.data as KitsuResponse
 
 		if (kitsuResponse.data.length == 0)
-			return interaction.reply({
+			return interaction.followUp({
 				content: 'Anime not found! :no_entry_sign:',
 				ephemeral: true
 			})
@@ -35,7 +35,7 @@ export const command: Command = {
 		console.log(
 			anime.attributes?.episodeCount != null
 				? anime.attributes?.episodeCount?.toString()
-				: 'Unkown'
+				: 'Unknown'
 		)
 
 		const Embed = new EmbedBuilder()
@@ -54,7 +54,7 @@ export const command: Command = {
 					value:
 						anime.attributes?.ageRatingGuide != null
 							? anime.attributes?.ageRatingGuide?.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				},
 				{
@@ -67,7 +67,7 @@ export const command: Command = {
 					value:
 						anime.attributes?.episodeCount != null
 							? anime.attributes?.episodeCount?.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				},
 				{
@@ -75,12 +75,12 @@ export const command: Command = {
 					value:
 						anime.attributes?.episodeLength != null
 							? anime.attributes?.episodeLength.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				}
 			])
 			.setTimestamp(new Date(anime.attributes?.startDate))
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.followUp({ embeds: [Embed] })
 	}
 }

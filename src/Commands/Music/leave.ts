@@ -7,6 +7,6 @@ export const command: Command = {
 		client.music.queue = []
 		client.music.connection.destroy()
 
-		return interaction.reply('Successfully quit the channel! :door:')
+		return interaction.followUp('Successfully quit the channel! :door:')
 	}
 }

@@ -32,7 +32,7 @@ export const command: Command = {
 				])
 			})
 
-			return interaction.reply({ embeds: [Embed] })
+			return interaction.followUp({ embeds: [Embed] })
 		}
 
 		const Embed = new EmbedBuilder()
@@ -62,6 +62,6 @@ export const command: Command = {
 			])
 		})
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.followUp({ embeds: [Embed] })
 	}
 }

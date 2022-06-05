@@ -12,6 +12,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setImage(await waifuClient.sfw.waifu())
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.followUp({ embeds: [Embed] })
 	}
 }
