@@ -44,6 +44,7 @@
 		"genshin-db": "^4.2.0",
 		"html-to-text": "^8.2.0",
 		"sodium": "^3.0.2",
+		"typeface-jetbrains-mono": "^2.0.1",
 		"utf-8-validate": "^5.0.9",
 		"waifu.js": "^1.0.0",
 		"youtube-sr": "^4.1.17",

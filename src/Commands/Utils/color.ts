@@ -31,11 +31,11 @@ export const command: Command = {
 
 		ctx.fillStyle = colorString
 		ctx.fillRect(0, 0, canvas.width, canvas.height)
-		ctx.font = '50px Fira Code'
+		ctx.font = '50px JetBrains Mono'
 		ctx.fillStyle = '#ffffff'
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 200)
-		ctx.font = '50px Fira Code'
+		ctx.font = '50px JetBrains Mono'
 		ctx.fillStyle = '#000000'
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 350)

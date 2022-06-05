@@ -1822,6 +1822,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-jetbrains-mono@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/typeface-jetbrains-mono/-/typeface-jetbrains-mono-2.0.1.tgz#706c66bd556362443c6686f2472508eb07e10d2a"
+  integrity sha512-r5ehb53K0x7VWFkk35jD1Hpnk09qm26wJM7H+mclj+eXX35IAoDC7x1NDDCKy0kpyvLo7xoEEY3d9Slj1Ar8vQ==
+
 typescript@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
