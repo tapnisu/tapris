@@ -34,9 +34,12 @@ export const event: Event = {
 			]
 		})
 
-		const buttonsRow = new ActionRowBuilder().addComponents(
-			[new ButtonBuilder().setURL(link).setLabel('Invite bot').setStyle(ButtonStyle.Link)]
-		)
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
+				.setURL(link)
+				.setLabel('Invite bot')
+				.setStyle(ButtonStyle.Link)
+		])
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)

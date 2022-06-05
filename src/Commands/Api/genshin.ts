@@ -93,8 +93,8 @@ export const command: Command = {
 						name: 'Appearance',
 						value: character.version,
 						inline: true
-					}]
-				)
+					}
+				])
 				.setImage(
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
 				)

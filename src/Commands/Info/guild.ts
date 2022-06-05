@@ -33,8 +33,8 @@ export const command: Command = {
 					value: (interaction.guild.roles.cache.size - 1).toString(),
 					inline: true
 				},
-				{ name: 'ID', value: interaction.guild.id, inline: true }]
-			)
+				{ name: 'ID', value: interaction.guild.id, inline: true }
+			])
 
 		return interaction.reply({ embeds: [Embed] })
 	}

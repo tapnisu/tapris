@@ -23,11 +23,13 @@ export const command: Command = {
 				.setDescription(command.description)
 
 			command.options.forEach((option) => {
-				Embed.addFields([{
-					name: `${option.name}`,
-					value: option.description ? option.description : 'none',
-					inline: true
-				}])
+				Embed.addFields([
+					{
+						name: `${option.name}`,
+						value: option.description ? option.description : 'none',
+						inline: true
+					}
+				])
 			})
 
 			return interaction.reply({ embeds: [Embed] })
@@ -40,22 +42,24 @@ export const command: Command = {
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
 		client.commands.forEach((command) => {
-			Embed.addFields([{
-				name: `/${command.name} ${
-					command.options
-						? command.options
-							.map(
-								(option) =>
-									`<${option.required ? '' : ''}${option.name} [${
-										option.description
-									}]>`
-							)
-							.join(' ')
-						: ''
-				}`,
-				value: command.description,
-				inline: true
-			}])
+			Embed.addFields([
+				{
+					name: `/${command.name} ${
+						command.options
+							? command.options
+								.map(
+									(option) =>
+										`<${option.required ? '' : ''}${option.name} [${
+											option.description
+										}]>`
+								)
+								.join(' ')
+							: ''
+					}`,
+					value: command.description,
+					inline: true
+				}
+			])
 		})
 
 		return interaction.reply({ embeds: [Embed] })

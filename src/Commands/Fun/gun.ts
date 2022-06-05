@@ -1,4 +1,9 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder
+} from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {

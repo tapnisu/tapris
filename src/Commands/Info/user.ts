@@ -27,8 +27,8 @@ export const command: Command = {
 					name: 'Channel',
 					value: channelEmbed != null ? `<#${channelEmbed}>` : 'Not in channel'
 				},
-				{ name: 'Id', value: user.id }]
-			)
+				{ name: 'Id', value: user.id }
+			])
 			.setTimestamp()
 
 		return interaction.reply({ embeds: [Embed] })

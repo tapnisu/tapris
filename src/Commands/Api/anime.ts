@@ -77,8 +77,8 @@ export const command: Command = {
 							? anime.attributes?.episodeLength.toString()
 							: 'Unkown',
 					inline: true
-				}]
-			)
+				}
+			])
 			.setTimestamp(new Date(anime.attributes?.startDate))
 
 		return interaction.reply({ embeds: [Embed] })

@@ -25,12 +25,12 @@ export const command: Command = {
 
 			const user: AshconResponse = response.data
 
-			const row = new ActionRowBuilder().addComponents(
-				[new ButtonBuilder()
+			const row = new ActionRowBuilder().addComponents([
+				new ButtonBuilder()
 					.setURL(user.textures.skin.url)
 					.setLabel('Original image')
-					.setStyle(ButtonStyle.Link)]
-			)
+					.setStyle(ButtonStyle.Link)
+			])
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)

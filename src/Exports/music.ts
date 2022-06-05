@@ -66,8 +66,8 @@ export const play = async (client, interaction: CommandInteraction) => {
 				name: 'Length',
 				value: timeString,
 				inline: true
-			}]
-		)
+			}
+		])
 		.setImage(info.videoDetails.thumbnails.at(-1).url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 

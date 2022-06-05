@@ -1,5 +1,10 @@
 import { Command } from '../../Interfaces'
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder
+} from 'discord.js'
 
 export const command: Command = {
 	name: 'avatar',
@@ -29,8 +34,8 @@ export const command: Command = {
 			new ButtonBuilder()
 				.setURL(avatarUrl)
 				.setLabel('Link to avatar')
-				.setStyle(ButtonStyle.Link)]
-		)
+				.setStyle(ButtonStyle.Link)
+		])
 
 		return interaction.reply({ embeds: [Embed], components: [row] })
 	}

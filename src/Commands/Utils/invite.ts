@@ -1,5 +1,11 @@
 import { Command } from '../../Interfaces'
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, OAuth2Scopes } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder,
+	OAuth2Scopes
+} from 'discord.js'
 
 export const command: Command = {
 	name: 'invite',
@@ -24,9 +30,12 @@ export const command: Command = {
 			]
 		})
 
-		const row = new ActionRowBuilder().addComponents(
-			[new ButtonBuilder().setURL(link).setLabel('Invite bot').setStyle(ButtonStyle.Link)]
-		)
+		const row = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
+				.setURL(link)
+				.setLabel('Invite bot')
+				.setStyle(ButtonStyle.Link)
+		])
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)

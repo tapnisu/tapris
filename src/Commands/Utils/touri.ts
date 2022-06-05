@@ -18,7 +18,7 @@ export const command: Command = {
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(encodeURI(text))
-			.addFields([{name: 'Original text', value: text, inline: true}])
+			.addFields([{ name: 'Original text', value: text, inline: true }])
 
 		return interaction.reply({ embeds: [Embed] })
 	}

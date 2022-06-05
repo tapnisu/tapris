@@ -40,8 +40,8 @@ export const command: Command = {
 						name: 'Gists',
 						value: userData.public_gists.toString(),
 						inline: true
-					}]
-				)
+					}
+				])
 				.setTimestamp(new Date(userData.created_at))
 
 			if (userData.name == null) Embed.setTitle(userData.login)
@@ -49,10 +49,20 @@ export const command: Command = {
 				Embed.setTitle(`${userData.name} (${userData.login})`)
 
 			if (userData.bio) Embed.setDescription(userData.bio)
-			if (userData.location) Embed.addFields([{ name: 'Location', value: userData.location, inline: true }])
-			if (userData.blog) Embed.addFields([{ name: 'Blog', value: userData.blog, inline: true }])
+			if (userData.location)
+				Embed.addFields([
+					{ name: 'Location', value: userData.location, inline: true }
+				])
+			if (userData.blog)
+				Embed.addFields([{ name: 'Blog', value: userData.blog, inline: true }])
 			if (userData.twitter_username)
-				Embed.addFields([{ name: 'Twitter', value: `@${userData.twitter_username}`, inline: true}])
+				Embed.addFields([
+					{
+						name: 'Twitter',
+						value: `@${userData.twitter_username}`,
+						inline: true
+					}
+				])
 
 			return interaction.reply({ embeds: [Embed] })
 		} catch {

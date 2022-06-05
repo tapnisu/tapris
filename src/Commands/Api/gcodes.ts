@@ -28,7 +28,9 @@ export const command: Command = {
 					rewards = [...rewards, `${reward.name}: ${reward.count}`]
 				})
 
-				Embed.addFields([{ name: code.code, value: rewards.join('\n'), inline: true}])
+				Embed.addFields([
+					{ name: code.code, value: rewards.join('\n'), inline: true }
+				])
 			}
 		})
 

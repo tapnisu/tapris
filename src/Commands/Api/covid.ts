@@ -73,8 +73,8 @@ export const command: Command = {
 					name: 'Total recovered',
 					value: data.TotalRecovered.toString(),
 					inline: true
-				}]
-			)
+				}
+			])
 			.setTimestamp(new Date(data.Date))
 
 		return interaction.reply({ embeds: [Embed] })
