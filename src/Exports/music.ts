@@ -16,9 +16,9 @@ export const play = async (client, interaction: CommandInteraction) => {
 		!client.music.queue[interaction.guildId] ||
 		client.music.queue[interaction.guildId].length == 0
 	)
-		return interaction.channel.send('Queue is empty :no_entry_sign:')
+		return interaction.editReply('Queue is empty :no_entry_sign:')
 	if (!member.voice.channel)
-		return interaction.channel.send('You are not in channel :no_entry_sign:')
+		return interaction.editReply('You are not in channel :no_entry_sign:')
 
 	client.music.connection = joinVoiceChannel({
 		channelId: member.voice.channel.id,
@@ -71,7 +71,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 		.setImage(info.videoDetails.thumbnails.at(-1).url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 
-	interaction.channel.send({ embeds: [Embed] })
+	await interaction.editReply({embeds: [Embed]})
 
 	player.play(resource)
 	client.music.connection.subscribe(player)
@@ -83,6 +83,6 @@ export const play = async (client, interaction: CommandInteraction) => {
 	})
 
 	player.on('error', () => {
-		interaction.channel.send('Unkown error happend! :interrobang:')
+		interaction.editReply('Unknown error happened! :interrobang:')
 	})
 }
