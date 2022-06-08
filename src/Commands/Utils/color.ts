@@ -14,7 +14,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		let colorString = interaction.options.getString('color')
+		let colorString: string = interaction.options['color']
 
 		if (!colorString) {
 			const hexCharset = 'ABCDEF0123456789'

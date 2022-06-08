@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const request = interaction.options.getString('name')
+		const request: string = interaction.options['name']
 
 		const response: AxiosResponse = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(request)}`

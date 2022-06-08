@@ -17,7 +17,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const request = encodeURI(
-			interaction.options.getString('name').toLowerCase()
+			interaction.options['name'].toLowerCase()
 		)
 
 		let response: AxiosResponse

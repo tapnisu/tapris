@@ -22,7 +22,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const command = interaction.options.getString('command')
+		const command: string = interaction.options['command']
 
 		if (command == 'reload') {
 			client.gun.drum = [false, false, false, false, false, false]

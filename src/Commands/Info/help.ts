@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const request = interaction.options.getString('command')
+		const request: string = interaction.options['command']
 		const command = client.commands.get(request)
 
 		if (command) {

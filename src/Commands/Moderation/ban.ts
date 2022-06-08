@@ -1,3 +1,4 @@
+import { User } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -24,9 +25,9 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const member = interaction.options.getUser('user')
-		const reason = interaction.options.getString('reason')
-		const days = interaction.options.getInteger('days')
+		const member: User = interaction.options['user']
+		const reason: string = interaction.options['reason']
+		const days: number = interaction.options['days']
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (

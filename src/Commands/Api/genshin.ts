@@ -25,10 +25,9 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const requestType = interaction.options.getString('type')
-		const request = encodeURI(
-			interaction.options
-				.getString('name')
+		const requestType: string = interaction.options['type']
+		const request: string = encodeURI(
+			interaction.options['name']
 				.split(' ')
 				.join('')
 				.toLocaleLowerCase()

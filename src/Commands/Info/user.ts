@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { EmbedBuilder } from 'discord.js'
+import { EmbedBuilder, User } from 'discord.js'
 
 export const command: Command = {
 	name: 'user',
@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user = interaction.options.getUser('user')
+		const user: User = interaction.options['user']
 		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
 			.voice.channel?.id
 

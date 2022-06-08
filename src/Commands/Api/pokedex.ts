@@ -27,8 +27,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const requestType = interaction.options.getString('type')
-		const request = interaction.options.getString('name')
+		const requestType: string = interaction.options['type']
+		const request: string = interaction.options['name']
 
 		if (requestType == 'pokemon') {
 			let response: any = await axios.get(

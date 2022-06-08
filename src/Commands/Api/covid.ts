@@ -25,7 +25,7 @@ export const command: Command = {
 
 		// Make request valid via translate
 		const request = (
-			await translate(interaction.options.getString('country'), { to: 'en' })
+			await translate(interaction.options['country'], { to: 'en' })
 		).text
 			.split(' ')
 			.join('-')

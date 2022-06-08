@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const amount = interaction.options.getInteger('amount')
+		const amount: number = interaction.options['amount']
 		const channel = interaction.channel as TextChannel
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 

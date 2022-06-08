@@ -3,7 +3,8 @@ import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-	EmbedBuilder
+	EmbedBuilder,
+	User
 } from 'discord.js'
 
 export const command: Command = {
@@ -18,7 +19,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user = interaction.options.getUser('user')
+		const user: User = interaction.options['user']
 
 		const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false })
 

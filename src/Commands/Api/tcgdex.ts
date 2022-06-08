@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const name = interaction.options.getString('name')
+		const name: string = interaction.options['name']
 
 		try {
 			let response: AxiosResponse = await axios.get(

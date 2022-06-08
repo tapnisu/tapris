@@ -20,8 +20,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const language = interaction.options.getString('language')
-		const text = interaction.options.getString('text')
+		const language: string = interaction.options['language']
+		const text: string = interaction.options['text']
 
 		try {
 			const response = await translate(text, { to: language })

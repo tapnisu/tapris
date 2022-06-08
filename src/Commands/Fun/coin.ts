@@ -23,7 +23,7 @@ export const command: Command = {
 		}
 	],
 	run: (client, interaction) => {
-		const choice = interaction.options.getString('choice')
+		const choice: string = interaction.options['choice']
 		const embed = new CoinEmbedBuilder(
 			flipCoin(choices),
 			choice,

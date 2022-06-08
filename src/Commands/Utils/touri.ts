@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const text = interaction.options.getString('text')
+		const text: string = interaction.options['text']
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
