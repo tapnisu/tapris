@@ -1,18 +1,18 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'guild',
 	description: 'Get info about guild',
 	run: async (client, interaction) => {
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(interaction.guild.name)
 			.setThumbnail(
 				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
 			)
 			.setDescription('Info about guild')
-			.addFields(
+			.addFields([
 				{
 					name: 'Owner',
 					value: `<@!${interaction.guild.ownerId}>`,
@@ -34,7 +34,7 @@ export const command: Command = {
 					inline: true
 				},
 				{ name: 'ID', value: interaction.guild.id, inline: true }
-			)
+			])
 
 		return interaction.reply({ embeds: [Embed] })
 	}

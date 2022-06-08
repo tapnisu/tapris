@@ -1,9 +1,11 @@
 import { Event } from '../Interfaces'
 import {
 	Guild,
-	MessageEmbed,
-	MessageActionRow,
-	MessageButton
+	EmbedBuilder,
+	ActionRowBuilder,
+	ButtonBuilder,
+	OAuth2Scopes,
+	ButtonStyle
 } from 'discord.js'
 
 export const event: Event = {
@@ -13,33 +15,36 @@ export const event: Event = {
 
 		if (!guild.systemChannel) return
 
-		const link: string = await client.generateInvite({
-			scopes: ['bot', 'applications.commands'],
+		const link: string = client.generateInvite({
+			scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
 			permissions: [
-				'KICK_MEMBERS',
-				'BAN_MEMBERS',
-				'PRIORITY_SPEAKER',
-				'VIEW_CHANNEL',
-				'SEND_MESSAGES',
-				'MANAGE_MESSAGES',
-				'ATTACH_FILES',
-				'READ_MESSAGE_HISTORY',
-				'CONNECT',
-				'SPEAK',
-				'USE_APPLICATION_COMMANDS',
-				'MANAGE_THREADS',
-				'SEND_MESSAGES_IN_THREADS'
+				'KickMembers',
+				'BanMembers',
+				'PrioritySpeaker',
+				'ViewChannel',
+				'SendMessages',
+				'ManageMessages',
+				'AttachFiles',
+				'ReadMessageHistory',
+				'Connect',
+				'Speak',
+				'UseApplicationCommands',
+				'ManageThreads',
+				'SendMessagesInThreads'
 			]
 		})
 
-		const buttonsRow = new MessageActionRow().addComponents(
-			new MessageButton().setURL(link).setLabel('Invite bot').setStyle('LINK')
-		)
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
+				.setURL(link)
+				.setLabel('Invite bot')
+				.setStyle(ButtonStyle.Link)
+		])
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
-			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
 			.setDescription(client.locales.guildCreate.description)
 
 		return guild.systemChannel.send({

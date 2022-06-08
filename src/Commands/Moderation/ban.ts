@@ -1,3 +1,4 @@
+import { User } from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -15,23 +16,16 @@ export const command: Command = {
 			description: 'Reason to be shown',
 			type: 3,
 			required: false
-		},
-		{
-			name: 'days',
-			description: 'Time for ban in days',
-			type: 4,
-			required: false
 		}
 	],
 	run: async (client, interaction) => {
-		const member = interaction.options.getUser('user')
-		const reason = interaction.options.getString('reason')
-		const days = interaction.options.getInteger('days')
+		const member: User = interaction.options['user']
+		const reason: string = interaction.options['reason']
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (
-			!userMember.permissions.has('ADMINISTRATOR') ||
-			!userMember.permissions.has('BAN_MEMBERS')
+			!userMember.permissions.has('Administrator') ||
+			!userMember.permissions.has('BanMembers')
 		)
 			return interaction.reply({
 				content: 'You can`t ban members :no_entry_sign:',
@@ -52,7 +46,7 @@ export const command: Command = {
 			})
 
 		target
-			.ban({ reason: reason ? reason : null, days: days ? days : null })
+			.ban({ reason: reason ? reason : null })
 			.then(() => {
 				return interaction.reply(`<@!${member.id}> was banned :door:`)
 			})

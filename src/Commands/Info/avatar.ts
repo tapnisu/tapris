@@ -1,5 +1,11 @@
 import { Command } from '../../Interfaces'
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder,
+	User
+} from 'discord.js'
 
 export const command: Command = {
 	name: 'avatar',
@@ -13,11 +19,11 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user = interaction.options.getUser('user')
+		const user: User = interaction.options['user']
 
-		const avatarUrl = user.displayAvatarURL({ size: 4096, dynamic: true })
+		const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false })
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setAuthor({
 				iconURL: avatarUrl,
@@ -25,12 +31,12 @@ export const command: Command = {
 			})
 			.setImage(avatarUrl)
 
-		const row = new MessageActionRow().addComponents(
-			new MessageButton()
+		const row = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setURL(avatarUrl)
 				.setLabel('Link to avatar')
-				.setStyle('LINK')
-		)
+				.setStyle(ButtonStyle.Link)
+		])
 
 		return interaction.reply({ embeds: [Embed], components: [row] })
 	}

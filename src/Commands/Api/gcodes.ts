@@ -1,12 +1,12 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Code } from '../../Interfaces/GIPN'
 import axios from 'axios'
 
 export const command: Command = {
 	name: 'gcodes',
-	description: 'Codes for genshin impact',
+	description: 'Codes for Genshin Impact',
 	run: async (client, interaction) => {
 		const response: AxiosResponse = await axios.get(
 			'https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json'
@@ -14,7 +14,7 @@ export const command: Command = {
 
 		const codes: Code[] = response.data.CODES
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Genshin codes')
 			.setDescription('You can activate them in game, and get rewards!')
@@ -28,10 +28,12 @@ export const command: Command = {
 					rewards = [...rewards, `${reward.name}: ${reward.count}`]
 				})
 
-				Embed.addField(code.code, rewards.join('\n'), true)
+				Embed.addFields([
+					{ name: code.code, value: rewards.join('\n'), inline: true }
+				])
 			}
 		})
 
-		interaction.reply({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

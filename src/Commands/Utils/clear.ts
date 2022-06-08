@@ -13,11 +13,11 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const amount = interaction.options.getInteger('amount')
+		const amount: number = interaction.options['amount']
 		const channel = interaction.channel as TextChannel
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
-		if (!userMember.permissions.has('MANAGE_MESSAGES'))
+		if (!userMember.permissions.has('ManageMessages'))
 			return interaction.reply({
 				content: 'You can`t delete messages :no_entry_sign:',
 				ephemeral: true

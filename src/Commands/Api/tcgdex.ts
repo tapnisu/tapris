@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { Datum, PokemontcgResponse } from '../../Interfaces/Pokemontcg'
 import axios from 'axios'
@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const name = interaction.options.getString('name')
+		const name: string = interaction.options['name']
 
 		try {
 			let response: AxiosResponse = await axios.get(
@@ -27,7 +27,7 @@ export const command: Command = {
 
 			const data: Datum = response.data[0]
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`${data.supertype}: ${data.name}`)
 				.setDescription(`${data.set.series}: ${data.set.name}`)

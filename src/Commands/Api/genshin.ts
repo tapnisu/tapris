@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import genshindb from 'genshin-db'
 
 export const command: Command = {
@@ -25,10 +25,9 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const requestType = interaction.options.getString('type')
-		const request = encodeURI(
-			interaction.options
-				.getString('name')
+		const requestType: string = interaction.options['type']
+		const request: string = encodeURI(
+			interaction.options['name']
 				.split(' ')
 				.join('')
 				.toLocaleLowerCase()
@@ -43,12 +42,12 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(character.name)
 				.setDescription(character.description)
 				.setThumbnail(`https://api.genshin.dev/characters/${request}/icon.png`)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(character.rarity)),
@@ -94,7 +93,7 @@ export const command: Command = {
 						value: character.version,
 						inline: true
 					}
-				)
+				])
 				.setImage(
 					`https://api.genshin.dev/characters/${request}/gacha-splash.png`
 				)
@@ -113,14 +112,14 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(weapon.name)
 				.setDescription(weapon.effect)
 				.setThumbnail(
 					`https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.icon}.png`
 				)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(weapon.rarity)),
@@ -151,7 +150,7 @@ export const command: Command = {
 						value: weapon.version,
 						inline: true
 					}
-				)
+				])
 				.setImage(
 					`https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
 				)
@@ -170,7 +169,7 @@ export const command: Command = {
 					ephemeral: true
 				})
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(artifact.name)
 				.setDescription(
@@ -183,7 +182,7 @@ export const command: Command = {
 						? `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.flower}.png`
 						: `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.circlet}.png`
 				)
-				.addFields(
+				.addFields([
 					{
 						name: 'Rarity',
 						value: ':star:'.repeat(Number(artifact.rarity)),
@@ -199,7 +198,7 @@ export const command: Command = {
 						value: artifact['4pc'] ? artifact['4pc'] : 'None',
 						inline: true
 					}
-				)
+				])
 
 			if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom)
 

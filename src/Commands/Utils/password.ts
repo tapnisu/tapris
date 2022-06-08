@@ -1,4 +1,9 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder
+} from 'discord.js'
 import { Command } from '../../Interfaces'
 
 export const command: Command = {
@@ -17,24 +22,24 @@ export const command: Command = {
 			'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 		let password = ''
 
-		const passwordLength = interaction.options.getInteger('length')
+		const passwordLength: number = interaction.options['length']
 
 		for (let i = 0, n = charset.length; i < passwordLength; ++i) {
 			password += charset.charAt(Math.floor(Math.random() * n))
 		}
 
-		const buttonsRow = new MessageActionRow().addComponents([
-			new MessageButton()
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setCustomId(`password_${passwordLength}`)
 				.setLabel('Create new')
-				.setStyle('PRIMARY'),
-			new MessageButton()
+				.setStyle(ButtonStyle.Primary),
+			new ButtonBuilder()
 				.setCustomId('delete_message')
 				.setLabel('Delete')
-				.setStyle('DANGER')
+				.setStyle(ButtonStyle.Danger)
 		])
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle('Password')
 			.setDescription(password)

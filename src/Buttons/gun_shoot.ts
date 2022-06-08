@@ -1,19 +1,24 @@
-import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder
+} from 'discord.js'
 import { Button } from '../Interfaces'
 
 export const button: Button = {
 	customId: /gun_shoot/,
 	run: async (client, interaction) => {
 		if (client.gun.drum.length == 0) {
-			const embed = new MessageEmbed()
+			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle('Gun is empty! :grinning:')
 
-			const buttonsRow = new MessageActionRow().addComponents([
-				new MessageButton()
+			const buttonsRow = new ActionRowBuilder().addComponents([
+				new ButtonBuilder()
 					.setCustomId('reload_gun')
 					.setLabel('Reload gun')
-					.setStyle('PRIMARY')
+					.setStyle(ButtonStyle.Primary)
 			])
 
 			return interaction.update({
@@ -22,13 +27,13 @@ export const button: Button = {
 			})
 		}
 
-		const embed = new MessageEmbed().setColor(client.env.BOT_COLOR)
+		const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR)
 
-		const buttonsRow = new MessageActionRow().addComponents([
-			new MessageButton()
+		const buttonsRow = new ActionRowBuilder().addComponents([
+			new ButtonBuilder()
 				.setCustomId('gun_shoot')
 				.setLabel('Shoot')
-				.setStyle('PRIMARY')
+				.setStyle(ButtonStyle.Primary)
 		])
 
 		if (client.gun.drum[0]) embed.setTitle('You died...')

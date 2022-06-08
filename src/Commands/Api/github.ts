@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { GithubResponse } from '../../Interfaces/Github'
 import axios from 'axios'
@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user = interaction.options.getString('user')
+		const user: string = interaction.options['user']
 
 		try {
 			const response: AxiosResponse = await axios.get(
@@ -25,11 +25,11 @@ export const command: Command = {
 
 			const userData: GithubResponse = response.data
 
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setURL(userData.html_url)
 				.setThumbnail(userData?.avatar_url)
-				.addFields(
+				.addFields([
 					{ name: 'Type', value: userData?.type, inline: true },
 					{
 						name: 'Public repositories',
@@ -41,7 +41,7 @@ export const command: Command = {
 						value: userData.public_gists.toString(),
 						inline: true
 					}
-				)
+				])
 				.setTimestamp(new Date(userData.created_at))
 
 			if (userData.name == null) Embed.setTitle(userData.login)
@@ -49,10 +49,20 @@ export const command: Command = {
 				Embed.setTitle(`${userData.name} (${userData.login})`)
 
 			if (userData.bio) Embed.setDescription(userData.bio)
-			if (userData.location) Embed.addField('Location', userData.location, true)
-			if (userData.blog) Embed.addField('Blog', userData.blog, true)
+			if (userData.location)
+				Embed.addFields([
+					{ name: 'Location', value: userData.location, inline: true }
+				])
+			if (userData.blog)
+				Embed.addFields([{ name: 'Blog', value: userData.blog, inline: true }])
 			if (userData.twitter_username)
-				Embed.addField('Twitter', `@${userData.twitter_username}`, true)
+				Embed.addFields([
+					{
+						name: 'Twitter',
+						value: `@${userData.twitter_username}`,
+						inline: true
+					}
+				])
 
 			return interaction.reply({ embeds: [Embed] })
 		} catch {

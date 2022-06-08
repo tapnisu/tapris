@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { KitsuResponseItem, KitsuResponse } from '../../Interfaces/Kitsu'
 import axios from 'axios'
@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const request = interaction.options.getString('name')
+		const request: string = interaction.options['name']
 
 		const response: AxiosResponse = await axios.get(
 			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(request)}`
@@ -35,15 +35,15 @@ export const command: Command = {
 		console.log(
 			anime.attributes?.episodeCount != null
 				? anime.attributes?.episodeCount?.toString()
-				: 'Unkown'
+				: 'Unknown'
 		)
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(`Name: ${anime.attributes?.canonicalTitle}`)
 			.setDescription(anime.attributes?.description)
 			.setImage(anime.attributes?.posterImage?.original)
-			.addFields(
+			.addFields([
 				{
 					name: 'Rating',
 					value: anime.attributes?.averageRating,
@@ -54,7 +54,7 @@ export const command: Command = {
 					value:
 						anime.attributes?.ageRatingGuide != null
 							? anime.attributes?.ageRatingGuide?.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				},
 				{
@@ -67,7 +67,7 @@ export const command: Command = {
 					value:
 						anime.attributes?.episodeCount != null
 							? anime.attributes?.episodeCount?.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				},
 				{
@@ -75,10 +75,10 @@ export const command: Command = {
 					value:
 						anime.attributes?.episodeLength != null
 							? anime.attributes?.episodeLength.toString()
-							: 'Unkown',
+							: 'Unknown',
 					inline: true
 				}
-			)
+			])
 			.setTimestamp(new Date(anime.attributes?.startDate))
 
 		return interaction.reply({ embeds: [Embed] })

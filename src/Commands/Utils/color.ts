@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, MessageAttachment, MessageEmbed } from 'discord.js'
+import { ColorResolvable, Attachment, EmbedBuilder } from 'discord.js'
 import { createCanvas } from 'canvas'
 
 export const command: Command = {
@@ -14,7 +14,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		let colorString = interaction.options.getString('color')
+		let colorString: string = interaction.options['color']
 
 		if (!colorString) {
 			const hexCharset = 'ABCDEF0123456789'
@@ -40,12 +40,12 @@ export const command: Command = {
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 350)
 
-		const attachment: MessageAttachment = new MessageAttachment(
+		const attachment: Attachment = new Attachment(
 			canvas.toBuffer(),
 			'ColorHexSend.png'
 		)
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setTitle(colorString)
 			.setImage('attachment://ColorHexSend.png')
 

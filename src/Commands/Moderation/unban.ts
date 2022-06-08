@@ -13,11 +13,11 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
-		const userId = String(interaction.options.getInteger('id'))
+		const userId = String(interaction.options['id'])
 
 		if (
-			!userMember.permissions.has('ADMINISTRATOR') ||
-			!userMember.permissions.has('BAN_MEMBERS')
+			!userMember.permissions.has('Administrator') ||
+			!userMember.permissions.has('BanMembers')
 		)
 			return interaction.reply({
 				content: 'You can`t unban members! :no_entry_sign:',

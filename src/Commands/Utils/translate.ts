@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import translate from '@iamtraction/google-translate'
 
 export const command: Command = {
@@ -20,14 +20,14 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const language = interaction.options.getString('language')
-		const text = interaction.options.getString('text')
+		const language: string = interaction.options['language']
+		const text: string = interaction.options['text']
 
 		try {
 			const response = await translate(text, { to: language })
 
 			// Send result
-			const Embed = new MessageEmbed()
+			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Text in ${language}`)
 				.setDescription(response.text)
@@ -43,10 +43,6 @@ export const command: Command = {
 						inline: true
 					}
 				])
-				.setFooter(
-					`${interaction.user.username}#${interaction.user.discriminator}`,
-					interaction.user.avatarURL()
-				)
 				.setTimestamp()
 
 			return interaction.reply({ embeds: [Embed] })

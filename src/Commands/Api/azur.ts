@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { MessageEmbed } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AzurResponse } from '../../Interfaces/Azur'
 import axios from 'axios'
@@ -17,7 +17,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const request = encodeURI(
-			interaction.options.getString('name').toLowerCase()
+			interaction.options['name'].toLowerCase()
 		)
 
 		let response: AxiosResponse
@@ -35,18 +35,18 @@ export const command: Command = {
 
 		const ship: AzurResponse = response.data as AzurResponse
 
-		const Embed = new MessageEmbed()
+		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(ship.name)
 			.setURL(`https://azurlane.koumakan.jp/${request}`)
 			.setDescription(ship.rarity)
-			.addFields(
+			.addFields([
 				{ name: 'ID', value: ship.ID, inline: true },
 				{ name: 'Hull', value: ship.hull, inline: true },
 				{ name: 'Navy', value: ship.navy, inline: true },
 				{ name: 'Class', value: ship.class, inline: true },
 				{ name: 'Voice acting', value: ship.voiceActress, inline: true }
-			)
+			])
 
 		return interaction.reply({ embeds: [Embed] })
 	}
