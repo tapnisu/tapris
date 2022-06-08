@@ -32,6 +32,6 @@ export const command: Command = {
 		)
 		const buttonsRow = new CoinButtonsRowBuilder(choices)
 
-		return interaction.followUp({ embeds: [embed], components: [buttonsRow] })
+		return interaction.reply({ embeds: [embed], components: [buttonsRow] })
 	}
 }

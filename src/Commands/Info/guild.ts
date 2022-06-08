@@ -36,6 +36,6 @@ export const command: Command = {
 				{ name: 'ID', value: interaction.guild.id, inline: true }
 			])
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

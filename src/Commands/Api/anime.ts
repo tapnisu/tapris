@@ -25,7 +25,7 @@ export const command: Command = {
 		const kitsuResponse: KitsuResponse = response.data as KitsuResponse
 
 		if (kitsuResponse.data.length == 0)
-			return interaction.followUp({
+			return interaction.reply({
 				content: 'Anime not found! :no_entry_sign:',
 				ephemeral: true
 			})
@@ -81,6 +81,6 @@ export const command: Command = {
 			])
 			.setTimestamp(new Date(anime.attributes?.startDate))
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

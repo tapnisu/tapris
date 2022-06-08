@@ -6,7 +6,12 @@ export const event: Event = {
 	run: (client, interaction: Interaction) => {
 		if (interaction.isCommand()) {
 			const command = client.commands.get(interaction.commandName)
-			if (command) (command as Command).run(client, interaction)
+			if (command)
+			{
+				interaction.deferReply()
+
+				;(command as Command).run(client, interaction)
+			} 
 
 			return
 		}

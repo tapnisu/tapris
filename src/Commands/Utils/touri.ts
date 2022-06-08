@@ -20,6 +20,6 @@ export const command: Command = {
 			.setTitle(encodeURI(text))
 			.addFields([{ name: 'Original text', value: text, inline: true }])
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

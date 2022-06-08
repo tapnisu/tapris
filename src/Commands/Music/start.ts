@@ -5,7 +5,7 @@ export const command: Command = {
 	name: 'start',
 	description: 'Play music from the queue',
 	run: async (client, interaction) => {
-		interaction.followUp('Starting...')
+		interaction.reply('Starting...')
 
 		return play(client, interaction)
 	}

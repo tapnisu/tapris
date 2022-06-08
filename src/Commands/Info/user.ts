@@ -31,6 +31,6 @@ export const command: Command = {
 			])
 			.setTimestamp()
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

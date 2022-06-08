@@ -19,6 +19,6 @@ export const command: Command = {
 			.setTitle(response8ball.response)
 			.setImage(response8ball.url)
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

@@ -38,14 +38,14 @@ export const command: Command = {
 					...client.music.queue[interaction.guildId],
 					request
 				]
-			else return interaction.followUp('Url is invalid! :no_entry_sign:')
+			else return interaction.reply('Url is invalid! :no_entry_sign:')
 		}
 
 		if (type == 'video-title') {
 			const result = await youtubeSr.search(request, { limit: 1 })
 
 			if (result.length == 0)
-				return interaction.followUp('Music not found! :no_entry_sign:')
+				return interaction.reply('Music not found! :no_entry_sign:')
 
 			client.music.queue[interaction.guildId] = [
 				...client.music.queue[interaction.guildId],
@@ -62,10 +62,10 @@ export const command: Command = {
 					)
 				]
 			} catch {
-				return interaction.followUp('Playlist not found! :no_entry_sign:')
+				return interaction.reply('Playlist not found! :no_entry_sign:')
 			}
 		}
 
-		return interaction.followUp('Added to queue :musical_note:')
+		return interaction.reply('Added to queue :musical_note:')
 	}
 }

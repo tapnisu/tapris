@@ -30,6 +30,6 @@ export const command: Command = {
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url)
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

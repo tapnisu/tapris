@@ -18,18 +18,18 @@ export const command: Command = {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (!userMember.permissions.has('ManageMessages'))
-			return interaction.followUp({
+			return interaction.reply({
 				content: 'You can`t delete messages :no_entry_sign:',
 				ephemeral: true
 			})
 		if (amount > 100)
-			return interaction.followUp({
+			return interaction.reply({
 				content:
 					'You cannot delete more than 100 posts at a time :no_entry_sign:',
 				ephemeral: true
 			})
 		if (amount < 1)
-			return interaction.followUp({
+			return interaction.reply({
 				content: 'You must enter a number greater than 1 :no_entry_sign:',
 				ephemeral: true
 			})
@@ -37,14 +37,14 @@ export const command: Command = {
 		channel
 			.bulkDelete(amount, true)
 			.catch(() =>
-				interaction.followUp({
+				interaction.reply({
 					content:
 						'You cannot delete messages older than 14 days :no_entry_sign:',
 					ephemeral: true
 				})
 			)
 			.then(() =>
-				interaction.followUp({
+				interaction.reply({
 					content: `Deleted ${amount} messages :wastebasket:`,
 					ephemeral: true
 				})

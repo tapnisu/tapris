@@ -45,9 +45,9 @@ export const command: Command = {
 				])
 				.setTimestamp()
 
-			return interaction.followUp({ embeds: [Embed] })
+			return interaction.reply({ embeds: [Embed] })
 		} catch {
-			return interaction.followUp({
+			return interaction.reply({
 				content: 'Error, language is not valid :no_entry_sign:',
 				ephemeral: true
 			})

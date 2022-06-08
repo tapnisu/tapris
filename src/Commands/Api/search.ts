@@ -25,7 +25,7 @@ export const command: Command = {
 		const responseData: DuckduckgoResponse = response.data
 
 		if (!responseData.Results[0])
-			return interaction.followUp({
+			return interaction.reply({
 				content: 'Can`t find results! :no_entry_sign:',
 				ephemeral: true
 			})
@@ -35,6 +35,6 @@ export const command: Command = {
 			.setTitle(responseData.Results[0].FirstURL)
 			.setURL(responseData.Results[0].FirstURL)
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }

@@ -17,6 +17,6 @@ export const command: Command = {
 
 		const response: string = convert(text, { wordwrap: 130 })
 
-		return interaction.followUp(response)
+		return interaction.reply(response)
 	}
 }

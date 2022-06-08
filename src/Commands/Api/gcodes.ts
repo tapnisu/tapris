@@ -34,6 +34,6 @@ export const command: Command = {
 			}
 		})
 
-		return interaction.followUp({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] })
 	}
 }
