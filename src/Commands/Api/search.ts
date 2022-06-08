@@ -11,7 +11,7 @@ export const command: Command = {
 		{
 			name: 'text',
 			description: 'Text to be searched',
-			type: 'STRING',
+			type: 3,
 			required: true
 		}
 	],
