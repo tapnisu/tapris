@@ -16,7 +16,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const text:string = interaction.options['text']
+		const text: string = interaction.options['text']
 
 		const response: AxiosResponse = await axios.get(
 			`https://nekos.life/api/v2/owoify?text=${encodeURI(text)}`

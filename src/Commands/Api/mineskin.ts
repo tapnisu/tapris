@@ -1,5 +1,10 @@
 import { Command } from '../../Interfaces'
-import {ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder} from 'discord.js'
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder
+} from 'discord.js'
 import { AxiosResponse } from '../../Interfaces/Axios'
 import { AshconResponse } from '../../Interfaces/Ashcon'
 import axios from 'axios'

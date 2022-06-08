@@ -71,7 +71,7 @@ export const play = async (client, interaction: CommandInteraction) => {
 		.setImage(info.videoDetails.thumbnails.at(-1).url)
 		.setTimestamp(new Date(info.videoDetails.publishDate))
 
-	await interaction.editReply({embeds: [Embed]})
+	await interaction.editReply({ embeds: [Embed] })
 
 	player.play(resource)
 	client.music.connection.subscribe(player)
