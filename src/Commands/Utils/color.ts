@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { ColorResolvable, Attachment, EmbedBuilder } from 'discord.js'
+import { ColorResolvable, AttachmentBuilder, EmbedBuilder } from 'discord.js'
 import { createCanvas } from 'canvas'
 
 export const command: Command = {
@@ -40,9 +40,9 @@ export const command: Command = {
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 350)
 
-		const attachment: Attachment = new Attachment(
+		const attachment = new AttachmentBuilder(
 			canvas.toBuffer(),
-			'ColorHexSend.png'
+			{name: 'ColorHexSend.png'}
 		)
 
 		const Embed = new EmbedBuilder()
