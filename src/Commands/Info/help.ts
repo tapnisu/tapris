@@ -42,7 +42,11 @@ export const command: Command = {
 
 		Embed.data.description = ''
 
-		client.commands.forEach((command) => {
+		client.commands.sort((a, b) => {
+			if (a.name > b.name) return 1
+			else if (a.name < b.name) return -1
+			return 0
+		}).forEach((command) => {
 			Embed.data.description += `\`/${command.name} ${
 				command.options
 					? command.options
