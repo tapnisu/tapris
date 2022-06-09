@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user: User = interaction.options['user']
+		const user = interaction.options.getUser('user')
 		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
 			.voice.channel?.id
 

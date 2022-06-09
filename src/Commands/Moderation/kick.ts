@@ -19,8 +19,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const member: User = interaction.options['user']
-		const reason: string = interaction.options['reason']
+		const member = interaction.options.getUser('user')
+		const reason = interaction.options.getString('reason')
 		const userMember = interaction.guild.members.cache.get(interaction.user.id)
 
 		if (

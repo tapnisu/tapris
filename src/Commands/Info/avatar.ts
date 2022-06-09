@@ -9,7 +9,7 @@ import {
 
 export const command: Command = {
 	name: 'avatar',
-	description: 'Get user`s avatar',
+	description: 'Get someones avatar',
 	options: [
 		{
 			name: 'user',
@@ -19,8 +19,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const user: User = interaction.options['user']
-
+		const user = interaction.options.getUser('user')
 		const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false })
 
 		const Embed = new EmbedBuilder()

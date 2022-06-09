@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const request: string = interaction.options['command']
+		const request = interaction.options.getString('command')
 		const command = client.commands.get(request)
 
 		if (command) {
@@ -38,28 +38,23 @@ export const command: Command = {
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
-			.setDescription(`Server member: ${interaction.guild.name}`)
-			.setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
+
+		Embed.data.description = ''
 
 		client.commands.forEach((command) => {
-			Embed.addFields([
-				{
-					name: `/${command.name} ${
-						command.options
-							? command.options
-								.map(
-									(option) =>
-										`<${option.required ? '' : ''}${option.name} [${
-											option.description
-										}]>`
-								)
-								.join(' ')
-							: ''
-					}`,
-					value: command.description,
-					inline: true
-				}
-			])
+			Embed.data.description += `\`/${command.name} ${
+				command.options
+					? command.options
+						.map(
+							(option) =>
+								`<${option.required ? '' : ''}${option.name} [${
+									option.description
+								}]>`
+						)
+						.join(' ')
+					: ''
+			}\` - ${command.description}\n`
 		})
 
 		return interaction.reply({ embeds: [Embed] })

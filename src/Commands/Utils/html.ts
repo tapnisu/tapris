@@ -13,7 +13,7 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const text: string = interaction.options['text']
+		const text = interaction.options.getString('text')
 
 		const response: string = convert(text, { wordwrap: 130 })
 

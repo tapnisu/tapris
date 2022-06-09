@@ -26,8 +26,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const type: string = interaction.options['type']
-		const request: string = interaction.options['request']
+		const type = interaction.options.getString('type')
+		const request = interaction.options.getString('request')
 
 		if (!client.music.queue?.[interaction.guildId])
 			client.music.queue[interaction.guildId] = []

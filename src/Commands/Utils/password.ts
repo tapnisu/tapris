@@ -22,7 +22,7 @@ export const command: Command = {
 			'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 		let password = ''
 
-		const passwordLength: number = interaction.options['length']
+		const passwordLength = interaction.options.getInteger('length')
 
 		for (let i = 0, n = charset.length; i < passwordLength; ++i) {
 			password += charset.charAt(Math.floor(Math.random() * n))
