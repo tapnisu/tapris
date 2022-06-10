@@ -1,4 +1,4 @@
-import { Client, Collection } from 'discord.js'
+import { Client, ClientOptions, Collection } from 'discord.js'
 import { readdirSync } from 'fs'
 import { Command, Event, Button, Env, Music, Gun } from '../Interfaces'
 import * as locales from '../Locales'
@@ -16,6 +16,12 @@ class ExtendedClient extends Client {
 	}
 	public gun: Gun = {
 		drum: []
+	}
+
+	constructor(options: ClientOptions = {
+		intents: ['Guilds', 'GuildMessages', 'GuildMembers', 'GuildVoiceStates']
+	}) {
+		super(options)
 	}
 
 	public async init() {
