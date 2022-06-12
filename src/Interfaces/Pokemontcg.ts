@@ -1,116 +1,116 @@
 export interface PokemontcgResponse {
-	data: Datum[]
-	page: number
-	pageSize: number
-	count: number
-	totalCount: number
+	data: Datum[];
+	page: number;
+	pageSize: number;
+	count: number;
+	totalCount: number;
 }
 
 export interface Datum {
-	id: string
-	name: string
-	supertype: string
-	subtypes: string[]
-	hp: string
-	types: RetreatCost[]
-	evolvesFrom: string
-	attacks: Attack[]
-	weaknesses: Resistance[]
-	retreatCost: RetreatCost[]
-	convertedRetreatCost: number
-	set: Set
-	number: string
-	artist: string
-	rarity: string
-	flavorText?: string
-	nationalPokedexNumbers: number[]
-	legalities: Legalities
-	images: DatumImages
-	tcgplayer: Tcgplayer
-	cardmarket: Cardmarket
-	level?: string
-	resistances?: Resistance[]
-	abilities?: Ability[]
+	id: string;
+	name: string;
+	supertype: string;
+	subtypes: string[];
+	hp: string;
+	types: RetreatCost[];
+	evolvesFrom: string;
+	attacks: Attack[];
+	weaknesses: Resistance[];
+	retreatCost: RetreatCost[];
+	convertedRetreatCost: number;
+	set: Set;
+	number: string;
+	artist: string;
+	rarity: string;
+	flavorText?: string;
+	nationalPokedexNumbers: number[];
+	legalities: Legalities;
+	images: DatumImages;
+	tcgplayer: Tcgplayer;
+	cardmarket: Cardmarket;
+	level?: string;
+	resistances?: Resistance[];
+	abilities?: Ability[];
 }
 
 export interface Ability {
-	name: string
-	text: string
-	type: string
+	name: string;
+	text: string;
+	type: string;
 }
 
 export interface Attack {
-	name: string
-	cost: RetreatCost[]
-	convertedEnergyCost: number
-	damage: string
-	text: string
+	name: string;
+	cost: RetreatCost[];
+	convertedEnergyCost: number;
+	damage: string;
+	text: string;
 }
 
 export enum RetreatCost {
-	Colorless = 'Colorless'
+	Colorless = "Colorless"
 }
 
 export interface Cardmarket {
-	url: string
-	updatedAt: string
-	prices: { [key: string]: number | null }
+	url: string;
+	updatedAt: string;
+	prices: { [key: string]: number | null };
 }
 
 export interface DatumImages {
-	small: string
-	large: string
+	small: string;
+	large: string;
 }
 
 export interface Legalities {
-	unlimited: Expanded
-	expanded?: Expanded
-	standard?: Expanded
+	unlimited: Expanded;
+	expanded?: Expanded;
+	standard?: Expanded;
 }
 
 export enum Expanded {
-	Legal = 'Legal'
+	Legal = "Legal"
 }
 
 export interface Resistance {
-	type: string
-	value: string
+	type: string;
+	value: string;
 }
 
 export interface Set {
-	id: string
-	name: string
-	series: string
-	printedTotal: number
-	total: number
-	legalities: Legalities
-	ptcgoCode: string
-	releaseDate: string
-	updatedAt: string
-	images: SetImages
+	id: string;
+	name: string;
+	series: string;
+	printedTotal: number;
+	total: number;
+	legalities: Legalities;
+	ptcgoCode: string;
+	releaseDate: string;
+	updatedAt: string;
+	images: SetImages;
 }
 
 export interface SetImages {
-	symbol: string
-	logo: string
+	symbol: string;
+	logo: string;
 }
 
 export interface Tcgplayer {
-	url: string
-	updatedAt: string
-	prices: Prices
+	url: string;
+	updatedAt: string;
+	prices: Prices;
 }
 
 export interface Prices {
-	normal: The1_StEditionNormal
-	reverseHolofoil?: The1_StEditionNormal
-	'1stEditionNormal'?: The1_StEditionNormal
+	normal: The1_StEditionNormal;
+	reverseHolofoil?: The1_StEditionNormal;
+	"1stEditionNormal"?: The1_StEditionNormal;
 }
 
 export interface The1_StEditionNormal {
-	low: number
-	mid: number
-	high: number
-	market: number | null
-	directLow: number | null
+	low: number;
+	mid: number;
+	high: number;
+	market: number | null;
+	directLow: number | null;
 }

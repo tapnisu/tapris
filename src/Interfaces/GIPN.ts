@@ -1,46 +1,46 @@
 export interface GIPNResponse {
-	CODES: Code[]
+	CODES: Code[];
 }
 
 export interface Code {
-	reward: string
-	date: string
-	code: string
-	is_expired: boolean
-	region: number
-	reward_array: RewardArray[]
+	reward: string;
+	date: string;
+	code: string;
+	is_expired: boolean;
+	region: number;
+	reward_array: RewardArray[];
 }
 
 export interface RewardArray {
-	image_path: ImagePath
-	name: Name
-	count: string
-	rarity: Rarity
+	image_path: ImagePath;
+	name: Name;
+	count: string;
+	rarity: Rarity;
 }
 
 export enum ImagePath {
-	AdventurerExperience = 'adventurer_experience',
-	FineEnhancementOre = 'fine_enhancement_ore',
-	HeroWit = 'hero_wit',
-	Mora = 'mora',
-	MysticEnhancementOre = 'mystic_enhancement_ore',
-	Primogem = 'primogem'
+	AdventurerExperience = "adventurer_experience",
+	FineEnhancementOre = "fine_enhancement_ore",
+	HeroWit = "hero_wit",
+	Mora = "mora",
+	MysticEnhancementOre = "mystic_enhancement_ore",
+	Primogem = "primogem"
 }
 
 export enum Name {
 	// eslint-disable-next-line quotes
 	AdventurerSExperience = "Adventurer's Experience",
-	FineEnhancementOre = 'Fine Enhancement Ore',
+	FineEnhancementOre = "Fine Enhancement Ore",
 	// eslint-disable-next-line quotes
 	HeroSWit = "Hero's Wit",
-	Mora = 'Mora',
-	MysticEnhancementOre = 'Mystic Enhancement Ore',
-	Primogems = 'Primogems'
+	Mora = "Mora",
+	MysticEnhancementOre = "Mystic Enhancement Ore",
+	Primogems = "Primogems"
 }
 
 export enum Rarity {
-	RarityFiveStar = 'rarity_five_star',
-	RarityFourStar = 'rarity_four_star',
-	RarityTreeStar = 'rarity_tree_star',
-	RarityTwoStar = 'rarity_two_star'
+	RarityFiveStar = "rarity_five_star",
+	RarityFourStar = "rarity_four_star",
+	RarityTreeStar = "rarity_tree_star",
+	RarityTwoStar = "rarity_two_star"
 }

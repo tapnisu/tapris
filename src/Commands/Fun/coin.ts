@@ -1,36 +1,36 @@
-import { Command } from '../../Interfaces'
+import { Command } from "../../Interfaces";
 import {
 	choices,
 	CoinButtonsRowBuilder,
 	CoinEmbedBuilder,
 	flipCoin
-} from '../../Exports/coin'
+} from "../../Exports/coin";
 
 export const command: Command = {
-	name: 'coin',
-	description: 'Flip a coin',
+	name: "coin",
+	description: "Flip a coin",
 	options: [
 		{
-			name: 'choice',
-			description: 'Your selection',
+			name: "choice",
+			description: "Your selection",
 			choices: [
-				{ name: 'Coin', value: 'coin' },
-				{ name: 'Tail', value: 'tail' }
+				{ name: "Coin", value: "coin" },
+				{ name: "Tail", value: "tail" }
 			],
 			type: 3,
 			required: true
 		}
 	],
 	run: (client, interaction) => {
-		const choice = interaction.options.getString('choice')
+		const choice = interaction.options.getString("choice");
 		const embed = new CoinEmbedBuilder(
 			flipCoin(choices),
 			choice,
 			choices,
 			client.env.BOT_COLOR
-		)
-		const buttonsRow = new CoinButtonsRowBuilder(choices)
+		);
+		const buttonsRow = new CoinButtonsRowBuilder(choices);
 
-		return interaction.reply({ embeds: [embed], components: [buttonsRow] })
+		return interaction.reply({ embeds: [embed], components: [buttonsRow] });
 	}
-}
+};

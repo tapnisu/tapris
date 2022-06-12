@@ -1,6 +1,6 @@
-import { VoiceConnection } from '@discordjs/voice'
+import { VoiceConnection } from "@discordjs/voice";
 
 export interface Music {
-	queue: any
-	connection: VoiceConnection
+	queue: any;
+	connection: VoiceConnection;
 }

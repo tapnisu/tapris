@@ -1,17 +1,17 @@
-import { Event } from '../Interfaces'
-import { ApplicationCommandDataResolvable } from 'discord.js'
+import { Event } from "../Interfaces";
+import { ApplicationCommandDataResolvable } from "discord.js";
 
 export const event: Event = {
-	name: 'ready',
+	name: "ready",
 	run: (client) => {
-		client.user.setActivity('Type "/" to check bot commands!')
+		client.user.setActivity("Type \"/\" to check bot commands!");
 
-		const commands = client.application?.commands
+		const commands = client.application?.commands;
 
 		client.commands.forEach((command) => {
-			commands?.create(command as ApplicationCommandDataResolvable)
-		})
+			commands?.create(command as ApplicationCommandDataResolvable);
+		});
 
-		console.log(`${client.user.tag} is up!`)
+		console.log(`${client.user.tag} is up!`);
 	}
-}
+};

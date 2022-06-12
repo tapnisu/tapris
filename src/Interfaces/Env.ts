@@ -1,6 +1,6 @@
-import { ColorResolvable } from 'discord.js'
+import { ColorResolvable } from "discord.js";
 
 export interface Env {
-	TOKEN: string
-	BOT_COLOR: ColorResolvable
+	TOKEN: string;
+	BOT_COLOR: ColorResolvable;
 }

@@ -1,1 +1,1 @@
-export * as guildCreate from './guildCreate'
+export * as guildCreate from "./guildCreate";

@@ -1,3 +1,3 @@
 export interface AxiosResponse {
-	data: any
+	data: any;
 }

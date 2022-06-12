@@ -1,35 +1,35 @@
-import { Command } from '../../Interfaces'
-import { EmbedBuilder } from 'discord.js'
-import { AxiosResponse } from '../../Interfaces/Axios'
-import { CatResponse } from '../../Interfaces/Nekoslife'
-import axios from 'axios'
+import { Command } from "../../Interfaces";
+import { EmbedBuilder } from "discord.js";
+import { AxiosResponse } from "../../Interfaces/Axios";
+import { CatResponse } from "../../Interfaces/Nekoslife";
+import axios from "axios";
 
 interface CatApiResponse {
-	breeds: unknown[]
-	id: string
-	url: string
-	width: number
-	height: number
+	breeds: unknown[];
+	id: string;
+	url: string;
+	width: number;
+	height: number;
 }
 
 export const command: Command = {
-	name: 'cat',
-	description: 'Get cat text and photo',
+	name: "cat",
+	description: "Get cat text and photo",
 	run: async (client, interaction) => {
 		const nekosResponse: CatResponse = (
-			(await axios.get('https://nekos.life/api/v2/cat')) as AxiosResponse
-		).data
+			(await axios.get("https://nekos.life/api/v2/cat")) as AxiosResponse
+		).data;
 		const catApiResponse: CatApiResponse = (
 			(await axios.get(
-				'https://api.thecatapi.com/v1/images/search'
+				"https://api.thecatapi.com/v1/images/search"
 			)) as AxiosResponse
-		).data
+		).data;
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(nekosResponse.cat)
-			.setImage(catApiResponse[0].url)
+			.setImage(catApiResponse[0].url);
 
-		return interaction.reply({ embeds: [Embed] })
+		return interaction.reply({ embeds: [Embed] });
 	}
-}
+};
