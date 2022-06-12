@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const youtubeSr = require("youtube-sr").default;
+import youtubeSr from "youtube-sr";
 import { Command } from "../../Interfaces";
 import { validateURL } from "ytdl-core";
 
@@ -13,6 +12,7 @@ export const command: Command = {
 			choices: [
 				{ name: "video url", value: "video-url" },
 				{ name: "video title", value: "video-title" },
+				{ name: "playlist name", value: "playlist-name" },
 				{ name: "playlist url", value: "playlist-url" }
 			],
 			type: 3,
@@ -42,7 +42,10 @@ export const command: Command = {
 		}
 
 		if (type == "video-title") {
-			const result = await youtubeSr.search(request, { limit: 1 });
+			const result = await youtubeSr.search(request, {
+				limit: 1,
+				type: "video"
+			});
 
 			if (result.length == 0)
 				return interaction.reply("Music not found! :no_entry_sign:");
@@ -50,6 +53,23 @@ export const command: Command = {
 			client.music.queue[interaction.guildId] = [
 				...client.music.queue[interaction.guildId],
 				result[0].id
+			];
+		}
+
+		if (type == "playlist-name") {
+			const result = await youtubeSr.search(request, {
+				limit: 1,
+				type: "playlist"
+			});
+
+			if (result.length == 0)
+				return interaction.reply("Playlist not found! :no_entry_sign:");
+
+			client.music.queue[interaction.guildId] = [
+				...client.music.queue[interaction.guildId],
+				...(
+					await (await youtubeSr.getPlaylist(result[0].url)).fetch()
+				).videos.map((video) => video.id)
 			];
 		}
 
