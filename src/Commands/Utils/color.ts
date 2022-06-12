@@ -40,10 +40,9 @@ export const command: Command = {
 		ctx.textAlign = 'center'
 		ctx.fillText(colorString, 250, 350)
 
-		const attachment = new AttachmentBuilder(
-			canvas.toBuffer(),
-			{name: 'ColorHexSend.png'}
-		)
+		const attachment = new AttachmentBuilder(canvas.toBuffer(), {
+			name: 'ColorHexSend.png'
+		})
 
 		const Embed = new EmbedBuilder()
 			.setTitle(colorString)

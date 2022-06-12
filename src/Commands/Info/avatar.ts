@@ -3,8 +3,7 @@ import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-	EmbedBuilder,
-	User
+	EmbedBuilder
 } from 'discord.js'
 
 export const command: Command = {

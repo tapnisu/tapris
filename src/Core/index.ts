@@ -18,9 +18,11 @@ class ExtendedClient extends Client {
 		drum: []
 	}
 
-	constructor(options: ClientOptions = {
-		intents: ['Guilds', 'GuildMessages', 'GuildMembers', 'GuildVoiceStates']
-	}) {
+	constructor(
+		options: ClientOptions = {
+			intents: ['Guilds', 'GuildMessages', 'GuildMembers', 'GuildVoiceStates']
+		}
+	) {
 		super(options)
 	}
 

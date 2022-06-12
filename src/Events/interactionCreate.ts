@@ -4,7 +4,7 @@ import { Event, Command, Button } from '../Interfaces'
 export const event: Event = {
 	name: 'interactionCreate',
 	run: (client, interaction: Interaction) => {
-		if (interaction.isCommand()) {
+		if (interaction.isChatInputCommand()) {
 			const command = client.commands.get(interaction.commandName)
 			if (command) (command as Command).run(client, interaction)
 

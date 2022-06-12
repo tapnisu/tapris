@@ -1,5 +1,5 @@
 import { Command } from '../../Interfaces'
-import { EmbedBuilder, User } from 'discord.js'
+import { EmbedBuilder } from 'discord.js'
 
 export const command: Command = {
 	name: 'user',
