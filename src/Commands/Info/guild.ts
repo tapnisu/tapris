@@ -11,7 +11,11 @@ export const command: Command = {
 			.setThumbnail(
 				`https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
 			)
-			.setDescription("Info about guild")
+			.setDescription(
+				interaction.guild.description
+					? interaction.guild.description
+					: "No description"
+			)
 			.addFields([
 				{
 					name: "Owner",
@@ -19,17 +23,17 @@ export const command: Command = {
 					inline: true
 				},
 				{
-					name: "Number of participants",
+					name: "Amount of participants",
 					value: interaction.guild.memberCount.toString(),
 					inline: true
 				},
 				{
-					name: "Number of emoticons",
+					name: "Amount of emoticons",
 					value: interaction.guild.emojis.cache.size.toString(),
 					inline: true
 				},
 				{
-					name: "Number of roles",
+					name: "Amount of roles",
 					value: (interaction.guild.roles.cache.size - 1).toString(),
 					inline: true
 				},
