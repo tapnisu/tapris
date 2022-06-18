@@ -20,7 +20,7 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const question = interaction.options.getString("question");
 		const link = `https://lmgtfy.app/?q=${encodeURI(
-			question.replace(/ /, "+")
+			question.replace(/ /g, "+")
 		)}`;
 
 		const buttonsRow = new ActionRowBuilder().addComponents([

@@ -27,8 +27,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const requestType = interaction.options.getString("type");
-		const request = interaction.options.getString("name");
+		const requestType: string = interaction.options.getString("type");
+		const request: string = interaction.options.getString("name");
 
 		if (requestType == "pokemon") {
 			let response: any = await axios.get(
@@ -38,9 +38,9 @@ export const command: Command = {
 			eval(response.data);
 
 			response =
-				exports.BattlePokedex[
-					request.split(" ").join("").split("-").join("").toLowerCase()
-				];
+				exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
+
+			console.log(request.replace(/ |-/g, ""));
 
 			if (!response)
 				return interaction.reply({
@@ -233,9 +233,7 @@ export const command: Command = {
 			);
 
 			const response =
-				exports.BattleMovedex[
-					request.split(" ").join("").split("-").join("").toLowerCase()
-				];
+				exports.BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
 				return interaction.reply({
@@ -246,12 +244,9 @@ export const command: Command = {
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(
-					`Name: ${request
-						.split(" ")
-						.join(" ")
-						.split("-")
-						.join(" ")
-						.toLowerCase()}, ID: ${response.num}`
+					`Name: ${request.replace(/-/g, "").toLowerCase()}, ID: ${
+						response.num
+					}`
 				)
 				.setDescription(response.shortDesc)
 				.addFields([
@@ -299,9 +294,7 @@ export const command: Command = {
 			);
 
 			const response =
-				exports.BattleAbilities[
-					request.split(" ").join("").split("-").join("").toLowerCase()
-				];
+				exports.BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
 				return interaction.reply({
@@ -327,9 +320,7 @@ export const command: Command = {
 			);
 
 			const response =
-				exports.BattleItems[
-					request.split(" ").join("").split("-").join("").toLowerCase()
-				];
+				exports.BattleItems[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
 				return interaction.reply({
