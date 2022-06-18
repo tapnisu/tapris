@@ -26,13 +26,13 @@ export const command: Command = {
 		const buttonsRow = new ActionRowBuilder().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel("Invite bot")
+				.setLabel("Open link")
 				.setStyle(ButtonStyle.Link)
 		]);
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(question)
+			.setTitle(link)
 			.setURL(link);
 
 		return interaction.reply({ embeds: [Embed], components: [buttonsRow] });
