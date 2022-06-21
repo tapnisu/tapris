@@ -36,7 +36,7 @@
 		"axios": "^0.27.2",
 		"bufferutil": "^4.0.6",
 		"canvas": "^2.9.1",
-		"discord.js": "^14.0.0-dev.1655640259-358c3f4",
+		"discord.js": "^14.0.0-dev.1655770161-94f7ca9",
 		"dotenv": "^16.0.1",
 		"erlpack": "^0.1.4",
 		"ffmpeg": "^0.0.4",
