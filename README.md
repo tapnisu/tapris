@@ -1,5 +1,3 @@
-# In an unstable state! Go to branch [stable](https://github.com/uwury/tapris/tree/stable) for a working version!
-
 <p align="center">
  <img width=300px src="assets/avatar.png" alt="Bot logo">
  <h1 align="center">Tapris</h1>
