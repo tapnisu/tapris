@@ -11,31 +11,31 @@
 
 # Overview
 
-Tapris is eris bot, made in [TypeScript](https://www.typescriptlang.org/).
-Bot is name after Tapris from Gabriel DropOut.
+Tapris is a discord.js bot, made in [TypeScript](https://www.typescriptlang.org/).
+Bot is named after Tapris from Gabriel DropOut.
 
 # Install
 
 ## Basic
 
-You can invite bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
+You can invite the bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
 ## Host by yourself
 
 1. Install [node.js](https://nodejs.org/)
 
-1. Set up your [.env](.env_example) (example in [.env_example](.env_example))
+2. Set up your [.env](https://github.com/uwury/tapris/blob/main/.env_example) (example in [.env_example](https://github.com/uwury/tapris/blob/main/.env_example))
 
 ```env
 TOKEN="bot token"
-BOT_COLOR="bot color (hex)"
+BOT_COLOR="bot color (#a9b8f6 as example)"
 ```
 
 1. Install dependencies via `yarn`
 
-1. Build via `yarn build`
+2. Build bot via `yarn build`
 
-1. Start bot via `yarn start`
+3. Start bot via `yarn start`
 
-Now you have running bot!
+Now you have a running bot!

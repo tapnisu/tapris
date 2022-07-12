@@ -1,6 +1,6 @@
 {
 	"name": "tapris",
-	"version": "2.0.0",
+	"version": "3.0.0-rc-1",
 	"main": "dist/index.js",
 	"scripts": {
 		"start": "node .",
@@ -18,10 +18,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Zamur650/tapris.git"
+		"url": "git+https://github.com/taerisu/tapris.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Zamur650/tapris/issues"
+		"url": "https://github.com/taerisu/tapris/issues"
 	},
 	"keywords": [
 		"bot",
@@ -29,30 +29,36 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@discordjs/collection": "^0.5.0",
-		"@discordjs/opus": "^0.7.0",
-		"@discordjs/voice": "^0.8.0",
+		"@discordjs/opus": "^0.8.0",
+		"@discordjs/voice": "^0.10.0",
 		"@iamtraction/google-translate": "^1.1.2",
 		"avconv": "^3.1.0",
-		"axios": "^0.26.1",
-		"canvas": "^2.9.1",
-		"discord.js": "^13.6.0",
-		"dotenv": "^16.0.0",
-		"eris": "^0.16.1",
+		"axios": "^0.27.2",
+		"bufferutil": "^4.0.6",
+		"canvas": "^2.9.3",
+		"discord.js": "^14.0.0-dev.1657411900-f0b68d5",
+		"dotenv": "^16.0.1",
+		"eris": "^0.17.1",
+		"erlpack": "^0.1.4",
 		"ffmpeg": "^0.0.4",
-		"ffmpeg-static": "^5.0.0",
-		"html-to-text": "^8.0.0",
-		"libsodium-wrappers": "^0.7.10",
-		"youtube-sr": "^4.1.15",
-		"ytdl-core": "^4.11.0"
+		"ffmpeg-static": "^5.0.2",
+		"genshin-db": "^4.2.0",
+		"html-to-text": "^8.2.0",
+		"sodium": "^3.0.2",
+		"typeface-jetbrains-mono": "^2.0.1",
+		"utf-8-validate": "^5.0.9",
+		"waifu.js": "^1.0.0",
+		"youtube-sr": "^4.1.17",
+		"ytdl-core": "^4.11.0",
+		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.23",
-		"@typescript-eslint/eslint-plugin": "^5.17.0",
-		"@typescript-eslint/parser": "^5.17.0",
-		"eslint": "^8.12.0",
-		"prettier": "^2.6.1",
-		"typescript": "^4.6.3"
+		"@types/node": "^18.0.3",
+		"@typescript-eslint/eslint-plugin": "^5.30.6",
+		"@typescript-eslint/parser": "^5.30.6",
+		"eslint": "^8.19.0",
+		"prettier": "^2.7.1",
+		"typescript": "^4.7.4"
 	},
 	"engines": {
 		"node": ">=16"
