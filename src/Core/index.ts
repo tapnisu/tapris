@@ -1,4 +1,4 @@
-import { Client, ClientOptions, Collection } from "discord.js";
+import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
 import { Command, Event, Button, Env, Music, Gun } from "../Interfaces";
 import * as locales from "../Locales";
@@ -20,7 +20,15 @@ class ExtendedClient extends Client {
 
 	constructor(
 		options: ClientOptions = {
-			intents: ["Guilds", "GuildMessages", "GuildMembers", "GuildVoiceStates"]
+			intents: [
+				IntentsBitField.Flags.Guilds,
+				IntentsBitField.Flags.GuildMessages,
+				IntentsBitField.Flags.GuildMembers,
+				IntentsBitField.Flags.GuildVoiceStates,
+				IntentsBitField.Flags.MessageContent,
+				IntentsBitField.Flags.GuildBans,
+				IntentsBitField.Flags.GuildMessages
+			]
 		}
 	) {
 		super(options);

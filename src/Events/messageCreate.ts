@@ -19,21 +19,23 @@ export const event: Event = {
 			`[${date}] [${message.guild.name} / ${channel.name} / ${message.author.tag}]: ${message.content}`
 		);
 
+		console.log(message.embeds[0]);
+
 		let allEmbeds = [];
 
 		message.embeds.forEach((embed) => {
 			let stringEmbed = "Embed:\n";
 
-			if (embed.title) stringEmbed += `  Title: ${embed.title}\n`;
+			if (embed.title) stringEmbed += `  Title: ${embed.data.title}\n`;
 			if (embed.description)
-				stringEmbed += `  Description: ${embed.description}\n`;
-			if (embed.url) stringEmbed += `  Url: ${embed.url}\n`;
-			if (embed.color) stringEmbed += `  Color: ${embed.color}\n`;
-			if (embed.timestamp) stringEmbed += `  Url: ${embed.timestamp}\n`;
+				stringEmbed += `  Description: ${embed.data.description}\n`;
+			if (embed.url) stringEmbed += `  Url: ${embed.data.url}\n`;
+			if (embed.color) stringEmbed += `  Color: ${embed.data.color}\n`;
+			if (embed.timestamp) stringEmbed += `  Url: ${embed.data.timestamp}\n`;
 
 			let allFields = ["  Fields:\n"];
 
-			embed.fields.forEach((field) => {
+			embed.data.fields?.forEach((field) => {
 				let stringField = "    Field:\n";
 
 				if (field.name) stringField += `      Name: ${field.name}\n`;
@@ -43,12 +45,16 @@ export const event: Event = {
 			});
 
 			if (allFields.length != 1) stringEmbed += `${allFields.join("")}`;
-			if (embed.thumbnail)
+			if (embed.data.thumbnail)
 				stringEmbed += `  Thumbnail: ${embed.thumbnail.url}\n`;
-			if (embed.image) stringEmbed += `  Image: ${embed.image.url}\n`;
-			if (embed.video) stringEmbed += `  Video: ${embed.video.url}\n`;
-			if (embed.author) stringEmbed += `  Author: ${embed.author.name}\n`;
-			if (embed.footer) stringEmbed += `  Footer: ${embed.footer.iconURL}\n`;
+			if (embed.data.image)
+				stringEmbed += `  Image: ${embed.data.image?.url}\n`;
+			if (embed.data.video)
+				stringEmbed += `  Video: ${embed.data.video?.url}\n`;
+			if (embed.data.author)
+				stringEmbed += `  Author: ${embed.data.author?.name}\n`;
+			if (embed.data.footer)
+				stringEmbed += `  Footer: ${embed.data.footer?.icon_url}\n`;
 
 			allEmbeds = [...allEmbeds, stringEmbed];
 		});
