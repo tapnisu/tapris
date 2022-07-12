@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { AxiosResponse } from "../../Interfaces/Axios";
+import {} from "../../Interfaces/Axios";
 import { Code } from "../../Interfaces/GIPN";
 import axios from "axios";
 
@@ -8,11 +8,11 @@ export const command: Command = {
 	name: "gcodes",
 	description: "Codes for Genshin Impact",
 	run: async (client, interaction) => {
-		const response: AxiosResponse = await axios.get(
-			"https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
-		);
-
-		const codes: Code[] = response.data.CODES;
+		const response: Code[] = (
+			await axios.get(
+				"https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
+			)
+		).data.CODES;
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
@@ -20,7 +20,7 @@ export const command: Command = {
 			.setDescription("You can activate them in game, and get rewards!")
 			.setURL("https://genshin.mihoyo.com/en/gift");
 
-		codes.forEach((code) => {
+		response.forEach((code) => {
 			if (code.is_expired == false) {
 				let rewards: string[] = [];
 

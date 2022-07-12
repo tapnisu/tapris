@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { AxiosResponse } from "../../Interfaces/Axios";
+import {} from "../../Interfaces/Axios";
 import { Datum, PokemontcgResponse } from "../../Interfaces/Pokemontcg";
 import axios from "axios";
 
@@ -19,11 +19,11 @@ export const command: Command = {
 		const name = interaction.options.getString("name");
 
 		try {
-			let response: AxiosResponse = await axios.get(
-				`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
-			);
-
-			response = response.data as PokemontcgResponse;
+			const response: PokemontcgResponse = (
+				await axios.get(
+					`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
+				)
+			).data;
 
 			const data: Datum = response.data[0];
 

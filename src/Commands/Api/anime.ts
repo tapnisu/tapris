@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { AxiosResponse } from "../../Interfaces/Axios";
+import {} from "../../Interfaces/Axios";
 import { KitsuResponseItem, KitsuResponse } from "../../Interfaces/Kitsu";
 import axios from "axios";
 
@@ -18,19 +18,19 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const request = interaction.options.getString("name");
 
-		const response: AxiosResponse = await axios.get(
-			`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(request)}`
-		);
+		const response: KitsuResponse = (
+			await axios.get(
+				`https://kitsu.io/api/edge/anime?filter[text]=${encodeURI(request)}`
+			)
+		).data;
 
-		const kitsuResponse: KitsuResponse = response.data as KitsuResponse;
-
-		if (kitsuResponse.data.length == 0)
+		if (response.data.length == 0)
 			return interaction.reply({
 				content: "Anime not found! :no_entry_sign:",
 				ephemeral: true
 			});
 
-		const anime: KitsuResponseItem = kitsuResponse.data[0];
+		const anime: KitsuResponseItem = response.data[0];
 
 		console.log(
 			anime.attributes?.episodeCount != null

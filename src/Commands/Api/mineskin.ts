@@ -5,7 +5,7 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import { AxiosResponse } from "../../Interfaces/Axios";
+import {} from "../../Interfaces/Axios";
 import { AshconResponse } from "../../Interfaces/Ashcon";
 import axios from "axios";
 
@@ -24,26 +24,28 @@ export const command: Command = {
 		const nickname = interaction.options.getString("user");
 
 		try {
-			const response: AxiosResponse = await axios.get(
-				`https://api.ashcon.app/mojang/v2/user/${encodeURI(nickname)}`
-			);
-
-			const user: AshconResponse = response.data;
+			const response: AshconResponse = (
+				await axios.get(
+					`https://api.ashcon.app/mojang/v2/user/${encodeURI(nickname)}`
+				)
+			).data;
 
 			const row = new ActionRowBuilder().addComponents([
 				new ButtonBuilder()
-					.setURL(user.textures.skin.url)
+					.setURL(response.textures.skin.url)
 					.setLabel("Original image")
 					.setStyle(ButtonStyle.Link)
 			]);
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle(user.username)
-				.setDescription(`UUID: ${user.uuid}`)
-				.setThumbnail(`https://crafatar.com/renders/head/${user.uuid}?overlay`)
-				.setImage(`https://crafatar.com/renders/body/${user.uuid}?overlay`)
-				.setURL(user.textures.skin.url);
+				.setTitle(response.username)
+				.setDescription(`UUID: ${response.uuid}`)
+				.setThumbnail(
+					`https://crafatar.com/renders/head/${response.uuid}?overlay`
+				)
+				.setImage(`https://crafatar.com/renders/body/${response.uuid}?overlay`)
+				.setURL(response.textures.skin.url);
 
 			return interaction.reply({ embeds: [Embed], components: [row] });
 		} catch {

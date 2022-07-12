@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { AxiosResponse } from "../../Interfaces/Axios";
+import {} from "../../Interfaces/Axios";
 import { GithubResponse } from "../../Interfaces/Github";
 import axios from "axios";
 
@@ -19,47 +19,45 @@ export const command: Command = {
 		const user = interaction.options.getString("user");
 
 		try {
-			const response: AxiosResponse = await axios.get(
-				`https://api.github.com/users/${encodeURI(user)}`
-			);
-
-			const userData: GithubResponse = response.data;
+			const response: GithubResponse = (
+				await axios.get(`https://api.github.com/users/${encodeURI(user)}`)
+			).data;
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setURL(userData.html_url)
-				.setThumbnail(userData?.avatar_url)
+				.setURL(response.html_url)
+				.setThumbnail(response?.avatar_url)
 				.addFields([
-					{ name: "Type", value: userData?.type, inline: true },
+					{ name: "Type", value: response?.type, inline: true },
 					{
 						name: "Public repositories",
-						value: userData.public_repos.toString(),
+						value: response.public_repos.toString(),
 						inline: true
 					},
 					{
 						name: "Gists",
-						value: userData.public_gists.toString(),
+						value: response.public_gists.toString(),
 						inline: true
 					}
 				])
-				.setTimestamp(new Date(userData.created_at));
+				.setTimestamp(new Date(response.created_at));
 
-			if (userData.name == null) Embed.setTitle(userData.login);
-			if (userData.name != null)
-				Embed.setTitle(`${userData.name} (${userData.login})`);
+			if (response.name == null) Embed.setTitle(response.login);
+			if (response.name != null)
+				Embed.setTitle(`${response.name} (${response.login})`);
 
-			if (userData.bio) Embed.setDescription(userData.bio);
-			if (userData.location)
+			if (response.bio) Embed.setDescription(response.bio);
+			if (response.location)
 				Embed.addFields([
-					{ name: "Location", value: userData.location, inline: true }
+					{ name: "Location", value: response.location, inline: true }
 				]);
-			if (userData.blog)
-				Embed.addFields([{ name: "Blog", value: userData.blog, inline: true }]);
-			if (userData.twitter_username)
+			if (response.blog)
+				Embed.addFields([{ name: "Blog", value: response.blog, inline: true }]);
+			if (response.twitter_username)
 				Embed.addFields([
 					{
 						name: "Twitter",
-						value: `@${userData.twitter_username}`,
+						value: `@${response.twitter_username}`,
 						inline: true
 					}
 				]);
