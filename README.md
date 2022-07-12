@@ -1,5 +1,5 @@
 <p align="center">
- <img width=300px src="assets/avatar.png" alt="Bot logo">
+ <img width=400px src="assets/avatar.png" alt="Bot logo">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Multipurpose discord bot</h3>
 </p>
@@ -11,7 +11,7 @@
 
 # Overview
 
-Tapris is a discord.js bot, made in [TypeScript](https://www.typescriptlang.org/).
+Tapris is a `discord.js` bot, made in [TypeScript](https://www.typescriptlang.org/).
 Bot is named after Tapris from Gabriel DropOut.
 
 # Install
@@ -25,7 +25,7 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-2. Set up your [.env](https://github.com/uwury/tapris/blob/main/.env_example) (example in [.env_example](https://github.com/uwury/tapris/blob/main/.env_example))
+2. Set up your [.env](https://github.com/uwury/taerisu/blob/main/.env_example) (example in [.env_example](https://github.com/uwury/tapris/blob/main/.env_example))
 
 ```env
 TOKEN="bot token"

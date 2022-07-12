@@ -1,6 +1,6 @@
 {
 	"name": "tapris",
-	"version": "2.1.1",
+	"version": "3.0.0-rc1",
 	"main": "dist/index.js",
 	"scripts": {
 		"start": "node .",
@@ -18,10 +18,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/taprisu/tapris.git"
+		"url": "git+https://github.com/taerisu/tapris.git"
 	},
 	"bugs": {
-		"url": "https://github.com/taprisu/tapris/issues"
+		"url": "https://github.com/taerisu/tapris/issues"
 	},
 	"keywords": [
 		"bot",
