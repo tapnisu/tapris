@@ -5,7 +5,7 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import {} from "../../Interfaces/Axios";
+
 import { AshconResponse } from "../../Interfaces/Ashcon";
 import axios from "axios";
 

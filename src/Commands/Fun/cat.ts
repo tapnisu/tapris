@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import {} from "../../Interfaces/Axios";
+
 import { CatResponse } from "../../Interfaces/Nekoslife";
 import axios from "axios";
 

@@ -2,7 +2,6 @@ import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
 import { DuckduckgoResponse } from "../../Interfaces/Duckduckgo";
 import axios from "axios";
-import {} from "../../Interfaces/Axios";
 
 export const command: Command = {
 	name: "search",

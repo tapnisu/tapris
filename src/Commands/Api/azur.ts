@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import {} from "../../Interfaces/Axios";
+
 import { AzurResponse } from "../../Interfaces/Azur";
 import axios from "axios";
 
