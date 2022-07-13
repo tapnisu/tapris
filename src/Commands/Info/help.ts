@@ -52,13 +52,13 @@ export const command: Command = {
 				Embed.data.description += `\`/${command.name} ${
 					command.options
 						? command.options
-							.map(
-								(option) =>
-									`<${option.required ? "" : ""}${option.name} [${
-										option.description
-									}]>`
-							)
-							.join(" ")
+								.map(
+									(option) =>
+										`<${option.required ? "" : ""}${option.name} [${
+											option.description
+										}]>`
+								)
+								.join(" ")
 						: ""
 				}\` - ${command.description}\n`;
 			});

@@ -1,6 +1,5 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-
 import { Datum, PokemontcgResponse } from "../../Interfaces/Pokemontcg";
 import axios from "axios";
 

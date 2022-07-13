@@ -1,6 +1,5 @@
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-
 import { Response8ball } from "../../Interfaces/Nekoslife";
 import axios from "axios";
 
