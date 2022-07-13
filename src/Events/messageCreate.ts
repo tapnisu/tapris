@@ -1,6 +1,19 @@
 import { Event } from "../Interfaces";
 import { Message, TextChannel } from "discord.js";
 
+const formatSize = (length: number) => {
+	let i = 0;
+	const type = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+
+	while ((length / 1000) | 0 && i < type.length - 1) {
+		length /= 1024;
+
+		i++;
+	}
+
+	return length.toFixed(2) + " " + type[i];
+};
+
 export const event: Event = {
 	name: "messageCreate",
 	run: (client, message: Message) => {
@@ -19,9 +32,7 @@ export const event: Event = {
 			`[${date}] [${message.guild.name} / ${channel.name} / ${message.author.tag}]: ${message.content}`
 		);
 
-		console.log(message.embeds[0]);
-
-		let allEmbeds = [];
+		let allEmbeds: string[] = [];
 
 		message.embeds.forEach((embed) => {
 			let stringEmbed = "Embed:\n";
@@ -60,5 +71,20 @@ export const event: Event = {
 		});
 
 		if (allEmbeds.length != 0) console.log(allEmbeds.join(""));
+
+		let allAttachmnets: string[] = [];
+
+		message.attachments.forEach((attachment) => {
+			allAttachmnets = [
+				...allAttachmnets,
+				`Attachment:\n  Name: ${attachment.name}\n${
+					attachment.description
+						? `	Description: ${attachment.description}\n`
+						: ""
+				}  Size: ${formatSize(attachment.size)}\n  Url: ${attachment.url}`
+			];
+		});
+
+		if (allAttachmnets.length != 0) console.log(allAttachmnets.join(""));
 	}
 };
