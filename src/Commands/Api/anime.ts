@@ -1,6 +1,7 @@
+import { KitsuResponse, KitsuResponseItem } from "../../Interfaces/Kitsu";
+
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { KitsuResponseItem, KitsuResponse } from "../../Interfaces/Kitsu";
 import axios from "axios";
 
 export const command: Command = {

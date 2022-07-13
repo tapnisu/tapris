@@ -1,5 +1,5 @@
-import { Message } from "discord.js";
 import { Button } from "../Interfaces";
+import { Message } from "discord.js";
 
 export const button: Button = {
 	customId: /delete_message/,

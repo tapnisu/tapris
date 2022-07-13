@@ -1,5 +1,5 @@
-import { Event } from "../Interfaces";
 import { ApplicationCommandDataResolvable } from "discord.js";
+import { Event } from "../Interfaces";
 
 export const event: Event = {
 	name: "ready",

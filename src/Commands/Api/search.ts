@@ -1,6 +1,6 @@
 import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
 import { DuckduckgoResponse } from "../../Interfaces/Duckduckgo";
+import { EmbedBuilder } from "discord.js";
 import axios from "axios";
 
 export const command: Command = {

@@ -1,13 +1,13 @@
-import { Command } from "../../Interfaces";
-import { SearchResult } from "../../Interfaces/Manga";
-import axios from "axios";
-
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
+
+import { Command } from "../../Interfaces";
+import { SearchResult } from "../../Interfaces/Manga";
+import axios from "axios";
 
 export const command: Command = {
 	name: "manga",

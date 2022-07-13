@@ -1,6 +1,6 @@
+import { Code } from "../../Interfaces/GIPN";
 import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
-import { Code } from "../../Interfaces/GIPN";
 import axios from "axios";
 
 export const command: Command = {

@@ -1,10 +1,11 @@
-import { Button } from "../Interfaces";
 import {
-	choices,
 	CoinButtonsRowBuilder,
 	CoinEmbedBuilder,
+	choices,
 	flipCoin
 } from "../Exports/coin";
+
+import { Button } from "../Interfaces";
 
 export const button: Button = {
 	customId: /flip_coin_(.*)/gi,

@@ -1,6 +1,6 @@
-import youtubeSr from "youtube-sr";
 import { Command } from "../../Interfaces";
 import { validateURL } from "ytdl-core";
+import youtubeSr from "youtube-sr";
 
 export const command: Command = {
 	name: "add",

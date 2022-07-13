@@ -1,4 +1,3 @@
-import { Command } from "../../Interfaces";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -6,6 +5,8 @@ import {
 	EmbedBuilder,
 	OAuth2Scopes
 } from "discord.js";
+
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "invite",

@@ -1,5 +1,5 @@
-import { TextChannel } from "discord.js";
 import { Command } from "../../Interfaces";
+import { TextChannel } from "discord.js";
 
 export const command: Command = {
 	name: "clear",

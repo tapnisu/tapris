@@ -4,6 +4,7 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
+
 import { Button } from "../Interfaces";
 
 export const button: Button = {

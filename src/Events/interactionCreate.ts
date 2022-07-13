@@ -1,5 +1,6 @@
+import { Button, Command, Event } from "../Interfaces";
+
 import { Interaction } from "discord.js";
-import { Event, Command, Button } from "../Interfaces";
 
 export const event: Event = {
 	name: "interactionCreate",

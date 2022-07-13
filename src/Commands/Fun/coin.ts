@@ -1,10 +1,11 @@
-import { Command } from "../../Interfaces";
 import {
-	choices,
 	CoinButtonsRowBuilder,
 	CoinEmbedBuilder,
+	choices,
 	flipCoin
 } from "../../Exports/coin";
+
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "coin",

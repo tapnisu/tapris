@@ -1,4 +1,3 @@
-import { Command } from "../../Interfaces";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -7,6 +6,7 @@ import {
 } from "discord.js";
 
 import { AshconResponse } from "../../Interfaces/Ashcon";
+import { Command } from "../../Interfaces";
 import axios from "axios";
 
 export const command: Command = {

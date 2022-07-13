@@ -1,5 +1,6 @@
+import { AttachmentBuilder, ColorResolvable, EmbedBuilder } from "discord.js";
+
 import { Command } from "../../Interfaces";
-import { ColorResolvable, AttachmentBuilder, EmbedBuilder } from "discord.js";
 import { createCanvas } from "canvas";
 
 export const command: Command = {

@@ -4,6 +4,7 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
+
 import { Command } from "../../Interfaces";
 
 export const command: Command = {

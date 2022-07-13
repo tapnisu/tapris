@@ -1,12 +1,13 @@
-import { CommandInteraction, GuildMember, EmbedBuilder } from "discord.js";
 import {
 	AudioPlayerStatus,
+	DiscordGatewayAdapterCreator,
 	StreamType,
 	createAudioPlayer,
 	createAudioResource,
-	joinVoiceChannel,
-	DiscordGatewayAdapterCreator
+	joinVoiceChannel
 } from "@discordjs/voice";
+import { CommandInteraction, EmbedBuilder, GuildMember } from "discord.js";
+
 import ytdl from "ytdl-core";
 
 export const play = async (client, interaction: CommandInteraction) => {

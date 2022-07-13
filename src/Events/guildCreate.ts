@@ -1,12 +1,13 @@
-import { Event } from "../Interfaces";
 import {
-	Guild,
-	EmbedBuilder,
 	ActionRowBuilder,
 	ButtonBuilder,
-	OAuth2Scopes,
-	ButtonStyle
+	ButtonStyle,
+	EmbedBuilder,
+	Guild,
+	OAuth2Scopes
 } from "discord.js";
+
+import { Event } from "../Interfaces";
 
 export const event: Event = {
 	name: "guildCreate",
