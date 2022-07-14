@@ -47,7 +47,7 @@
 		"typeface-jetbrains-mono": "^2.0.1",
 		"utf-8-validate": "^5.0.9",
 		"waifu.js": "^1.0.0",
-		"youtube-sr": "^4.1.18",
+		"youtube-sr": "^4.2.0",
 		"ytdl-core": "^4.11.0",
 		"zlib-sync": "^0.1.7"
 	},
