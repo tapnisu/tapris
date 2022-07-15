@@ -27,6 +27,6 @@ export const command: Command = {
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

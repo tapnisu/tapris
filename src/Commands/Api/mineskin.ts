@@ -47,9 +47,9 @@ export const command: Command = {
 				.setImage(`https://crafatar.com/renders/body/${response.uuid}?overlay`)
 				.setURL(response.textures.skin.url);
 
-			return interaction.reply({ embeds: [Embed], components: [row] });
+			return await interaction.reply({ embeds: [Embed], components: [row] });
 		} catch {
-			return interaction.reply({
+			return await interaction.reply({
 				content: "User not found :no_entry_sign:",
 				ephemeral: true
 			});

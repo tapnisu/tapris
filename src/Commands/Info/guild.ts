@@ -40,6 +40,6 @@ export const command: Command = {
 				{ name: "ID", value: interaction.guild.id, inline: true }
 			]);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

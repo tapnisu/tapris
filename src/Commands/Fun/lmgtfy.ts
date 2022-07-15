@@ -36,6 +36,9 @@ export const command: Command = {
 			.setTitle(link)
 			.setURL(link);
 
-		return interaction.reply({ embeds: [Embed], components: [buttonsRow] });
+		return await interaction.reply({
+			embeds: [Embed],
+			components: [buttonsRow]
+		});
 	}
 };

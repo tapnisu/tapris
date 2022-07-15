@@ -32,7 +32,7 @@ export const command: Command = {
 				]);
 			});
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 
 		const Embed = new EmbedBuilder()
@@ -52,17 +52,17 @@ export const command: Command = {
 				Embed.data.description += `\`/${command.name} ${
 					command.options
 						? command.options
-								.map(
-									(option) =>
-										`<${option.required ? "" : ""}${option.name} [${
-											option.description
-										}]>`
-								)
-								.join(" ")
+							.map(
+								(option) =>
+									`<${option.required ? "" : ""}${option.name} [${
+										option.description
+									}]>`
+							)
+							.join(" ")
 						: ""
 				}\` - ${command.description}\n`;
 			});
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

@@ -1,42 +1,39 @@
+import { AudioPlayer, VoiceConnection } from "@discordjs/voice";
 import {
 	AudioPlayerStatus,
-	DiscordGatewayAdapterCreator,
 	StreamType,
-	createAudioPlayer,
-	createAudioResource,
-	joinVoiceChannel
+	createAudioResource
 } from "@discordjs/voice";
-import { CommandInteraction, EmbedBuilder, GuildMember } from "discord.js";
+import { CommandInteraction, EmbedBuilder } from "discord.js";
 
+import Client from "../Core/index";
 import ytdl from "ytdl-core";
 
-export const play = async (client, interaction: CommandInteraction) => {
-	const member: GuildMember = interaction.member as GuildMember;
+export class Music {
+	public queue: string[];
+	public connection: VoiceConnection | null;
+	public player: AudioPlayer;
 
-	if (
-		!client.music.queue[interaction.guildId] ||
-		client.music.queue[interaction.guildId].length == 0
-	)
-		return interaction.editReply("Queue is empty :no_entry_sign:");
-	if (!member.voice.channel)
-		return interaction.editReply("You are not in channel :no_entry_sign:");
+	constructor(queue: string[], connection: VoiceConnection | null) {
+		this.queue = queue;
+		this.connection = connection;
+		this.player = new AudioPlayer();
+	}
+}
 
-	client.music.connection = joinVoiceChannel({
-		channelId: member.voice.channel.id,
-		guildId: interaction.guildId,
-		adapterCreator: interaction.guild
-			.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
-	});
-
-	const stream = ytdl(client.music.queue[interaction.guildId][0], {
+export const play = async (
+	client: Client,
+	interaction: CommandInteraction,
+	music: Music
+) => {
+	const stream = ytdl(music.queue[0], {
 		filter: "audioonly"
 	});
 	const resource = createAudioResource(stream, {
 		inputType: StreamType.Arbitrary
 	});
-	const player = createAudioPlayer();
 
-	const info = await ytdl.getInfo(client.music.queue[interaction.guildId][0]);
+	const info = await ytdl.getInfo(music.queue[0]);
 
 	// Get length as string
 	const date = new Date(0);
@@ -74,16 +71,18 @@ export const play = async (client, interaction: CommandInteraction) => {
 
 	await interaction.editReply({ embeds: [Embed] });
 
-	player.play(resource);
-	client.music.connection.subscribe(player);
+	music.player.play(resource);
+	music.connection.subscribe(music.player);
 
-	player.on(AudioPlayerStatus.Idle, () => {
-		client.music.queue[interaction.guildId].shift();
+	music.player.on(AudioPlayerStatus.Idle, () => {
+		music.queue.shift();
 
-		play(client, interaction);
+		play(client, interaction, music);
 	});
 
-	player.on("error", () => {
-		interaction.editReply("Unknown error happened! :interrobang:");
+	music.player.on("error", async () => {
+		music.player.stop();
+
+		await interaction.reply("Unknown error happened! :interrobang:");
 	});
 };

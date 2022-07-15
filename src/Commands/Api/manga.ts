@@ -28,7 +28,7 @@ export const command: Command = {
 		).data;
 
 		if (response.length == 0) {
-			return interaction.reply({
+			return await interaction.reply({
 				content: "Sorry! Manga not found! :(",
 				ephemeral: true
 			});
@@ -53,6 +53,9 @@ export const command: Command = {
 				.setStyle(ButtonStyle.Link)
 		]);
 
-		return interaction.reply({ embeds: [embed], components: [buttonsRow] });
+		return await interaction.reply({
+			embeds: [embed],
+			components: [buttonsRow]
+		});
 	}
 };

@@ -22,7 +22,7 @@ export const command: Command = {
 			required: true
 		}
 	],
-	run: (client, interaction) => {
+	run: async (client, interaction) => {
 		const choice = interaction.options.getString("choice");
 		const embed = new CoinEmbedBuilder(
 			flipCoin(choices),
@@ -32,6 +32,9 @@ export const command: Command = {
 		);
 		const buttonsRow = new CoinButtonsRowBuilder(choices);
 
-		return interaction.reply({ embeds: [embed], components: [buttonsRow] });
+		return await interaction.reply({
+			embeds: [embed],
+			components: [buttonsRow]
+		});
 	}
 };

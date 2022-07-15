@@ -27,6 +27,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response.owo);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

@@ -45,7 +45,7 @@ export const command: Command = {
 			.setTitle("Password")
 			.setDescription(password);
 
-		return interaction.reply({
+		return await interaction.reply({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

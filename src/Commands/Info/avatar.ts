@@ -37,6 +37,6 @@ export const command: Command = {
 				.setStyle(ButtonStyle.Link)
 		]);
 
-		return interaction.reply({ embeds: [Embed], components: [row] });
+		return await interaction.reply({ embeds: [Embed], components: [row] });
 	}
 };

@@ -26,7 +26,7 @@ export const command: Command = {
 				)
 			).data;
 		} catch {
-			return interaction.reply({
+			return await interaction.reply({
 				content: "Ship not found :no_entry_sign:",
 				ephemeral: true
 			});
@@ -45,6 +45,6 @@ export const command: Command = {
 				{ name: "Voice acting", value: response.voiceActress, inline: true }
 			]);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

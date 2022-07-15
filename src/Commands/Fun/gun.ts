@@ -40,7 +40,7 @@ export const command: Command = {
 					.setStyle(ButtonStyle.Primary)
 			]);
 
-			return interaction.reply({
+			return await interaction.reply({
 				embeds: [embed],
 				components: [buttonsRow]
 			});
@@ -59,7 +59,7 @@ export const command: Command = {
 						.setStyle(ButtonStyle.Primary)
 				]);
 
-				return interaction.reply({
+				return await interaction.reply({
 					embeds: [embed],
 					components: [buttonsRow]
 				});
@@ -78,7 +78,10 @@ export const command: Command = {
 			if (!client.gun.drum[0]) embed.setTitle("Nothing happened!");
 
 			client.gun.drum.shift();
-			return interaction.reply({ embeds: [embed], components: [buttonsRow] });
+			return await interaction.reply({
+				embeds: [embed],
+				components: [buttonsRow]
+			});
 		}
 	}
 };

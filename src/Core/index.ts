@@ -1,8 +1,9 @@
 import * as locales from "../Locales";
 
-import { Button, Command, Env, Event, Gun, Music } from "../Interfaces";
+import { Button, Command, Env, Event, Gun } from "../Interfaces";
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 
+import { Music } from "../Exports/music";
 import env from "./env";
 import { readdirSync } from "fs";
 
@@ -12,10 +13,7 @@ class ExtendedClient extends Client {
 	public buttons: Collection<string, Button> = new Collection();
 	public locales = locales;
 	public env: Env = env as unknown as Env;
-	public music: Music = {
-		queue: {},
-		connection: undefined
-	};
+	public music: Collection<string, Music> = new Collection();
 	public gun: Gun = {
 		drum: []
 	};

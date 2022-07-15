@@ -61,9 +61,9 @@ export const command: Command = {
 					}
 				]);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		} catch {
-			return interaction.reply({
+			return await interaction.reply({
 				content: "User not found :no_entry_sign:",
 				ephemeral: true
 			});

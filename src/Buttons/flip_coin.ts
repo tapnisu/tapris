@@ -19,7 +19,7 @@ export const button: Button = {
 		);
 		const buttonsRow = new CoinButtonsRowBuilder(choices);
 
-		return interaction.update({
+		return await interaction.update({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

@@ -33,6 +33,6 @@ export const command: Command = {
 			}
 		});
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

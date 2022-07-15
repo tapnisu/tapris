@@ -24,7 +24,7 @@ export const command: Command = {
 		).data;
 
 		if (!response.Results[0])
-			return interaction.reply({
+			return await interaction.reply({
 				content: "Can`t find results! :no_entry_sign:",
 				ephemeral: true
 			});
@@ -34,6 +34,6 @@ export const command: Command = {
 			.setTitle(response.Results[0].FirstURL)
 			.setURL(response.Results[0].FirstURL);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

@@ -38,7 +38,7 @@ export const button: Button = {
 			.setTitle("Password")
 			.setDescription(password);
 
-		return interaction.update({
+		return await interaction.update({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

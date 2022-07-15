@@ -5,9 +5,23 @@ export const command: Command = {
 	name: "skip",
 	description: "Skip current music",
 	run: async (client, interaction) => {
-		client.music.queue[interaction.guildId]?.shift();
+		if (!client.music.has(interaction.guildId))
+			return await interaction.reply({
+				content: "There is no queue for this server!",
+				ephemeral: true
+			});
+		if (client.music.get(interaction.guildId).queue.length == 0)
+			return await interaction.reply({
+				content: "The queue is already empty!",
+				ephemeral: true
+			});
 
-		interaction.reply("Skipped :musical_note:");
-		return play(client, interaction);
+		const music = client.music.get(interaction.guildId);
+		music.queue.shift();
+		music.player.pause();
+		client.music.set(interaction.guildId, music);
+
+		await interaction.reply("Skipped :musical_note:");
+		return play(client, interaction, music);
 	}
 };

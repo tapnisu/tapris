@@ -22,7 +22,7 @@ export const button: Button = {
 					.setStyle(ButtonStyle.Primary)
 			]);
 
-			return interaction.update({
+			return await interaction.update({
 				embeds: [embed],
 				components: [buttonsRow]
 			});
@@ -41,6 +41,9 @@ export const button: Button = {
 		if (!client.gun.drum[0]) embed.setTitle("Nothing happend!");
 
 		client.gun.drum.shift();
-		return interaction.update({ embeds: [embed], components: [buttonsRow] });
+		return await interaction.update({
+			embeds: [embed],
+			components: [buttonsRow]
+		});
 	}
 };

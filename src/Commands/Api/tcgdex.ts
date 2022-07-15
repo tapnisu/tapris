@@ -40,9 +40,9 @@ export const command: Command = {
 				.setImage(data.images.large)
 				.setTimestamp(new Date(data.set.releaseDate));
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		} catch {
-			return interaction.reply({
+			return await interaction.reply({
 				content: "Card not found :no_entry_sign:",
 				ephemeral: true
 			});

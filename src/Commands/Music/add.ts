@@ -1,4 +1,5 @@
 import { Command } from "../../Interfaces";
+import { Music } from "../../Exports/music";
 import { validateURL } from "ytdl-core";
 import youtubeSr from "youtube-sr";
 
@@ -29,16 +30,20 @@ export const command: Command = {
 		const type = interaction.options.getString("type");
 		const request = interaction.options.getString("request");
 
-		if (!client.music.queue?.[interaction.guildId])
-			client.music.queue[interaction.guildId] = [];
+		if (!client.music.has(interaction.guildId))
+			client.music.set(interaction.guildId, new Music([], null));
+
+		const music = client.music.get(interaction.guildId);
 
 		if (type == "video-url") {
-			if (validateURL(request))
-				client.music.queue[interaction.guildId] = [
-					...client.music.queue[interaction.guildId],
-					request
-				];
-			else return interaction.reply("Url is invalid! :no_entry_sign:");
+			if (validateURL(request)) {
+				music.queue = [...music.queue, request];
+				client.music.set(interaction.guildId, music);
+			} else
+				return await interaction.reply({
+					content: "Url is invalid! :no_entry_sign:",
+					ephemeral: true
+				});
 		}
 
 		if (type == "video-title") {
@@ -48,12 +53,13 @@ export const command: Command = {
 			});
 
 			if (result.length == 0)
-				return interaction.reply("Music not found! :no_entry_sign:");
+				return await interaction.reply({
+					content: "Music not found! :no_entry_sign:",
+					ephemeral: true
+				});
 
-			client.music.queue[interaction.guildId] = [
-				...client.music.queue[interaction.guildId],
-				result[0].id
-			];
+			music.queue = [...music.queue, result[0].id];
+			client.music.set(interaction.guildId, music);
 		}
 
 		if (type == "playlist-name") {
@@ -63,29 +69,37 @@ export const command: Command = {
 			});
 
 			if (result.length == 0)
-				return interaction.reply("Playlist not found! :no_entry_sign:");
+				return await interaction.reply({
+					content: "Playlist not found! :no_entry_sign:",
+					ephemeral: true
+				});
 
-			client.music.queue[interaction.guildId] = [
-				...client.music.queue[interaction.guildId],
+			music.queue = [
+				...music.queue,
 				...(
 					await (await youtubeSr.getPlaylist(result[0].url)).fetch()
 				).videos.map((video) => video.id)
 			];
+			client.music.set(interaction.guildId, music);
 		}
 
 		if (type == "playlist-url") {
 			try {
-				client.music.queue[interaction.guildId] = [
-					...client.music.queue[interaction.guildId],
+				music.queue = [
+					...music.queue,
 					...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(
 						(video) => video.id
 					)
 				];
+				client.music.set(interaction.guildId, music);
 			} catch {
-				return interaction.reply("Playlist not found! :no_entry_sign:");
+				return await interaction.reply({
+					content: "Playlist not found! :no_entry_sign:",
+					ephemeral: true
+				});
 			}
 		}
 
-		return interaction.reply("Added to queue :musical_note:");
+		return await interaction.reply("Added to queue :musical_note:");
 	}
 };

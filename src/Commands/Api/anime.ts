@@ -25,7 +25,7 @@ export const command: Command = {
 		).data;
 
 		if (response.data.length == 0)
-			return interaction.reply({
+			return await interaction.reply({
 				content: "Anime not found! :no_entry_sign:",
 				ephemeral: true
 			});
@@ -81,6 +81,6 @@ export const command: Command = {
 			])
 			.setTimestamp(new Date(anime.attributes?.startDate));
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

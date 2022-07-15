@@ -38,7 +38,7 @@ export const command: Command = {
 			const character = genshindb.characters(request);
 
 			if (!character)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid character!`,
 					ephemeral: true
 				});
@@ -101,14 +101,14 @@ export const command: Command = {
 
 			if (character.url?.fandom) Embed.setURL(character.url.fandom);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 
 		if (requestType == "weapon") {
 			const weapon = genshindb.weapons(request);
 
 			if (!weapon)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid weapon!`,
 					ephemeral: true
 				});
@@ -158,14 +158,14 @@ export const command: Command = {
 
 			if (weapon.url?.fandom) Embed.setURL(weapon.url.fandom);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 
 		if (requestType == "artifact") {
 			const artifact = genshindb.artifacts(request);
 
 			if (!artifact)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid artifact!`,
 					ephemeral: true
 				});
@@ -203,7 +203,7 @@ export const command: Command = {
 
 			if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 	}
 };

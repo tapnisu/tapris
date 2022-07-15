@@ -24,7 +24,7 @@ export const button: Button = {
 				.setStyle(ButtonStyle.Primary)
 		]);
 
-		return interaction.update({
+		return await interaction.update({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

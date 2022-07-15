@@ -16,6 +16,6 @@ export const command: Command = {
 			.setTitle(response.response)
 			.setImage(response.url);
 
-		return interaction.reply({ embeds: [Embed] });
+		return await interaction.reply({ embeds: [Embed] });
 	}
 };

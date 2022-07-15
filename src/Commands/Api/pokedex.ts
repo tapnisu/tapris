@@ -40,10 +40,8 @@ export const command: Command = {
 			response =
 				exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
 
-			console.log(request.replace(/ |-/g, ""));
-
 			if (!response)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid pokemon!`,
 					ephemeral: true
 				});
@@ -221,7 +219,7 @@ export const command: Command = {
 				}
 			]);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 		if (requestType == "move") {
 			eval(
@@ -236,7 +234,7 @@ export const command: Command = {
 				exports.BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid move!`,
 					ephemeral: true
 				});
@@ -281,7 +279,7 @@ export const command: Command = {
 						inline: true
 					}
 				]);
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 
 		if (requestType == "ability") {
@@ -297,7 +295,7 @@ export const command: Command = {
 				exports.BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid ability!`,
 					ephemeral: true
 				});
@@ -307,7 +305,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.shortDesc);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 
 		if (requestType == "item") {
@@ -323,7 +321,7 @@ export const command: Command = {
 				exports.BattleItems[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
-				return interaction.reply({
+				return await interaction.reply({
 					content: `${request} is not a valid item!`,
 					ephemeral: true
 				});
@@ -333,7 +331,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.desc);
 
-			return interaction.reply({ embeds: [Embed] });
+			return await interaction.reply({ embeds: [Embed] });
 		}
 	}
 };

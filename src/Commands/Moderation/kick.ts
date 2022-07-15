@@ -26,7 +26,7 @@ export const command: Command = {
 			!userMember.permissions.has("Administrator") ||
 			!userMember.permissions.has("KickMembers")
 		)
-			return interaction.reply({
+			return await interaction.reply({
 				content: "You can`t kick members :no_entry_sign:",
 				ephemeral: true
 			});
@@ -34,18 +34,18 @@ export const command: Command = {
 		const target = interaction.guild.members.cache.get(member.id);
 
 		if (target.roles.highest.position >= userMember.roles.highest.position)
-			return interaction.reply({
+			return await interaction.reply({
 				content: "User has higher (or same) role then you :no_entry_sign:",
 				ephemeral: true
 			});
 
 		target
 			.kick(reason ? reason : null)
-			.then(() => {
-				return interaction.reply(`<@!${member.id}> was kicked :door: `);
+			.then(async () => {
+				return await interaction.reply(`<@!${member.id}> was kicked :door: `);
 			})
-			.catch(() => {
-				return interaction.reply({
+			.catch(async () => {
+				return await interaction.reply({
 					content: `<@!${member.id}> was **NOT** kicked :no_entry_sign: `,
 					ephemeral: true
 				});
