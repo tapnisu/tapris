@@ -25,7 +25,7 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-2. Set up your [.env](https://github.com/uwury/taerisu/blob/main/.env_example) (example in [.env_example](https://github.com/uwury/tapris/blob/main/.env_example))
+2. Set up your [.env](.env_example) (example in [.env_example](.env_example))
 
 ```env
 TOKEN="bot token"

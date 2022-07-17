@@ -18,10 +18,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/taerisu/tapris.git"
+		"url": "git+https://github.com/tapnisu/tapris.git"
 	},
 	"bugs": {
-		"url": "https://github.com/taerisu/tapris/issues"
+		"url": "https://github.com/tapnisu/tapris/issues"
 	},
 	"keywords": [
 		"bot",
