@@ -12,7 +12,7 @@
 # Overview
 
 Tapris is a `discord.js` bot, made in [TypeScript](https://www.typescriptlang.org/).
-Bot is named after Tapris from Gabriel DropOut.
+Bot is named after Tapris from Gabriel DropOut manga.
 
 # Install
 
@@ -25,11 +25,11 @@ Type "/" to see commands!
 
 1. Install [node.js](https://nodejs.org/)
 
-2. Set up your [.env](.env_example) (example in [.env_example](.env_example))
+2. Set up your [.env](.env.sample) (example in [.env.sample](.env.sample))
 
 ```env
 TOKEN="bot token"
-BOT_COLOR="bot color (#a9b8f6 as example)"
+BOT_COLOR="bot color (#a9b8f6)"
 ```
 
 1. Install dependencies via `yarn`
