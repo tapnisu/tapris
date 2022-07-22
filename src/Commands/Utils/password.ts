@@ -29,7 +29,7 @@ export const command: Command = {
 			password += charset.charAt(Math.floor(Math.random() * n));
 		}
 
-		const buttonsRow = new ActionRowBuilder().addComponents([
+		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId(`password_${passwordLength}`)
 				.setLabel("Create new")

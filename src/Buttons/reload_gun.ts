@@ -17,7 +17,7 @@ export const button: Button = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle("Gun is reloaded!");
 
-		const buttonsRow = new ActionRowBuilder().addComponents([
+		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
 				.setLabel("Shoot")

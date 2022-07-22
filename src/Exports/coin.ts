@@ -28,9 +28,11 @@ export class CoinEmbedBuilder {
 	}
 }
 
-export class CoinButtonsRowBuilder {
+export class CoinButtonsRowBuilder extends ActionRowBuilder<ButtonBuilder> {
 	constructor(choices: string[]) {
-		return new ActionRowBuilder().addComponents([
+		super();
+
+		this.addComponents([
 			new ButtonBuilder()
 				.setCustomId(`flip_coin_${choices[0]}`)
 				.setLabel(`Select ${choices[0]}`)

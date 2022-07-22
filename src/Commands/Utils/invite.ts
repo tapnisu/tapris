@@ -31,7 +31,7 @@ export const command: Command = {
 			]
 		});
 
-		const row = new ActionRowBuilder().addComponents([
+		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
 				.setLabel("Invite bot")

@@ -15,7 +15,7 @@ export const button: Button = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle("Gun is empty! :grinning:");
 
-			const buttonsRow = new ActionRowBuilder().addComponents([
+			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("reload_gun")
 					.setLabel("Reload gun")
@@ -30,7 +30,7 @@ export const button: Button = {
 
 		const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR);
 
-		const buttonsRow = new ActionRowBuilder().addComponents([
+		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
 				.setLabel("Shoot")

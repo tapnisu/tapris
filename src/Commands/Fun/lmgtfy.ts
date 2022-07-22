@@ -24,7 +24,7 @@ export const command: Command = {
 			question.replace(/ /g, "+")
 		)}`;
 
-		const buttonsRow = new ActionRowBuilder().addComponents([
+		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
 				.setLabel("Open link")

@@ -33,7 +33,7 @@ export const command: Command = {
 				.setColor(client.env.BOT_COLOR)
 				.setTitle("Gun is reloaded!");
 
-			const buttonsRow = new ActionRowBuilder().addComponents([
+			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("gun_shoot")
 					.setLabel("Shoot")
@@ -52,7 +52,7 @@ export const command: Command = {
 					.setColor(client.env.BOT_COLOR)
 					.setTitle("Gun is empty! :grinning:");
 
-				const buttonsRow = new ActionRowBuilder().addComponents([
+				const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 					new ButtonBuilder()
 						.setCustomId("reload_gun")
 						.setLabel("Reload gun")
@@ -67,7 +67,7 @@ export const command: Command = {
 
 			const embed = new EmbedBuilder().setColor(client.env.BOT_COLOR);
 
-			const buttonsRow = new ActionRowBuilder().addComponents([
+			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("gun_shoot")
 					.setLabel("Shoot")

@@ -46,7 +46,7 @@ export const command: Command = {
 			.setURL(response[0].url)
 			.setAuthor({ name: response[0].author });
 
-		const buttonsRow = new ActionRowBuilder().addComponents([
+		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(response[0].url)
 				.setLabel("Read manga")

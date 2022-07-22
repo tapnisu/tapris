@@ -30,7 +30,7 @@ export const command: Command = {
 			})
 			.setImage(avatarUrl);
 
-		const row = new ActionRowBuilder().addComponents([
+		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(avatarUrl)
 				.setLabel("Link to avatar")
