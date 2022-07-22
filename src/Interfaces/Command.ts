@@ -1,8 +1,8 @@
 import Client from "../Core";
-import { CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction } from "discord.js";
 
 interface Run {
-	(client: Client, interaction: CommandInteraction);
+	(client: Client, interaction: ChatInputCommandInteraction);
 }
 
 export interface Command {

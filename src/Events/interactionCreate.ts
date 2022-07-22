@@ -6,10 +6,10 @@ export const event: Event = {
 	name: "interactionCreate",
 	run: (client, interaction: Interaction) => {
 		if (interaction.type === InteractionType.ApplicationCommand) {
-			const command = client.commands.get(interaction.commandName);
-			if (command) (command as Command).run(client, interaction);
-
-			return;
+			if (interaction.isChatInputCommand()) {
+				const command = client.commands.get(interaction.commandName);
+				if (command) return (command as Command).run(client, interaction);
+			}
 		}
 
 		if (interaction.type === InteractionType.MessageComponent) {
@@ -17,7 +17,7 @@ export const event: Event = {
 				const button = client.buttons.find((button) =>
 					button.customId.test(interaction.customId)
 				);
-				if (button) (button as Button).run(client, interaction);
+				if (button) return (button as Button).run(client, interaction);
 			}
 		}
 	}
