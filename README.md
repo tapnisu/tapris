@@ -11,31 +11,35 @@
 
 # Overview
 
-Tapris is a `discord.js` bot, made in [TypeScript](https://www.typescriptlang.org/).
+Tapris is a `discord.js` bot, made in `TypeScript`.
 Bot is named after Tapris from Gabriel DropOut manga.
 
 # Install
 
-## Basic
+## Already hosted
 
 You can invite the bot by [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
-## Host by yourself
+## Run yourself
 
-1. Install [node.js](https://nodejs.org/)
+1. Create bot in [Discord developer portal](https://discord.com/developers/applications).
 
-2. Set up your [.env](.env.sample) (example in [.env.sample](.env.sample))
+2. Install [node.js](https://nodejs.org/en/download/) (I recommend using LTS).
+
+3. Install [yarn]() - `npm i -g yarn`
+
+4. Set up your [.env](.env.sample) (example in [.env.sample](.env.sample)).
 
 ```env
 TOKEN="bot token"
-BOT_COLOR="bot color (#a9b8f6)"
+BOT_COLOR="bot color (#a4b9f9)"
 ```
 
-1. Install dependencies via `yarn`
+4. Install dependencies via `yarn`.
 
-2. Build bot via `yarn build`
+5. Build bot via `yarn build`.
 
-3. Start bot via `yarn start`
+6. Start bot via `yarn start`.
 
 Now you have a running bot!
