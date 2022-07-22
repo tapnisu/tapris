@@ -1,6 +1,6 @@
 {
 	"name": "tapris",
-	"version": "3.0.0-rc1",
+	"version": "3.0.0",
 	"main": "dist/index.js",
 	"scripts": {
 		"start": "node .",
@@ -9,7 +9,10 @@
 		"build:watch": "tsc -w",
 		"format": "npx prettier --write .",
 		"lint": "eslint ./src --ext .ts",
-		"lint:fix": "eslint ./src --ext .ts --fix"
+		"lint:fix": "eslint ./src --ext .ts --fix",
+		"pm2:start": "pm2 start . --name 'tapris'",
+		"pm2:start:watch": "pm2 start . --name 'tapris' --watch",
+		"pm2:stop": "pm2 stop ."
 	},
 	"author": {
 		"email": "alexiy.rybin@gmail.com",
