@@ -119,7 +119,7 @@ dist
 .pnp.*
 
 # Visual Studio Code
-.code/
+.vscode/
 
 # Idea
 .idea/
