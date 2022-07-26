@@ -27,7 +27,8 @@ class ExtendedClient extends Client {
 				IntentsBitField.Flags.GuildVoiceStates,
 				IntentsBitField.Flags.MessageContent,
 				IntentsBitField.Flags.GuildBans,
-				IntentsBitField.Flags.GuildMessages
+				IntentsBitField.Flags.GuildMessages,
+				IntentsBitField.Flags.GuildPresences
 			]
 		}
 	) {
