@@ -10,15 +10,16 @@ export const command: Command = {
 				content: "There is no queue for this server!",
 				ephemeral: true
 			});
-		if (client.music.get(interaction.guildId).queue.length == 0)
-			return await interaction.reply({
-				content: "The queue is already empty!",
-				ephemeral: true
-			});
 
 		const music = client.music.get(interaction.guildId);
 		music.queue.shift();
 		music.player.pause();
+
+		if (client.music.get(interaction.guildId).queue.length == 0)
+			return await interaction.reply({
+				content: "The queue is empty now!"
+			});
+
 		client.music.set(interaction.guildId, music);
 
 		await interaction.deferReply();

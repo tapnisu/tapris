@@ -1,7 +1,8 @@
-import { AudioPlayer, VoiceConnection } from "@discordjs/voice";
 import {
+	AudioPlayer,
 	AudioPlayerStatus,
 	StreamType,
+	VoiceConnection,
 	createAudioResource
 } from "@discordjs/voice";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
@@ -69,7 +70,7 @@ export const play = async (
 		.setImage(info.videoDetails.thumbnails.at(-1).url)
 		.setTimestamp(new Date(info.videoDetails.publishDate));
 
-	await interaction.editReply({ embeds: [Embed] });
+	await interaction.followUp({ embeds: [Embed] });
 
 	music.player.play(resource);
 	music.connection.subscribe(music.player);
@@ -83,6 +84,6 @@ export const play = async (
 	music.player.on("error", async () => {
 		music.player.stop();
 
-		await interaction.reply("Unknown error happened! :interrobang:");
+		await interaction.followUp("Unknown error happened! :interrobang:");
 	});
 };
