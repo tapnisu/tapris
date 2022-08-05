@@ -29,7 +29,7 @@ Type "/" to see commands!
 
 3. Install [yarn](https://yarnpkg.com/) - `npm i -g yarn`
 
-4. Set up your [.env](.env.sample) (example in [.env.sample](.env.sample)).
+4. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
 
 ```env
 TOKEN="bot token"
@@ -44,6 +44,6 @@ BOT_COLOR="bot color (#a4b9f9)"
 
 8. I recommend using bot via pm2 - `npm i -g pm2`
 
-9. Start bot via pm2 -
+9. Start bot via pm2 - `yarn start:pm2`
 
 Now you have a running bot!
