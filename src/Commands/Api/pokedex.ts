@@ -46,6 +46,8 @@ export const command: Command = {
 					ephemeral: true
 				});
 
+			await interaction.deferReply();
+
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
@@ -239,6 +241,8 @@ export const command: Command = {
 					ephemeral: true
 				});
 
+			await interaction.deferReply();
+
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(
@@ -300,6 +304,8 @@ export const command: Command = {
 					ephemeral: true
 				});
 
+			await interaction.deferReply();
+
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
@@ -325,6 +331,8 @@ export const command: Command = {
 					content: `${request} is not a valid item!`,
 					ephemeral: true
 				});
+
+			await interaction.deferReply();
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
