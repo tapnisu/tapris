@@ -100,6 +100,8 @@ export const command: Command = {
 			}
 		}
 
-		return await interaction.reply("Added to queue :musical_note:");
+		await interaction.deferReply();
+
+		return await interaction.followUp("Added to queue :musical_note:");
 	}
 };

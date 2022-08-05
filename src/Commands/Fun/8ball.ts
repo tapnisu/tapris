@@ -7,6 +7,8 @@ export const command: Command = {
 	name: "8ball",
 	description: "Test your luck",
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const response: Response8ball = (
 			await axios.get("https://nekos.life/api/v2/8ball")
 		).data;
@@ -16,6 +18,6 @@ export const command: Command = {
 			.setTitle(response.response)
 			.setImage(response.url);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

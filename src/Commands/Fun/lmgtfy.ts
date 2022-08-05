@@ -19,6 +19,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const question = interaction.options.getString("question");
 		const link = `https://lmgtfy.app/?q=${encodeURI(
 			question.replace(/ /g, "+")
@@ -36,7 +38,7 @@ export const command: Command = {
 			.setTitle(link)
 			.setURL(link);
 
-		return await interaction.reply({
+		return await interaction.followUp({
 			embeds: [Embed],
 			components: [buttonsRow]
 		});

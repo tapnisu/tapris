@@ -34,6 +34,8 @@ export const command: Command = {
 			});
 		}
 
+		await interaction.deferReply();
+
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response[0].name)
@@ -53,7 +55,7 @@ export const command: Command = {
 				.setStyle(ButtonStyle.Link)
 		]);
 
-		return await interaction.reply({
+		return await interaction.followUp({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

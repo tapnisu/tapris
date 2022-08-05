@@ -13,10 +13,12 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const text = interaction.options.getString("text");
 
 		const response: string = convert(text, { wordwrap: 130 });
 
-		return await interaction.reply(response);
+		return await interaction.followUp(response);
 	}
 };

@@ -13,6 +13,8 @@ export const command: Command = {
 		client.music.get(interaction.guildId).connection.destroy();
 		client.music.delete(interaction.guildId);
 
-		return await interaction.reply("Successfully quit the channel! :door:");
+		await interaction.deferReply();
+
+		return await interaction.followUp("Successfully quit the channel! :door:");
 	}
 };

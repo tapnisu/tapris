@@ -15,6 +15,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		let colorString = interaction.options.getString("color");
 
 		if (!colorString) {
@@ -55,6 +57,6 @@ export const command: Command = {
 			Embed.setColor(client.env.BOT_COLOR);
 		}
 
-		return await interaction.reply({ embeds: [Embed], files: [attachment] });
+		return await interaction.followUp({ embeds: [Embed], files: [attachment] });
 	}
 };

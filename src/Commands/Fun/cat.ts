@@ -15,6 +15,8 @@ export const command: Command = {
 	name: "cat",
 	description: "Get cat text and photo",
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const nekosResponse: CatResponse = (
 			await axios.get("https://nekos.life/api/v2/cat")
 		).data;
@@ -27,6 +29,6 @@ export const command: Command = {
 			.setTitle(nekosResponse.cat)
 			.setImage(catApiResponse[0].url);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

@@ -13,6 +13,8 @@ export const command: Command = {
 			)
 		).data.CODES;
 
+		await interaction.deferReply();
+
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle("Genshin codes")
@@ -33,6 +35,6 @@ export const command: Command = {
 			}
 		});
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

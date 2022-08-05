@@ -221,7 +221,7 @@ export const command: Command = {
 				}
 			]);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 		if (requestType == "move") {
 			eval(
@@ -283,7 +283,7 @@ export const command: Command = {
 						inline: true
 					}
 				]);
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 
 		if (requestType == "ability") {
@@ -311,7 +311,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.shortDesc);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 
 		if (requestType == "item") {
@@ -339,7 +339,7 @@ export const command: Command = {
 				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
 				.setDescription(response.desc);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 	}
 };

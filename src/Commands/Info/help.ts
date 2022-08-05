@@ -13,6 +13,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const request = interaction.options.getString("command");
 		const command = client.commands.get(request);
 
@@ -32,7 +34,7 @@ export const command: Command = {
 				]);
 			});
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 
 		const Embed = new EmbedBuilder()
@@ -63,6 +65,6 @@ export const command: Command = {
 				}\` - ${command.description}\n`;
 			});
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

@@ -23,6 +23,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const choice = interaction.options.getString("choice");
 		const embed = new CoinEmbedBuilder(
 			flipCoin(choices),
@@ -32,7 +34,7 @@ export const command: Command = {
 		);
 		const buttonsRow = new CoinButtonsRowBuilder(choices);
 
-		return await interaction.reply({
+		return await interaction.followUp({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

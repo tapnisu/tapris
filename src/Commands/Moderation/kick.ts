@@ -42,7 +42,11 @@ export const command: Command = {
 		target
 			.kick(reason ? reason : null)
 			.then(async () => {
-				return await interaction.reply(`<@!${member.id}> was kicked :door: `);
+				await interaction.deferReply();
+
+				return await interaction.followUp(
+					`<@!${member.id}> was kicked :door: `
+				);
 			})
 			.catch(async () => {
 				return await interaction.reply({

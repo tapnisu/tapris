@@ -44,12 +44,13 @@ export const command: Command = {
 						ephemeral: true
 					})
 			)
-			.then(
-				async () =>
-					await interaction.reply({
-						content: `Deleted ${amount} messages :wastebasket:`,
-						ephemeral: true
-					})
-			);
+			.then(async () => {
+				await interaction.deferReply();
+
+				await interaction.followUp({
+					content: `Deleted ${amount} messages :wastebasket:`,
+					ephemeral: true
+				});
+			});
 	}
 };

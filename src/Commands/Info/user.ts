@@ -13,6 +13,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const user = interaction.options.getUser("user");
 		const member = await interaction.guild.members.fetch(user.id);
 		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
@@ -62,6 +64,6 @@ export const command: Command = {
 
 		embed.addFields({ name: "Id", value: user.id, inline: true });
 
-		return await interaction.reply({ embeds: [embed] });
+		return await interaction.followUp({ embeds: [embed] });
 	}
 };

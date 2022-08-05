@@ -47,7 +47,9 @@ export const command: Command = {
 		target
 			.ban({ reason: reason ? reason : null })
 			.then(async () => {
-				return await interaction.reply(`<@!${member.id}> was banned :door:`);
+				await interaction.deferReply();
+
+				return await interaction.followUp(`<@!${member.id}> was banned :door:`);
 			})
 			.catch(async () => {
 				return await interaction.reply({

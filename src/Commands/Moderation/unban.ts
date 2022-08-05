@@ -27,7 +27,9 @@ export const command: Command = {
 		interaction.guild.members
 			.unban(userId)
 			.then(async () => {
-				return await interaction.reply(`<@!${userId}> was unbanned :door:`);
+				await interaction.deferReply();
+
+				return await interaction.followUp(`<@!${userId}> was unbanned :door:`);
 			})
 			.catch(async () => {
 				return await interaction.reply({

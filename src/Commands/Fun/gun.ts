@@ -26,6 +26,8 @@ export const command: Command = {
 		const command = interaction.options.getString("command");
 
 		if (command == "reload") {
+			await interaction.deferReply();
+
 			client.gun.drum = [false, false, false, false, false, false];
 			client.gun.drum[Math.floor(Math.random() * 6)] = true;
 
@@ -47,6 +49,8 @@ export const command: Command = {
 		}
 
 		if (command == "shoot") {
+			await interaction.deferReply();
+
 			if (client.gun.drum.length == 0) {
 				const embed = new EmbedBuilder()
 					.setColor(client.env.BOT_COLOR)
@@ -59,7 +63,7 @@ export const command: Command = {
 						.setStyle(ButtonStyle.Primary)
 				]);
 
-				return await interaction.reply({
+				return await interaction.followUp({
 					embeds: [embed],
 					components: [buttonsRow]
 				});
@@ -78,7 +82,7 @@ export const command: Command = {
 			if (!client.gun.drum[0]) embed.setTitle("Nothing happened!");
 
 			client.gun.drum.shift();
-			return await interaction.reply({
+			return await interaction.followUp({
 				embeds: [embed],
 				components: [buttonsRow]
 			});

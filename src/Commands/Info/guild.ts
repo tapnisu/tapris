@@ -5,6 +5,8 @@ export const command: Command = {
 	name: "guild",
 	description: "Get info about guild",
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(interaction.guild.name)
@@ -40,6 +42,6 @@ export const command: Command = {
 				{ name: "ID", value: interaction.guild.id, inline: true }
 			]);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

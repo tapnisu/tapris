@@ -30,13 +30,9 @@ export const command: Command = {
 				ephemeral: true
 			});
 
-		const anime: KitsuResponseItem = response.data[0];
+		await interaction.deferReply();
 
-		console.log(
-			anime.attributes?.episodeCount != null
-				? anime.attributes?.episodeCount?.toString()
-				: "Unknown"
-		);
+		const anime: KitsuResponseItem = response.data[0];
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
@@ -81,6 +77,6 @@ export const command: Command = {
 			])
 			.setTimestamp(new Date(anime.attributes?.startDate));
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

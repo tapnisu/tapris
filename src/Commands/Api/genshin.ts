@@ -43,6 +43,8 @@ export const command: Command = {
 					ephemeral: true
 				});
 
+			await interaction.deferReply();
+
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(character.name)
@@ -101,7 +103,7 @@ export const command: Command = {
 
 			if (character.url?.fandom) Embed.setURL(character.url.fandom);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 
 		if (requestType == "weapon") {
@@ -112,6 +114,8 @@ export const command: Command = {
 					content: `${request} is not a valid weapon!`,
 					ephemeral: true
 				});
+
+			await interaction.deferReply();
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
@@ -158,7 +162,7 @@ export const command: Command = {
 
 			if (weapon.url?.fandom) Embed.setURL(weapon.url.fandom);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 
 		if (requestType == "artifact") {
@@ -169,6 +173,8 @@ export const command: Command = {
 					content: `${request} is not a valid artifact!`,
 					ephemeral: true
 				});
+
+			await interaction.deferReply();
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
@@ -203,7 +209,7 @@ export const command: Command = {
 
 			if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom);
 
-			return await interaction.reply({ embeds: [Embed] });
+			return await interaction.followUp({ embeds: [Embed] });
 		}
 	}
 };

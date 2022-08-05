@@ -21,7 +21,9 @@ export const command: Command = {
 		music.player.pause();
 		client.music.set(interaction.guildId, music);
 
-		await interaction.reply("Skipped :musical_note:");
+		await interaction.deferReply();
+
+		await interaction.followUp("Skipped :musical_note:");
 		return play(client, interaction, music);
 	}
 };

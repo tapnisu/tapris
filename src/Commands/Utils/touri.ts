@@ -13,6 +13,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const text = interaction.options.getString("text");
 
 		const Embed = new EmbedBuilder()
@@ -20,6 +22,6 @@ export const command: Command = {
 			.setTitle(encodeURI(text))
 			.addFields([{ name: "Original text", value: text, inline: true }]);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

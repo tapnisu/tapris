@@ -18,34 +18,37 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const name = interaction.options.getString("name");
 
+		let response: PokemontcgResponse;
+
 		try {
-			const response: PokemontcgResponse = (
+			response = (
 				await axios.get(
 					`https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
 				)
 			).data;
-
-			const data: Datum = response.data[0];
-
-			const Embed = new EmbedBuilder()
-				.setColor(client.env.BOT_COLOR)
-				.setTitle(`${data.supertype}: ${data.name}`)
-				.setDescription(`${data.set.series}: ${data.set.name}`)
-				.setThumbnail(data.set.images.symbol)
-				.addFields({
-					name: "Rarity",
-					value: data.rarity,
-					inline: true
-				})
-				.setImage(data.images.large)
-				.setTimestamp(new Date(data.set.releaseDate));
-
-			return await interaction.reply({ embeds: [Embed] });
 		} catch {
 			return await interaction.reply({
 				content: "Card not found :no_entry_sign:",
 				ephemeral: true
 			});
 		}
+		const data: Datum = response.data[0];
+
+		await interaction.deferReply();
+
+		const Embed = new EmbedBuilder()
+			.setColor(client.env.BOT_COLOR)
+			.setTitle(`${data.supertype}: ${data.name}`)
+			.setDescription(`${data.set.series}: ${data.set.name}`)
+			.setThumbnail(data.set.images.symbol)
+			.addFields({
+				name: "Rarity",
+				value: data.rarity,
+				inline: true
+			})
+			.setImage(data.images.large)
+			.setTimestamp(new Date(data.set.releaseDate));
+
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

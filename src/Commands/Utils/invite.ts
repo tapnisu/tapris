@@ -12,6 +12,8 @@ export const command: Command = {
 	name: "invite",
 	description: "Generates an invite",
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const link: string = await client.generateInvite({
 			scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
 			permissions: [
@@ -42,6 +44,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle("Click button to invite");
 
-		return await interaction.reply({ embeds: [Embed], components: [row] });
+		return await interaction.followUp({ embeds: [Embed], components: [row] });
 	}
 };

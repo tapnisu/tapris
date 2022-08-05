@@ -32,6 +32,8 @@ export const command: Command = {
 			});
 		}
 
+		await interaction.deferReply();
+
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response.name)
@@ -45,6 +47,6 @@ export const command: Command = {
 				{ name: "Voice acting", value: response.voiceActress, inline: true }
 			]);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };

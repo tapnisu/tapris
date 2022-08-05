@@ -19,6 +19,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const user = interaction.options.getUser("user");
 		const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false });
 
@@ -37,6 +39,6 @@ export const command: Command = {
 				.setStyle(ButtonStyle.Link)
 		]);
 
-		return await interaction.reply({ embeds: [Embed], components: [row] });
+		return await interaction.followUp({ embeds: [Embed], components: [row] });
 	}
 };

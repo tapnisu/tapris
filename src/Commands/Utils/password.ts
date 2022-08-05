@@ -19,6 +19,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const charset =
 			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		let password = "";
@@ -45,7 +47,7 @@ export const command: Command = {
 			.setTitle("Password")
 			.setDescription(password);
 
-		return await interaction.reply({
+		return await interaction.followUp({
 			embeds: [embed],
 			components: [buttonsRow]
 		});

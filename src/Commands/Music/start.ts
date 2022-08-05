@@ -29,7 +29,9 @@ export const command: Command = {
 
 		client.music.set(interaction.guildId, music);
 
-		await interaction.reply("Starting...");
+		await interaction.deferReply();
+
+		await interaction.followUp("Starting...");
 		return play(client, interaction, client.music.get(interaction.guildId));
 	}
 };

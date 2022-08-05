@@ -15,6 +15,8 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const text = interaction.options.getString("text");
 
 		const response: UwuResponse = (
@@ -27,6 +29,6 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response.owo);
 
-		return await interaction.reply({ embeds: [Embed] });
+		return await interaction.followUp({ embeds: [Embed] });
 	}
 };
