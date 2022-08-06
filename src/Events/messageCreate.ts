@@ -72,11 +72,11 @@ export const event: Event = {
 
 		if (allEmbeds.length != 0) console.log(allEmbeds.join(""));
 
-		let allAttachmnets: string[] = [];
+		let allAttachments: string[] = [];
 
 		message.attachments.forEach((attachment) => {
-			allAttachmnets = [
-				...allAttachmnets,
+			allAttachments = [
+				...allAttachments,
 				`Attachment:\n  Name: ${attachment.name}\n${
 					attachment.description
 						? `	Description: ${attachment.description}\n`
@@ -85,6 +85,6 @@ export const event: Event = {
 			];
 		});
 
-		if (allAttachmnets.length != 0) console.log(allAttachmnets.join(""));
+		if (allAttachments.length != 0) console.log(allAttachments.join(""));
 	}
 };
