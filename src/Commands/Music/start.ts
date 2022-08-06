@@ -3,9 +3,9 @@ import {
 	joinVoiceChannel
 } from "@discordjs/voice";
 
-import { Command } from "../../Interfaces";
 import { GuildMember } from "discord.js";
 import { play } from "../../Exports/music";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "start",

@@ -1,14 +1,13 @@
 import {
 	AudioPlayer,
 	AudioPlayerStatus,
+	createAudioResource,
 	StreamType,
-	VoiceConnection,
-	createAudioResource
+	VoiceConnection
 } from "@discordjs/voice";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
-
-import Client from "../Core/index";
 import ytdl from "ytdl-core";
+import Client from "../Core/index";
 
 export class Music {
 	public queue: string[];
@@ -27,6 +26,11 @@ export const play = async (
 	interaction: CommandInteraction,
 	music: Music
 ) => {
+	if (client.music.get(interaction.guildId).queue.length == 0)
+		return await interaction.followUp({
+			content: "The queue is empty!"
+		});
+
 	const stream = ytdl(music.queue[0], {
 		filter: "audioonly"
 	});
@@ -36,7 +40,6 @@ export const play = async (
 
 	const info = await ytdl.getInfo(music.queue[0]);
 
-	// Get length as string
 	const date = new Date(0);
 	date.setSeconds(Number(info.videoDetails.lengthSeconds));
 	const timeString = date.toISOString().substr(11, 8);

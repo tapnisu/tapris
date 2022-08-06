@@ -6,7 +6,6 @@ import {
 	Guild,
 	OAuth2Scopes
 } from "discord.js";
-
 import { Event } from "../Interfaces";
 
 export const event: Event = {

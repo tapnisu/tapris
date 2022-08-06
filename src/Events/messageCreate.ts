@@ -1,5 +1,4 @@
 import { Message, TextChannel } from "discord.js";
-
 import { Event } from "../Interfaces";
 
 const formatSize = (length: number) => {

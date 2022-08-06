@@ -1,11 +1,9 @@
-import * as locales from "../Locales";
-
-import { Button, Command, Env, Event, Gun } from "../Interfaces";
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
-
-import { Music } from "../Exports/music";
-import env from "./env";
 import { readdirSync } from "fs";
+import { Music } from "../Exports/music";
+import { Button, Command, Env, Event, Gun } from "../Interfaces";
+import * as locales from "../Locales";
+import env from "./env";
 
 class ExtendedClient extends Client {
 	public events: Collection<string, Event> = new Collection();
