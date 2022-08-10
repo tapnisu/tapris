@@ -1,19 +1,15 @@
 import { EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
+import { getGuild } from "../../db";
 import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "queue",
 	description: "Get current queue",
 	run: async (client, interaction) => {
-		if (!client.music.has(interaction.guildId))
-			return await interaction.reply({
-				content: "There is no queue for this server!",
-				ephemeral: true
-			});
+		const guild = await getGuild(interaction.guildId);
 
-		const music = client.music.get(interaction.guildId);
-		if (client.music.get(interaction.guildId).queue.length == 0)
+		if (guild.queue.length == 0)
 			return await interaction.reply({
 				content: "The queue is empty now!",
 				ephemeral: true
@@ -25,7 +21,7 @@ export const command: Command = {
 
 		embed.addFields(
 			await Promise.all(
-				music.queue.slice(0, 24).map(async (track) => {
+				guild.queue.slice(0, 24).map(async (track) => {
 					const info = await ytdl.getInfo(track);
 
 					const date = new Date(0);

@@ -5,6 +5,7 @@ import {
 	StreamType,
 	VoiceConnection
 } from "@discordjs/voice";
+import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import Client from "../Core/index";
@@ -24,21 +25,22 @@ export class Music {
 export const play = async (
 	client: Client,
 	interaction: CommandInteraction,
-	music: Music
+	guild: Guild,
+	connection: VoiceConnection
 ) => {
-	if (client.music.get(interaction.guildId).queue.length == 0)
+	if (guild.queue.length == 0)
 		return await interaction.followUp({
 			content: "The queue is empty!"
 		});
 
-	const stream = ytdl(music.queue[0], {
+	const stream = ytdl(guild.queue[0], {
 		filter: "audioonly"
 	});
 	const resource = createAudioResource(stream, {
 		inputType: StreamType.Arbitrary
 	});
 
-	const info = await ytdl.getInfo(music.queue[0]);
+	const info = await ytdl.getInfo(guild.queue[0]);
 
 	const date = new Date(0);
 	date.setSeconds(Number(info.videoDetails.lengthSeconds));
@@ -75,17 +77,19 @@ export const play = async (
 
 	await interaction.followUp({ embeds: [Embed] });
 
-	music.player.play(resource);
-	music.connection.subscribe(music.player);
+	const player = new AudioPlayer();
 
-	music.player.on(AudioPlayerStatus.Idle, () => {
-		music.queue.shift();
+	player.play(resource);
+	connection.subscribe(player);
 
-		play(client, interaction, music);
+	player.on(AudioPlayerStatus.Idle, () => {
+		guild.queue.shift();
+
+		return play(client, interaction, guild, connection);
 	});
 
-	music.player.on("error", async () => {
-		music.player.stop();
+	player.on("error", async () => {
+		player.stop();
 
 		await interaction.followUp("Unknown error happened! :interrobang:");
 	});
