@@ -1,5 +1,5 @@
-import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "help",

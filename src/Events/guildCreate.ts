@@ -6,6 +6,7 @@ import {
 	Guild,
 	OAuth2Scopes
 } from "discord.js";
+import { createGuild, getGuild } from "../db";
 import { Event } from "../Interfaces";
 
 export const event: Event = {
@@ -13,6 +14,7 @@ export const event: Event = {
 	run: async (client, guild: Guild) => {
 		console.log(`Joined ${guild.name} guild!`);
 
+		if (getGuild(guild.id)) createGuild(guild.id);
 		if (!guild.systemChannel) return;
 
 		const link: string = client.generateInvite({

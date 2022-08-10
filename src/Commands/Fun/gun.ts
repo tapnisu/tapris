@@ -4,6 +4,7 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
+import { getGuild, updateGuild } from "../../db";
 
 import { Command } from "../../Interfaces";
 
@@ -24,12 +25,13 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const command = interaction.options.getString("command");
+		const guild = await getGuild(interaction.guildId);
 
 		if (command == "reload") {
 			await interaction.deferReply();
 
-			client.gun.drum = [false, false, false, false, false, false];
-			client.gun.drum[Math.floor(Math.random() * 6)] = true;
+			guild.gun = [false, false, false, false, false, false];
+			guild.gun[Math.floor(Math.random() * 6)] = true;
 
 			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
@@ -42,7 +44,7 @@ export const command: Command = {
 					.setStyle(ButtonStyle.Primary)
 			]);
 
-			return await interaction.reply({
+			return await interaction.followUp({
 				embeds: [embed],
 				components: [buttonsRow]
 			});
@@ -51,7 +53,7 @@ export const command: Command = {
 		if (command == "shoot") {
 			await interaction.deferReply();
 
-			if (client.gun.drum.length == 0) {
+			if (guild.gun.length == 0) {
 				const embed = new EmbedBuilder()
 					.setColor(client.env.BOT_COLOR)
 					.setTitle("Gun is empty! :grinning:");
@@ -65,7 +67,8 @@ export const command: Command = {
 
 				return await interaction.followUp({
 					embeds: [embed],
-					components: [buttonsRow]
+					components: [buttonsRow],
+					ephemeral: true
 				});
 			}
 
@@ -78,10 +81,13 @@ export const command: Command = {
 					.setStyle(ButtonStyle.Primary)
 			]);
 
-			if (client.gun.drum[0]) embed.setTitle("You died...");
-			if (!client.gun.drum[0]) embed.setTitle("Nothing happened!");
+			if (guild.gun[0]) embed.setTitle("You died...");
+			if (!guild.gun[0]) embed.setTitle("Nothing happened!");
 
-			client.gun.drum.shift();
+			guild.gun.shift();
+
+			updateGuild(guild);
+
 			return await interaction.followUp({
 				embeds: [embed],
 				components: [buttonsRow]

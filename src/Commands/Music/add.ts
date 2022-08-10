@@ -1,7 +1,7 @@
-import { Command } from "../../Interfaces";
-import { Music } from "../../Exports/music";
-import { validateURL } from "ytdl-core";
 import youtubeSr from "youtube-sr";
+import { validateURL } from "ytdl-core";
+import { getGuild, updateGuild } from "../../db";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "add",
@@ -30,15 +30,12 @@ export const command: Command = {
 		const type = interaction.options.getString("type");
 		const request = interaction.options.getString("request");
 
-		if (!client.music.has(interaction.guildId))
-			client.music.set(interaction.guildId, new Music([], null));
-
-		const music = client.music.get(interaction.guildId);
+		const guild = await getGuild(interaction.guildId);
 
 		if (type == "video-url") {
 			if (validateURL(request)) {
-				music.queue = [...music.queue, request];
-				client.music.set(interaction.guildId, music);
+				guild.queue = [...guild.queue, request];
+				updateGuild(guild);
 			} else
 				return await interaction.reply({
 					content: "Url is invalid! :no_entry_sign:",
@@ -58,8 +55,8 @@ export const command: Command = {
 					ephemeral: true
 				});
 
-			music.queue = [...music.queue, result[0].id];
-			client.music.set(interaction.guildId, music);
+			guild.queue = [...guild.queue, result[0].id];
+			updateGuild(guild);
 		}
 
 		if (type == "playlist-name") {
@@ -74,24 +71,26 @@ export const command: Command = {
 					ephemeral: true
 				});
 
-			music.queue = [
-				...music.queue,
+			guild.queue = [
+				...guild.queue,
 				...(
 					await (await youtubeSr.getPlaylist(result[0].url)).fetch()
 				).videos.map((video) => video.id)
 			];
-			client.music.set(interaction.guildId, music);
+
+			updateGuild(guild);
 		}
 
 		if (type == "playlist-url") {
 			try {
-				music.queue = [
-					...music.queue,
+				guild.queue = [
+					...guild.queue,
 					...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(
 						(video) => video.id
 					)
 				];
-				client.music.set(interaction.guildId, music);
+
+				updateGuild(guild);
 			} catch {
 				return await interaction.reply({
 					content: "Playlist not found! :no_entry_sign:",

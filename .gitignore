@@ -123,3 +123,6 @@ dist
 
 # Idea
 .idea/
+
+# Prisma
+prisma/migrations/
