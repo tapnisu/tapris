@@ -9,6 +9,7 @@ import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import Client from "../Core/index";
+import { updateGuild } from "../db";
 
 export class Music {
 	public queue: string[];
@@ -84,6 +85,7 @@ export const play = async (
 
 	player.on(AudioPlayerStatus.Idle, () => {
 		guild.queue.shift();
+		updateGuild(guild);
 
 		return play(client, interaction, guild, connection);
 	});
