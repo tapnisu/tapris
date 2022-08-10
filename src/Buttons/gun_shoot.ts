@@ -4,13 +4,16 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
+import { getGuild, updateGuild } from "../db";
 
 import { Button } from "../Interfaces";
 
 export const button: Button = {
 	customId: /gun_shoot/,
 	run: async (client, interaction) => {
-		if (client.gun.drum.length == 0) {
+		const guild = await getGuild(interaction.guildId);
+
+		if (guild.gun.length == 0) {
 			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle("Gun is empty! :grinning:");
@@ -37,10 +40,12 @@ export const button: Button = {
 				.setStyle(ButtonStyle.Primary)
 		]);
 
-		if (client.gun.drum[0]) embed.setTitle("You died...");
-		if (!client.gun.drum[0]) embed.setTitle("Nothing happend!");
+		if (guild.gun[0]) embed.setTitle("You died...");
+		if (!guild.gun[0]) embed.setTitle("Nothing happend!");
 
-		client.gun.drum.shift();
+		guild.gun.shift();
+		updateGuild(guild);
+
 		return await interaction.update({
 			embeds: [embed],
 			components: [buttonsRow]

@@ -1,5 +1,5 @@
-import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "help",
@@ -54,13 +54,13 @@ export const command: Command = {
 				Embed.data.description += `\`/${command.name} ${
 					command.options
 						? command.options
-								.map(
-									(option) =>
-										`<${option.required ? "" : ""}${option.name} [${
-											option.description
-										}]>`
-								)
-								.join(" ")
+							.map(
+								(option) =>
+									`<${option.required ? "" : ""}${option.name} [${
+										option.description
+									}]>`
+							)
+							.join(" ")
 						: ""
 				}\` - ${command.description}\n`;
 			});
