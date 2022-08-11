@@ -30,11 +30,6 @@ export const command: Command = {
 				content: "You can`t ban members :no_entry_sign:",
 				ephemeral: true
 			});
-		if (!member)
-			return await interaction.reply({
-				content: "User is not found :no_entry_sign:",
-				ephemeral: true
-			});
 
 		const target = interaction.guild.members.cache.get(member.id);
 

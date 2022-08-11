@@ -16,13 +16,12 @@ export const command: Command = {
 		const guild = await getGuild(interaction.guildId);
 
 		guild.queue.shift();
+		updateGuild(guild);
 
 		if (guild.queue.length == 0)
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: "The queue is empty now!"
 			});
-
-		updateGuild(guild);
 
 		const connection = joinVoiceChannel({
 			channelId: (interaction.member as GuildMember).voice.channel.id,
