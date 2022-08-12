@@ -14,13 +14,13 @@ export const command: Command = {
 
 		if (guild.queue.length == 0)
 			return await interaction.reply({
-				content: queueLocale.emptyQueue(),
+				content: queueLocale.emptyQueue,
 				ephemeral: true
 			});
 
 		await interaction.deferReply();
 
-		const embed = new EmbedBuilder().setTitle(queueLocale.queue());
+		const embed = new EmbedBuilder().setTitle(queueLocale.queue);
 
 		embed.addFields(
 			await Promise.all(

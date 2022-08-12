@@ -19,12 +19,12 @@ export const button: Button = {
 		if (guild.gun.length == 0) {
 			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle(gunLocale.emptyGun());
+				.setTitle(gunLocale.emptyGun);
 
 			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("reload_gun")
-					.setLabel(gunLocale.reloadGun())
+					.setLabel(gunLocale.reloadGun)
 					.setStyle(ButtonStyle.Primary)
 			]);
 
@@ -39,12 +39,12 @@ export const button: Button = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
-				.setLabel(gunLocale.shoot())
+				.setLabel(gunLocale.shoot)
 				.setStyle(ButtonStyle.Primary)
 		]);
 
-		if (guild.gun[0]) embed.setTitle(gunLocale.youDied());
-		if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend());
+		if (guild.gun[0]) embed.setTitle(gunLocale.youDied);
+		if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend);
 
 		guild.gun.shift();
 		updateGuild(guild);

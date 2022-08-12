@@ -28,17 +28,17 @@ export const button: Button = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId(`password_${passwordLength}`)
-				.setLabel(passwordLocale.createNew())
+				.setLabel(passwordLocale.createNew)
 				.setStyle(ButtonStyle.Primary),
 			new ButtonBuilder()
 				.setCustomId("delete_message")
-				.setLabel(passwordLocale.deleteMessage())
+				.setLabel(passwordLocale.deleteMessage)
 				.setStyle(ButtonStyle.Danger)
 		]);
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(passwordLocale.password())
+			.setTitle(passwordLocale.password)
 			.setDescription(password);
 
 		return await interaction.update({

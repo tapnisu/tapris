@@ -41,7 +41,7 @@ export const command: Command = {
 				updateGuild(guild);
 			} else
 				return await interaction.reply({
-					content: addLocale.invalidUrl(),
+					content: addLocale.invalidUrl,
 					ephemeral: true
 				});
 		}
@@ -54,7 +54,7 @@ export const command: Command = {
 
 			if (result.length == 0)
 				return await interaction.reply({
-					content: addLocale.videoNotFound(),
+					content: addLocale.videoNotFound,
 					ephemeral: true
 				});
 
@@ -70,7 +70,7 @@ export const command: Command = {
 
 			if (result.length == 0)
 				return await interaction.reply({
-					content: addLocale.playlistNotFound(),
+					content: addLocale.playlistNotFound,
 					ephemeral: true
 				});
 
@@ -96,7 +96,7 @@ export const command: Command = {
 				updateGuild(guild);
 			} catch {
 				return await interaction.reply({
-					content: addLocale.playlistNotFound(),
+					content: addLocale.playlistNotFound,
 					ephemeral: true
 				});
 			}
@@ -104,6 +104,6 @@ export const command: Command = {
 
 		await interaction.deferReply();
 
-		return await interaction.followUp(addLocale.success());
+		return await interaction.followUp(addLocale.success);
 	}
 };

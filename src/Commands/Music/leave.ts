@@ -15,7 +15,7 @@ export const command: Command = {
 
 		if (!(interaction.member as GuildMember).voice.channel.id)
 			await interaction.reply({
-				content: leaveLocale.notInChannel(),
+				content: leaveLocale.notInChannel,
 				ephemeral: true
 			});
 
@@ -33,6 +33,6 @@ export const command: Command = {
 
 		await interaction.deferReply();
 
-		return await interaction.followUp(leaveLocale.success());
+		return await interaction.followUp(leaveLocale.success);
 	}
 };

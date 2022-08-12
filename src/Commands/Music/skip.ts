@@ -22,7 +22,7 @@ export const command: Command = {
 
 		if (guild.queue.length == 0)
 			return await interaction.followUp({
-				content: skipLocale.emptyQueue()
+				content: skipLocale.emptyQueue
 			});
 
 		const connection = joinVoiceChannel({
@@ -32,7 +32,7 @@ export const command: Command = {
 				.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 		});
 
-		await interaction.followUp(skipLocale.success());
+		await interaction.followUp(skipLocale.success);
 		return play(client, interaction, guild, connection);
 	}
 };

@@ -23,12 +23,12 @@ export const button: Button = {
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(gunLocale.reloadedGun());
+			.setTitle(gunLocale.reloadedGun);
 
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
-				.setLabel(gunLocale.shoot())
+				.setLabel(gunLocale.shoot)
 				.setStyle(ButtonStyle.Primary)
 		]);
 

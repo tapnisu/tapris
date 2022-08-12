@@ -42,7 +42,7 @@ export const event: Event = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel(guildCreateLocale.invite())
+				.setLabel(guildCreateLocale.invite)
 				.setStyle(ButtonStyle.Link)
 		]);
 
@@ -50,7 +50,7 @@ export const event: Event = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-			.setDescription(guildCreateLocale.description());
+			.setDescription(guildCreateLocale.description);
 
 		return guild.systemChannel.send({
 			embeds: [embed],

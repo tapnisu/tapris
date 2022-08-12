@@ -39,13 +39,13 @@ export const command: Command = {
 		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel(inviteLocale.inviteBot())
+				.setLabel(inviteLocale.inviteBot)
 				.setStyle(ButtonStyle.Link)
 		]);
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(inviteLocale.clickToInvite());
+			.setTitle(inviteLocale.clickToInvite);
 
 		return await interaction.followUp({ embeds: [Embed], components: [row] });
 	}

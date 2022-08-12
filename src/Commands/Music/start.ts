@@ -16,12 +16,12 @@ export const command: Command = {
 		const { startLocale } = await getLocale(interaction.guildId);
 
 		if (!(interaction.member as GuildMember).voice)
-			return await interaction.reply(startLocale.notInChannel());
+			return await interaction.reply(startLocale.notInChannel);
 
 		const guild = await getGuild(interaction.guildId);
 
 		if (guild.queue.length == 0)
-			return await interaction.reply(startLocale.emptyQueue());
+			return await interaction.reply(startLocale.emptyQueue);
 
 		await interaction.deferReply();
 
@@ -32,7 +32,7 @@ export const command: Command = {
 				.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 		});
 
-		await interaction.followUp(startLocale.starting());
+		await interaction.followUp(startLocale.starting);
 		return play(client, interaction, guild, connection);
 	}
 };

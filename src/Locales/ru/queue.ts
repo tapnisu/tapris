@@ -1,2 +1,2 @@
-export const emptyQueue = () => "Очередь пуста!";
-export const queue = () => "Очередь";
+export const emptyQueue = "Очередь пуста!";
+export const queue = "Очередь";

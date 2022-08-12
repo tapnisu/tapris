@@ -34,7 +34,7 @@ export const play = async (
 
 	if (guild.queue.length == 0)
 		return await interaction.followUp({
-			content: musicLocale.emptyQueue()
+			content: musicLocale.emptyQueue
 		});
 
 	const stream = ytdl(guild.queue[0], {
@@ -57,21 +57,21 @@ export const play = async (
 		.setDescription(
 			info.videoDetails.description
 				? info.videoDetails.description
-				: musicLocale.noDescription()
+				: musicLocale.noDescription
 		)
 		.addFields([
 			{
-				name: musicLocale.views(),
+				name: musicLocale.views,
 				value: info.videoDetails.viewCount,
 				inline: true
 			},
 			{
-				name: musicLocale.likes(),
+				name: musicLocale.likes,
 				value: String(info.videoDetails.likes),
 				inline: true
 			},
 			{
-				name: musicLocale.length(),
+				name: musicLocale.length,
 				value: timeString,
 				inline: true
 			}
@@ -96,6 +96,6 @@ export const play = async (
 	player.on("error", async () => {
 		player.stop();
 
-		await interaction.followUp(musicLocale.unknownError());
+		await interaction.followUp(musicLocale.unknownError);
 	});
 };

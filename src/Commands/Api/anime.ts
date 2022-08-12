@@ -30,7 +30,7 @@ export const command: Command = {
 
 		if (response.data.length == 0)
 			return await interaction.reply({
-				content: animeLocale.animeNotFound(),
+				content: animeLocale.animeNotFound,
 				ephemeral: true
 			});
 
@@ -45,37 +45,37 @@ export const command: Command = {
 			.setImage(anime.attributes?.posterImage?.original)
 			.addFields([
 				{
-					name: animeLocale.averageRating(),
+					name: animeLocale.averageRating,
 					value: anime.attributes?.averageRating,
 					inline: true
 				},
 				{
-					name: animeLocale.ageRating(),
+					name: animeLocale.ageRating,
 					value:
 						anime.attributes?.ageRatingGuide != null
 							? anime.attributes?.ageRatingGuide?.toString()
-							: animeLocale.unknown(),
+							: animeLocale.unknown,
 					inline: true
 				},
 				{
-					name: animeLocale.nsfw(),
+					name: animeLocale.nsfw,
 					value: anime.attributes?.nsfw?.toString(),
 					inline: true
 				},
 				{
-					name: animeLocale.episodeCount(),
+					name: animeLocale.episodeCount,
 					value:
 						anime.attributes?.episodeCount != null
 							? anime.attributes?.episodeCount?.toString()
-							: animeLocale.unknown(),
+							: animeLocale.unknown,
 					inline: true
 				},
 				{
-					name: animeLocale.episodeLength(),
+					name: animeLocale.episodeLength,
 					value:
 						anime.attributes?.episodeLength != null
 							? anime.attributes?.episodeLength.toString()
-							: animeLocale.unknown(),
+							: animeLocale.unknown,
 					inline: true
 				}
 			])
