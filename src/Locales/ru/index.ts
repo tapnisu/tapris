@@ -7,6 +7,7 @@ export * as gunLocale from "./gun";
 export * as inviteLocale from "./invite";
 export * as leaveLocale from "./leave";
 export * as musicLocale from "./music";
+export * as passwordLocale from "./password";
 export * as queueLocale from "./queue";
 export * as skipLocale from "./skip";
 export * as startLocale from "./start";

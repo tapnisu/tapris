@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "password",
@@ -21,6 +22,8 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		await interaction.deferReply();
 
+		const { passwordLocale } = await getLocale(interaction.guildId);
+
 		const charset =
 			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		let password = "";
@@ -34,17 +37,17 @@ export const command: Command = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId(`password_${passwordLength}`)
-				.setLabel("Create new")
+				.setLabel(passwordLocale.createNew())
 				.setStyle(ButtonStyle.Primary),
 			new ButtonBuilder()
 				.setCustomId("delete_message")
-				.setLabel("Delete")
+				.setLabel(passwordLocale.deleteMessage())
 				.setStyle(ButtonStyle.Danger)
 		]);
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle("Password")
+			.setTitle(passwordLocale.password())
 			.setDescription(password);
 
 		return await interaction.followUp({
