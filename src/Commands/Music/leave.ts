@@ -5,14 +5,17 @@ import {
 import { GuildMember } from "discord.js";
 import { getGuild, updateGuild } from "../../db";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "leave",
 	description: "Exit the voice channel",
 	run: async (client, interaction) => {
+		const { leaveLocale } = await getLocale(interaction.guildId);
+
 		if (!(interaction.member as GuildMember).voice.channel.id)
 			await interaction.reply({
-				content: "You aren`t in channel! :(",
+				content: leaveLocale.notInChannel(),
 				ephemeral: true
 			});
 
@@ -30,6 +33,6 @@ export const command: Command = {
 
 		await interaction.deferReply();
 
-		return await interaction.followUp("Successfully quit the channel! :door:");
+		return await interaction.followUp(leaveLocale.success());
 	}
 };

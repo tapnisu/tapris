@@ -6,13 +6,15 @@ import { GuildMember } from "discord.js";
 import { getGuild, updateGuild } from "../../db";
 import { play } from "../../Exports/music";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "skip",
 	description: "Skip current music",
 	run: async (client, interaction) => {
 		await interaction.deferReply();
-    
+
+		const { skipLocale } = await getLocale(interaction.guildId);
 		const guild = await getGuild(interaction.guildId);
 
 		guild.queue.shift();
@@ -20,9 +22,9 @@ export const command: Command = {
 
 		if (guild.queue.length == 0)
 			return await interaction.followUp({
-				content: "The queue is empty now!"
+				content: skipLocale.emptyQueue()
 			});
-      
+
 		const connection = joinVoiceChannel({
 			channelId: (interaction.member as GuildMember).voice.channel.id,
 			guildId: interaction.guildId,
@@ -30,7 +32,7 @@ export const command: Command = {
 				.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 		});
 
-		await interaction.followUp("Skipped :musical_note:");
+		await interaction.followUp(skipLocale.success());
 		return play(client, interaction, guild, connection);
 	}
 };

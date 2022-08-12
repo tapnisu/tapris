@@ -1,4 +1,10 @@
+export * as addLocale from "./add";
 export * as animeLocale from "./anime";
 export * as changelangLocale from "./changelang";
 export * as guildCreateLocale from "./guildCreate";
 export * as inviteLocale from "./invite";
+export * as leaveLocale from "./leave";
+export * as musicLocale from "./music";
+export * as queueLocale from "./queue";
+export * as skipLocale from "./skip";
+export * as startLocale from "./start";
