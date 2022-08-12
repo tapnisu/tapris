@@ -1,7 +1,8 @@
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
 import { calcWeaknesses } from "../../Exports/pokemonTypeChart";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "pokedex",
@@ -30,6 +31,8 @@ export const command: Command = {
 		const requestType: string = interaction.options.getString("type");
 		const request: string = interaction.options.getString("name");
 
+		const { pokedexLocale } = await getLocale(interaction.guildId);
+
 		if (requestType == "pokemon") {
 			let response: any = await axios.get(
 				"https://play.pokemonshowdown.com/data/pokedex.js?4076b733/"
@@ -42,7 +45,7 @@ export const command: Command = {
 
 			if (!response)
 				return await interaction.reply({
-					content: `${request} is not a valid pokemon!`,
+					content: pokedexLocale.pokemon.invalid(request),
 					ephemeral: true
 				});
 
@@ -50,8 +53,8 @@ export const command: Command = {
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
-				.setDescription(`Types: ${response.types.join(" / ")}`)
+				.setTitle(pokedexLocale.pokemon.embedTitle(response.name, response.num))
+				.setDescription(pokedexLocale.pokemon.types(response.types))
 				.setThumbnail(
 					`https://play.pokemonshowdown.com/sprites/ani/${response.name
 						.replace("-Y", "y")
@@ -60,17 +63,17 @@ export const command: Command = {
 				)
 				.addFields([
 					{
-						name: "Height (m)",
+						name: pokedexLocale.pokemon.height,
 						value: response.heightm.toString(),
 						inline: true
 					},
 					{
-						name: "Weight (kg)",
+						name: pokedexLocale.pokemon.weight,
 						value: response.weightkg.toString(),
 						inline: true
 					},
 					{
-						name: "Total",
+						name: pokedexLocale.pokemon.totalStats,
 						value: (
 							response.baseStats.hp +
 							response.baseStats.atk +
@@ -82,37 +85,37 @@ export const command: Command = {
 						inline: true
 					},
 					{
-						name: "HP",
+						name: pokedexLocale.pokemon.hp,
 						value: response.baseStats.hp.toString(),
 						inline: true
 					},
 					{
-						name: "ATK",
+						name: pokedexLocale.pokemon.atk,
 						value: response.baseStats.atk.toString(),
 						inline: true
 					},
 					{
-						name: "DEF",
+						name: pokedexLocale.pokemon.def,
 						value: response.baseStats.def.toString(),
 						inline: true
 					},
 					{
-						name: "SPATK",
+						name: pokedexLocale.pokemon.spAtk,
 						value: response.baseStats.spa.toString(),
 						inline: true
 					},
 					{
-						name: "SPDEF",
+						name: pokedexLocale.pokemon.spDef,
 						value: response.baseStats.spd.toString(),
 						inline: true
 					},
 					{
-						name: "SPEED",
+						name: pokedexLocale.pokemon.speed,
 						value: response.baseStats.spe.toString(),
 						inline: true
 					},
 					{
-						name: "Abilities",
+						name: pokedexLocale.pokemon.abilities,
 						value: Object.entries(response.abilities)
 							.map((ability) =>
 								ability[0] != "H" ? ability[1] : `(${ability[1]})`
@@ -121,12 +124,12 @@ export const command: Command = {
 						inline: true
 					},
 					{
-						name: "Egg groups",
+						name: pokedexLocale.pokemon.eggGroups,
 						value: response.eggGroups.join("\n"),
 						inline: true
 					},
 					{
-						name: "Weaknesses",
+						name: pokedexLocale.pokemon.weaknesses,
 						value: calcWeaknesses(response.types)
 							.sort((a, b) => b.scale - a.scale)
 							.map((type) => `${type.name} x${type.scale}`)
@@ -138,7 +141,7 @@ export const command: Command = {
 			if (response.prevo != undefined) {
 				Embed.addFields([
 					{
-						name: "Prevo",
+						name: pokedexLocale.pokemon.prevo,
 						value: response.prevo,
 						inline: true
 					}
@@ -148,7 +151,7 @@ export const command: Command = {
 			if (response.evoLevel != undefined) {
 				Embed.addFields([
 					{
-						name: "Evo Level",
+						name: pokedexLocale.pokemon.evoLevel,
 						value: response.evoLevel.toString(),
 						inline: true
 					}
@@ -158,7 +161,7 @@ export const command: Command = {
 			if (response.evoType != undefined) {
 				Embed.addFields([
 					{
-						name: "Evo type",
+						name: pokedexLocale.pokemon.evoType,
 						value: response.evoType,
 						inline: true
 					}
@@ -168,7 +171,7 @@ export const command: Command = {
 			if (response.evoCondition != undefined) {
 				Embed.addFields([
 					{
-						name: "Evo condition",
+						name: pokedexLocale.pokemon.evoCondition,
 						value: response.evoCondition,
 						inline: true
 					}
@@ -178,7 +181,7 @@ export const command: Command = {
 			if (response.evoItem != undefined) {
 				Embed.addFields([
 					{
-						name: "Evo item",
+						name: pokedexLocale.pokemon.evoItem,
 						value: response.evoItem,
 						inline: true
 					}
@@ -188,7 +191,7 @@ export const command: Command = {
 			if (response.evos != undefined) {
 				Embed.addFields([
 					{
-						name: "Evos",
+						name: pokedexLocale.pokemon.evos,
 						value: response.evos.join("\n"),
 						inline: true
 					}
@@ -198,24 +201,25 @@ export const command: Command = {
 			if (response.otherFormes != undefined) {
 				Embed.addFields([
 					{
-						name: "Other forms",
+						name: pokedexLocale.pokemon.forms,
 						value: response.otherFormes.join("\n"),
 						inline: true
 					}
 				]);
 			}
 
-			Embed.addFields([
-				{
-					name: "Can G-MAX",
-					value: response.cannotDynamax == undefined ? "True" : "False",
-					inline: true
-				}
-			]);
+			if (response.cannotDynamax)
+				Embed.addFields([
+					{
+						name: pokedexLocale.pokemon.canDynamax,
+						value: pokedexLocale.pokemon.yes,
+						inline: true
+					}
+				]);
 
 			Embed.addFields([
 				{
-					name: "Tier",
+					name: pokedexLocale.pokemon.tier,
 					value: response.tier,
 					inline: true
 				}
@@ -237,7 +241,7 @@ export const command: Command = {
 
 			if (!response)
 				return await interaction.reply({
-					content: `${request} is not a valid move!`,
+					content: pokedexLocale.move.invalid(request),
 					ephemeral: true
 				});
 
@@ -246,39 +250,40 @@ export const command: Command = {
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(
-					`Name: ${request.replace(/-/g, "").toLowerCase()}, ID: ${
+					pokedexLocale.move.embedTitle(
+						request.replace(/-/g, "").toLowerCase(),
 						response.num
-					}`
+					)
 				)
 				.setDescription(response.shortDesc)
 				.addFields([
 					{
-						name: "Type",
+						name: pokedexLocale.move.type,
 						value: response.type,
 						inline: true
 					},
 					{
-						name: "Category",
+						name: pokedexLocale.move.category,
 						value: response.category,
 						inline: true
 					},
 					{
-						name: "Base power",
+						name: pokedexLocale.move.basePower,
 						value: response.basePower.toString(),
 						inline: true
 					},
 					{
-						name: "Accuracy",
+						name: pokedexLocale.move.accuracy,
 						value: response.accuracy.toString(),
 						inline: true
 					},
 					{
-						name: "PP",
+						name: pokedexLocale.move.pp,
 						value: response.pp.toString(),
 						inline: true
 					},
 					{
-						name: "Priority",
+						name: pokedexLocale.move.priority,
 						value: response.priority.toString(),
 						inline: true
 					}
@@ -300,7 +305,7 @@ export const command: Command = {
 
 			if (!response)
 				return await interaction.reply({
-					content: `${request} is not a valid ability!`,
+					content: pokedexLocale.ability.invalid(request),
 					ephemeral: true
 				});
 
@@ -308,7 +313,7 @@ export const command: Command = {
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
+				.setTitle(pokedexLocale.ability.embedTitle(response.name, response.num))
 				.setDescription(response.shortDesc);
 
 			return await interaction.followUp({ embeds: [Embed] });
@@ -328,7 +333,7 @@ export const command: Command = {
 
 			if (!response)
 				return await interaction.reply({
-					content: `${request} is not a valid item!`,
+					content: pokedexLocale.item.invalid(request),
 					ephemeral: true
 				});
 
@@ -336,7 +341,7 @@ export const command: Command = {
 
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle(`Name: ${response.name}, ID: ${response.num}`)
+				.setTitle(pokedexLocale.item.embedTitle(response.name, response.num))
 				.setDescription(response.desc);
 
 			return await interaction.followUp({ embeds: [Embed] });
