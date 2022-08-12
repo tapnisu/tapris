@@ -37,7 +37,7 @@ export const event: Event = {
 			]
 		});
 
-		const { guildCreate } = await getLocale(guild.id);
+		const { guildCreateLocale } = await getLocale(guild.id);
 
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
@@ -50,7 +50,7 @@ export const event: Event = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-			.setDescription(guildCreate.description());
+			.setDescription(guildCreateLocale.description());
 
 		return guild.systemChannel.send({
 			embeds: [embed],

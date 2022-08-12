@@ -1,8 +1,10 @@
 import { KitsuResponse, KitsuResponseItem } from "../../Interfaces/Kitsu";
 
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
+import getLocale from "../../Locales";
+
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "anime",
@@ -24,9 +26,11 @@ export const command: Command = {
 			)
 		).data;
 
+		const { animeLocale } = await getLocale(interaction.guildId);
+
 		if (response.data.length == 0)
 			return await interaction.reply({
-				content: "Anime not found! :no_entry_sign:",
+				content: animeLocale.animeNotFound(),
 				ephemeral: true
 			});
 
@@ -36,42 +40,42 @@ export const command: Command = {
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(`Name: ${anime.attributes?.canonicalTitle}`)
+			.setTitle(animeLocale.embedTitle(anime.attributes?.canonicalTitle))
 			.setDescription(anime.attributes?.description)
 			.setImage(anime.attributes?.posterImage?.original)
 			.addFields([
 				{
-					name: "Rating",
+					name: animeLocale.averageRating(),
 					value: anime.attributes?.averageRating,
 					inline: true
 				},
 				{
-					name: "Age rating",
+					name: animeLocale.ageRating(),
 					value:
 						anime.attributes?.ageRatingGuide != null
 							? anime.attributes?.ageRatingGuide?.toString()
-							: "Unknown",
+							: animeLocale.unknown(),
 					inline: true
 				},
 				{
-					name: "NSFW",
+					name: animeLocale.nsfw(),
 					value: anime.attributes?.nsfw?.toString(),
 					inline: true
 				},
 				{
-					name: "Episode count",
+					name: animeLocale.episodeCount(),
 					value:
 						anime.attributes?.episodeCount != null
 							? anime.attributes?.episodeCount?.toString()
-							: "Unknown",
+							: animeLocale.unknown(),
 					inline: true
 				},
 				{
-					name: "Episode length",
+					name: animeLocale.episodeLength(),
 					value:
 						anime.attributes?.episodeLength != null
 							? anime.attributes?.episodeLength.toString()
-							: "Unknown",
+							: animeLocale.unknown(),
 					inline: true
 				}
 			])

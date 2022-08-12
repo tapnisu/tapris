@@ -1,2 +1,3 @@
-export * as changelang from "./changelang";
-export * as guildCreate from "./guildCreate";
+export * as animeLocale from "./anime";
+export * as changelangLocale from "./changelang";
+export * as guildCreateLocale from "./guildCreate";

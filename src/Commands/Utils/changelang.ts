@@ -27,11 +27,11 @@ export const command: Command = {
 		guild.lang = lang;
 		await updateGuild(guild);
 
-		const { changelang } = await getLocale(interaction.guildId);
+		const { changelangLocale } = await getLocale(interaction.guildId);
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(changelang.success(guild.lang));
+			.setTitle(changelangLocale.success(guild.lang));
 
 		return await interaction.followUp({
 			embeds: [embed]
