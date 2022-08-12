@@ -1,7 +1,7 @@
-import { AzurResponse } from "../../Interfaces/Azur";
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import { AzurResponse } from "../../Interfaces/Azur";
 
 export const command: Command = {
 	name: "azur",
@@ -15,7 +15,9 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
-		const request = encodeURI(interaction.options["name"].toLowerCase());
+		const request = encodeURI(
+			interaction.options.getString("name").toLowerCase()
+		);
 
 		let response: AzurResponse;
 

@@ -13,7 +13,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
-		const userId = String(interaction.options["id"]);
+		const userId = interaction.options.getString("id");
 
 		if (
 			!userMember.permissions.has("Administrator") &&
