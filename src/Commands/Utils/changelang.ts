@@ -20,14 +20,21 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		const { changelangLocale } = await getLocale(interaction.guildId);
+
+		const userMember = interaction.guild.members.cache.get(interaction.user.id);
+		if (!userMember.permissions.has("Administrator"))
+			return await interaction.reply({
+				content: changelangLocale.notAdministrator(),
+				ephemeral: true
+			});
+
 		await interaction.deferReply();
 
 		const lang = interaction.options.getString("lang");
 		const guild = await getGuild(interaction.guildId);
 		guild.lang = lang;
 		await updateGuild(guild);
-
-		const { changelangLocale } = await getLocale(interaction.guildId);
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
