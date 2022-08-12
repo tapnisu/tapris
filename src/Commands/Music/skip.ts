@@ -12,7 +12,7 @@ export const command: Command = {
 	description: "Skip current music",
 	run: async (client, interaction) => {
 		await interaction.deferReply();
-
+    
 		const guild = await getGuild(interaction.guildId);
 
 		guild.queue.shift();
@@ -22,7 +22,7 @@ export const command: Command = {
 			return await interaction.followUp({
 				content: "The queue is empty now!"
 			});
-
+      
 		const connection = joinVoiceChannel({
 			channelId: (interaction.member as GuildMember).voice.channel.id,
 			guildId: interaction.guildId,
