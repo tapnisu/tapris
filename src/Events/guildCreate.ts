@@ -8,6 +8,7 @@ import {
 } from "discord.js";
 import { createGuild, getGuild } from "../db";
 import { Event } from "../Interfaces";
+import getLocale from "../Locales";
 
 export const event: Event = {
 	name: "guildCreate",
@@ -36,6 +37,8 @@ export const event: Event = {
 			]
 		});
 
+		const { guildCreate } = await getLocale(guild.id);
+
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
@@ -47,7 +50,7 @@ export const event: Event = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(client.user.username)
 			.setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-			.setDescription(client.locales.guildCreate.description);
+			.setDescription(guildCreate.description());
 
 		return guild.systemChannel.send({
 			embeds: [embed],
