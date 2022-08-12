@@ -7,11 +7,14 @@ import {
 import { getGuild, updateGuild } from "../db";
 
 import { Button } from "../Interfaces";
+import getLocale from "../Locales";
 
 export const button: Button = {
 	customId: /reload_gun/,
 	run: async (client, interaction) => {
 		const guild = await getGuild(interaction.guildId);
+
+		const { gunLocale } = await getLocale(interaction.guildId);
 
 		guild.gun = [false, false, false, false, false, false];
 		guild.gun[Math.floor(Math.random() * 6)] = true;
@@ -20,12 +23,12 @@ export const button: Button = {
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle("Gun is reloaded!");
+			.setTitle(gunLocale.reloadedGun());
 
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
-				.setLabel("Shoot")
+				.setLabel(gunLocale.shoot())
 				.setStyle(ButtonStyle.Primary)
 		]);
 

@@ -7,21 +7,24 @@ import {
 import { getGuild, updateGuild } from "../db";
 
 import { Button } from "../Interfaces";
+import getLocale from "../Locales";
 
 export const button: Button = {
 	customId: /gun_shoot/,
 	run: async (client, interaction) => {
 		const guild = await getGuild(interaction.guildId);
 
+		const { gunLocale } = await getLocale(interaction.guildId);
+
 		if (guild.gun.length == 0) {
 			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle("Gun is empty! :grinning:");
+				.setTitle(gunLocale.emptyGun());
 
 			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("reload_gun")
-					.setLabel("Reload gun")
+					.setLabel(gunLocale.reloadGun())
 					.setStyle(ButtonStyle.Primary)
 			]);
 
@@ -36,12 +39,12 @@ export const button: Button = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setCustomId("gun_shoot")
-				.setLabel("Shoot")
+				.setLabel(gunLocale.shoot())
 				.setStyle(ButtonStyle.Primary)
 		]);
 
-		if (guild.gun[0]) embed.setTitle("You died...");
-		if (!guild.gun[0]) embed.setTitle("Nothing happend!");
+		if (guild.gun[0]) embed.setTitle(gunLocale.youDied());
+		if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend());
 
 		guild.gun.shift();
 		updateGuild(guild);
