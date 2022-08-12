@@ -42,7 +42,7 @@ export const event: Event = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel("Invite bot")
+				.setLabel(guildCreateLocale.invite())
 				.setStyle(ButtonStyle.Link)
 		]);
 
