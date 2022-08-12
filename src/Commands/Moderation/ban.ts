@@ -23,16 +23,11 @@ export const command: Command = {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 
 		if (
-			!userMember.permissions.has("Administrator") ||
+			!userMember.permissions.has("Administrator") &&
 			!userMember.permissions.has("BanMembers")
 		)
 			return await interaction.reply({
 				content: "You can`t ban members :no_entry_sign:",
-				ephemeral: true
-			});
-		if (!member)
-			return await interaction.reply({
-				content: "User is not found :no_entry_sign:",
 				ephemeral: true
 			});
 

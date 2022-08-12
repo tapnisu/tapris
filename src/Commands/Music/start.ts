@@ -20,14 +20,14 @@ export const command: Command = {
 		if (guild.queue.length == 0)
 			return await interaction.reply("Queue is empty! :no_entry_sign:");
 
+		await interaction.deferReply();
+
 		const connection = joinVoiceChannel({
 			channelId: (interaction.member as GuildMember).voice.channel.id,
 			guildId: interaction.guildId,
 			adapterCreator: interaction.guild
 				.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 		});
-
-		await interaction.deferReply();
 
 		await interaction.followUp("Starting...");
 		return play(client, interaction, guild, connection);

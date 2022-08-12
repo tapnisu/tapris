@@ -37,12 +37,12 @@
 		"@discordjs/opus": "^0.8.0",
 		"@discordjs/voice": "^0.11.0",
 		"@iamtraction/google-translate": "^1.1.2",
-		"@prisma/client": "^4.2.0",
+		"@prisma/client": "^4.2.1",
 		"avconv": "^3.1.0",
 		"axios": "^0.27.2",
 		"bufferutil": "^4.0.6",
 		"canvas": "^2.9.3",
-		"discord.js": "^14.1.2",
+		"discord.js": "^14.2.0",
 		"dotenv": "^16.0.1",
 		"erlpack": "^0.1.4",
 		"ffmpeg": "^0.0.4",
@@ -58,14 +58,14 @@
 		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
-		"@types/node": "^18.6.4",
-		"@typescript-eslint/eslint-plugin": "^5.32.0",
-		"@typescript-eslint/parser": "^5.32.0",
+		"@types/node": "^18.7.1",
+		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/parser": "^5.33.0",
 		"eslint": "^8.21.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"prettier": "^2.7.1",
-		"prisma": "^4.2.0",
+		"prisma": "^4.2.1",
 		"typescript": "^4.7.4"
 	},
 	"engines": {
