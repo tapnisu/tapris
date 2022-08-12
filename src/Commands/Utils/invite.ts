@@ -45,7 +45,7 @@ export const command: Command = {
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(inviteLocale.inviteBot());
+			.setTitle(inviteLocale.clickToInvite());
 
 		return await interaction.followUp({ embeds: [Embed], components: [row] });
 	}

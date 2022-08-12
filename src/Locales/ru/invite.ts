@@ -1,2 +1,2 @@
 export const inviteBot = () => "Пригласить";
-export const clickToInvite = () => "Нажми чтобы пригласить";
+export const clickToInvite = () => "Нажмите чтобы пригласить";
