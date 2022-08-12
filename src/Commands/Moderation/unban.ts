@@ -16,7 +16,7 @@ export const command: Command = {
 		const userId = String(interaction.options["id"]);
 
 		if (
-			!userMember.permissions.has("Administrator") ||
+			!userMember.permissions.has("Administrator") &&
 			!userMember.permissions.has("BanMembers")
 		)
 			return await interaction.reply({

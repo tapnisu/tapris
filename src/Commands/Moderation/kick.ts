@@ -23,7 +23,7 @@ export const command: Command = {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 
 		if (
-			!userMember.permissions.has("Administrator") ||
+			!userMember.permissions.has("Administrator") &&
 			!userMember.permissions.has("KickMembers")
 		)
 			return await interaction.reply({
