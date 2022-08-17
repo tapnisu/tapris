@@ -2,6 +2,7 @@ import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
 import { AzurResponse } from "../../Interfaces/Azur";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "azur",
@@ -15,8 +16,10 @@ export const command: Command = {
 		}
 	],
 	run: async (client, interaction) => {
+		const { azurLocale } = await getLocale(interaction.guildId);
+
 		const request = encodeURI(
-			interaction.options.getString("name").toLowerCase()
+			interaction.options.getString("name").toLowerCase().replace(/ /g, "_")
 		);
 
 		let response: AzurResponse;
@@ -29,7 +32,7 @@ export const command: Command = {
 			).data;
 		} catch {
 			return await interaction.reply({
-				content: "Ship not found :no_entry_sign:",
+				content: azurLocale.shipNotFound,
 				ephemeral: true
 			});
 		}
@@ -39,14 +42,18 @@ export const command: Command = {
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response.name)
-			.setURL(`https://azurlane.koumakan.jp/${request}`)
+			.setURL(`https://azurlane.koumakan.jp/wiki/${request}`)
 			.setDescription(response.rarity)
 			.addFields([
-				{ name: "ID", value: response.ID, inline: true },
-				{ name: "Hull", value: response.hull, inline: true },
-				{ name: "Navy", value: response.navy, inline: true },
-				{ name: "Class", value: response.class, inline: true },
-				{ name: "Voice acting", value: response.voiceActress, inline: true }
+				{ name: azurLocale.shipId, value: response.ID, inline: true },
+				{ name: azurLocale.shipHull, value: response.hull, inline: true },
+				{ name: azurLocale.shipNavy, value: response.navy, inline: true },
+				{ name: azurLocale.shipClass, value: response.class, inline: true },
+				{
+					name: azurLocale.shipVoiceActress,
+					value: response.voiceActress,
+					inline: true
+				}
 			]);
 
 		return await interaction.followUp({ embeds: [Embed] });

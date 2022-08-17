@@ -1,5 +1,6 @@
 export * as addLocale from "./add";
 export * as animeLocale from "./anime";
+export * as azurLocale from "./azur";
 export * as changelangLocale from "./changelang";
 export * as coinLocale from "./coin";
 export * as genshincodesLocale from "./genshincodes";
