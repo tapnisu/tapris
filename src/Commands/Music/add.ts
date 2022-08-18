@@ -36,14 +36,14 @@ export const command: Command = {
 		const { addLocale } = await getLocale(interaction.guildId);
 
 		if (type == "video-url") {
-			if (validateURL(request)) {
-				guild.queue = [...guild.queue, request];
-				updateGuild(guild);
-			} else
+			if (!validateURL(request))
 				return await interaction.reply({
 					content: addLocale.invalidUrl,
 					ephemeral: true
 				});
+
+			guild.queue = [...guild.queue, request];
+			updateGuild(guild);
 		}
 
 		if (type == "video-title") {
