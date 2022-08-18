@@ -11,6 +11,7 @@ export * as gunLocale from "./gun";
 export * as inviteLocale from "./invite";
 export * as leaveLocale from "./leave";
 export * as mangaLocale from "./manga";
+export * as mineskinLocale from "./mineskin";
 export * as musicLocale from "./music";
 export * as passwordLocale from "./password";
 export * as pokedexLocale from "./pokedex";
