@@ -18,3 +18,4 @@ export * as pokedexLocale from "./pokedex";
 export * as queueLocale from "./queue";
 export * as skipLocale from "./skip";
 export * as startLocale from "./start";
+export * as tcgdexLocale from "./tcgdex";

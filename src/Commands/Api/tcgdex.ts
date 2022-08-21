@@ -1,8 +1,9 @@
 import { Datum, PokemontcgResponse } from "../../Interfaces/Pokemontcg";
 
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "tcgdex",
@@ -17,6 +18,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const name = interaction.options.getString("name");
+		const { tcgdexLocale } = await getLocale(interaction.guildId);
 
 		let response: PokemontcgResponse;
 
@@ -28,7 +30,7 @@ export const command: Command = {
 			).data;
 		} catch {
 			return await interaction.reply({
-				content: "Card not found :no_entry_sign:",
+				content: tcgdexLocale.notFound,
 				ephemeral: true
 			});
 		}
@@ -42,7 +44,7 @@ export const command: Command = {
 			.setDescription(`${data.set.series}: ${data.set.name}`)
 			.setThumbnail(data.set.images.symbol)
 			.addFields({
-				name: "Rarity",
+				name: tcgdexLocale.rarity,
 				value: data.rarity,
 				inline: true
 			})
