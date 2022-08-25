@@ -6,6 +6,7 @@ export * as coinLocale from "./coin";
 export * as genshinLocale from "./genshin";
 export * as genshincodesLocale from "./genshincodes";
 export * as githubLocale from "./github";
+export * as guildLocale from "./guild";
 export * as guildCreateLocale from "./guildCreate";
 export * as gunLocale from "./gun";
 export * as inviteLocale from "./invite";

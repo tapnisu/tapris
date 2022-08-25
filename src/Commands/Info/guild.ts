@@ -1,11 +1,13 @@
-import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "guild",
 	description: "Get info about guild",
 	run: async (client, interaction) => {
 		await interaction.deferReply();
+		const { guildLocale } = await getLocale(interaction.guildId);
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
@@ -16,30 +18,35 @@ export const command: Command = {
 			.setDescription(
 				interaction.guild.description
 					? interaction.guild.description
-					: "No description"
+					: guildLocale.noDescription
 			)
 			.addFields([
 				{
-					name: "Owner",
+					name: guildLocale.owner,
 					value: `<@!${interaction.guild.ownerId}>`,
 					inline: true
 				},
 				{
-					name: "Amount of participants",
+					name: guildLocale.memberCount,
 					value: interaction.guild.memberCount.toString(),
 					inline: true
 				},
 				{
-					name: "Amount of emoticons",
+					name: guildLocale.emojis,
 					value: interaction.guild.emojis.cache.size.toString(),
 					inline: true
 				},
 				{
-					name: "Amount of roles",
+					name: guildLocale.roles,
 					value: (interaction.guild.roles.cache.size - 1).toString(),
 					inline: true
 				},
-				{ name: "ID", value: interaction.guild.id, inline: true }
+				{
+					name: guildLocale.stickers,
+					value: (interaction.guild.stickers.cache.size - 1).toString(),
+					inline: true
+				},
+				{ name: guildLocale.id, value: interaction.guild.id, inline: true }
 			]);
 
 		return await interaction.followUp({ embeds: [Embed] });
