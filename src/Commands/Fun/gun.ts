@@ -7,6 +7,7 @@ import {
 import { getGuild, updateGuild } from "../../db";
 
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "gun",
@@ -27,6 +28,8 @@ export const command: Command = {
 		const command = interaction.options.getString("command");
 		const guild = await getGuild(interaction.guildId);
 
+		const { gunLocale } = await getLocale(interaction.guildId);
+
 		if (command == "reload") {
 			await interaction.deferReply();
 
@@ -35,12 +38,12 @@ export const command: Command = {
 
 			const embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
-				.setTitle("Gun is reloaded!");
+				.setTitle(gunLocale.reloadedGun);
 
 			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("gun_shoot")
-					.setLabel("Shoot")
+					.setLabel(gunLocale.shoot)
 					.setStyle(ButtonStyle.Primary)
 			]);
 
@@ -56,12 +59,12 @@ export const command: Command = {
 			if (guild.gun.length == 0) {
 				const embed = new EmbedBuilder()
 					.setColor(client.env.BOT_COLOR)
-					.setTitle("Gun is empty! :grinning:");
+					.setTitle(gunLocale.emptyGun);
 
 				const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 					new ButtonBuilder()
 						.setCustomId("reload_gun")
-						.setLabel("Reload gun")
+						.setLabel(gunLocale.reloadGun)
 						.setStyle(ButtonStyle.Primary)
 				]);
 
@@ -77,12 +80,12 @@ export const command: Command = {
 			const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 				new ButtonBuilder()
 					.setCustomId("gun_shoot")
-					.setLabel("Shoot")
+					.setLabel(gunLocale.shoot)
 					.setStyle(ButtonStyle.Primary)
 			]);
 
-			if (guild.gun[0]) embed.setTitle("You died...");
-			if (!guild.gun[0]) embed.setTitle("Nothing happened!");
+			if (guild.gun[0]) embed.setTitle(gunLocale.youDied);
+			if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend);
 
 			guild.gun.shift();
 

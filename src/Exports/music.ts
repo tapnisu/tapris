@@ -10,6 +10,7 @@ import { CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import Client from "../Core/index";
 import { updateGuild } from "../db";
+import getLocale from "../Locales";
 
 export class Music {
 	public queue: string[];
@@ -29,9 +30,11 @@ export const play = async (
 	guild: Guild,
 	connection: VoiceConnection
 ) => {
+	const { musicLocale } = await getLocale(guild.id);
+
 	if (guild.queue.length == 0)
 		return await interaction.followUp({
-			content: "The queue is empty!"
+			content: musicLocale.emptyQueue
 		});
 
 	const stream = ytdl(guild.queue[0], {
@@ -54,21 +57,21 @@ export const play = async (
 		.setDescription(
 			info.videoDetails.description
 				? info.videoDetails.description
-				: "No description provided"
+				: musicLocale.noDescription
 		)
 		.addFields([
 			{
-				name: "Views",
+				name: musicLocale.views,
 				value: info.videoDetails.viewCount,
 				inline: true
 			},
 			{
-				name: "Likes",
+				name: musicLocale.likes,
 				value: String(info.videoDetails.likes),
 				inline: true
 			},
 			{
-				name: "Length",
+				name: musicLocale.length,
 				value: timeString,
 				inline: true
 			}
@@ -93,6 +96,6 @@ export const play = async (
 	player.on("error", async () => {
 		player.stop();
 
-		await interaction.followUp("Unknown error happened! :interrobang:");
+		await interaction.followUp(musicLocale.unknownError);
 	});
 };

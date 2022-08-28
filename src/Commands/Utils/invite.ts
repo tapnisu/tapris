@@ -7,6 +7,7 @@ import {
 } from "discord.js";
 
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "invite",
@@ -33,16 +34,18 @@ export const command: Command = {
 			]
 		});
 
+		const { inviteLocale } = await getLocale(interaction.guildId);
+
 		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel("Invite bot")
+				.setLabel(inviteLocale.inviteBot)
 				.setStyle(ButtonStyle.Link)
 		]);
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle("Click button to invite");
+			.setTitle(inviteLocale.clickToInvite);
 
 		return await interaction.followUp({ embeds: [Embed], components: [row] });
 	}

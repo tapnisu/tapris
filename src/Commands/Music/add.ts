@@ -2,6 +2,7 @@ import youtubeSr from "youtube-sr";
 import { validateURL } from "ytdl-core";
 import { getGuild, updateGuild } from "../../db";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "add",
@@ -32,15 +33,17 @@ export const command: Command = {
 
 		const guild = await getGuild(interaction.guildId);
 
+		const { addLocale } = await getLocale(interaction.guildId);
+
 		if (type == "video-url") {
-			if (validateURL(request)) {
-				guild.queue = [...guild.queue, request];
-				updateGuild(guild);
-			} else
+			if (!validateURL(request))
 				return await interaction.reply({
-					content: "Url is invalid! :no_entry_sign:",
+					content: addLocale.invalidUrl,
 					ephemeral: true
 				});
+
+			guild.queue = [...guild.queue, request];
+			updateGuild(guild);
 		}
 
 		if (type == "video-title") {
@@ -51,7 +54,7 @@ export const command: Command = {
 
 			if (result.length == 0)
 				return await interaction.reply({
-					content: "Music not found! :no_entry_sign:",
+					content: addLocale.videoNotFound,
 					ephemeral: true
 				});
 
@@ -67,7 +70,7 @@ export const command: Command = {
 
 			if (result.length == 0)
 				return await interaction.reply({
-					content: "Playlist not found! :no_entry_sign:",
+					content: addLocale.playlistNotFound,
 					ephemeral: true
 				});
 
@@ -93,7 +96,7 @@ export const command: Command = {
 				updateGuild(guild);
 			} catch {
 				return await interaction.reply({
-					content: "Playlist not found! :no_entry_sign:",
+					content: addLocale.playlistNotFound,
 					ephemeral: true
 				});
 			}
@@ -101,6 +104,6 @@ export const command: Command = {
 
 		await interaction.deferReply();
 
-		return await interaction.followUp("Added to queue :musical_note:");
+		return await interaction.followUp(addLocale.success);
 	}
 };

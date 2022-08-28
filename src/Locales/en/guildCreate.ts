@@ -1,3 +1,4 @@
 export const description = `Type "/" to check bot commands!
-https://github.com/tapnisu/tapris.
+https://tapris.vercel.app/.
 Developed by Alexiy#5027.`;
+export const invite = "Invite";

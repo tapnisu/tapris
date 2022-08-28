@@ -7,18 +7,21 @@ import { GuildMember } from "discord.js";
 import { getGuild } from "../../db";
 import { play } from "../../Exports/music";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "start",
 	description: "Play music from the queue",
 	run: async (client, interaction) => {
+		const { startLocale } = await getLocale(interaction.guildId);
+
 		if (!(interaction.member as GuildMember).voice)
-			return await interaction.reply("You are not in voice channel! :(");
+			return await interaction.reply(startLocale.notInChannel);
 
 		const guild = await getGuild(interaction.guildId);
 
 		if (guild.queue.length == 0)
-			return await interaction.reply("Queue is empty! :no_entry_sign:");
+			return await interaction.reply(startLocale.emptyQueue);
 
 		await interaction.deferReply();
 
@@ -29,7 +32,7 @@ export const command: Command = {
 				.voiceAdapterCreator as unknown as DiscordGatewayAdapterCreator
 		});
 
-		await interaction.followUp("Starting...");
+		await interaction.followUp(startLocale.starting);
 		return play(client, interaction, guild, connection);
 	}
 };

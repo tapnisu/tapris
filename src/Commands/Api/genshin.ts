@@ -1,6 +1,7 @@
-import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
 import genshindb from "genshin-db";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "genshin",
@@ -29,17 +30,18 @@ export const command: Command = {
 		const request: string = encodeURI(
 			interaction.options
 				.getString("name")
-				.split(" ")
-				.join("")
+				.replace(/ /g, "")
 				.toLocaleLowerCase()
 		);
+
+		const { genshinLocale } = await getLocale(interaction.guildId);
 
 		if (requestType == "character") {
 			const character = genshindb.characters(request);
 
 			if (!character)
 				return await interaction.reply({
-					content: `${request} is not a valid character!`,
+					content: genshinLocale.character.invalid(request),
 					ephemeral: true
 				});
 
@@ -52,47 +54,47 @@ export const command: Command = {
 				.setThumbnail(`https://api.genshin.dev/characters/${request}/icon.png`)
 				.addFields([
 					{
-						name: "Rarity",
+						name: genshinLocale.character.rarity,
 						value: ":star:".repeat(Number(character.rarity)),
 						inline: true
 					},
 					{
-						name: "Nation",
+						name: genshinLocale.character.nation,
 						value: character.region,
 						inline: true
 					},
 					{
-						name: "Affiliation",
+						name: genshinLocale.character.affiliation,
 						value: character.affiliation,
 						inline: true
 					},
 					{
-						name: "Birthday",
+						name: genshinLocale.character.birthday,
 						value: character.birthday,
 						inline: true
 					},
 					{
-						name: "Constellation",
+						name: genshinLocale.character.constellation,
 						value: character.constellation,
 						inline: true
 					},
 					{
-						name: "Element",
+						name: genshinLocale.character.element,
 						value: character.element,
 						inline: true
 					},
 					{
-						name: "Weapon type",
+						name: genshinLocale.character.weapontype,
 						value: character.weapontype,
 						inline: true
 					},
 					{
-						name: "Sub stat",
+						name: genshinLocale.character.substat,
 						value: character.substat,
 						inline: true
 					},
 					{
-						name: "Appearance",
+						name: genshinLocale.character.version,
 						value: character.version,
 						inline: true
 					}
@@ -111,7 +113,7 @@ export const command: Command = {
 
 			if (!weapon)
 				return await interaction.reply({
-					content: `${request} is not a valid weapon!`,
+					content: genshinLocale.weapon.invalid(request),
 					ephemeral: true
 				});
 
@@ -126,7 +128,7 @@ export const command: Command = {
 				)
 				.addFields([
 					{
-						name: "Rarity",
+						name: genshinLocale.weapon.rarity,
 						value: ":star:".repeat(Number(weapon.rarity)),
 						inline: true
 					},
@@ -136,7 +138,7 @@ export const command: Command = {
 						inline: true
 					},
 					{
-						name: "Type",
+						name: genshinLocale.weapon.type,
 						value: weapon.weapontype,
 						inline: true
 					},
@@ -146,12 +148,12 @@ export const command: Command = {
 						inline: true
 					},
 					{
-						name: "Base attack",
+						name: genshinLocale.weapon.baseatk,
 						value: weapon.baseatk.toString(),
 						inline: true
 					},
 					{
-						name: "Appearance",
+						name: genshinLocale.weapon.version,
 						value: weapon.version,
 						inline: true
 					}
@@ -170,7 +172,7 @@ export const command: Command = {
 
 			if (!artifact)
 				return await interaction.reply({
-					content: `${request} is not a valid artifact!`,
+					content: genshinLocale.artifact.invalid(request),
 					ephemeral: true
 				});
 
@@ -191,17 +193,17 @@ export const command: Command = {
 				)
 				.addFields([
 					{
-						name: "Rarity",
+						name: genshinLocale.artifact.rarity,
 						value: ":star:".repeat(Number(artifact.rarity)),
 						inline: true
 					},
 					{
-						name: "2 piece bonus",
+						name: genshinLocale.artifact.pc2,
 						value: artifact["2pc"] ? artifact["2pc"] : "None",
 						inline: true
 					},
 					{
-						name: "4 piece bonus",
+						name: genshinLocale.artifact.pc4,
 						value: artifact["4pc"] ? artifact["4pc"] : "None",
 						inline: true
 					}

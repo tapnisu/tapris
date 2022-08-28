@@ -1,7 +1,8 @@
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
-import { GithubResponse } from "../../Interfaces/Github";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import { GithubResponse } from "../../Interfaces/Github";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "github",
@@ -16,6 +17,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const user = interaction.options.getString("user");
+		const { githubLocale } = await getLocale(interaction.guildId);
 
 		let response: GithubResponse;
 
@@ -25,7 +27,7 @@ export const command: Command = {
 			).data;
 		} catch {
 			return await interaction.reply({
-				content: "User not found :no_entry_sign:",
+				content: githubLocale.notFound(user),
 				ephemeral: true
 			});
 		}
@@ -40,14 +42,14 @@ export const command: Command = {
 			.setURL(response.html_url)
 			.setThumbnail(response?.avatar_url)
 			.addFields([
-				{ name: "Type", value: response?.type, inline: true },
+				{ name: githubLocale.type, value: response?.type, inline: true },
 				{
-					name: "Public repositories",
+					name: githubLocale.public_repos,
 					value: response.public_repos.toString(),
 					inline: true
 				},
 				{
-					name: "Gists",
+					name: githubLocale.gists,
 					value: response.public_gists.toString(),
 					inline: true
 				}
@@ -57,14 +59,16 @@ export const command: Command = {
 		if (response.bio) Embed.setDescription(response.bio);
 		if (response.location)
 			Embed.addFields([
-				{ name: "Location", value: response.location, inline: true }
+				{ name: githubLocale.location, value: response.location, inline: true }
 			]);
 		if (response.blog)
-			Embed.addFields([{ name: "Blog", value: response.blog, inline: true }]);
+			Embed.addFields([
+				{ name: githubLocale.blog, value: response.blog, inline: true }
+			]);
 		if (response.twitter_username)
 			Embed.addFields([
 				{
-					name: "Twitter",
+					name: githubLocale.twitter,
 					value: `@${response.twitter_username}`,
 					inline: true
 				}

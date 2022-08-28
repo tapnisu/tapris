@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "avatar",
@@ -20,6 +21,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		await interaction.deferReply();
+		const { avatarLocale } = await getLocale(interaction.guildId);
 
 		const user = interaction.options.getUser("user");
 		const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false });
@@ -28,14 +30,14 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setAuthor({
 				iconURL: avatarUrl,
-				name: `${user.tag}\`s avatar`
+				name: avatarLocale.userAvatar(user.tag)
 			})
 			.setImage(avatarUrl);
 
 		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(avatarUrl)
-				.setLabel("Link to avatar")
+				.setLabel(avatarLocale.avatarLink)
 				.setStyle(ButtonStyle.Link)
 		]);
 

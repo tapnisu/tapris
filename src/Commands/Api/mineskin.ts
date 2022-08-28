@@ -5,9 +5,10 @@ import {
 	EmbedBuilder
 } from "discord.js";
 
-import { AshconResponse } from "../../Interfaces/Ashcon";
-import { Command } from "../../Interfaces";
 import axios from "axios";
+import { Command } from "../../Interfaces";
+import { AshconResponse } from "../../Interfaces/Ashcon";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "mineskin",
@@ -22,6 +23,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const nickname = interaction.options.getString("user");
+		const { mineskinLocale } = await getLocale(interaction.guildId);
 
 		let response: AshconResponse;
 
@@ -33,7 +35,7 @@ export const command: Command = {
 			).data;
 		} catch {
 			return await interaction.reply({
-				content: "User not found :no_entry_sign:",
+				content: mineskinLocale.notFound,
 				ephemeral: true
 			});
 		}
@@ -41,7 +43,7 @@ export const command: Command = {
 		const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(response.textures.skin.url)
-				.setLabel("Original image")
+				.setLabel(mineskinLocale.originalImage)
 				.setStyle(ButtonStyle.Link)
 		]);
 
@@ -50,7 +52,7 @@ export const command: Command = {
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response.username)
-			.setDescription(`UUID: ${response.uuid}`)
+			.setDescription(mineskinLocale.uuid(response.uuid))
 			.setThumbnail(
 				`https://crafatar.com/renders/head/${response.uuid}?overlay`
 			)

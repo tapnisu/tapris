@@ -5,9 +5,10 @@ import {
 	EmbedBuilder
 } from "discord.js";
 
+import axios from "axios";
 import { Command } from "../../Interfaces";
 import { SearchResult } from "../../Interfaces/Manga";
-import axios from "axios";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "manga",
@@ -22,17 +23,17 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		const query = interaction.options.getString("query");
+		const { mangaLocale } = await getLocale(interaction.guildId);
 
 		const response: SearchResult[] = (
 			await axios.get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
 		).data;
 
-		if (response.length == 0) {
+		if (response.length == 0)
 			return await interaction.reply({
-				content: "Sorry! Manga not found! :(",
+				content: mangaLocale.notFound,
 				ephemeral: true
 			});
-		}
 
 		await interaction.deferReply();
 
@@ -40,7 +41,7 @@ export const command: Command = {
 			.setColor(client.env.BOT_COLOR)
 			.setTitle(response[0].name)
 			.addFields({
-				name: "Last chapter",
+				name: mangaLocale.lastChapter,
 				value: response[0].lastChapter,
 				inline: true
 			})
@@ -51,7 +52,7 @@ export const command: Command = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(response[0].url)
-				.setLabel("Read manga")
+				.setLabel(mangaLocale.readManga)
 				.setStyle(ButtonStyle.Link)
 		]);
 

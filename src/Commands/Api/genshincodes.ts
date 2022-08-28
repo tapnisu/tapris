@@ -1,25 +1,28 @@
-import { Code } from "../../Interfaces/GIPN";
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import { Code } from "../../Interfaces/GIPN";
+import getLocale from "../../Locales";
 
 export const command: Command = {
-	name: "gcodes",
+	name: "genshincodes",
 	description: "Codes for Genshin Impact",
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const response: Code[] = (
 			await axios.get(
 				"https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
 			)
 		).data.CODES;
 
-		await interaction.deferReply();
+		const { genshincodesLocale } = await getLocale(interaction.guildId);
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle("Genshin codes")
-			.setDescription("You can activate them in game, and get rewards!")
-			.setURL("https://genshin.mihoyo.com/en/gift");
+			.setTitle(genshincodesLocale.title)
+			.setDescription(genshincodesLocale.description)
+			.setURL(genshincodesLocale.url);
 
 		response.forEach((code) => {
 			if (code.is_expired == false) {
