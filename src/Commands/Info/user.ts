@@ -1,5 +1,6 @@
-import { Command } from "../../Interfaces";
 import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "user",
@@ -20,15 +21,20 @@ export const command: Command = {
 		const channelEmbed: string = interaction.guild.members.cache.get(user.id)
 			.voice.channel?.id;
 
+		const { userLocale } = await getLocale(interaction.guildId);
+
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(`${user.tag} ${user.bot ? "[bot]" : ""}`)
-			.setDescription(`Server member: ${interaction.guild.name}`)
+			.setTitle(`${user.tag} ${user.bot ? userLocale.bot : ""}`)
+			.setDescription(userLocale.serverMember(interaction.guild.name))
 			.setThumbnail(user.displayAvatarURL({ forceStatic: false }))
 			.addFields([
 				{
-					name: "Channel",
-					value: channelEmbed != null ? `<#${channelEmbed}>` : "Not in channel",
+					name: userLocale.channel,
+					value:
+						channelEmbed != null
+							? `<#${channelEmbed}>`
+							: userLocale.notInChannel,
 					inline: true
 				}
 			])
@@ -36,29 +42,29 @@ export const command: Command = {
 
 		if (member.presence?.status == "online")
 			embed.addFields({
-				name: "Status",
-				value: ":green_circle: Online",
+				name: userLocale.status.title,
+				value: userLocale.status.online,
 				inline: true
 			});
 
 		if (member.presence?.status == "offline")
 			embed.addFields({
-				name: "Status",
-				value: ":black_circle: Offline",
+				name: userLocale.status.title,
+				value: userLocale.status.offline,
 				inline: true
 			});
 
 		if (member.presence?.status == "idle")
 			embed.addFields({
-				name: "Status",
-				value: ":crescent_moon: Not active",
+				name: userLocale.status.title,
+				value: userLocale.status.idle,
 				inline: true
 			});
 
 		if (member.presence?.status == "dnd")
 			embed.addFields({
-				name: "Status",
-				value: ":red_circle: Do not disturb",
+				name: userLocale.status.title,
+				value: userLocale.status.dnd,
 				inline: true
 			});
 
