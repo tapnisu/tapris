@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "lmgtfy",
@@ -20,6 +21,7 @@ export const command: Command = {
 	],
 	run: async (client, interaction) => {
 		await interaction.deferReply();
+		const { lmgtfyLocale } = await getLocale(interaction.guildId);
 
 		const question = interaction.options.getString("question");
 		const link = `https://lmgtfy.app/?q=${encodeURI(
@@ -29,7 +31,7 @@ export const command: Command = {
 		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
 			new ButtonBuilder()
 				.setURL(link)
-				.setLabel("Open link")
+				.setLabel(lmgtfyLocale.openLink)
 				.setStyle(ButtonStyle.Link)
 		]);
 

@@ -12,6 +12,7 @@ export * as guildCreateLocale from "./guildCreate";
 export * as gunLocale from "./gun";
 export * as inviteLocale from "./invite";
 export * as leaveLocale from "./leave";
+export * as lmgtfyLocale from "./lmgtfy";
 export * as mangaLocale from "./manga";
 export * as mineskinLocale from "./mineskin";
 export * as musicLocale from "./music";
