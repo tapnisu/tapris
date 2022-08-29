@@ -3,9 +3,9 @@ import { Event } from "../Interfaces";
 
 const formatSize = (length: number) => {
 	let i = 0;
-	const type = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+	const type = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB"];
 
-	while ((length / 1000) | 0 && i < type.length - 1) {
+	while ((length / 1024) | 0 && i < type.length - 1) {
 		length /= 1024;
 
 		i++;
