@@ -13,7 +13,7 @@ export const createGuild = async (id: string) => {
 };
 
 export const updateGuild = async (guild: Guild) => {
-	guild = await prisma.guild.update({
+	await prisma.guild.update({
 		where: {
 			id: guild.id
 		},
@@ -21,14 +21,26 @@ export const updateGuild = async (guild: Guild) => {
 	});
 
 	await prisma.$disconnect();
-
-	return guild;
 };
 
 export const getGuild = async (id: string) => {
-	return await prisma.guild.findUnique({
+	const guild = await prisma.guild.findUnique({
 		where: {
 			id: id
 		}
 	});
+
+	await prisma.$disconnect();
+
+	return guild;
+};
+
+export const deleteGuild = async (id: string) => {
+	await prisma.guild.delete({
+		where: {
+			id: id
+		}
+	});
+
+	await prisma.$disconnect();
 };

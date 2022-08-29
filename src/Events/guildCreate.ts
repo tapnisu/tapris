@@ -13,7 +13,16 @@ import getLocale from "../Locales";
 export const event: Event = {
 	name: "guildCreate",
 	run: async (client, guild: Guild) => {
-		console.log(`Joined ${guild.name} guild!`);
+		const date = new Date().toLocaleString("en-US", {
+			day: "2-digit",
+			year: "2-digit",
+			month: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit"
+		});
+
+		console.log(`[${date}] Joined ${guild.name} guild!`);
 
 		if (getGuild(guild.id)) createGuild(guild.id);
 		if (!guild.systemChannel) return;
