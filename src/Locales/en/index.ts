@@ -3,6 +3,7 @@ export * as animeLocale from "./anime";
 export * as avatarLocale from "./avatar";
 export * as azurLocale from "./azur";
 export * as changelangLocale from "./changelang";
+export * as clearLocale from "./clear";
 export * as coinLocale from "./coin";
 export * as genshinLocale from "./genshin";
 export * as genshincodesLocale from "./genshincodes";

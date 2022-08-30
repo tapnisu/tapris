@@ -1,5 +1,6 @@
 import { TextChannel } from "discord.js";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "clear",
@@ -17,20 +18,21 @@ export const command: Command = {
 		const channel = interaction.channel as TextChannel;
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 
+		const { clearLocale } = await getLocale(interaction.guildId);
+
 		if (!userMember.permissions.has("ManageMessages"))
 			return await interaction.reply({
-				content: "You can't delete messages :no_entry_sign:",
+				content: clearLocale.noPermission,
 				ephemeral: true
 			});
 		if (amount > 100)
 			return await interaction.reply({
-				content:
-					"You cannot delete more than 100 posts at a time :no_entry_sign:",
+				content: clearLocale.bigRequest,
 				ephemeral: true
 			});
 		if (amount < 1)
 			return await interaction.reply({
-				content: "You must enter a number greater than 1 :no_entry_sign:",
+				content: clearLocale.smallNumber,
 				ephemeral: true
 			});
 
@@ -39,8 +41,7 @@ export const command: Command = {
 			.catch(
 				async () =>
 					await interaction.reply({
-						content:
-							"You cannot delete messages older than 14 days :no_entry_sign:",
+						content: clearLocale.oldMessages,
 						ephemeral: true
 					})
 			)
@@ -48,7 +49,7 @@ export const command: Command = {
 				await interaction.deferReply();
 
 				await interaction.followUp({
-					content: `Deleted ${amount} messages :wastebasket:`,
+					content: clearLocale.deletedNmessages(amount),
 					ephemeral: true
 				});
 			});
