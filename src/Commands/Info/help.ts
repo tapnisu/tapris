@@ -28,7 +28,7 @@ export const command: Command = {
 				Embed.addFields([
 					{
 						name: `${option.name}`,
-						value: option.description ? option.description : "none",
+						value: option.description ? option.description : "-",
 						inline: true
 					}
 				]);
