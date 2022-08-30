@@ -1,5 +1,5 @@
-import { Command } from "../../Interfaces";
 import { TextChannel } from "discord.js";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "clear",
@@ -19,7 +19,7 @@ export const command: Command = {
 
 		if (!userMember.permissions.has("ManageMessages"))
 			return await interaction.reply({
-				content: "You can`t delete messages :no_entry_sign:",
+				content: "You can't delete messages :no_entry_sign:",
 				ephemeral: true
 			});
 		if (amount > 100)

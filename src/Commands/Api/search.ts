@@ -1,7 +1,7 @@
+import axios from "axios";
+import { EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
 import { DuckduckgoResponse } from "../../Interfaces/Duckduckgo";
-import { EmbedBuilder } from "discord.js";
-import axios from "axios";
 
 export const command: Command = {
 	name: "search",
@@ -25,7 +25,7 @@ export const command: Command = {
 
 		if (!response.Results[0])
 			return await interaction.reply({
-				content: "Can`t find results! :no_entry_sign:",
+				content: "Can't find results! :no_entry_sign:",
 				ephemeral: true
 			});
 

@@ -27,7 +27,7 @@ export const command: Command = {
 			!userMember.permissions.has("BanMembers")
 		)
 			return await interaction.reply({
-				content: "You can`t ban members :no_entry_sign:",
+				content: "You can't ban members :no_entry_sign:",
 				ephemeral: true
 			});
 

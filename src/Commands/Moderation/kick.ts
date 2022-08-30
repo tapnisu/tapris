@@ -27,7 +27,7 @@ export const command: Command = {
 			!userMember.permissions.has("KickMembers")
 		)
 			return await interaction.reply({
-				content: "You can`t kick members :no_entry_sign:",
+				content: "You can't kick members :no_entry_sign:",
 				ephemeral: true
 			});
 
