@@ -1,6 +1,7 @@
 import translate from "@iamtraction/google-translate";
 import { EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "translate",
@@ -24,11 +25,13 @@ export const command: Command = {
 		const text = interaction.options.getString("text");
 		let response: any;
 
+		const { translateLocale } = await getLocale(interaction.guildId);
+
 		try {
 			response = await translate(text, { to: language });
 		} catch {
 			return await interaction.reply({
-				content: "Error, language is not valid :no_entry_sign:",
+				content: translateLocale.invalidLanguage,
 				ephemeral: true
 			});
 		}
@@ -37,16 +40,16 @@ export const command: Command = {
 
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(`Text in ${language}`)
+			.setTitle(translateLocale.textIn(language))
 			.setDescription(response.text)
 			.addFields([
 				{
-					name: "Original language",
+					name: translateLocale.origLang,
 					value: response.from.language.iso,
 					inline: true
 				},
 				{
-					name: "Original message",
+					name: translateLocale.origMessage,
 					value: text,
 					inline: true
 				}
