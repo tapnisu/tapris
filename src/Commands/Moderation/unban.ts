@@ -1,4 +1,5 @@
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "unban",
@@ -15,12 +16,14 @@ export const command: Command = {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 		const userId = interaction.options.getString("id");
 
+		const { unbanLocale } = await getLocale(interaction.guildId);
+
 		if (
 			!userMember.permissions.has("Administrator") &&
 			!userMember.permissions.has("BanMembers")
 		)
 			return await interaction.reply({
-				content: "You can't unban members! :no_entry_sign:",
+				content: unbanLocale.noPermission,
 				ephemeral: true
 			});
 
@@ -29,11 +32,11 @@ export const command: Command = {
 			.then(async () => {
 				await interaction.deferReply();
 
-				return await interaction.followUp(`<@!${userId}> was unbanned :door:`);
+				return await interaction.followUp(unbanLocale.success(userId));
 			})
 			.catch(async () => {
 				return await interaction.reply({
-					content: `<@!${userId}> was **NOT** unbanned! :no_entry_sign:`,
+					content: unbanLocale.failure(userId),
 					ephemeral: true
 				});
 			});

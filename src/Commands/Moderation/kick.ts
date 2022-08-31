@@ -1,4 +1,5 @@
 import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "kick",
@@ -22,12 +23,14 @@ export const command: Command = {
 		const reason = interaction.options.getString("reason");
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 
+		const { kickLocale } = await getLocale(interaction.guildId);
+
 		if (
 			!userMember.permissions.has("Administrator") &&
 			!userMember.permissions.has("KickMembers")
 		)
 			return await interaction.reply({
-				content: "You can't kick members :no_entry_sign:",
+				content: kickLocale.noPermission,
 				ephemeral: true
 			});
 
@@ -35,7 +38,7 @@ export const command: Command = {
 
 		if (target.roles.highest.position >= userMember.roles.highest.position)
 			return await interaction.reply({
-				content: "User has higher (or same) role then you :no_entry_sign:",
+				content: kickLocale.lowerRole,
 				ephemeral: true
 			});
 
@@ -44,13 +47,11 @@ export const command: Command = {
 			.then(async () => {
 				await interaction.deferReply();
 
-				return await interaction.followUp(
-					`<@!${member.id}> was kicked :door: `
-				);
+				return await interaction.followUp(kickLocale.success(member.id));
 			})
 			.catch(async () => {
 				return await interaction.reply({
-					content: `<@!${member.id}> was **NOT** kicked :no_entry_sign: `,
+					content: kickLocale.failure(member.id),
 					ephemeral: true
 				});
 			});
