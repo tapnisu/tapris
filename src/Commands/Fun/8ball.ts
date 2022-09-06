@@ -1,7 +1,7 @@
-import { Command } from "../../Interfaces";
-import { EmbedBuilder } from "discord.js";
-import { Response8ball } from "../../Interfaces/Nekoslife";
 import axios from "axios";
+import { EmbedBuilder } from "discord.js";
+import { Command } from "../../Interfaces";
+import { Response8ball } from "../../Interfaces/Nekoslife";
 
 export const command: Command = {
 	name: "8ball",

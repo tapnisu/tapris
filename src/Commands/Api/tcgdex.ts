@@ -1,8 +1,7 @@
-import { Datum, PokemontcgResponse } from "../../Interfaces/Pokemontcg";
-
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
+import { Datum, PokemontcgResponse } from "../../Interfaces/Pokemontcg";
 import getLocale from "../../Locales";
 
 export const command: Command = {

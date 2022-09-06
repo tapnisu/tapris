@@ -1,11 +1,10 @@
+import axios from "axios";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-
-import axios from "axios";
 import { Command } from "../../Interfaces";
 import { AshconResponse } from "../../Interfaces/Ashcon";
 import getLocale from "../../Locales";
