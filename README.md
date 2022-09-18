@@ -6,7 +6,8 @@
 
 <p align="center">
  <a href="#overview">Overview</a>,
- <a href="#install">Install</a>
+ <a href="#invite">Invite</a>,
+ <a href="#Run%20bot%20your%20self">Run bot your self</a>
 </p>
 
 ## Overview
@@ -14,15 +15,13 @@
 Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris
 from Gabriel DropOut manga.
 
-## Install
-
-### Already hosted
+## Invite
 
 You can invite the bot by
 [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
-### Host yourself
+## Host
 
 1. Create bot -
    [Discord developer portal](https://discord.com/developers/applications).
@@ -31,22 +30,24 @@ Type "/" to see commands!
 
 3. Install [yarn](https://yarnpkg.com/) - `npm i -g yarn`
 
-4. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
+4. (Windows) Install `Visual Studio Build Tools`
+
+5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
 
 ```env
-TOKEN="bot token"
-BOT_COLOR="bot color (#a4b9f9 as example)"
+TOKEN="DISCORD_BOT_TOKEN"
+BOT_COLOR="#abb1c2"
 DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
 ```
 
-5. Install dependencies - `yarn`.
+6. Install dependencies - `yarn`.
 
-6. Build bot - `yarn build`.
+7. Build bot - `yarn build`.
 
-7. Start bot - `yarn start`.
+8. Start bot - `yarn start`.
 
-8. I recommend using bot via pm2 - `npm i -g pm2`
+9. I recommend using bot via pm2 - `npm i -g pm2`
 
-9. Start bot via pm2 - `yarn start:pm2`
+10. Start bot via pm2 - `yarn start:pm2`
 
 Now you have a running bot!
