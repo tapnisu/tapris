@@ -1,10 +1,12 @@
 import { getGuild } from "../db";
-import * as localesTypes from "./en";
+import * as enLocale from "./en";
 
 const getLocale = async (guildId: string) => {
-	const guild = await getGuild(guildId);
+	if (!guildId) return enLocale;
 
-	return (await import(`./${guild.lang}`)) as typeof localesTypes;
+	const guild = await getGuild(guildId).catch();
+
+	return (await import(`./${guild.lang}`)) as typeof enLocale;
 };
 
 export default getLocale;
