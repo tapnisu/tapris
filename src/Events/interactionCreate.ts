@@ -7,7 +7,15 @@ export const event: Event = {
 		if (interaction.type === InteractionType.ApplicationCommand) {
 			if (interaction.isChatInputCommand()) {
 				const command = client.commands.get(interaction.commandName);
-				if (command) return (command as Command).run(client, interaction);
+				if (command) {
+					if (command.guildsOnly && !interaction.guild)
+						return interaction.reply({
+							content: "You can use this command only in guilds!",
+							ephemeral: true
+						});
+
+					return (command as Command).run(client, interaction);
+				}
 			}
 		}
 

@@ -5,6 +5,7 @@ import getLocale from "../../Locales";
 export const command: Command = {
 	name: "guild",
 	description: "Get info about guild",
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		await interaction.deferReply();
 		const { guildLocale } = await getLocale(interaction.guildId);

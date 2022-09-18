@@ -12,6 +12,7 @@ export const command: Command = {
 			required: true
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const userMember = interaction.guild.members.cache.get(interaction.user.id);
 		const userId = interaction.options.getString("id");

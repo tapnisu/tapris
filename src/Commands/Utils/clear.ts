@@ -13,6 +13,7 @@ export const command: Command = {
 			required: true
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const amount = interaction.options.getInteger("amount");
 		const channel = interaction.channel as TextChannel;

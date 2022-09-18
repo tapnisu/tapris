@@ -27,6 +27,7 @@ export const command: Command = {
 			required: true
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const type = interaction.options.getString("type");
 		const request = interaction.options.getString("request");

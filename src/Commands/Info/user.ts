@@ -13,6 +13,7 @@ export const command: Command = {
 			required: true
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		await interaction.deferReply();
 

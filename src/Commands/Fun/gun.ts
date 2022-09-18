@@ -23,6 +23,7 @@ export const command: Command = {
 			required: true
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const command = interaction.options.getString("command");
 		const guild = await getGuild(interaction.guildId);

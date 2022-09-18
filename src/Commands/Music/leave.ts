@@ -10,6 +10,7 @@ import getLocale from "../../Locales";
 export const command: Command = {
 	name: "leave",
 	description: "Exit the voice channel",
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const { leaveLocale } = await getLocale(interaction.guildId);
 

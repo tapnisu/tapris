@@ -11,6 +11,7 @@ import getLocale from "../../Locales";
 export const command: Command = {
 	name: "skip",
 	description: "Skip current music",
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		await interaction.deferReply();
 

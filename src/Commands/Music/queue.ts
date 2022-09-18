@@ -7,6 +7,7 @@ import getLocale from "../../Locales";
 export const command: Command = {
 	name: "queue",
 	description: "Get current queue",
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const { queueLocale } = await getLocale(interaction.guildId);
 

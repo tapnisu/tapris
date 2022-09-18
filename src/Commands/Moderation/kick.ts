@@ -18,6 +18,7 @@ export const command: Command = {
 			required: false
 		}
 	],
+	guildsOnly: true,
 	run: async (client, interaction) => {
 		const member = interaction.options.getUser("user");
 		const reason = interaction.options.getString("reason");
