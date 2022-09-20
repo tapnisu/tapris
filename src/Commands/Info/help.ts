@@ -51,16 +51,19 @@ export const command: Command = {
 				return 0;
 			})
 			.forEach((command) => {
-				Embed.data.description += `\`/${command.name} ${
-					command.options
+				Embed.data.description += `\`/${command.name}${
+					command.options && command.options.length > 0
 						? command.options
-							.map(
-								(option) =>
-									`<${option.required ? "" : ""}${option.name} [${
-										option.description
-									}]>`
-							)
-							.join(" ")
+							? " " +
+							  command.options
+							  	.map(
+							  		(option) =>
+							  			`<${option.required ? "" : ""}${option.name} [${
+							  				option.description
+							  			}]>`
+							  	)
+							  	.join(" ")
+							: ""
 						: ""
 				}\` - ${command.description}\n`;
 			});
