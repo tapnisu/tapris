@@ -5,8 +5,9 @@
 	"scripts": {
 		"start": "node .",
 		"build": "tsc",
-		"prod": "tsc && node .",
 		"build:watch": "tsc -w",
+		"prod": "tsc && node .",
+		"cmdsExport": "node ./dist/cmdsExport.js",
 		"format": "npx prettier --write ./src",
 		"lint": "eslint ./src --ext .ts",
 		"lint:fix": "eslint ./src --ext .ts --fix",
