@@ -1,3 +1,6 @@
+import { createGuild, getGuild } from "@db/index";
+import { Event } from "@Interfaces/index";
+import getLocale from "@Locales/index";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -6,9 +9,6 @@ import {
 	Guild,
 	OAuth2Scopes
 } from "discord.js";
-import { createGuild, getGuild } from "../db";
-import { Event } from "../Interfaces";
-import getLocale from "../Locales";
 
 export const event: Event = {
 	name: "guildCreate",

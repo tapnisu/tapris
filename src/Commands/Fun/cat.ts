@@ -1,7 +1,7 @@
+import { Command } from "@Interfaces/index";
+import { CatResponse } from "@Interfaces/Nekoslife";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
-import { CatResponse } from "../../Interfaces/Nekoslife";
 
 interface CatApiResponse {
 	breeds: unknown[];
