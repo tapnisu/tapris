@@ -6,7 +6,7 @@ import {
 } from "discord.js";
 
 import { Command } from "@Interfaces/index";
-import getLocale from "../../Locales";
+import getLocale from "@Locales/index";
 
 export const command: Command = {
 	name: "avatar",

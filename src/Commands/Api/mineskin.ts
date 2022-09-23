@@ -1,5 +1,6 @@
 import { AshconResponse } from "@Interfaces/Ashcon";
 import { Command } from "@Interfaces/index";
+import getLocale from "@Locales/index";
 import axios from "axios";
 import {
 	ActionRowBuilder,
@@ -7,7 +8,6 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "mineskin",

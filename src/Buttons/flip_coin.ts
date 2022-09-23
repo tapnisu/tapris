@@ -1,12 +1,12 @@
 import { choices } from "@Exports/coin";
 import { Button } from "@Interfaces/index";
+import getLocale from "@Locales/index";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import getLocale from "../Locales";
 
 export const button: Button = {
 	customId: /flip_coin_(.*)/gi,

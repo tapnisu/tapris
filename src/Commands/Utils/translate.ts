@@ -1,7 +1,7 @@
 import translate from "@iamtraction/google-translate";
 import { Command } from "@Interfaces/index";
+import getLocale from "@Locales/index";
 import { EmbedBuilder } from "discord.js";
-import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "translate",

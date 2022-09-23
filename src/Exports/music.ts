@@ -6,11 +6,11 @@ import {
 	StreamType,
 	VoiceConnection
 } from "@discordjs/voice";
+import getLocale from "@Locales/index";
 import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import Client from "../Core/index";
-import getLocale from "../Locales";
 
 export class Music {
 	public queue: string[];

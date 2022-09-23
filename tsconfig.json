@@ -20,7 +20,8 @@
 			"@Interfaces/*": ["src/Interfaces/*"],
 			"@Core/*": ["src/Core/*"],
 			"@Exports/*": ["src/Exports/*"],
-			"@db/*": ["src/db/*"]
+			"@db/*": ["src/db/*"],
+			"@Locales/*": ["src/Locales/*"]
 		}
 	},
 	"include": ["src"],

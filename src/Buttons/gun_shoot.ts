@@ -7,7 +7,7 @@ import {
 } from "discord.js";
 
 import { Button } from "@Interfaces/index";
-import getLocale from "../Locales";
+import getLocale from "@Locales/index";
 
 export const button: Button = {
 	customId: /gun_shoot/,

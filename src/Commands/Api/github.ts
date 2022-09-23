@@ -1,8 +1,8 @@
 import { GithubResponse } from "@Interfaces/Github";
 import { Command } from "@Interfaces/index";
+import getLocale from "@Locales/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "github",

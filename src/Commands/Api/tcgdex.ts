@@ -1,8 +1,8 @@
 import { Command } from "@Interfaces/index";
 import { Datum, PokemontcgResponse } from "@Interfaces/Pokemontcg";
+import getLocale from "@Locales/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "tcgdex",
