@@ -1,7 +1,7 @@
+import { AzurResponse } from "@Interfaces/Azur";
+import { Command } from "@Interfaces/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
-import { AzurResponse } from "../../Interfaces/Azur";
 import getLocale from "../../Locales";
 
 export const command: Command = {

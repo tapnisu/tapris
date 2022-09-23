@@ -1,7 +1,7 @@
+import { Command } from "@Interfaces/index";
+import { KitsuResponse, KitsuResponseItem } from "@Interfaces/Kitsu";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
-import { KitsuResponse, KitsuResponseItem } from "../../Interfaces/Kitsu";
 import getLocale from "../../Locales";
 
 export const command: Command = {

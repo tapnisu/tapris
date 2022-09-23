@@ -1,7 +1,7 @@
+import { Command } from "@Interfaces/index";
 import { EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import { getGuild } from "../../db";
-import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
 
 export const command: Command = {

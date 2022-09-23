@@ -6,7 +6,7 @@ import {
 	OAuth2Scopes
 } from "discord.js";
 
-import { Command } from "../../Interfaces";
+import { Command } from "@Interfaces/index";
 import getLocale from "../../Locales";
 
 export const command: Command = {

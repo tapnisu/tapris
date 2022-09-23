@@ -1,7 +1,7 @@
+import { Code } from "@Interfaces/GIPN";
+import { Command } from "@Interfaces/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
-import { Code } from "../../Interfaces/GIPN";
 import getLocale from "../../Locales";
 
 export const command: Command = {

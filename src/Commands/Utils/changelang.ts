@@ -1,6 +1,6 @@
+import { Command } from "@Interfaces/index";
 import { EmbedBuilder } from "discord.js";
 import { getGuild, updateGuild } from "../../db";
-import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
 
 export const command: Command = {

@@ -1,7 +1,7 @@
+import { Command } from "@Interfaces/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 import { calcWeaknesses } from "../../Exports/pokemonTypeChart";
-import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
 
 export const command: Command = {

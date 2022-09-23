@@ -1,4 +1,4 @@
-import { Command } from "../../Interfaces";
+import { Command } from "@Interfaces/index";
 import { EmbedBuilder } from "discord.js";
 import WaifuClient from "waifu.js";
 

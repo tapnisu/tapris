@@ -1,10 +1,10 @@
+import { Command } from "@Interfaces/index";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
 
 export const command: Command = {

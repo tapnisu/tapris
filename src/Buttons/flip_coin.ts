@@ -1,3 +1,4 @@
+import { Button } from "@Interfaces/index";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -5,8 +6,6 @@ import {
 	EmbedBuilder
 } from "discord.js";
 import { choices } from "../Exports/coin";
-
-import { Button } from "../Interfaces";
 import getLocale from "../Locales";
 
 export const button: Button = {

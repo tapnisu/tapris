@@ -1,3 +1,5 @@
+import { Command } from "@Interfaces/index";
+import { SearchResult } from "@Interfaces/Manga";
 import axios from "axios";
 import {
 	ActionRowBuilder,
@@ -5,8 +7,6 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import { Command } from "../../Interfaces";
-import { SearchResult } from "../../Interfaces/Manga";
 import getLocale from "../../Locales";
 
 export const command: Command = {

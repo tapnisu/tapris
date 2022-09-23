@@ -1,3 +1,4 @@
+import { Event } from "@Interfaces/index";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -7,7 +8,6 @@ import {
 	OAuth2Scopes
 } from "discord.js";
 import { createGuild, getGuild } from "../db";
-import { Event } from "../Interfaces";
 import getLocale from "../Locales";
 
 export const event: Event = {

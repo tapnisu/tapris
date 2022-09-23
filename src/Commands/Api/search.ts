@@ -1,7 +1,7 @@
+import { DuckduckgoResponse } from "@Interfaces/Duckduckgo";
+import { Command } from "@Interfaces/index";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
-import { DuckduckgoResponse } from "../../Interfaces/Duckduckgo";
 
 export const command: Command = {
 	name: "search",

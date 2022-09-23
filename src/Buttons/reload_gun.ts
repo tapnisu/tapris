@@ -6,7 +6,7 @@ import {
 } from "discord.js";
 import { getGuild, updateGuild } from "../db";
 
-import { Button } from "../Interfaces";
+import { Button } from "@Interfaces/index";
 import getLocale from "../Locales";
 
 export const button: Button = {
