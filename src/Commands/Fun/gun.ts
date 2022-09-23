@@ -1,3 +1,4 @@
+import { getGuild, updateGuild } from "@db/index";
 import { Command } from "@Interfaces/index";
 import {
 	ActionRowBuilder,
@@ -5,7 +6,6 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import { getGuild, updateGuild } from "../../db";
 import getLocale from "../../Locales";
 
 export const command: Command = {

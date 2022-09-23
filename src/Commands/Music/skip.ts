@@ -1,11 +1,11 @@
+import { getGuild, updateGuild } from "@db/index";
 import {
 	DiscordGatewayAdapterCreator,
 	joinVoiceChannel
 } from "@discordjs/voice";
+import { play } from "@Exports/music";
 import { Command } from "@Interfaces/index";
 import { GuildMember } from "discord.js";
-import { getGuild, updateGuild } from "../../db";
-import { play } from "../../Exports/music";
 import getLocale from "../../Locales";
 
 export const command: Command = {

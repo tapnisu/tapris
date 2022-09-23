@@ -1,3 +1,4 @@
+import { choices } from "@Exports/coin";
 import { Command } from "@Interfaces/index";
 import {
 	ActionRowBuilder,
@@ -5,7 +6,6 @@ import {
 	ButtonStyle,
 	EmbedBuilder
 } from "discord.js";
-import { choices } from "../../Exports/coin";
 import getLocale from "../../Locales";
 
 export const command: Command = {

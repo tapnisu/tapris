@@ -1,4 +1,4 @@
-import { getGuild } from "../db";
+import { getGuild } from "@db/index";
 import * as enLocale from "./en";
 
 const getLocale = async (guildId: string) => {

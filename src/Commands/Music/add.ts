@@ -1,7 +1,7 @@
+import { getGuild, updateGuild } from "@db/index";
 import { Command } from "@Interfaces/index";
 import youtubeSr from "youtube-sr";
 import { validateURL } from "ytdl-core";
-import { getGuild, updateGuild } from "../../db";
 import getLocale from "../../Locales";
 
 export const command: Command = {
