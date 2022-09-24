@@ -14,15 +14,7 @@
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
 		"declaration": true,
-		"resolveJsonModule": true,
-		"baseUrl": ".",
-		"paths": {
-			"@Interfaces/*": ["src/Interfaces/*"],
-			"@Core/*": ["src/Core/*"],
-			"@Exports/*": ["src/Exports/*"],
-			"@db/*": ["src/db/*"],
-			"@Locales/*": ["src/Locales/*"]
-		}
+		"resolveJsonModule": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "**/*.spec.ts"]

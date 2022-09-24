@@ -1,7 +1,7 @@
-import { getGuild, updateGuild } from "@db/index";
-import { Command } from "@Interfaces/index";
-import getLocale from "@Locales/index";
 import { EmbedBuilder } from "discord.js";
+import { getGuild, updateGuild } from "../../db";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "changelang",

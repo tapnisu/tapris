@@ -1,3 +1,3 @@
-import Client from "@Core/index";
+import Client from "./Core";
 
 new Client().init();

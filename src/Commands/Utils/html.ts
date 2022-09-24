@@ -1,5 +1,5 @@
-import { Command } from "@Interfaces/index";
 import { convert } from "html-to-text";
+import { Command } from "../../Interfaces";
 
 export const command: Command = {
 	name: "html",

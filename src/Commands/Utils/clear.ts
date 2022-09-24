@@ -1,6 +1,6 @@
-import { Command } from "@Interfaces/index";
-import getLocale from "@Locales/index";
 import { TextChannel } from "discord.js";
+import { Command } from "../../Interfaces";
+import getLocale from "../../Locales";
 
 export const command: Command = {
 	name: "clear",
