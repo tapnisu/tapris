@@ -1,4 +1,6 @@
-export const description = `Type "/" to check bot commands!
-https://tapris.vercel.app/.
-Developed by Alexiy#5027.`;
+export const description = `I am using "/" commands!
+https://tapris.tapni.su/.
+Developed by tapnisu#7384.
+
+You can change my language using \`/changelang lang\` command!`;
 export const invite = "Invite";
