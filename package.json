@@ -46,7 +46,7 @@
 		"dotenv": "^16.0.2",
 		"ffmpeg": "^0.0.4",
 		"ffmpeg-static": "^5.1.0",
-		"genshin-db": "^4.3.0",
+		"genshin-db": "^4.3.1",
 		"html-to-text": "^8.2.1",
 		"sodium": "^3.0.2",
 		"typeface-jetbrains-mono": "^2.0.1",
