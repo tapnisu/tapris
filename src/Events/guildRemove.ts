@@ -14,7 +14,7 @@ export const event: Event = {
 			second: "2-digit"
 		});
 
-		deleteGuild(guild.id);
+		await deleteGuild(guild.id);
 
 		console.log(`[${date}] Left ${guild.name} guild!`);
 	}

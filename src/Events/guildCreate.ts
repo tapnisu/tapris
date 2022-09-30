@@ -1,11 +1,4 @@
-import {
-	ActionRowBuilder,
-	ButtonBuilder,
-	ButtonStyle,
-	EmbedBuilder,
-	Guild,
-	OAuth2Scopes
-} from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Guild, OAuth2Scopes } from "discord.js";
 import { createGuild, getGuild } from "../db";
 import { Event } from "../Interfaces";
 import getLocale from "../Locales";
@@ -24,7 +17,7 @@ export const event: Event = {
 
 		console.log(`[${date}] Joined ${guild.name} guild!`);
 
-		if (getGuild(guild.id)) createGuild(guild.id);
+		if (!await getGuild(guild.id)) await createGuild(guild.id);
 		if (!guild.systemChannel) return;
 
 		const link: string = client.generateInvite({

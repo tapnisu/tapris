@@ -27,7 +27,7 @@ class ExtendedClient extends Client {
 	}
 
 	public async init() {
-		this.login(this.env.TOKEN);
+		await this.login(this.env.TOKEN);
 
 		readdirSync("dist/Commands").forEach(async (dir) => {
 			const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>
