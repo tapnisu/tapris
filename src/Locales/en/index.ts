@@ -28,3 +28,4 @@ export * as tcgdexLocale from "./tcgdex";
 export * as translateLocale from "./translate";
 export * as unbanLocale from "./unban";
 export * as userLocale from "./user";
+export * as aboutLocale from "./about";
