@@ -17,7 +17,7 @@ export const event: Event = {
 
 		console.log(`[${date}] Joined ${guild.name} guild!`);
 
-		if (!await getGuild(guild.id)) await createGuild(guild.id);
+		if (!(await getGuild(guild.id))) await createGuild(guild.id);
 		if (!guild.systemChannel) return;
 
 		const link: string = client.generateInvite({
