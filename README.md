@@ -28,9 +28,11 @@ Type "/" to see commands!
 
 2. Install [node.js](https://nodejs.org/en/download/) (I recommend using LTS).
 
-3. Install [yarn](https://yarnpkg.com/) - `npm i -g yarn`
+3. Install [yarn](https://yarnpkg.com/) - `npm i -g yarn`.
 
-4. (Windows) Install `Visual Studio Build Tools`
+4. (Windows) Install `Visual Studio Build Tools`.
+
+4. (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
 
 5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
 
@@ -40,7 +42,7 @@ BOT_COLOR="#abb1c2"
 DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
 ```
 
-6. Install dependencies - `yarn`.
+6. Install dependencies - `yarn install`.
 
 7. Build bot - `yarn build`.
 
