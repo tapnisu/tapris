@@ -1,7 +1,5 @@
-import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
-import { UwuResponse } from "../../Interfaces/Nekoslife";
 
 export const command: Command = {
 	name: "uwu",
@@ -17,17 +15,20 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		await interaction.deferReply();
 
-		const text = interaction.options.getString("text");
-
-		const response: UwuResponse = (
-			await axios.get(
-				`https://nekos.life/api/v2/owoify?text=${encodeURI(text)}`
-			)
-		).data;
-
 		const Embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)
-			.setTitle(response.owo);
+			.setTitle(
+				interaction.options
+					.getString("text")
+					.replace(/r/gi, "w")
+					.replace(/l/gi, "v")
+					.replace(/o/gi, "u")
+					.replace(/[рл]/gi, "в")
+					.replace(/о/gi, "у")
+					.replace(/с/gi, "сь")
+					.replace(/п/gi, "пь")
+					.replace(/д/gi, "ть")
+			);
 
 		return await interaction.followUp({ embeds: [Embed] });
 	}
