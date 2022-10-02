@@ -1,7 +1,3 @@
-export interface UwuResponse {
-	owo: string;
-}
-
 export interface CatResponse {
 	cat: string;
 }
