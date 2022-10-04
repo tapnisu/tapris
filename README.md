@@ -7,7 +7,7 @@
 <p align="center">
  <a href="#overview">Overview</a>,
  <a href="#invite">Invite</a>,
- <a href="#Run%20bot%20your%20self">Run bot your self</a>
+ <a href="#host">Host</a>
 </p>
 
 ## Overview
