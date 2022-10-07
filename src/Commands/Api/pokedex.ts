@@ -35,7 +35,7 @@ export const command: Command = {
 
 		if (requestType == "pokemon") {
 			let response: any = await axios.get(
-				"https://play.pokemonshowdown.com/data/pokedex.js?4076b733/"
+				"https://play.pokemonshowdown.com/data/pokedex.js"
 			);
 
 			eval(response.data);
