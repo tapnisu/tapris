@@ -1,5 +1,6 @@
 import { Interaction, InteractionType } from "discord.js";
 import { Button, Command, Event } from "../Interfaces";
+import getLocale from "../Locales";
 
 export const event: Event = {
 	name: "interactionCreate",
@@ -14,7 +15,16 @@ export const event: Event = {
 							ephemeral: true
 						});
 
-					return (command as Command).run(client, interaction);
+					return (command as Command)
+						.run(client, interaction)
+						.catch(async () => {
+							const { errorLocale } = await getLocale(interaction.guildId);
+
+							await interaction.reply({
+								content: errorLocale.unknownError,
+								ephemeral: true
+							});
+						});
 				}
 			}
 		}
@@ -24,7 +34,16 @@ export const event: Event = {
 				const button = client.buttons.find((button) =>
 					button.customId.test(interaction.customId)
 				);
-				if (button) return (button as Button).run(client, interaction);
+
+				if (button)
+					return (button as Button).run(client, interaction).catch(async () => {
+						const { errorLocale } = await getLocale(interaction.guildId);
+
+						await interaction.reply({
+							content: errorLocale.unknownError,
+							ephemeral: true
+						});
+					});
 			}
 		}
 	}

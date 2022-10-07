@@ -1,3 +1,4 @@
+export * as aboutLocale from "./about";
 export * as addLocale from "./add";
 export * as animeLocale from "./anime";
 export * as avatarLocale from "./avatar";
@@ -6,6 +7,7 @@ export * as banLocale from "./ban";
 export * as changelangLocale from "./changelang";
 export * as clearLocale from "./clear";
 export * as coinLocale from "./coin";
+export * as errorLocale from "./error";
 export * as genshinLocale from "./genshin";
 export * as genshincodesLocale from "./genshincodes";
 export * as githubLocale from "./github";
@@ -28,4 +30,3 @@ export * as tcgdexLocale from "./tcgdex";
 export * as translateLocale from "./translate";
 export * as unbanLocale from "./unban";
 export * as userLocale from "./user";
-export * as aboutLocale from "./about";
