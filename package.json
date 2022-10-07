@@ -40,7 +40,7 @@
 		"@iamtraction/google-translate": "^1.1.2",
 		"@prisma/client": "^4.4.0",
 		"avconv": "^3.1.0",
-		"axios": "^1.0.0",
+		"axios": "^1.1.0",
 		"canvas": "^2.10.1",
 		"discord.js": "^14.5.0",
 		"dotenv": "^16.0.3",
