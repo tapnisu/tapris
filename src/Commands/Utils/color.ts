@@ -1,4 +1,4 @@
-import { createCanvas } from "canvas";
+import { createCanvas } from "@napi-rs/canvas";
 import { AttachmentBuilder, ColorResolvable, EmbedBuilder } from "discord.js";
 import { Command } from "../../Interfaces";
 
@@ -42,7 +42,7 @@ export const command: Command = {
 		ctx.textAlign = "center";
 		ctx.fillText(colorString, 250, 350);
 
-		const attachment = new AttachmentBuilder(canvas.toBuffer(), {
+		const attachment = new AttachmentBuilder(canvas.toBuffer("image/webp"), {
 			name: "ColorHexSend.png"
 		});
 

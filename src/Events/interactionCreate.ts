@@ -20,6 +20,13 @@ export const event: Event = {
 						.catch(async () => {
 							const { errorLocale } = await getLocale(interaction.guildId);
 
+							await interaction.followUp({
+								content: errorLocale.unknownError,
+								ephemeral: true
+							});
+						}).catch(async () => {
+							const { errorLocale } = await getLocale(interaction.guildId);
+
 							await interaction.reply({
 								content: errorLocale.unknownError,
 								ephemeral: true
