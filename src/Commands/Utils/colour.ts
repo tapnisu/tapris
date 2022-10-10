@@ -42,7 +42,7 @@ export const command: Command = {
 		ctx.textAlign = "center";
 		ctx.fillText(colourString, 250, 350);
 
-		const attachment = new AttachmentBuilder(canvas.toBuffer(), {
+		const attachment = new AttachmentBuilder(canvas.toBuffer("image/webp"), {
 			name: "colourHexSend.png"
 		});
 
