@@ -42,7 +42,7 @@
 		"@prisma/client": "^4.4.0",
 		"avconv": "^3.1.0",
 		"axios": "^1.1.2",
-		"discord.js": "^14.5.0",
+		"discord.js": "^14.6.0",
 		"dotenv": "^16.0.3",
 		"ffmpeg": "^0.0.4",
 		"ffmpeg-static": "^5.1.0",
@@ -61,9 +61,9 @@
 		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
-		"@types/node": "^18.8.3",
-		"@typescript-eslint/eslint-plugin": "^5.39.0",
-		"@typescript-eslint/parser": "^5.39.0",
+		"@types/node": "^18.8.4",
+		"@typescript-eslint/eslint-plugin": "^5.40.0",
+		"@typescript-eslint/parser": "^5.40.0",
 		"eslint": "^8.23.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
