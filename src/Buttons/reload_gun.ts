@@ -19,7 +19,7 @@ export const button: Button = {
 		guild.gun = [false, false, false, false, false, false];
 		guild.gun[Math.floor(Math.random() * 6)] = true;
 
-		updateGuild(guild);
+		await updateGuild(guild);
 
 		const embed = new EmbedBuilder()
 			.setColor(client.env.BOT_COLOR)

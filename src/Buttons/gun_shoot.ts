@@ -47,7 +47,7 @@ export const button: Button = {
 		if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend);
 
 		guild.gun.shift();
-		updateGuild(guild);
+		await updateGuild(guild);
 
 		return await interaction.update({
 			embeds: [embed],

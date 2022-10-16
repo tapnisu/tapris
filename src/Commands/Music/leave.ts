@@ -30,7 +30,7 @@ export const command: Command = {
 		connection.destroy();
 		const guild = await getGuild(interaction.guildId);
 		guild.queue = [];
-		updateGuild(guild);
+		await updateGuild(guild);
 
 		await interaction.deferReply();
 
