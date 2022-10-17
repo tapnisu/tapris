@@ -116,12 +116,12 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@iamtraction/google-translate@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@iamtraction/google-translate/-/google-translate-1.1.2.tgz#59ed4f57fd0068f0c2486a04d1a55d241a30194f"
-  integrity sha512-z30o1rz2b7JTTqmy/MSQjwfz59++qrBpTXGHWQrqxPW1mTW5pLEMM2FymxCyJcg6alogKgSLT2RVrjuvuNCxVA==
+"@iamtraction/google-translate@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@iamtraction/google-translate/-/google-translate-2.0.0.tgz#3b806b37f41822821669fe67a44fca44947a0b8d"
+  integrity sha512-NdGO7FOVZR5X8mhhBmpDWurAGbPSc5RTTszPC7cBElu7pDafz4dzQA6Me3TaPcOLb2YW2YNk+vuZRV04XGG8Iw==
   dependencies:
-    got "^11.8.1"
+    undici "^5.11.0"
 
 "@napi-rs/canvas-android-arm64@0.1.30":
   version "0.1.30"
@@ -1127,7 +1127,7 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-got@^11.8.0, got@^11.8.1:
+got@^11.8.0:
   version "11.8.5"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.5.tgz#ce77d045136de56e8f024bebb82ea349bc730046"
   integrity sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==
