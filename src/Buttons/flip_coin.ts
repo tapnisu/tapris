@@ -5,7 +5,6 @@ import {
 	EmbedBuilder
 } from "discord.js";
 import { choices } from "../Exports/coin";
-
 import { Button } from "../Interfaces";
 import getLocale from "../Locales";
 

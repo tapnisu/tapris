@@ -5,7 +5,6 @@ import {
 	EmbedBuilder
 } from "discord.js";
 import { getGuild, updateGuild } from "../db";
-
 import { Button } from "../Interfaces";
 import getLocale from "../Locales";
 
