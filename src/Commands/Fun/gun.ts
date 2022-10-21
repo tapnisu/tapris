@@ -85,7 +85,7 @@ export const command: Command = {
 			]);
 
 			if (guild.gun[0]) embed.setTitle(gunLocale.youDied);
-			if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappend);
+			if (!guild.gun[0]) embed.setTitle(gunLocale.nothingHappened);
 
 			guild.gun.shift();
 
