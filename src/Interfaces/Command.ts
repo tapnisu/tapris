@@ -1,4 +1,7 @@
-import { ChatInputCommandInteraction } from "discord.js";
+import {
+	ApplicationCommandOption,
+	ChatInputCommandInteraction
+} from "discord.js";
 import Client from "../Core";
 
 interface Run {
@@ -8,7 +11,7 @@ interface Run {
 export interface Command {
 	name: string;
 	description?: string;
-	options?: any[];
+	options?: ApplicationCommandOption[];
 	guildsOnly?: boolean;
 	run: Run;
 }
