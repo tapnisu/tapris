@@ -25,7 +25,7 @@ export const command: Command = {
 		const { passwordLocale } = await getLocale(interaction.guildId);
 
 		const charset =
-			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#%";
 		let password = "";
 
 		const passwordLength = interaction.options.getInteger("length");

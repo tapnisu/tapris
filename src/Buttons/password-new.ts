@@ -11,7 +11,7 @@ export const button: Button = {
 	customId: /password_(.*)/gi,
 	run: async (client, interaction) => {
 		const charset =
-			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#%";
 		let password = "";
 
 		const passwordLength = Number(
