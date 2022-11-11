@@ -34,13 +34,13 @@ export const command: Command = {
 		const { pokedexLocale } = await getLocale(interaction.guildId);
 
 		if (requestType == "pokemon") {
-			let response: any = await axios.get(
-				"https://play.pokemonshowdown.com/data/pokedex.js"
-			);
+			const script: string = (
+				await axios.get("https://play.pokemonshowdown.com/data/pokedex.js")
+			).data;
 
-			eval(response.data);
+			eval(script);
 
-			response =
+			const response =
 				exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
 
 			if (!response)
