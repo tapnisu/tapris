@@ -1,8 +1,11 @@
-import Client from "../Core";
 import { ClientEvents } from "discord.js";
+import Client from "../Core";
+
+type ArgsKeys = keyof ClientEvents;
+type Args = ClientEvents[ArgsKeys];
 
 interface Run {
-	(client: Client, ...args: any[]);
+	(client: Client, ...args: Args);
 }
 
 export interface Event {
