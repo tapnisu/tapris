@@ -10,19 +10,29 @@ import { Command } from "./Interfaces";
 				)
 			);
 
-			return await Promise.all(
-				commands.map(async (file) => {
-					const { command } = (await import(
-						`${__dirname}/Commands/${dir}/${file}`
-					)) as { command: Command };
+			return (
+				await Promise.all(
+					commands.map(async (file) => {
+						const { command } = (await import(
+							`${__dirname}/Commands/${dir}/${file}`
+						)) as { command: Command };
 
-					return {
-						name: command.name,
-						description: command.description,
-						options: command?.options
-					};
-				})
-			);
+						return {
+							name: command.name,
+							description: command.description,
+							options: command?.options
+						};
+					})
+				)
+			).sort((a, b) => {
+				if (a.name > b.name) {
+					return 1;
+				}
+				if (a.name < b.name) {
+					return -1;
+				}
+				return 0;
+			});
 		})
 	);
 
