@@ -21,7 +21,7 @@ export const pokemon = {
 	prevo: "Предшествующая эволюция",
 	evoLevel: "Уровень эволюции",
 	evoType: "Тип эволюции",
-	evoCondition: "Причинап эволюции",
+	evoCondition: "Причина эволюции",
 	evoItem: "Предмет для эволюции",
 	evos: "Эволюции",
 	forms: "Формы",
@@ -31,18 +31,18 @@ export const pokemon = {
 };
 
 export const move = {
-	invalid: (name: string) => `Атака ${name} не найденна!`,
+	invalid: (name: string) => `Атака ${name} не найдена!`,
 	embedTitle: (name: string, id: number) => `Имя: ${name}, ID: ${id}`,
 	type: "Тип",
 	category: "Категория",
-	basePower: "Базавая сила",
+	basePower: "Базовая сила",
 	accuracy: "Точность",
 	pp: "PP",
 	priority: "Приоритет"
 };
 
 export const ability = {
-	invalid: (name: string) => `Способность ${name} не найденна!`,
+	invalid: (name: string) => `Способность ${name} не найдена!`,
 	embedTitle: (name: string, id: number) => `Имя: ${name}, ID: ${id}`
 };
 
