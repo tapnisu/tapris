@@ -1,4 +1,5 @@
 import { readdirSync } from "fs";
+import { Command } from "./Interfaces";
 
 (async () => {
 	const cmdsJson = await Promise.all(
@@ -11,9 +12,9 @@ import { readdirSync } from "fs";
 
 			return await Promise.all(
 				commands.map(async (file) => {
-					const { command } = await import(
+					const { command } = (await import(
 						`${__dirname}/Commands/${dir}/${file}`
-					);
+					)) as { command: Command };
 
 					return {
 						name: command.name,
