@@ -23,39 +23,38 @@ export const command: Command = {
 	run: async (client, interaction) => {
 		const language = interaction.options.getString("language");
 		const text = interaction.options.getString("text");
-		let response: any;
 
 		const { translateLocale } = await getLocale(interaction.guildId);
 
 		try {
-			response = await translate(text, { to: language });
+			const response = await translate(text, { to: language });
+
+			await interaction.deferReply();
+
+			const Embed = new EmbedBuilder()
+				.setColor(client.env.BOT_COLOR)
+				.setTitle(translateLocale.textIn(language))
+				.setDescription(response.text)
+				.addFields([
+					{
+						name: translateLocale.origLang,
+						value: response.from.language.iso,
+						inline: true
+					},
+					{
+						name: translateLocale.origMessage,
+						value: text,
+						inline: true
+					}
+				])
+				.setTimestamp();
+
+			return await interaction.followUp({ embeds: [Embed] });
 		} catch {
 			return await interaction.reply({
 				content: translateLocale.invalidLanguage,
 				ephemeral: true
 			});
 		}
-
-		await interaction.deferReply();
-
-		const Embed = new EmbedBuilder()
-			.setColor(client.env.BOT_COLOR)
-			.setTitle(translateLocale.textIn(language))
-			.setDescription(response.text)
-			.addFields([
-				{
-					name: translateLocale.origLang,
-					value: response.from.language.iso,
-					inline: true
-				},
-				{
-					name: translateLocale.origMessage,
-					value: text,
-					inline: true
-				}
-			])
-			.setTimestamp();
-
-		return await interaction.followUp({ embeds: [Embed] });
 	}
 };
