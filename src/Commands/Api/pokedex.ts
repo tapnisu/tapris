@@ -51,8 +51,6 @@ export const command: Command = {
 
 			await interaction.deferReply();
 
-			console.log(response.name);
-
 			const Embed = new EmbedBuilder()
 				.setColor(client.env.BOT_COLOR)
 				.setTitle(pokedexLocale.pokemon.embedTitle(response.name, response.num))
