@@ -154,7 +154,7 @@ export interface Weaknesses {
 }
 
 export function calcWeaknesses(pokemonTypes: PokemonType[]) {
-	let weaknesses: Weaknesses[];
+	let weaknesses: Weaknesses[] = [];
 
 	pokemonTypes.forEach((pokemonType: PokemonType) => {
 		typeChart.forEach((typeTypeChart: TypeChart) => {
