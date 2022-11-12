@@ -57,8 +57,9 @@ export const command: Command = {
 				.setDescription(pokedexLocale.pokemon.types(response.types))
 				.setThumbnail(
 					`https://play.pokemonshowdown.com/sprites/ani/${response.name
-						.replace("-Y", "y")
-						.replace("-X", "x")
+						.replace(/ |-/g, "")
+						.replace("Y", "y")
+						.replace("X", "x")
 						.toLowerCase()}.gif`
 				)
 				.addFields([
