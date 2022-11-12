@@ -1,10 +1,3 @@
-export interface TypeChart {
-	name: PokemonType;
-	2: PokemonType[];
-	0.5: PokemonType[];
-	0: PokemonType[];
-}
-
 export type PokemonType =
 	| "Normal"
 	| "Fighting"
@@ -25,9 +18,11 @@ export type PokemonType =
 	| "Dark"
 	| "Fairy";
 
-export interface Weaknesses {
+export interface TypeChart {
 	name: PokemonType;
-	scale: number;
+	2: PokemonType[];
+	0.5: PokemonType[];
+	0: PokemonType[];
 }
 
 export const typeChart: TypeChart[] = [
@@ -153,8 +148,13 @@ export const typeChart: TypeChart[] = [
 	}
 ];
 
+export interface Weaknesses {
+	name: PokemonType;
+	scale: number;
+}
+
 export function calcWeaknesses(pokemonTypes: PokemonType[]) {
-	let weaknesses: Weaknesses[] = [];
+	let weaknesses: Weaknesses[];
 
 	pokemonTypes.forEach((pokemonType: PokemonType) => {
 		typeChart.forEach((typeTypeChart: TypeChart) => {
