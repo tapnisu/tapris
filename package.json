@@ -42,7 +42,7 @@
 		"@napi-rs/canvas": "^0.1.30",
 		"@prisma/client": "^4.7.1",
 		"avconv": "^3.1.0",
-		"axios": "^1.2.0",
+		"axios": "^1.2.1",
 		"discord.js": "^14.7.1",
 		"dotenv": "^16.0.3",
 		"ffmpeg": "^0.0.4",
