@@ -2894,10 +2894,10 @@ html-escaper@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
-html-to-text@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-9.0.0.tgz#9ee91686373a07a40fd4e933d7d4d60b48d65f17"
-  integrity sha512-nKlrWW/7/9ClpXHOVWHg9FYKc6QXfBeC9XVZQbE3eRC5sqTsN91LvwI/SZMz2j2WG4Ci9FfWjoCZ30c8cErt0Q==
+html-to-text@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-9.0.1.tgz#2b5096ef064afdd3ecaaaab06657027aa7115fcb"
+  integrity sha512-TpR3+kpSwvWEi/n9P9IgOPmhraA3Dz6MEGTOdxtvvzyIobHacfGtwzzch6Q7Ihwl9jL47Oed08ywXopSFlj40w==
   dependencies:
     "@selderee/plugin-htmlparser2" "^0.10.0"
     deepmerge "^4.2.2"
