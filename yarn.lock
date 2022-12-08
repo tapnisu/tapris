@@ -4462,10 +4462,10 @@ typeface-jetbrains-mono@^2.0.1:
   resolved "https://registry.yarnpkg.com/typeface-jetbrains-mono/-/typeface-jetbrains-mono-2.0.1.tgz#706c66bd556362443c6686f2472508eb07e10d2a"
   integrity sha512-r5ehb53K0x7VWFkk35jD1Hpnk09qm26wJM7H+mclj+eXX35IAoDC7x1NDDCKy0kpyvLo7xoEEY3d9Slj1Ar8vQ==
 
-typescript@^4.9.3:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
-  integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
+typescript@^4.9.4:
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
+  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
 
 undici@^5.12.0, undici@^5.13.0:
   version "5.13.0"
