@@ -2894,13 +2894,14 @@ html-escaper@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
-html-to-text@^9.0.2:
-  version "9.0.2"
-  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-9.0.2.tgz#b0365a586787ca5e415508e6ccd96513d3aba606"
-  integrity sha512-0NEkqSZKldWhefawNp73Yyky3pIUFh+y15EUqBXrQorsg/Pw1EtxpeS7ZQLhhaPxXvs4K2LatlJf63rmKcTbDw==
+html-to-text@^9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-9.0.3.tgz#331368f32fcb270c59dbd3a7fdb32813d2a490bc"
+  integrity sha512-hxDF1kVCF2uw4VUJ3vr2doc91pXf2D5ngKcNviSitNkhP9OMOaJkDrFIFL6RMvko7NisWTEiqGpQ9LAxcVok1w==
   dependencies:
     "@selderee/plugin-htmlparser2" "^0.10.0"
     deepmerge "^4.2.2"
+    dom-serializer "^2.0.0"
     htmlparser2 "^8.0.1"
     selderee "^0.10.0"
 
