@@ -29,18 +29,18 @@ export const command: Command = {
 	],
 	guildsOnly: true,
 	run: async (client, interaction) => {
+		await interaction.deferReply();
+
 		const type = interaction.options.getString("type");
 		const request = interaction.options.getString("request");
 
 		const guild = await getGuild(interaction.guildId);
-
 		const { addLocale } = await getLocale(interaction.guildId);
 
 		if (type == "video-url") {
 			if (!validateURL(request))
-				return await interaction.reply({
-					content: addLocale.invalidUrl,
-					ephemeral: true
+				return await interaction.followUp({
+					content: addLocale.invalidUrl
 				});
 
 			guild.queue = [...guild.queue, request];
@@ -54,9 +54,8 @@ export const command: Command = {
 			});
 
 			if (result.length == 0)
-				return await interaction.reply({
-					content: addLocale.videoNotFound,
-					ephemeral: true
+				return await interaction.followUp({
+					content: addLocale.videoNotFound
 				});
 
 			guild.queue = [...guild.queue, result[0].id];
@@ -70,9 +69,8 @@ export const command: Command = {
 			});
 
 			if (result.length == 0)
-				return await interaction.reply({
-					content: addLocale.playlistNotFound,
-					ephemeral: true
+				return await interaction.followUp({
+					content: addLocale.playlistNotFound
 				});
 
 			guild.queue = [
@@ -96,14 +94,11 @@ export const command: Command = {
 
 				updateGuild(guild);
 			} catch {
-				return await interaction.reply({
-					content: addLocale.playlistNotFound,
-					ephemeral: true
+				return await interaction.followUp({
+					content: addLocale.playlistNotFound
 				});
 			}
 		}
-
-		await interaction.deferReply();
 
 		return await interaction.followUp(addLocale.success);
 	}
