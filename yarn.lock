@@ -1874,10 +1874,10 @@ avconv@^3.1.0:
   resolved "https://registry.yarnpkg.com/avconv/-/avconv-3.1.0.tgz#bb360cf464795899fe332c448e22132284ae6fd9"
   integrity sha512-oNae7Stw+LRikcpbh+IZoijrDu5kplFsUBdJkqJbtuhmfyHoLy+qWyFfi8rDwzRDzzkd1RY0KkjwpbX4KNv7Hg==
 
-axios@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.5.tgz#858c129d286e7ee3b1e970961cde410ba3ea3740"
-  integrity sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ==
+axios@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.6.tgz#eacb6d065baa11bad5959e7ffa0cb6745c65f392"
+  integrity sha512-rC/7F08XxZwjMV4iuWv+JpD3E0Ksqg9nac4IIg6RwNuF0JTeWoCo/mBNG54+tNhhI11G3/VDRbdDQTs9hGp4pQ==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
