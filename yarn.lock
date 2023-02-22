@@ -1382,65 +1382,65 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@napi-rs/canvas-android-arm64@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-android-arm64/-/canvas-android-arm64-0.1.35.tgz#826a557c2700a998584b21b08759c2eba86047c6"
-  integrity sha512-jBsiAX+S1Ps7xHuk0LCeDdZi4pD9gU3AK/M2dM5PHQnV12D+rmp5Ribu8rvPt2EpAgRYvUsyPSpjrQs/+hxHnA==
+"@napi-rs/canvas-android-arm64@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-android-arm64/-/canvas-android-arm64-0.1.36.tgz#15c799e0745d68aff7ca1f97b960f00ba145fd95"
+  integrity sha512-kXlpdN/xMjqi6sOcXqgtYEKS5kAb9grneNG/xc5od5RqZ9SktTK+BG8cTkoLx9tbdk5ByHOXrcaY1ckkCvlmJA==
 
-"@napi-rs/canvas-darwin-arm64@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-darwin-arm64/-/canvas-darwin-arm64-0.1.35.tgz#c073344ab5389be4238f1315acc7cfc4437cdb6a"
-  integrity sha512-IY9uhVr5o412gHUmj7AvN+equsGtmi6L4hPN4p2VkQcSplpZgEQIgsgk5Oys91KjuQUSFG2Dr24Uv832k5xfcQ==
+"@napi-rs/canvas-darwin-arm64@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-darwin-arm64/-/canvas-darwin-arm64-0.1.36.tgz#d290e6496613aa5efdab5b4848af8827960a61c6"
+  integrity sha512-XBVuzgLsONPUSRIFv2j+rEqncunAsji3V9OTE3Z6dyzncKujDlVFPSoMW0CJrOUlx4/3jOxghd3Ay6j08+IM3w==
 
-"@napi-rs/canvas-darwin-x64@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-darwin-x64/-/canvas-darwin-x64-0.1.35.tgz#3603ca7caf64e58c2841bf2580fd984a33a70932"
-  integrity sha512-yY4s3H2wgAsQa/qAQaGiz43NWzLSdEAeZ3rATYhaAQg2vWd+uiU2FGBf5b7OOZwEQ8oGTa8qvwMATQ82K5hUlA==
+"@napi-rs/canvas-darwin-x64@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-darwin-x64/-/canvas-darwin-x64-0.1.36.tgz#6bd5ad1b8c2630403e668e8fcb995581cbbc26ac"
+  integrity sha512-itOfaF//oegdszEHiZIS/mJhDjM6ozJa3ugBY8GGK7SK/Xc5oKIy4X9MhDesGG7P1DYmbCYloG872Jey7vYO6A==
 
-"@napi-rs/canvas-linux-arm-gnueabihf@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm-gnueabihf/-/canvas-linux-arm-gnueabihf-0.1.35.tgz#7bba5a68ffae9af16b71ab223485b0a0b177d20d"
-  integrity sha512-ZY/ilgsm1jLhOkcVw9IEOPS5tGrqUbs0kBoWn5psolyeMNZW0o3fUMbyM/ebkb+8BeWTmLLrpx47kfaSOp05hA==
+"@napi-rs/canvas-linux-arm-gnueabihf@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm-gnueabihf/-/canvas-linux-arm-gnueabihf-0.1.36.tgz#e88bd1821b53af178bffa01b52364ab87e209713"
+  integrity sha512-MY+lcTjW9gC0Wn2fnK+L8xS7YIOGsH//Kp6JPuFBq1ZOUeGTgFCKd861fHOYivQjxjqQIXa04Puuo3rL2Hz+xA==
 
-"@napi-rs/canvas-linux-arm64-gnu@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm64-gnu/-/canvas-linux-arm64-gnu-0.1.35.tgz#66051f77c6ebd5caee2d939b03eeb0593040ec25"
-  integrity sha512-NUAsUnN8ZaBM9RGrETYKz1VCGuqMaszT2TYojM2MlAg2PwcOVeSGWfPG9ZYaobCr++LSY+PB4x2JKOhBwIRfkQ==
+"@napi-rs/canvas-linux-arm64-gnu@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm64-gnu/-/canvas-linux-arm64-gnu-0.1.36.tgz#6cf01894fc6578c3b0b8ea62f496ca2600715af5"
+  integrity sha512-unYcjQ3Q06Jc6nnf7XSTOZZ3UnzOZ1OQ/1jEwV8d8Z4cS+mmGZI0jXmIEobF0DJuLqSZpPBAmfEz3jWFbIYmqQ==
 
-"@napi-rs/canvas-linux-arm64-musl@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm64-musl/-/canvas-linux-arm64-musl-0.1.35.tgz#7e1f604d9d51a26ae54b577b8e67f455628c07b6"
-  integrity sha512-93RjEir8WomM8DbtvLTAmsaB11mc/kqR3lZM8dHqyIWEXhVJRKb8PEn52aa2EmWkINlqgyZgdx8Ch8QOzFC0bQ==
+"@napi-rs/canvas-linux-arm64-musl@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-arm64-musl/-/canvas-linux-arm64-musl-0.1.36.tgz#46f64bc96101333bc707c9f4e721c93f1a3bcf81"
+  integrity sha512-VTrHFAMsFejzcVysd88dT5M21/4BbUdpU9j71BztBVrkuOy1f3E7/fxVvhWrpryI9i6WXRIFR/Ldz4J8o67eKA==
 
-"@napi-rs/canvas-linux-x64-gnu@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-x64-gnu/-/canvas-linux-x64-gnu-0.1.35.tgz#7ff900879b6248f6015f7cfb57f2f8c490019d33"
-  integrity sha512-DEmNXbxUyLVD5cdJaG21cPMmexgkHq5hf1bnnGb4lIODjffR6appiLwEmFCYCRpujn+mH/ZrDRPc30zVEBTWLA==
+"@napi-rs/canvas-linux-x64-gnu@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-x64-gnu/-/canvas-linux-x64-gnu-0.1.36.tgz#d6ce6032e807f1588c5d892470063972f1772c6d"
+  integrity sha512-eI+AaBWMtTSUU+/tTKtK6lfKuSsjM6SXgSW0nTxX1RHMbtmY6Ubb1imBy3M1ZZviRVQRftWJlbOzfvV791DQzg==
 
-"@napi-rs/canvas-linux-x64-musl@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-x64-musl/-/canvas-linux-x64-musl-0.1.35.tgz#20ced3e7db24414d2bff53b41dd73ad185267a06"
-  integrity sha512-ZTenigydKsGOOU8JEFWsFVc9XF9D/bn+EPak1zJ/nj3HoUWxCLeoDZnKW9KrLyyBPueb9jnErT8rt1FtzK/mpQ==
+"@napi-rs/canvas-linux-x64-musl@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-linux-x64-musl/-/canvas-linux-x64-musl-0.1.36.tgz#35e55fcb8f0fbcd7c2a6f4897faa2db2bee8a5d9"
+  integrity sha512-6sge1ItQdRniatoct4skNJ3HBepdopuhQyxLRyAADNqV1WUNsxBkIUmy5UMb5B4jS+tO5vyXh2wL+KoM6A5h9Q==
 
-"@napi-rs/canvas-win32-x64-msvc@0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.35.tgz#fc2d6041de9549f17fcc92a6176fac2c8f0627cc"
-  integrity sha512-XeT2emnlz/xgMh+i/lhuG7tHHQSnMM8wMyZEfq8lXQ6LrFWEEuTvhrJ7UWJKJ7KgSFIucJY8VC0Ea3M94kp0Cg==
+"@napi-rs/canvas-win32-x64-msvc@0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.36.tgz#66a765e28f083db47872aca991a78871325144f6"
+  integrity sha512-NefOSSOBFY7DZXgoMWFTxOPqwb9Qsq8hq9N6cq2KMskyadPP6UlUaLgz4SHK2KzFAwKPJaerhQZ/u/UaZxs9wQ==
 
-"@napi-rs/canvas@^0.1.35":
-  version "0.1.35"
-  resolved "https://registry.yarnpkg.com/@napi-rs/canvas/-/canvas-0.1.35.tgz#2de161bee1aae2711b2afa2bf392d1f0f3f9b1bf"
-  integrity sha512-D/NiDAPPfqrzDLRHJCQv0AZF6LBJx89FIg0ZUhoerkfi3ZIR0IjdCuul2MynHO+2bRvIH8jYA9maFksZyg4rVQ==
+"@napi-rs/canvas@^0.1.36":
+  version "0.1.36"
+  resolved "https://registry.yarnpkg.com/@napi-rs/canvas/-/canvas-0.1.36.tgz#e3766196c5eefa87808902f849eca6d158d0438f"
+  integrity sha512-jOrCoMVaBHL7v2053/QxasbqReoZ7P9DOq9jZ8D/M1sbKtuQoR2uRHsX35A8WMAm9yNdiAKgFwKswp3kkKf91w==
   optionalDependencies:
-    "@napi-rs/canvas-android-arm64" "0.1.35"
-    "@napi-rs/canvas-darwin-arm64" "0.1.35"
-    "@napi-rs/canvas-darwin-x64" "0.1.35"
-    "@napi-rs/canvas-linux-arm-gnueabihf" "0.1.35"
-    "@napi-rs/canvas-linux-arm64-gnu" "0.1.35"
-    "@napi-rs/canvas-linux-arm64-musl" "0.1.35"
-    "@napi-rs/canvas-linux-x64-gnu" "0.1.35"
-    "@napi-rs/canvas-linux-x64-musl" "0.1.35"
-    "@napi-rs/canvas-win32-x64-msvc" "0.1.35"
+    "@napi-rs/canvas-android-arm64" "0.1.36"
+    "@napi-rs/canvas-darwin-arm64" "0.1.36"
+    "@napi-rs/canvas-darwin-x64" "0.1.36"
+    "@napi-rs/canvas-linux-arm-gnueabihf" "0.1.36"
+    "@napi-rs/canvas-linux-arm64-gnu" "0.1.36"
+    "@napi-rs/canvas-linux-arm64-musl" "0.1.36"
+    "@napi-rs/canvas-linux-x64-gnu" "0.1.36"
+    "@napi-rs/canvas-linux-x64-musl" "0.1.36"
+    "@napi-rs/canvas-win32-x64-msvc" "0.1.36"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
