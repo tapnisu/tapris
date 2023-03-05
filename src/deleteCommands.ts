@@ -15,6 +15,8 @@ const main = async () => {
 			.then(() => console.log(`Successfully deleted application command ${command.name}`))
 			.catch(console.error);
 	});
+
+	await client.destroy();
 };
 
 main();
