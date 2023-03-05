@@ -9,6 +9,7 @@
 		"prod": "tsc && node .",
 		"test": "jest",
 		"cmdsExport": "node ./dist/cmdsExport.js",
+		"deleteCommands": "node ./dist/deleteCommands.js",
 		"format": "npx prettier --write ./src && eslint ./src --ext .ts --fix",
 		"lint": "eslint ./src --ext .ts",
 		"lint:fix": "eslint ./src --ext .ts --fix",
