@@ -54,7 +54,7 @@
 		"typeface-jetbrains-mono": "^2.0.1",
 		"waifu.js": "^1.0.0",
 		"youtube-sr": "^4.3.4",
-		"ytdl-core": "^4.11.2"
+		"ytdl-core": "^4.11.3"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.7",
