@@ -21,7 +21,7 @@ const main = async () => {
 			.catch(console.error);
 	});
 
-	await client.destroy();
+	client.destroy();
 };
 
 main();
