@@ -1,4 +1,4 @@
-import { Client, REST, Routes } from "discord.js";
+import { ApplicationCommand, Client, REST, Routes } from "discord.js";
 import config from "./Core/env";
 
 const main = async () => {
@@ -12,7 +12,7 @@ const main = async () => {
 		Routes.applicationCommands(client.user.id)
 	)) as unknown[];
 
-	commands.forEach((command: any) => {
+	commands.forEach((command: ApplicationCommand) => {
 		rest
 			.delete(Routes.applicationCommand(client.user.id, command.id))
 			.then(() =>
