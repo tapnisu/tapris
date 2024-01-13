@@ -81,7 +81,7 @@
 		"typescript": "^5.3.3"
 	},
 	"peerDependencies": {
-		"pm2": ">=5"
+		"pm2": ">=5.3.0"
 	},
 	"peerDependenciesMeta": {
 		"pm2": {
