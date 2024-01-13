@@ -1,8 +1,8 @@
 export interface CatResponse {
-	cat: string;
+  cat: string;
 }
 
 export interface Response8ball {
-	response: string;
-	url: string;
+  response: string;
+  url: string;
 }

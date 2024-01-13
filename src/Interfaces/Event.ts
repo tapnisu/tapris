@@ -5,10 +5,10 @@ type ArgsKeys = keyof ClientEvents;
 type Args = ClientEvents[ArgsKeys];
 
 interface Run {
-	(client: Client, ...args: Args);
+  (client: Client, ...args: Args);
 }
 
 export interface Event {
-	name: keyof ClientEvents;
-	run: Run;
+  name: keyof ClientEvents;
+  run: Run;
 }

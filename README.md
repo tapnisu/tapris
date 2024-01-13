@@ -32,9 +32,9 @@ Type "/" to see commands!
 
 4. (Windows) Install `Visual Studio Build Tools`.
 
-4. (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
+5. (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
 
-5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
+6. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
 
    ```env
    TOKEN="DISCORD_BOT_TOKEN"
@@ -42,14 +42,14 @@ Type "/" to see commands!
    DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
    ```
 
-6. Install dependencies - `yarn install`.
+7. Install dependencies - `yarn install`.
 
-7. Build bot - `yarn build`.
+8. Build bot - `yarn build`.
 
-8. Start bot - `yarn start`.
+9. Start bot - `yarn start`.
 
-9. I recommend using bot via pm2 - `npm i -g pm2`
+10. I recommend using bot via pm2 - `npm i -g pm2`
 
-10. Start bot via pm2 - `yarn start:pm2`
+11. Start bot via pm2 - `yarn start:pm2`
 
 Now you have a running bot!

@@ -1,39 +1,39 @@
 import {
-	ActionRowBuilder,
-	ButtonBuilder,
-	ButtonStyle,
-	EmbedBuilder
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  EmbedBuilder
 } from "discord.js";
 import { getGuild, updateGuild } from "../db";
 import { Button } from "../Interfaces";
 import getLocale from "../Locales";
 
 export const button: Button = {
-	customId: /reload_gun/,
-	run: async (client, interaction) => {
-		const guild = await getGuild(interaction.guildId);
+  customId: /reload_gun/,
+  run: async (client, interaction) => {
+    const guild = await getGuild(interaction.guildId);
 
-		const { gunLocale } = await getLocale(interaction.guildId);
+    const { gunLocale } = await getLocale(interaction.guildId);
 
-		guild.gun = [false, false, false, false, false, false];
-		guild.gun[Math.floor(Math.random() * 6)] = true;
+    guild.gun = [false, false, false, false, false, false];
+    guild.gun[Math.floor(Math.random() * 6)] = true;
 
-		await updateGuild(guild);
+    await updateGuild(guild);
 
-		const embed = new EmbedBuilder()
-			.setColor(client.env.BOT_COLOR)
-			.setTitle(gunLocale.reloadedGun);
+    const embed = new EmbedBuilder()
+      .setColor(client.env.BOT_COLOR)
+      .setTitle(gunLocale.reloadedGun);
 
-		const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
-			new ButtonBuilder()
-				.setCustomId("gun_shoot")
-				.setLabel(gunLocale.shoot)
-				.setStyle(ButtonStyle.Primary)
-		]);
+    const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
+      new ButtonBuilder()
+        .setCustomId("gun_shoot")
+        .setLabel(gunLocale.shoot)
+        .setStyle(ButtonStyle.Primary)
+    ]);
 
-		return await interaction.update({
-			embeds: [embed],
-			components: [buttonsRow]
-		});
-	}
+    return await interaction.update({
+      embeds: [embed],
+      components: [buttonsRow]
+    });
+  }
 };
