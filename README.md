@@ -36,11 +36,11 @@ Type "/" to see commands!
 
 5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
 
-```env
-TOKEN="DISCORD_BOT_TOKEN"
-BOT_COLOR="#abb1c2"
-DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
-```
+   ```env
+   TOKEN="DISCORD_BOT_TOKEN"
+   BOT_COLOR="#abb1c2"
+   DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+   ```
 
 6. Install dependencies - `yarn install`.
 
