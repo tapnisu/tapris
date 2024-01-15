@@ -1,3 +1,4 @@
+// TODO: Update everything to genshin-db-5
 import { EmbedBuilder } from "discord.js";
 import genshindb from "genshin-db";
 import { Command } from "../../Interfaces";
@@ -5,6 +6,7 @@ import getLocale from "../../Locales";
 
 genshindb.setOptions({
   queryLanguages: [genshindb.Language.English, genshindb.Language.Russian],
+  // @ts-expect-error: v4 types are not in genshin-db v5
   v4Props: true
 });
 
@@ -85,16 +87,19 @@ export const command: Command = {
           },
           {
             name: genshinLocale.character.element,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: character.element,
             inline: true
           },
           {
             name: genshinLocale.character.weapontype,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: character.weapontype,
             inline: true
           },
           {
             name: genshinLocale.character.substat,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: character.substat,
             inline: true
           },
@@ -107,10 +112,6 @@ export const command: Command = {
         .setImage(
           `https://api.genshin.dev/characters/${request}/gacha-splash.png`
         );
-
-      console.log(character.images.filename_gachaSplash);
-
-      if (character.url?.fandom) Embed.setURL(character.url.fandom);
 
       return await interaction.followUp({ embeds: [Embed] });
     }
@@ -129,9 +130,10 @@ export const command: Command = {
       const Embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(weapon.name)
+        // @ts-expect-error: v4 types are not in genshin-db v5
         .setDescription(weapon.effect)
         .setThumbnail(
-          `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.icon}.png`
+          `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.filename_icon}.png`
         )
         .addFields([
           {
@@ -140,22 +142,28 @@ export const command: Command = {
             inline: true
           },
           {
+            // @ts-expect-error: v4 types are not in genshin-db v5
             name: weapon.effectname,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: weapon.effect,
             inline: true
           },
           {
             name: genshinLocale.weapon.type,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: weapon.weapontype,
             inline: true
           },
           {
+            // @ts-expect-error: v4 types are not in genshin-db v5
             name: weapon.substat,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: weapon.subvalue,
             inline: true
           },
           {
             name: genshinLocale.weapon.baseatk,
+            // @ts-expect-error: v4 types are not in genshin-db v5
             value: weapon.baseatk.toString(),
             inline: true
           },
@@ -192,9 +200,7 @@ export const command: Command = {
             : artifact.circlet.description
         )
         .setThumbnail(
-          artifact.flower
-            ? `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.flower}.png`
-            : `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${artifact.images.circlet}.png`
+          artifact.images.mihoyo_flower ?? artifact.images.mihoyo_circlet
         )
         .addFields([
           {
@@ -213,8 +219,6 @@ export const command: Command = {
             inline: true
           }
         ]);
-
-      if (artifact.url?.fandom) Embed.setURL(artifact.url.fandom);
 
       return await interaction.followUp({ embeds: [Embed] });
     }
