@@ -3,6 +3,11 @@ import genshindb from "genshin-db";
 import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
 
+genshindb.setOptions({
+  queryLanguages: [genshindb.Language.English, genshindb.Language.Russian],
+  v4Props: true
+});
+
 export const command: Command = {
   name: "genshin",
   description: "Get info about character / weapon / artifacts set",
@@ -103,6 +108,8 @@ export const command: Command = {
           `https://api.genshin.dev/characters/${request}/gacha-splash.png`
         );
 
+      console.log(character.images.filename_gachaSplash);
+
       if (character.url?.fandom) Embed.setURL(character.url.fandom);
 
       return await interaction.followUp({ embeds: [Embed] });
@@ -159,10 +166,8 @@ export const command: Command = {
           }
         ])
         .setImage(
-          `https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
+          `https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.filename_gacha}.png`
         );
-
-      if (weapon.url?.fandom) Embed.setURL(weapon.url.fandom);
 
       return await interaction.followUp({ embeds: [Embed] });
     }
@@ -194,7 +199,7 @@ export const command: Command = {
         .addFields([
           {
             name: genshinLocale.artifact.rarity,
-            value: ":star:".repeat(Number(artifact.rarity)),
+            value: ":star:".repeat(artifact.rarityList.at(-1)),
             inline: true
           },
           {
