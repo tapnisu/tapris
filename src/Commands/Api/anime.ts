@@ -50,9 +50,7 @@ export const command: Command = {
         {
           name: animeLocale.ageRating,
           value:
-            anime.attributes?.ageRatingGuide != null
-              ? anime.attributes?.ageRatingGuide?.toString()
-              : animeLocale.unknown,
+            anime.attributes?.ageRatingGuide?.toString() ?? animeLocale.unknown,
           inline: true
         },
         {
@@ -63,17 +61,13 @@ export const command: Command = {
         {
           name: animeLocale.episodeCount,
           value:
-            anime.attributes?.episodeCount != null
-              ? anime.attributes?.episodeCount?.toString()
-              : animeLocale.unknown,
+            anime.attributes?.episodeCount?.toString() ?? animeLocale.unknown,
           inline: true
         },
         {
           name: animeLocale.episodeLength,
           value:
-            anime.attributes?.episodeLength != null
-              ? anime.attributes?.episodeLength.toString()
-              : animeLocale.unknown,
+            anime.attributes?.episodeLength.toString() ?? animeLocale.unknown,
           inline: true
         }
       ])

@@ -28,7 +28,7 @@ export const command: Command = {
         Embed.addFields([
           {
             name: `${option.name}`,
-            value: option.description ? option.description : "-",
+            value: option.description ?? "-",
             inline: true
           }
         ]);
@@ -56,12 +56,7 @@ export const command: Command = {
             ? command.options
               ? " " +
                 command.options
-                  .map(
-                    (option) =>
-                      `<${option.required ? "" : ""}${option.name} [${
-                        option.description
-                      }]>`
-                  )
+                  .map((option) => `<${option.name} [${option.description}]>`)
                   .join(" ")
               : ""
             : ""

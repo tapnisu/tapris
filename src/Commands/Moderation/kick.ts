@@ -21,7 +21,7 @@ export const command: Command = {
   guildsOnly: true,
   run: async (client, interaction) => {
     const member = interaction.options.getUser("user");
-    const reason = interaction.options.getString("reason");
+    const reason = interaction.options.getString("reason", false);
     const userMember = interaction.guild.members.cache.get(interaction.user.id);
 
     const { kickLocale } = await getLocale(interaction.guildId);
@@ -44,7 +44,7 @@ export const command: Command = {
       });
 
     target
-      .kick(reason ? reason : null)
+      .kick(reason)
       .then(async () => {
         await interaction.deferReply();
 

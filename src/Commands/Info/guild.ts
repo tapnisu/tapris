@@ -17,9 +17,7 @@ export const command: Command = {
         `https://cdn.discordapp.com/icons/${interaction.guild.id}/${interaction.guild.icon}.png`
       )
       .setDescription(
-        interaction.guild.description
-          ? interaction.guild.description
-          : guildLocale.noDescription
+        interaction.guild.description ?? guildLocale.noDescription
       )
       .addFields([
         {

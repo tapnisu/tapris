@@ -1,9 +1,9 @@
 import {
-  AudioPlayer,
-  AudioPlayerStatus,
-  createAudioResource,
-  StreamType,
-  VoiceConnection
+	AudioPlayer,
+	AudioPlayerStatus,
+	createAudioResource,
+	StreamType,
+	VoiceConnection
 } from "@discordjs/voice";
 import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
@@ -54,11 +54,7 @@ export const play = async (
     .setColor(client.env.BOT_COLOR)
     .setTitle(info.videoDetails.title)
     .setURL(info.videoDetails.video_url)
-    .setDescription(
-      info.videoDetails.description
-        ? info.videoDetails.description
-        : musicLocale.noDescription
-    )
+    .setDescription(info.videoDetails.description ?? musicLocale.noDescription)
     .addFields([
       {
         name: musicLocale.views,
