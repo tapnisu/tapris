@@ -7,6 +7,7 @@ import getLocale from "../../Locales";
 export const command: Command = {
   name: "genshincodes",
   description: "Codes for Genshin Impact",
+  disabled: true,
   run: async (client, interaction) => {
     await interaction.deferReply();
 

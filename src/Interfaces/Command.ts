@@ -22,5 +22,6 @@ export interface Command {
   description?: string;
   options?: ApplicationCommandOptionExtended[];
   guildsOnly?: boolean;
+  disabled?: boolean;
   run: Run;
 }

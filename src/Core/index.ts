@@ -36,11 +36,11 @@ class ExtendedClient extends Client {
       );
 
       for (const file of commands) {
-        const { command } = await import(
+        const { command } = (await import(
           `${__dirname}/../Commands/${dir}/${file}`
-        );
+        )) as { command: Command };
 
-        this.commands.set(command.name, command);
+        if (!command.disabled) this.commands.set(command.name, command);
       }
     });
 
