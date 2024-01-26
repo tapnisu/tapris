@@ -63,7 +63,7 @@
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.7",
+    "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.11",
