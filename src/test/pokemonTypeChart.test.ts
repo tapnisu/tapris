@@ -1,16 +1,17 @@
-import { describe, expect, test } from "@jest/globals";
-import { calcWeaknesses } from "../src/Exports/pokemonTypeChart";
+import assert from "node:assert";
+import { describe, test } from "node:test";
+import { calcWeaknesses } from "../Exports/pokemonTypeChart";
 
 describe("pokedex calcWeaknesses function", () => {
   test("1 type", () => {
-    expect(calcWeaknesses(["Normal"])).toStrictEqual([
+    assert.deepEqual(calcWeaknesses(["Normal"]), [
       { name: "Fighting", scale: 2 },
       { name: "Ghost", scale: 0 }
     ]);
   });
 
   test("2 types", () => {
-    expect(calcWeaknesses(["Water", "Fairy"])).toStrictEqual([
+    assert.deepEqual(calcWeaknesses(["Water", "Fairy"]), [
       { name: "Grass", scale: 2 },
       { name: "Electric", scale: 2 },
       { name: "Fire", scale: 0.5 },
@@ -25,7 +26,7 @@ describe("pokedex calcWeaknesses function", () => {
   });
 
   test("0x in results", () => {
-    expect(calcWeaknesses(["Fire", "Flying"])).toStrictEqual([
+    assert.deepEqual(calcWeaknesses(["Fire", "Flying"]), [
       { name: "Ground", scale: 0 },
       { name: "Rock", scale: 4 },
       { name: "Water", scale: 2 },
@@ -40,7 +41,7 @@ describe("pokedex calcWeaknesses function", () => {
   });
 
   test("*0.5x in results", () => {
-    expect(calcWeaknesses(["Water", "Dragon"])).toStrictEqual([
+    assert.deepEqual(calcWeaknesses(["Water", "Dragon"]), [
       { name: "Steel", scale: 0.5 },
       { name: "Fire", scale: 0.25 },
       { name: "Water", scale: 0.25 },
