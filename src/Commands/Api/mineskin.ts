@@ -15,16 +15,19 @@ export const command: Command = {
   options: [
     {
       name: "user",
-      description: "User of the user to be shown",
+      description: "Username of the user to be shown",
       type: 3,
       required: true
     }
   ],
+  disabled: true,
   run: async (client, interaction) => {
     const nickname = interaction.options.getString("user");
     const { mineskinLocale } = await getLocale(interaction.guildId);
 
     let response: AshconResponse;
+
+    await interaction.deferReply();
 
     try {
       response = (
@@ -33,9 +36,8 @@ export const command: Command = {
         )
       ).data;
     } catch {
-      return await interaction.reply({
-        content: mineskinLocale.notFound,
-        ephemeral: true
+      return await interaction.followUp({
+        content: mineskinLocale.notFound
       });
     }
 
@@ -45,8 +47,6 @@ export const command: Command = {
         .setLabel(mineskinLocale.originalImage)
         .setStyle(ButtonStyle.Link)
     ]);
-
-    await interaction.deferReply();
 
     const Embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
