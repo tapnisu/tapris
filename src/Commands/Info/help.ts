@@ -45,11 +45,7 @@ export const command: Command = {
     Embed.data.description = "";
 
     client.commands
-      .sort((a, b) => {
-        if (a.name > b.name) return 1;
-        else if (a.name < b.name) return -1;
-        return 0;
-      })
+      .sort((a, b) => a.name.localeCompare(b.name))
       .forEach((command) => {
         Embed.data.description += `\`/${command.name}${
           command.options && command.options.length > 0

@@ -1,11 +1,11 @@
-import { readdirSync } from "fs";
+import { readdir } from "fs/promises";
 import { Command } from "./Interfaces";
 
 (async () => {
   const cmdsJson = await Promise.all(
-    readdirSync("dist/Commands").map(async (dir) => {
+    (await readdir("dist/Commands")).map(async (dir) => {
       const commands = await Promise.all(
-        readdirSync(`dist/Commands/${dir}`).filter((file) =>
+        (await readdir(`dist/Commands/${dir}`)).filter((file) =>
           file.endsWith(".js")
         )
       );
@@ -24,15 +24,7 @@ import { Command } from "./Interfaces";
             };
           })
         )
-      ).sort((a, b) => {
-        if (a.name > b.name) {
-          return 1;
-        }
-        if (a.name < b.name) {
-          return -1;
-        }
-        return 0;
-      });
+      ).sort((a, b) => a.name.localeCompare(b.name));
     })
   );
 
