@@ -53,7 +53,7 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(pokedexLocale.pokemon.embedTitle(response.name, response.num))
         .setDescription(pokedexLocale.pokemon.types(response.types))
@@ -64,7 +64,7 @@ export const command: Command = {
             .replace("X", "x")
             .toLowerCase()}.gif`
         )
-        .addFields([
+        .addFields(
           {
             name: pokedexLocale.pokemon.height,
             value: response.heightm.toString(),
@@ -139,104 +139,89 @@ export const command: Command = {
               .join(", "),
             inline: true
           }
-        ]);
+        );
 
-      if (response.prevo != undefined) {
-        Embed.addFields([
+      if (response.prevo)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.prevo,
             value: response.prevo,
             inline: true
           }
         ]);
-      }
 
-      if (response.evoLevel != undefined) {
-        Embed.addFields([
+      if (response.evoLevel)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.evoLevel,
             value: response.evoLevel.toString(),
             inline: true
           }
         ]);
-      }
 
-      if (response.evoType != undefined) {
-        Embed.addFields([
+      if (response.evoType)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.evoType,
             value: response.evoType,
             inline: true
           }
         ]);
-      }
 
-      if (response.evoCondition != undefined) {
-        Embed.addFields([
+      if (response.evoCondition)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.evoCondition,
             value: response.evoCondition,
             inline: true
           }
         ]);
-      }
 
-      if (response.evoItem != undefined) {
-        Embed.addFields([
+      if (response.evoItem)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.evoItem,
             value: response.evoItem,
             inline: true
           }
         ]);
-      }
 
-      if (response.evos != undefined) {
-        Embed.addFields([
+      if (response.evos)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.evos,
             value: response.evos.join("\n"),
             inline: true
           }
         ]);
-      }
 
-      if (response.otherFormes != undefined) {
-        Embed.addFields([
+      if (response.otherFormes)
+        embed.addFields([
           {
             name: pokedexLocale.pokemon.forms,
             value: response.otherFormes.join("\n"),
             inline: true
           }
         ]);
-      }
 
       if (response.cannotDynamax)
-        Embed.addFields([
-          {
-            name: pokedexLocale.pokemon.canDynamax,
-            value: pokedexLocale.pokemon.yes,
-            inline: true
-          }
-        ]);
-
-      Embed.addFields([
-        {
-          name: pokedexLocale.pokemon.tier,
-          value: response.tier,
+        embed.addFields({
+          name: pokedexLocale.pokemon.canDynamax,
+          value: pokedexLocale.pokemon.yes,
           inline: true
-        }
-      ]);
+        });
 
-      return await interaction.followUp({ embeds: [Embed] });
+      embed.addFields({
+        name: pokedexLocale.pokemon.tier,
+        value: response.tier,
+        inline: true
+      });
+
+      return await interaction.followUp({ embeds: [embed] });
     }
     if (requestType == "move") {
       eval(
-        (
-          await axios.get(
-            "https://play.pokemonshowdown.com/data/moves.js?2e0bee6d/"
-          )
-        ).data
+        (await axios.get("https://play.pokemonshowdown.com/data/moves.js")).data
       );
 
       const response =
@@ -259,7 +244,7 @@ export const command: Command = {
           )
         )
         .setDescription(response.shortDesc)
-        .addFields([
+        .addFields(
           {
             name: pokedexLocale.move.type,
             value: response.type,
@@ -290,17 +275,14 @@ export const command: Command = {
             value: response.priority.toString(),
             inline: true
           }
-        ]);
+        );
       return await interaction.followUp({ embeds: [Embed] });
     }
 
     if (requestType == "ability") {
       eval(
-        (
-          await axios.get(
-            "https://play.pokemonshowdown.com/data/abilities.js?a222a0d9/"
-          )
-        ).data
+        (await axios.get("https://play.pokemonshowdown.com/data/abilities.js"))
+          .data
       );
 
       const response =
@@ -324,11 +306,7 @@ export const command: Command = {
 
     if (requestType == "item") {
       eval(
-        (
-          await axios.get(
-            "https://play.pokemonshowdown.com/data/items.js?3b87d391/"
-          )
-        ).data
+        (await axios.get("https://play.pokemonshowdown.com/data/items.js")).data
       );
 
       const response =
