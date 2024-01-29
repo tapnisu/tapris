@@ -10,5 +10,6 @@ interface Run {
 
 export interface Event {
   name: keyof ClientEvents;
+  disabled?: boolean
   run: Run;
 }

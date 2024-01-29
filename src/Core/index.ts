@@ -16,8 +16,8 @@ class ExtendedClient extends Client {
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildVoiceStates,
-        IntentsBitField.Flags.MessageContent,
-        IntentsBitField.Flags.GuildBans,
+        // IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.GuildModeration,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildPresences
       ]
@@ -48,7 +48,12 @@ class ExtendedClient extends Client {
     readdirSync("dist/Events")
       .filter((file) => file.endsWith(".js"))
       .forEach(async (file) => {
-        const { event } = await import(`../Events/${file}`);
+        const { event } = (await import(`../Events/${file}`)) as {
+          event: Event;
+        };
+
+        if (event.disabled) return;
+
         this.events.set(event.name, event);
         this.on(event.name, event.run.bind(null, this));
       });

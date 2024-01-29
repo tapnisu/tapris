@@ -37,28 +37,31 @@ export const command: Command = {
       return await interaction.followUp({ embeds: [Embed] });
     }
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(client.user.username)
-      .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }));
+      .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
+      .setDescription(
+        client.commands
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(
+            (command) =>
+              `\`/${command.name}${
+                command.options && command.options.length > 0
+                  ? command.options
+                    ? " " +
+                      command.options
+                        .map(
+                          (option) => `<${option.name} [${option.description}]>`
+                        )
+                        .join(" ")
+                    : ""
+                  : ""
+              }\` - ${command.description}`
+          )
+          .join("\n")
+      );
 
-    Embed.data.description = "";
-
-    client.commands
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .forEach((command) => {
-        Embed.data.description += `\`/${command.name}${
-          command.options && command.options.length > 0
-            ? command.options
-              ? " " +
-                command.options
-                  .map((option) => `<${option.name} [${option.description}]>`)
-                  .join(" ")
-              : ""
-            : ""
-        }\` - ${command.description}\n`;
-      });
-
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

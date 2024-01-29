@@ -16,7 +16,8 @@ const formatSize = (length: number) => {
 
 export const event: Event = {
   name: "messageCreate",
-  run: (client, message: Message) => {
+  disabled: true,
+  run: (_client, message: Message) => {
     const date = new Date().toLocaleString("en-US", {
       day: "2-digit",
       year: "2-digit",

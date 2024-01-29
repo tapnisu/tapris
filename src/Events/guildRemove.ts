@@ -1,10 +1,10 @@
 import { Guild } from "discord.js";
-import { deleteGuild } from "../db";
 import { Event } from "../Interfaces";
+import { deleteGuild } from "../db";
 
 export const event: Event = {
   name: "guildDelete",
-  run: async (client, guild: Guild) => {
+  run: async (_client, guild: Guild) => {
     const date = new Date().toLocaleString("en-US", {
       day: "2-digit",
       year: "2-digit",
