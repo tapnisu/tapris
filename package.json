@@ -20,8 +20,8 @@
     "prisma:generate": "npx prisma generate"
   },
   "author": {
-    "email": "alexiy.rybin@gmail.com",
-    "name": "Alexiy Rybin",
+    "email": "0xalekseirybin@gmail.com",
+    "name": "Aleksei Rybin",
     "url": "https://tapni.su/"
   },
   "repository": {
