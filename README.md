@@ -12,29 +12,36 @@
 
 ## Overview
 
-Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris
+Tapris is a Discord bot, made in TypeScript. Named after Tapris
 from Gabriel DropOut manga.
 
-## Invite
+## How to use
 
 You can invite the bot by
 [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
 Type "/" to see commands!
 
-## Host
+## Used technologies
 
-1. Create bot -
-   [Discord developer portal](https://discord.com/developers/applications).
+- NodeJS
+- TypeScript
+- Discord.js
+- Prisma ORM
 
-2. Install [node.js](https://nodejs.org/en/download/) (I recommend using LTS).
 
-3. Install [yarn](https://yarnpkg.com/) - `npm i -g yarn`.
+## Contribute
 
-4. (Windows) Install `Visual Studio Build Tools`.
+1. Create bot on a [Discord developer portal](https://discord.com/developers/applications).
+
+2. Install [Node.js](https://nodejs.org/en/download).
+
+3. Install [pnpm](https://pnpm.io/installation).
+
+4. (Windows) Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools#build-tools-for-visual-studio-2022).
 
 5. (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
 
-6. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)).
+6. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)):
 
    ```env
    TOKEN="DISCORD_BOT_TOKEN"
@@ -42,14 +49,34 @@ Type "/" to see commands!
    DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
    ```
 
-7. Install dependencies - `yarn install`.
+7. Install dependencies:
 
-8. Build bot - `yarn build`.
+   ```sh
+   pnpm install
+   ```
 
-9. Start bot - `yarn start`.
+8. Migrate your database using prisma:
 
-10. I recommend using bot via pm2 - `npm i -g pm2`
+   ```sh
+   pnpm prisma:migrate
+   ```
 
-11. Start bot via pm2 - `yarn start:pm2`
+9. Build bot:
+
+   ```sh
+   pnpm build
+   ```
+
+10. Start bot:
+
+    ```sh
+    pnpm start
+    ```
+
+11. Or you can start bot using pm2:
+
+    ```sh
+    pnpm pm2:start
+    ```
 
 Now you have a running bot!
