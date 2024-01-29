@@ -15,6 +15,7 @@ export const command: Command = {
       required: true
     }
   ],
+  disabled: true,
   run: async (client, interaction) => {
     const { azurLocale } = await getLocale(interaction.guildId);
 

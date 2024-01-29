@@ -24,7 +24,7 @@ export const command: Command = {
     const { avatarLocale } = await getLocale(interaction.guildId);
 
     const user = interaction.options.getUser("user");
-    const avatarUrl = user.displayAvatarURL({ size: 4096, forceStatic: false });
+    const avatarUrl = user.displayAvatarURL();
 
     const Embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)

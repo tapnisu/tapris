@@ -18,6 +18,7 @@ export const command: Command = {
       required: true
     }
   ],
+  disabled: true,
   run: async (client, interaction) => {
     await interaction.deferReply();
     const { lmgtfyLocale } = await getLocale(interaction.guildId);

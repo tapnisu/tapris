@@ -28,14 +28,16 @@ export const command: Command = {
     }
   ],
   run: async (client, interaction) => {
-    const requestType: string = interaction.options.getString("type");
-    const request: string = interaction.options.getString("name");
+    const requestType = interaction.options.getString("type");
+    const request = interaction.options.getString("name");
 
     const { pokedexLocale } = await getLocale(interaction.guildId);
 
     if (requestType == "pokemon") {
-      const script: string = (
-        await axios.get("https://play.pokemonshowdown.com/data/pokedex.js")
+      const script = (
+        await axios.get<string>(
+          "https://play.pokemonshowdown.com/data/pokedex.js"
+        )
       ).data;
 
       eval(script);

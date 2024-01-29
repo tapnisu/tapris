@@ -1,6 +1,8 @@
 import { ApplicationCommand, Client, REST, Routes } from "discord.js";
 import config from "./Core/env";
 
+console.warn("Use https://github.com/tapris-bot/dsc-commands-remover instead");
+
 const main = async () => {
   const rest = new REST({ version: "10" }).setToken(config.token);
   const client = new Client({
@@ -21,7 +23,7 @@ const main = async () => {
       .catch(console.error);
   });
 
-  client.destroy();
+  await client.destroy();
 };
 
 main();
