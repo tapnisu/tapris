@@ -48,8 +48,8 @@ dependencies:
     specifier: '>=5.3.1'
     version: 5.3.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
   sodium-native:
-    specifier: ^4.0.5
-    version: 4.0.5
+    specifier: ^4.0.6
+    version: 4.0.6
   typeface-jetbrains-mono:
     specifier: ^2.0.1
     version: 2.0.1
@@ -2599,7 +2599,7 @@ packages:
   /axios@1.6.7:
     resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
     dependencies:
-      follow-redirects: 1.15.5(debug@4.3.4)
+      follow-redirects: 1.15.5
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -3586,6 +3586,16 @@ packages:
   /flatted@3.2.9:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
     dev: true
+
+  /follow-redirects@1.15.5:
+    resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /follow-redirects@1.15.5(debug@4.3.4):
     resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
@@ -5497,8 +5507,8 @@ packages:
       smart-buffer: 4.2.0
     dev: false
 
-  /sodium-native@4.0.5:
-    resolution: {integrity: sha512-YGimGhy7Ho6pTAAvuNdn3Tv9C2MD7HP89X1omReHat0Fd1mMnapGqwzb5YoHTAbIEh8tQmKP6+uLlwYCkf+EOA==}
+  /sodium-native@4.0.6:
+    resolution: {integrity: sha512-uYsyycwcz9kYDwpXxJmL2YZosynsxcP6RPySbARVJdC9uNDa2CMjzJ7/WsMMvThKgvAYsBWdZc7L/WSVj9lTcA==}
     requiresBuild: true
     dependencies:
       node-gyp-build: 4.8.0
