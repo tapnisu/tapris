@@ -1,9 +1,9 @@
 import {
-	AudioPlayer,
-	AudioPlayerStatus,
-	createAudioResource,
-	StreamType,
-	VoiceConnection
+  AudioPlayer,
+  AudioPlayerStatus,
+  createAudioResource,
+  StreamType,
+  VoiceConnection
 } from "@discordjs/voice";
 import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
