@@ -14,6 +14,7 @@ export const command: Command = {
       required: true
     }
   ],
+  disabled: true,
   run: async (client, interaction) => {
     const text = interaction.options.getString("text");
 
