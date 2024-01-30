@@ -2,12 +2,11 @@ import {
   DiscordGatewayAdapterCreator,
   joinVoiceChannel
 } from "@discordjs/voice";
-
 import { GuildMember } from "discord.js";
-import { getGuild } from "../../db";
 import { play } from "../../Exports/music";
 import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
+import { getGuild } from "../../db";
 
 export const command: Command = {
   name: "start",

@@ -3,9 +3,9 @@ import {
   joinVoiceChannel
 } from "@discordjs/voice";
 import { GuildMember } from "discord.js";
-import { getGuild, updateGuild } from "../../db";
 import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
+import { getGuild, updateGuild } from "../../db";
 
 export const command: Command = {
   name: "leave",

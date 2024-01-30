@@ -1,8 +1,8 @@
 import { EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
-import { getGuild } from "../../db";
 import { Command } from "../../Interfaces";
 import getLocale from "../../Locales";
+import { getGuild } from "../../db";
 
 export const command: Command = {
   name: "queue",

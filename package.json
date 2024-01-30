@@ -18,7 +18,7 @@
     "pm2:start": "pm2 start . --name 'tapris' --exp-backoff-restart-delay=100",
     "pm2:start:watch": "pm2 start . --name 'tapris' --watch --exp-backoff-restart-delay=100",
     "pm2:stop": "pm2 stop .",
-    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:migrate": "npx prisma migrate dev",
     "prisma:generate": "npx prisma generate"
   },
   "author": {
