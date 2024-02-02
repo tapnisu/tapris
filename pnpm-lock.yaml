@@ -18,8 +18,8 @@ dependencies:
     specifier: ^0.1.44
     version: 0.1.44
   '@prisma/client':
-    specifier: ^5.9.0
-    version: 5.9.0(prisma@5.9.0)
+    specifier: ^5.9.1
+    version: 5.9.1(prisma@5.9.0)
   avconv:
     specifier: ^3.1.0
     version: 3.1.0
@@ -523,8 +523,8 @@ packages:
       - supports-color
     dev: false
 
-  /@prisma/client@5.9.0(prisma@5.9.0):
-    resolution: {integrity: sha512-dHvFZgCT0BpRS+gRhk3S+50DstXMmVowxbrPeUJaK7sjNq5OhzfpT/OGE1kq9z5Q8WmOwIXJXyxP8O2CmP+nSg==}
+  /@prisma/client@5.9.1(prisma@5.9.0):
+    resolution: {integrity: sha512-caSOnG4kxcSkhqC/2ShV7rEoWwd3XrftokxJqOCMVvia4NYV/TPtJlS9C2os3Igxw/Qyxumj9GBQzcStzECvtQ==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
