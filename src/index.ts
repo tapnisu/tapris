@@ -3,7 +3,7 @@ import config from "./Core/env";
 
 // Create sharding client
 const manager = new ShardingManager("./dist/bot.js", {
-  token: config.token
+  token: config.TOKEN
 });
 
 manager.on("shardCreate", (shard) => console.log(`Launched shard ${shard.id}`));
