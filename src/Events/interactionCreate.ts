@@ -18,24 +18,14 @@ export const event: Event = {
           return (command as Command)
             .run(client, interaction)
             .catch(async (err) => {
+              console.error(err);
+
               const { errorLocale } = await getLocale(interaction.guildId);
 
               await interaction.followUp({
                 content: errorLocale.unknownError,
                 ephemeral: true
               });
-
-              console.error(err);
-            })
-            .catch(async (err) => {
-              const { errorLocale } = await getLocale(interaction.guildId);
-
-              await interaction.reply({
-                content: errorLocale.unknownError,
-                ephemeral: true
-              });
-
-              console.error(err);
             });
         }
       }
@@ -51,14 +41,14 @@ export const event: Event = {
           return (button as Button)
             .run(client, interaction)
             .catch(async (err) => {
+              console.error(err);
+
               const { errorLocale } = await getLocale(interaction.guildId);
 
               await interaction.reply({
                 content: errorLocale.unknownError,
                 ephemeral: true
               });
-
-              console.error(err);
             });
       }
     }

@@ -32,8 +32,6 @@ export const command: Command = {
     guild.queue = [];
     await updateGuild(guild);
 
-    await interaction.deferReply();
-
-    return await interaction.followUp(leaveLocale.success);
+    return await interaction.reply(leaveLocale.success);
   }
 };
