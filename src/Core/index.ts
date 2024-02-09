@@ -37,7 +37,7 @@ class ExtendedClient extends Client {
 
       for (const file of commands) {
         const { command } = (await import(
-          `${`${process.platform === "win32" ? "" : "/"}${/file:\/{2,3}(.+)\/[^/]/.exec(import.meta.url)![1]}`}/../Commands/${dir}/${file}`
+          `../Commands/${dir}/${file}`
         )) as { command: Command };
 
         if (!command.disabled) this.commands.set(command.name, command);
@@ -62,9 +62,7 @@ class ExtendedClient extends Client {
     readdirSync("dist/Buttons")
       .filter((file) => file.endsWith(".js"))
       .forEach(async (file) => {
-        const { button } = await import(
-          `${`${process.platform === "win32" ? "" : "/"}${/file:\/{2,3}(.+)\/[^/]/.exec(import.meta.url)![1]}`}/../Buttons/${file}`
-        );
+        const { button } = await import(`../Buttons/${file}`);
 
         this.buttons.set(button.customId, button);
       });
