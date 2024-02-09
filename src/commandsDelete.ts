@@ -1,5 +1,5 @@
 import { ApplicationCommand, Client, REST, Routes } from "discord.js";
-import config from "./Core/env.js";
+import config from "./core/env.js";
 
 console.warn("Use https://github.com/tapris-bot/dsc-commands-remover instead");
 

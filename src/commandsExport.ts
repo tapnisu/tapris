@@ -1,18 +1,18 @@
 import { readdir } from "fs/promises";
 import prettier from "prettier";
-import { Command } from "./Interfaces/index.js";
+import { Command } from "./interfaces/index.js";
 
-const commandsDirs = await readdir("dist/Commands");
+const commandsDirs = await readdir("./commands");
 
 const commandsJson = await Promise.all(
   commandsDirs.map(async (dir) => {
-    const commandsFiles = (await readdir(`dist/Commands/${dir}`)).filter(
+    const commandsFiles = (await readdir(`./commands/${dir}`)).filter(
       (file) => file.endsWith(".js")
     );
 
     const commands = await Promise.all(
       commandsFiles.map(async (file) => {
-        const { command } = (await import(`./Commands/${dir}/${file}`)) as {
+        const { command } = (await import(`./commands/${dir}/${file}`)) as {
           command: Command;
         };
 
