@@ -3,27 +3,25 @@ import config from "./Core/env.js";
 
 console.warn("Use https://github.com/tapris-bot/dsc-commands-remover instead");
 
-const main = async () => {
-  const rest = new REST({ version: "10" }).setToken(config.token);
-  const client = new Client({
-    intents: []
-  });
-  await client.login(config.token);
+const rest = new REST({ version: "10" }).setToken(config.TOKEN);
+const client = new Client({
+  intents: []
+});
+await client.login(config.TOKEN);
 
-  const commands = (await rest.get(
-    Routes.applicationCommands(client.user.id)
-  )) as unknown[];
+const commands = (await rest.get(
+  Routes.applicationCommands(client.user.id)
+)) as unknown[];
 
-  commands.forEach((command: ApplicationCommand) => {
+await Promise.all(
+  commands.map((command: ApplicationCommand) =>
     rest
       .delete(Routes.applicationCommand(client.user.id, command.id))
       .then(() =>
         console.log(`Successfully deleted application command ${command.name}`)
       )
-      .catch(console.error);
-  });
+      .catch(console.error)
+  )
+);
 
-  await client.destroy();
-};
-
-main();
+await client.destroy();

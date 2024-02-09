@@ -10,7 +10,7 @@
     "prod": "tsc && node .",
     "test": "node --test",
     "commands:export": "node ./dist/commandsExport.js",
-    "commandsDelete": "node ./dist/commandsDelete.js",
+    "commands:delete": "node ./dist/commandsDelete.js",
     "format": "npx prettier . --check",
     "format:fix": "npx prettier . --write",
     "lint": "eslint ./src --ext .ts",

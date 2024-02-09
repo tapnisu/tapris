@@ -1,32 +1,37 @@
 import { readdir } from "fs/promises";
+import prettier from "prettier";
 import { Command } from "./Interfaces/index.js";
 
-(async () => {
-  const cmdsJson = await Promise.all(
-    (await readdir("dist/Commands")).map(async (dir) => {
-      const commands = await Promise.all(
-        (await readdir(`dist/Commands/${dir}`)).filter((file) =>
-          file.endsWith(".js")
-        )
-      );
+const commandsDirs = await readdir("dist/Commands");
 
-      return (
-        await Promise.all(
-          commands.map(async (file) => {
-            const { command } = (await import(
-              `${__dirname}/Commands/${dir}/${file}`
-            )) as { command: Command };
+const commandsJson = await Promise.all(
+  commandsDirs.map(async (dir) => {
+    const commandsFiles = (await readdir(`dist/Commands/${dir}`)).filter(
+      (file) => file.endsWith(".js")
+    );
 
-            return {
-              name: command.name,
-              description: command.description,
-              options: command?.options
-            };
-          })
-        )
-      ).sort((a, b) => a.name.localeCompare(b.name));
-    })
-  );
+    const commands = await Promise.all(
+      commandsFiles.map(async (file) => {
+        const { command } = (await import(`./Commands/${dir}/${file}`)) as {
+          command: Command;
+        };
 
-  console.log(JSON.stringify([].concat(...cmdsJson)));
-})();
+        return {
+          name: command.name,
+          description: command.description,
+          options: command.options,
+          disabled: command.disabled
+        };
+      })
+    );
+
+    return commands
+      .filter((c) => !c.disabled)
+      .sort((a, b) => a.name.localeCompare(b.name));
+  })
+);
+
+const rawJson = JSON.stringify([].concat(...commandsJson));
+const prettierJson = await prettier.format(rawJson, { parser: "json" });
+
+console.log(prettierJson);
