@@ -28,7 +28,6 @@ Type "/" to see commands!
 - Discord.js
 - Prisma ORM
 
-
 ## Contribute
 
 1. Create bot on a [Discord developer portal](https://discord.com/developers/applications).
