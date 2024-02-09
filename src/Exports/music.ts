@@ -62,11 +62,6 @@ export const play = async (
         inline: true
       },
       {
-        name: musicLocale.likes,
-        value: String(info.videoDetails.likes),
-        inline: true
-      },
-      {
         name: musicLocale.length,
         value: timeString,
         inline: true
