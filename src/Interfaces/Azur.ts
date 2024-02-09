@@ -20,16 +20,16 @@ export interface AzurResponse {
   artist: Artist;
   enhance: Enhance;
   acquisitionMethod: string;
-  skill: { [key: string]: Skill };
-  skin: { [key: string]: AzurResponseSkin };
-  defaultEquipment: { [key: string]: DefaultEquipment };
+  skill: Record<string, Skill>;
+  skin: Record<string, AzurResponseSkin>;
+  defaultEquipment: Record<string, DefaultEquipment>;
   stats: Stats;
   limitBreak: LimitBreak;
-  equipmentLoadout: { [key: string]: EquipmentLoadout };
+  equipmentLoadout: Record<string, EquipmentLoadout>;
   build: Build;
   drop: Drop;
   lines: Lines;
-  fleet_tech: { [key: string]: string };
+  fleet_tech: Record<string, string>;
 }
 
 export interface Artist {
@@ -113,14 +113,14 @@ export interface LimitBreak {
 }
 
 export interface Lines {
-  skin: { [key: string]: LinesSkin };
+  skin: Record<string, LinesSkin>;
 }
 
 export interface LinesSkin {
   skin_id: string;
   id: string;
   label: string;
-  dialogue: { [key: string]: Dialogue };
+  dialogue: Record<string, Dialogue>;
 }
 
 export interface Dialogue {
@@ -163,7 +163,7 @@ export interface AzurResponseSkin {
   id: string;
   name: string;
   description: string;
-  expression: { [key: string]: Expression };
+  expression: Record<string, Expression>;
 }
 
 export interface Expression {
@@ -171,9 +171,9 @@ export interface Expression {
 }
 
 export interface Stats {
-  "100": { [key: string]: string };
-  "120": { [key: string]: string };
-  base: { [key: string]: string };
-  "100retrofit": { [key: string]: string };
-  "120retrofit": { [key: string]: string };
+  "100": Record<string, string>;
+  "120": Record<string, string>;
+  base: Record<string, string>;
+  "100retrofit": Record<string, string>;
+  "120retrofit": Record<string, string>;
 }

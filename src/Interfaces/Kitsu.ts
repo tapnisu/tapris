@@ -19,7 +19,7 @@ export interface KitsuResponseItem {
   type: string;
   links: ResponseLinks;
   attributes: Attributes;
-  relationships: { [key: string]: Relationship };
+  relationships: Record<string, Relationship>;
 }
 
 export interface Attributes {
@@ -33,7 +33,7 @@ export interface Attributes {
   canonicalTitle: string;
   abbreviatedTitles: unknown[];
   averageRating: string;
-  ratingFrequencies: { [key: string]: string };
+  ratingFrequencies: Record<string, string>;
   userCount: number;
   favoritesCount: number;
   startDate: string;
