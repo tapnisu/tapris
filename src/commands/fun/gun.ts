@@ -1,12 +1,12 @@
+import { getGuild, updateGuild } from "#db/index.js";
+import { Command } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { getGuild, updateGuild } from "../../db.js";
-import { Command } from "../../interfaces/index.js";
-import getLocale from "../../locales/index.js";
 
 export const command: Command = {
   name: "gun",

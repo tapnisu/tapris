@@ -1,3 +1,5 @@
+import { updateGuild } from "#db/index.js";
+import getLocale from "#locales/index.js";
 import {
   AudioPlayer,
   AudioPlayerStatus,
@@ -8,9 +10,7 @@ import {
 import { Guild } from "@prisma/client";
 import { CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
-import Client from "../core/index.js";
-import { updateGuild } from "../db.js";
-import getLocale from "../locales/index.js";
+import Client from "#core/index.js";
 
 export class Music {
   public queue: string[];

@@ -1,8 +1,8 @@
+import { Command } from "#interfaces/index.js";
+import { exports } from "#lib/pokedex.js";
+import { calcWeaknesses } from "#lib/pokemonTypeChart.js";
+import getLocale from "#locales/index.js";
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../interfaces/index.js";
-import { exports } from "../../lib/pokedex.js";
-import { calcWeaknesses } from "../../lib/pokemonTypeChart.js";
-import getLocale from "../../locales/index.js";
 
 export const command: Command = {
   name: "pokedex",

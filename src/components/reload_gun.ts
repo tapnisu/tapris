@@ -1,12 +1,12 @@
+import { getGuild, updateGuild } from "#db/index.js";
+import { Component } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { getGuild, updateGuild } from "../db.js";
-import { Component } from "../interfaces/index.js";
-import getLocale from "../locales/index.js";
 
 export const button: Component = {
   customId: /reload_gun/,

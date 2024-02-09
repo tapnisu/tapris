@@ -1,3 +1,6 @@
+import { SearchResult } from "#interfaces/Manga.js";
+import { Command } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import axios from "axios";
 import {
   ActionRowBuilder,
@@ -5,9 +8,6 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { SearchResult } from "../../interfaces/Manga.js";
-import { Command } from "../../interfaces/index.js";
-import getLocale from "../../locales/index.js";
 
 export const command: Command = {
   name: "manga",

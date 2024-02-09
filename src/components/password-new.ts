@@ -4,8 +4,8 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Component } from "../interfaces/index.js";
-import getLocale from "../locales/index.js";
+import { Component } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 
 export const button: Component = {
   customId: /password_(.*)/gi,

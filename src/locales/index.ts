@@ -1,4 +1,4 @@
-import { getGuild } from "../db.js";
+import { getGuild } from "#db/index.js";
 import * as enLocale from "./en/index.js";
 import * as ruLocale from "./ru/index.js";
 

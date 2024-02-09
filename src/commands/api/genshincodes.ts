@@ -1,8 +1,8 @@
+import { Code } from "#interfaces/GIPN.js";
+import { Command } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { Code } from "../../interfaces/GIPN.js";
-import { Command } from "../../interfaces/index.js";
-import getLocale from "../../locales/index.js";
 
 export const command: Command = {
   name: "genshincodes",

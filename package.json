@@ -93,7 +93,8 @@
     "#events/*": "./dist/events/*",
     "#interfaces/*": "./dist/interfaces/*",
     "#lib/*": "./dist/lib/*",
-    "#locales/*": "./dist/locales/*"
+    "#locales/*": "./dist/locales/*",
+    "#db/*": "./dist/db/*"
   },
   "type": "module"
 }

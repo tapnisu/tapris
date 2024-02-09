@@ -1,6 +1,6 @@
+import { createGuild, getGuild } from "#db/index.js";
+import { Event } from "#interfaces/index.js";
 import { ApplicationCommandDataResolvable } from "discord.js";
-import { createGuild, getGuild } from "../db.js";
-import { Event } from "../interfaces/index.js";
 
 export const event: Event = {
   name: "ready",

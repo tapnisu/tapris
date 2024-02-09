@@ -1,6 +1,6 @@
+import { Command, Component, Event } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import { Interaction, InteractionType } from "discord.js";
-import { Command, Component, Event } from "../interfaces/index.js";
-import getLocale from "../locales/index.js";
 
 export const event: Event = {
   name: "interactionCreate",

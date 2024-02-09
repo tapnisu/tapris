@@ -1,10 +1,10 @@
+import Client from "#core/index.js";
 import {
   ApplicationCommandOption,
   ChatInputCommandInteraction,
   InteractionResponse,
   Message
 } from "discord.js";
-import Client from "../core/index.js";
 
 interface Run {
   (

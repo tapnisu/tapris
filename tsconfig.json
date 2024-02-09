@@ -23,7 +23,8 @@
       "#events/*": ["./src/events/*"],
       "#interfaces/*": ["./src/interfaces/*"],
       "#lib/*": ["./src/lib/*"],
-      "#locales/*": ["./src/locales/*"]
+      "#locales/*": ["./src/locales/*"],
+      "#db/*": ["./src/db/*"]
     }
   },
   "include": ["src"],

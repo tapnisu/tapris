@@ -1,6 +1,6 @@
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
-import { Command, Component, Env, Event } from "../interfaces/index.js";
+import { Command, Component, Env, Event } from "#interfaces/index.js";
 import env from "./env.js";
 
 class ExtendedClient extends Client {

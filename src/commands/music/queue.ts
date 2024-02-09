@@ -1,8 +1,8 @@
+import { getGuild } from "#db/index.js";
+import { Command } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import { EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
-import { getGuild } from "../../db.js";
-import { Command } from "../../interfaces/index.js";
-import getLocale from "../../locales/index.js";
 
 export const command: Command = {
   name: "queue",
