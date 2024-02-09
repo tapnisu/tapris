@@ -1,7 +1,11 @@
-import { Response8ball } from "#interfaces/Nekoslife.js";
 import { Command } from "#interfaces/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
+
+interface Response8ball {
+  response: string;
+  url: string;
+}
 
 export const command: Command = {
   name: "8ball",
@@ -9,8 +13,8 @@ export const command: Command = {
   run: async (client, interaction) => {
     await interaction.deferReply();
 
-    const response: Response8ball = (
-      await axios.get("https://nekos.life/api/v2/8ball")
+    const response = (
+      await axios.get<Response8ball>("https://nekos.life/api/v2/8ball")
     ).data;
 
     const Embed = new EmbedBuilder()

@@ -7,7 +7,8 @@ export const BASE_URL = "https://manganato.com";
 export const READ_BASE_URL = "https://readmanganato.com";
 
 export interface RecentMangaChapter {
-  chapter: number;
+  id: string;
+  chapter: string;
   ago: string;
 }
 
@@ -25,7 +26,8 @@ export interface PopularManga {
   name: string;
   url: string;
   thumbnail: string;
-  chapter: number;
+  chapterId: string;
+  chapter: string;
 }
 
 export interface Home {
@@ -35,10 +37,7 @@ export interface Home {
 
 export interface SearchResult {
   id: string;
-  internalId: string;
-  idEncoded: string;
   name: string;
-  nameUnsigned: string;
   lastChapter: string;
   thumbnail: string;
   author: string;
@@ -48,13 +47,14 @@ export interface SearchResult {
 export interface Manga {
   id: string;
   title: string;
+  alternative: string;
   description: string;
   thumbnail: string;
   authors: string;
   status: string;
   genres: string[];
   lastUpdated: string;
-  views: number;
+  views: string;
   rating: string;
   chapters: MangaChapter[];
 }
@@ -64,12 +64,29 @@ export interface MangaChapter {
   title: string;
   // chapter: number;
   // vol: number;
-  views: number;
+  views: string;
   uploaded: string;
 }
 
 export interface ChapterPage {
   number: number;
   title: string;
+  url: string;
+  proxyURL: string;
+}
+
+export interface AdvancedSearchResult {
+  id: string;
+  title: string;
+  description: string;
+  views: string;
+  lastUpdated: string;
+  author: string;
+  latestChapter: {
+    id: string;
+    title: string;
+  };
+  thumbnail: string;
+  rating: number | null;
   url: string;
 }

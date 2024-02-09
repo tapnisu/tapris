@@ -1,4 +1,3 @@
-import { AshconResponse } from "#interfaces/Ashcon.js";
 import { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
@@ -8,6 +7,36 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
+
+interface AshconResponse {
+  uuid: string;
+  username: string;
+  username_history: UsernameHistory[];
+  textures: Textures;
+  created_at: string;
+}
+
+interface Textures {
+  custom: boolean;
+  slim: boolean;
+  skin: Skin;
+  raw: Raw;
+}
+
+interface Raw {
+  value: string;
+  signature: string;
+}
+
+interface Skin {
+  url: string;
+  data: string;
+}
+
+interface UsernameHistory {
+  username: string;
+  changed_at?: string;
+}
 
 export const command: Command = {
   name: "mineskin",

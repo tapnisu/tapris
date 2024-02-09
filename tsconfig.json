@@ -15,16 +15,16 @@
     "skipDefaultLibCheck": true,
     "declaration": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "./src/",
     "paths": {
-      "#commands/*": ["./src/commands/*"],
-      "#components/*": ["./src/components/*"],
-      "#core/*": ["./src/core/*"],
-      "#events/*": ["./src/events/*"],
-      "#interfaces/*": ["./src/interfaces/*"],
-      "#lib/*": ["./src/lib/*"],
-      "#locales/*": ["./src/locales/*"],
-      "#db/*": ["./src/db/*"]
+      "#commands/*": ["./commands/*"],
+      "#components/*": ["./components/*"],
+      "#core/*": ["./core/*"],
+      "#events/*": ["./events/*"],
+      "#interfaces/*": ["./interfaces/*"],
+      "#lib/*": ["./lib/*"],
+      "#locales/*": ["./locales/*"],
+      "#db/*": ["./db/*"]
     }
   },
   "include": ["src"],
