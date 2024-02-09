@@ -5,9 +5,9 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Command } from "../../Interfaces";
-import { AshconResponse } from "../../Interfaces/Ashcon";
-import getLocale from "../../Locales";
+import { AshconResponse } from "../../Interfaces/Ashcon.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 export const command: Command = {
   name: "mineskin",

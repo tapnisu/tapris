@@ -1,4 +1,4 @@
-import { Button } from "../Interfaces";
+import { Button } from "../Interfaces/index.js";
 
 export const button: Button = {
   customId: /delete_message/,

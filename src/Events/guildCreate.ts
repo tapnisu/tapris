@@ -6,9 +6,9 @@ import {
   Guild,
   OAuth2Scopes
 } from "discord.js";
-import { Event } from "../Interfaces";
-import getLocale from "../Locales";
-import { createGuild, getGuild } from "../db";
+import { Event } from "../Interfaces/index.js";
+import getLocale from "../Locales/index.js";
+import { createGuild, getGuild } from "../db.js";
 
 export const event: Event = {
   name: "guildCreate",

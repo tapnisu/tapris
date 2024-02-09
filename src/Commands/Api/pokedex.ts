@@ -1,8 +1,17 @@
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { calcWeaknesses } from "../../Exports/pokemonTypeChart";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
+import { calcWeaknesses } from "../../Exports/pokemonTypeChart.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
+
+interface Exports {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  BattlePokedex: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  BattleMovedex: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  BattleAbilities: any;
+}
 
 export const command: Command = {
   name: "pokedex",
@@ -39,6 +48,8 @@ export const command: Command = {
           "https://play.pokemonshowdown.com/data/pokedex.js"
         )
       ).data;
+
+      const exports = {} as Exports;
 
       eval(script);
 
@@ -220,6 +231,8 @@ export const command: Command = {
       return await interaction.followUp({ embeds: [embed] });
     }
     if (requestType == "move") {
+      const exports = {} as Exports;
+
       eval(
         (await axios.get("https://play.pokemonshowdown.com/data/moves.js")).data
       );
@@ -280,6 +293,8 @@ export const command: Command = {
     }
 
     if (requestType == "ability") {
+      const exports = {} as Exports;
+
       eval(
         (await axios.get("https://play.pokemonshowdown.com/data/abilities.js"))
           .data

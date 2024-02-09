@@ -1,7 +1,7 @@
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
-import { Button, Command, Env, Event } from "../Interfaces";
-import env from "./env";
+import { Button, Command, Env, Event } from "../Interfaces/index.js";
+import env from "./env.js";
 
 class ExtendedClient extends Client {
   public events: Collection<string, Event> = new Collection();
@@ -37,7 +37,7 @@ class ExtendedClient extends Client {
 
       for (const file of commands) {
         const { command } = (await import(
-          `${__dirname}/../Commands/${dir}/${file}`
+          `${`${process.platform === "win32" ? "" : "/"}${/file:\/{2,3}(.+)\/[^/]/.exec(import.meta.url)![1]}`}/../Commands/${dir}/${file}`
         )) as { command: Command };
 
         if (!command.disabled) this.commands.set(command.name, command);
@@ -62,7 +62,9 @@ class ExtendedClient extends Client {
     readdirSync("dist/Buttons")
       .filter((file) => file.endsWith(".js"))
       .forEach(async (file) => {
-        const { button } = await import(`${__dirname}/../Buttons/${file}`);
+        const { button } = await import(
+          `${`${process.platform === "win32" ? "" : "/"}${/file:\/{2,3}(.+)\/[^/]/.exec(import.meta.url)![1]}`}/../Buttons/${file}`
+        );
 
         this.buttons.set(button.customId, button);
       });

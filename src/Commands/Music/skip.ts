@@ -3,10 +3,10 @@ import {
   joinVoiceChannel
 } from "@discordjs/voice";
 import { GuildMember } from "discord.js";
-import { play } from "../../Exports/music";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
-import { getGuild, updateGuild } from "../../db";
+import { play } from "../../Exports/music.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
+import { getGuild, updateGuild } from "../../db.js";
 
 export const command: Command = {
   name: "skip",

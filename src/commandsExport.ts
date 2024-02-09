@@ -1,5 +1,5 @@
 import { readdir } from "fs/promises";
-import { Command } from "./Interfaces";
+import { Command } from "./Interfaces/index.js";
 
 (async () => {
   const cmdsJson = await Promise.all(

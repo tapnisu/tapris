@@ -1,8 +1,8 @@
 // TODO: Update everything to genshin-db-5
 import { EmbedBuilder } from "discord.js";
 import genshindb from "genshin-db";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 genshindb.setOptions({
   queryLanguages: [genshindb.Language.English, genshindb.Language.Russian],

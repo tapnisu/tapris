@@ -1,5 +1,5 @@
 import { ClientEvents } from "discord.js";
-import Client from "../Core";
+import Client from "../Core/index.js";
 
 type ArgsKeys = keyof ClientEvents;
 type Args = ClientEvents[ArgsKeys];

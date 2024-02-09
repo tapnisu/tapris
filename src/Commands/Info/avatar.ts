@@ -5,8 +5,8 @@ import {
   EmbedBuilder
 } from "discord.js";
 
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 export const command: Command = {
   name: "avatar",

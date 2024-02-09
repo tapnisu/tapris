@@ -4,9 +4,9 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Button } from "../Interfaces";
-import getLocale from "../Locales";
-import { getGuild, updateGuild } from "../db";
+import { Button } from "../Interfaces/index.js";
+import getLocale from "../Locales/index.js";
+import { getGuild, updateGuild } from "../db.js";
 
 export const button: Button = {
   customId: /reload_gun/,

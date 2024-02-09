@@ -1,8 +1,8 @@
-import youtubeSr from "youtube-sr";
-import { validateURL } from "ytdl-core";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
-import { getGuild, updateGuild } from "../../db";
+import { YouTube } from "youtube-sr";
+import ytdl from "ytdl-core";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
+import { getGuild, updateGuild } from "../../db.js";
 
 export const command: Command = {
   name: "add",
@@ -38,7 +38,7 @@ export const command: Command = {
     const { addLocale } = await getLocale(interaction.guildId);
 
     if (type == "video-url") {
-      if (!validateURL(request))
+      if (!ytdl.validateURL(request))
         return await interaction.followUp({
           content: addLocale.invalidUrl
         });
@@ -48,7 +48,7 @@ export const command: Command = {
     }
 
     if (type == "video-title") {
-      const result = await youtubeSr.search(request, {
+      const result = await YouTube.search(request, {
         limit: 1,
         type: "video"
       });
@@ -63,7 +63,7 @@ export const command: Command = {
     }
 
     if (type == "playlist-name") {
-      const result = await youtubeSr.search(request, {
+      const result = await YouTube.search(request, {
         limit: 1,
         type: "playlist"
       });
@@ -76,7 +76,7 @@ export const command: Command = {
       guild.queue = [
         ...guild.queue,
         ...(
-          await (await youtubeSr.getPlaylist(result[0].url)).fetch()
+          await (await YouTube.getPlaylist(result[0].url)).fetch()
         ).videos.map((video) => video.id)
       ];
 
@@ -87,7 +87,7 @@ export const command: Command = {
       try {
         guild.queue = [
           ...guild.queue,
-          ...(await (await youtubeSr.getPlaylist(request)).fetch()).videos.map(
+          ...(await (await YouTube.getPlaylist(request)).fetch()).videos.map(
             (video) => video.id
           )
         ];

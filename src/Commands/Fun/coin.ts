@@ -4,9 +4,9 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { choices } from "../../Exports/coin";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
+import { choices } from "../../Exports/coin.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 export const command: Command = {
   name: "coin",

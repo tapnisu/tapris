@@ -4,9 +4,9 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
-import { getGuild, updateGuild } from "../../db";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
+import { getGuild, updateGuild } from "../../db.js";
 
 export const command: Command = {
   name: "gun",

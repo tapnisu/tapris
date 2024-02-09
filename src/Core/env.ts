@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
-(async () => {
-  await dotenv.config();
-})();
+
+dotenv.config();
 
 export default process.env;

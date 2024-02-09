@@ -1,6 +1,6 @@
 import { createCanvas } from "@napi-rs/canvas";
 import { AttachmentBuilder, ColorResolvable, EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
+import { Command } from "../../Interfaces/index.js";
 
 export const command: Command = {
   name: "color",

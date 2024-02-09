@@ -1,6 +1,6 @@
 import { Guild } from "discord.js";
-import { Event } from "../Interfaces";
-import { deleteGuild } from "../db";
+import { Event } from "../Interfaces/index.js";
+import { deleteGuild } from "../db.js";
 
 export const event: Event = {
   name: "guildDelete",

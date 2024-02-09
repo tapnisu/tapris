@@ -1,5 +1,5 @@
 import { convert } from "html-to-text";
-import { Command } from "../../Interfaces";
+import { Command } from "../../Interfaces/index.js";
 
 export const command: Command = {
   name: "html",

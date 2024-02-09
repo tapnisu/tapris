@@ -5,9 +5,9 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Command } from "../../Interfaces";
-import { SearchResult } from "../../Interfaces/Manga";
-import getLocale from "../../Locales";
+import { SearchResult } from "../../Interfaces/Manga.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 export const command: Command = {
   name: "manga",

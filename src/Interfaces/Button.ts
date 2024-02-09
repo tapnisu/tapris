@@ -1,5 +1,5 @@
 import { ButtonInteraction } from "discord.js";
-import Client from "../Core";
+import Client from "../Core/index.js";
 
 interface Run {
   (client: Client, interaction: ButtonInteraction);
