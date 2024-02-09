@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import WaifuClient from "waifu.js";
-import { Command } from "../../Interfaces";
+import { Command } from "../../Interfaces/index.js";
 
 const waifuClient = new WaifuClient();
 

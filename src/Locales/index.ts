@@ -1,6 +1,6 @@
-import { getGuild } from "../db";
-import * as enLocale from "./en";
-import * as ruLocale from "./ru";
+import { getGuild } from "../db.js";
+import * as enLocale from "./en/index.js";
+import * as ruLocale from "./ru/index.js";
 
 export default async function getLocale(guildId: string) {
   if (!guildId) return enLocale;

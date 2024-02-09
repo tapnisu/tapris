@@ -1,8 +1,8 @@
-import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import { calcWeaknesses } from "../../Exports/pokemonTypeChart";
-import { Command } from "../../Interfaces";
-import getLocale from "../../Locales";
+import { exports } from "../../Exports/pokedex.js";
+import { calcWeaknesses } from "../../Exports/pokemonTypeChart.js";
+import { Command } from "../../Interfaces/index.js";
+import getLocale from "../../Locales/index.js";
 
 export const command: Command = {
   name: "pokedex",
@@ -34,14 +34,6 @@ export const command: Command = {
     const { pokedexLocale } = await getLocale(interaction.guildId);
 
     if (requestType == "pokemon") {
-      const script = (
-        await axios.get<string>(
-          "https://play.pokemonshowdown.com/data/pokedex.js"
-        )
-      ).data;
-
-      eval(script);
-
       const response =
         exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -220,10 +212,6 @@ export const command: Command = {
       return await interaction.followUp({ embeds: [embed] });
     }
     if (requestType == "move") {
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/moves.js")).data
-      );
-
       const response =
         exports.BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -280,11 +268,6 @@ export const command: Command = {
     }
 
     if (requestType == "ability") {
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/abilities.js"))
-          .data
-      );
-
       const response =
         exports.BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -305,10 +288,6 @@ export const command: Command = {
     }
 
     if (requestType == "item") {
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/items.js")).data
-      );
-
       const response =
         exports.BattleItems[request.replace(/ |-/g, "").toLowerCase()];
 

@@ -4,7 +4,7 @@ import {
   InteractionResponse,
   Message
 } from "discord.js";
-import Client from "../Core";
+import Client from "../Core/index.js";
 
 interface Run {
   (

@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { Command } from "../../Interfaces";
+import { Command } from "../../Interfaces/index.js";
 
 export const command: Command = {
   name: "uwu",

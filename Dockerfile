@@ -4,10 +4,10 @@ WORKDIR /
 
 COPY . .
 
-RUN yarn
+RUN pnpm
 
-RUN yarn prisma:generate
-RUN yarn build
+RUN pnpm prisma:generate
+RUN pnpm build
 
 USER tapris
 

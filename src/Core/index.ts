@@ -1,7 +1,7 @@
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
-import { Button, Command, Env, Event } from "../Interfaces";
-import env from "./env";
+import { Button, Command, Env, Event } from "../Interfaces/index.js";
+import env from "./env.js";
 
 class ExtendedClient extends Client {
   public events: Collection<string, Event> = new Collection();
@@ -24,21 +24,19 @@ class ExtendedClient extends Client {
     }
   ) {
     super(options);
-  }
 
-  public async init() {
-    await this.login(this.env.TOKEN);
+    this.token = this.env.TOKEN;
 
     // Set commands to the bot
-    readdirSync("dist/Commands").forEach(async (dir) => {
+    readdirSync("dist/Commands").map(async (dir) => {
       const commands = readdirSync(`dist/Commands/${dir}`).filter((file) =>
         file.endsWith(".js")
       );
 
       for (const file of commands) {
-        const { command } = (await import(
-          `${__dirname}/../Commands/${dir}/${file}`
-        )) as { command: Command };
+        const { command } = (await import(`../Commands/${dir}/${file}`)) as {
+          command: Command;
+        };
 
         if (!command.disabled) this.commands.set(command.name, command);
       }
@@ -47,7 +45,7 @@ class ExtendedClient extends Client {
     // Set events to the bot
     readdirSync("dist/Events")
       .filter((file) => file.endsWith(".js"))
-      .forEach(async (file) => {
+      .map(async (file) => {
         const { event } = (await import(`../Events/${file}`)) as {
           event: Event;
         };
@@ -61,8 +59,8 @@ class ExtendedClient extends Client {
     // Set buttons to the bot
     readdirSync("dist/Buttons")
       .filter((file) => file.endsWith(".js"))
-      .forEach(async (file) => {
-        const { button } = await import(`${__dirname}/../Buttons/${file}`);
+      .map(async (file) => {
+        const { button } = await import(`../Buttons/${file}`);
 
         this.buttons.set(button.customId, button);
       });

@@ -1,3 +1,3 @@
-import Client from "./Core";
+import Client from "./Core/index.js";
 
-new Client().init();
+new Client().login();

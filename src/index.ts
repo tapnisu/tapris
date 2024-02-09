@@ -1,5 +1,5 @@
 import { ShardingManager } from "discord.js";
-import config from "./Core/env";
+import config from "./Core/env.js";
 
 // Create sharding client
 const manager = new ShardingManager("./dist/bot.js", {
