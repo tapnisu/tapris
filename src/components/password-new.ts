@@ -4,10 +4,10 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Button } from "../interfaces/index.js";
+import { Component } from "../interfaces/index.js";
 import getLocale from "../locales/index.js";
 
-export const button: Button = {
+export const button: Component = {
   customId: /password_(.*)/gi,
   run: async (client, interaction) => {
     const charset =

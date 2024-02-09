@@ -5,7 +5,7 @@ interface Run {
   (client: Client, interaction: ButtonInteraction);
 }
 
-export interface Button {
+export interface Component {
   customId: RegExp;
   run: Run;
 }

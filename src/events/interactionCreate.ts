@@ -1,5 +1,5 @@
 import { Interaction, InteractionType } from "discord.js";
-import { Button, Command, Event } from "../interfaces/index.js";
+import { Command, Component, Event } from "../interfaces/index.js";
 import getLocale from "../locales/index.js";
 
 export const event: Event = {
@@ -33,12 +33,12 @@ export const event: Event = {
 
     if (interaction.type === InteractionType.MessageComponent) {
       if (interaction.isButton()) {
-        const button = client.buttons.find((button) =>
+        const component = client.components.find((button) =>
           button.customId.test(interaction.customId)
         );
 
-        if (button)
-          return (button as Button)
+        if (component)
+          return (component as Component)
             .run(client, interaction)
             .catch(async (err) => {
               console.error(err);

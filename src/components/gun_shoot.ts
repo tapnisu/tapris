@@ -5,10 +5,10 @@ import {
   EmbedBuilder
 } from "discord.js";
 import { getGuild, updateGuild } from "../db.js";
-import { Button } from "../interfaces/index.js";
+import { Component } from "../interfaces/index.js";
 import getLocale from "../locales/index.js";
 
-export const button: Button = {
+export const button: Component = {
   customId: /gun_shoot/,
   run: async (client, interaction) => {
     const guild = await getGuild(interaction.guildId);

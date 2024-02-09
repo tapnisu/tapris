@@ -4,11 +4,11 @@ import {
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Button } from "../interfaces/index.js";
+import { Component } from "../interfaces/index.js";
 import { choices } from "../lib/coin.js";
 import getLocale from "../locales/index.js";
 
-export const button: Button = {
+export const button: Component = {
   customId: /flip_coin_(.*)/gi,
   run: async (client, interaction) => {
     const choice = interaction.customId.replace(/flip_coin_/, "");

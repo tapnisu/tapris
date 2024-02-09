@@ -1,6 +1,6 @@
-import { Button } from "../interfaces/index.js";
+import { Component } from "../interfaces/index.js";
 
-export const button: Button = {
+export const button: Component = {
   customId: /delete_message/,
   run: async (_client, interaction) => {
     return interaction.message.delete();

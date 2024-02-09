@@ -86,5 +86,14 @@
   "engines": {
     "node": ">=16"
   },
+  "imports": {
+    "#commands/*": "./dist/commands/*",
+    "#components/*": "./dist/components/*",
+    "#core/*": "./dist/core/*",
+    "#events/*": "./dist/events/*",
+    "#interfaces/*": "./dist/interfaces/*",
+    "#lib/*": "./dist/lib/*",
+    "#locales/*": "./dist/locales/*"
+  },
   "type": "module"
 }

@@ -17,13 +17,13 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@commands/*": ["./src/commands/*"],
-      "@core/*": ["./src/core/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@events/*": ["./src/events/*"],
-      "@interfaces/*": ["./src/interfaces/*"],
-      "@locales/*": ["./src/locales/*"]
+      "#commands/*": ["./src/commands/*"],
+      "#components/*": ["./src/components/*"],
+      "#core/*": ["./src/core/*"],
+      "#events/*": ["./src/events/*"],
+      "#interfaces/*": ["./src/interfaces/*"],
+      "#lib/*": ["./src/lib/*"],
+      "#locales/*": ["./src/locales/*"]
     }
   },
   "include": ["src"],

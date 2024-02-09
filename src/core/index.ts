@@ -1,12 +1,12 @@
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
-import { Button, Command, Env, Event } from "../interfaces/index.js";
+import { Command, Component, Env, Event } from "../interfaces/index.js";
 import env from "./env.js";
 
 class ExtendedClient extends Client {
   public events: Collection<string, Event> = new Collection();
   public commands: Collection<string, Command> = new Collection();
-  public buttons: Collection<string, Button> = new Collection();
+  public components: Collection<string, Component> = new Collection();
   public env: Env = env as unknown as Env;
 
   constructor(
@@ -28,8 +28,8 @@ class ExtendedClient extends Client {
     this.token = this.env.TOKEN;
 
     // Set commands to the bot
-    readdirSync("../commands").map(async (dir) => {
-      const commands = readdirSync(`../commands/${dir}`).filter((file) =>
+    readdirSync("dist/commands").map(async (dir) => {
+      const commands = readdirSync(`dist/commands/${dir}`).filter((file) =>
         file.endsWith(".js")
       );
 
@@ -43,7 +43,7 @@ class ExtendedClient extends Client {
     });
 
     // Set events to the bot
-    readdirSync("../events")
+    readdirSync("dist/events")
       .filter((file) => file.endsWith(".js"))
       .map(async (file) => {
         const { event } = (await import(`../events/${file}`)) as {
@@ -57,12 +57,12 @@ class ExtendedClient extends Client {
       });
 
     // Set buttons to the bot
-    readdirSync("../buttons")
+    readdirSync("dist/components")
       .filter((file) => file.endsWith(".js"))
       .map(async (file) => {
-        const { button } = await import(`../buttons/${file}`);
+        const { button } = await import(`../components/${file}`);
 
-        this.buttons.set(button.customId, button);
+        this.components.set(button.customId, button);
       });
   }
 }
