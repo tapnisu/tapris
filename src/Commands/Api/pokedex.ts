@@ -1,17 +1,8 @@
-import axios from "axios";
 import { EmbedBuilder } from "discord.js";
+import { exports } from "../../Exports/pokedex.js";
 import { calcWeaknesses } from "../../Exports/pokemonTypeChart.js";
 import { Command } from "../../Interfaces/index.js";
 import getLocale from "../../Locales/index.js";
-
-interface Exports {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  BattlePokedex: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  BattleMovedex: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  BattleAbilities: any;
-}
 
 export const command: Command = {
   name: "pokedex",
@@ -43,16 +34,6 @@ export const command: Command = {
     const { pokedexLocale } = await getLocale(interaction.guildId);
 
     if (requestType == "pokemon") {
-      const script = (
-        await axios.get<string>(
-          "https://play.pokemonshowdown.com/data/pokedex.js"
-        )
-      ).data;
-
-      const exports = {} as Exports;
-
-      eval(script);
-
       const response =
         exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -231,12 +212,6 @@ export const command: Command = {
       return await interaction.followUp({ embeds: [embed] });
     }
     if (requestType == "move") {
-      const exports = {} as Exports;
-
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/moves.js")).data
-      );
-
       const response =
         exports.BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -293,13 +268,6 @@ export const command: Command = {
     }
 
     if (requestType == "ability") {
-      const exports = {} as Exports;
-
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/abilities.js"))
-          .data
-      );
-
       const response =
         exports.BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
 
@@ -320,10 +288,6 @@ export const command: Command = {
     }
 
     if (requestType == "item") {
-      eval(
-        (await axios.get("https://play.pokemonshowdown.com/data/items.js")).data
-      );
-
       const response =
         exports.BattleItems[request.replace(/ |-/g, "").toLowerCase()];
 
