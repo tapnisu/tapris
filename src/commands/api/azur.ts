@@ -1,4 +1,4 @@
-import { AzurResponse } from "#interfaces/Azur.js";
+import { AzurResponse } from "#interfaces/azurLane.js";
 import { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";

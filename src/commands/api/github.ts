@@ -1,4 +1,4 @@
-import { GithubResponse } from "#interfaces/Github.js";
+import { GithubResponse } from "#interfaces/github.js";
 import { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";

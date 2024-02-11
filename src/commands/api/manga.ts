@@ -1,5 +1,5 @@
-import { SearchResult } from "#interfaces/Manga.js";
 import { Command } from "#interfaces/index.js";
+import { SearchResult } from "#interfaces/manga.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
 import {

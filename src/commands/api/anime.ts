@@ -1,5 +1,5 @@
-import { KitsuResponse, KitsuResponseItem } from "#interfaces/Kitsu.js";
 import { Command } from "#interfaces/index.js";
+import { KitsuResponse, KitsuResponseItem } from "#interfaces/kitsu.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";

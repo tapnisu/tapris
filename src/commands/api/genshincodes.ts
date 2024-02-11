@@ -1,4 +1,4 @@
-import { Code } from "#interfaces/GIPN.js";
+import { Code } from "#interfaces/genshinCodes.js";
 import { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
