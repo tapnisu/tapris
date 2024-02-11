@@ -1,5 +1,5 @@
-export { Command } from "./Command.js";
-export { Component } from "./Component.js";
-export { Env } from "./Env.js";
-export { Event } from "./Event.js";
-export { Gun } from "./Gun.js";
+export { Command } from "./command.js";
+export { Component } from "./component.js";
+export { Env } from "./env.js";
+export { Event } from "./event.js";
+export { Gun } from "./gun.js";
