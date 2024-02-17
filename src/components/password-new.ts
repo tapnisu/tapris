@@ -1,21 +1,23 @@
+import { Component } from "#interfaces/index.js";
+import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder
 } from "discord.js";
-import { Component } from "#interfaces/index.js";
-import getLocale from "#locales/index.js";
+
+const PASSWORD_REGEX = /^(?:password_)(\d+)$/;
 
 export const button: Component = {
-  customId: /password_(.*)/gi,
+  customId: PASSWORD_REGEX,
   run: async (client, interaction) => {
     const charset =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#%";
     let password = "";
 
     const passwordLength = Number(
-      interaction.customId.replace(/password_/, "")
+      interaction.customId.match(PASSWORD_REGEX)[1]
     );
 
     for (let i = 0, n = charset.length; i < passwordLength; ++i) {

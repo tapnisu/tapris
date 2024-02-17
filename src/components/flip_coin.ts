@@ -8,10 +8,13 @@ import {
   EmbedBuilder
 } from "discord.js";
 
+const FLIP_COIN_REGEX = /^(?:flip_coin_)(coin|tail)$/;
+
 export const button: Component = {
-  customId: /flip_coin_(.*)/gi,
+  customId: FLIP_COIN_REGEX,
   run: async (client, interaction) => {
-    const choice = interaction.customId.replace(/flip_coin_/, "");
+    const choice = interaction.customId.match(FLIP_COIN_REGEX)[1];
+
     const { coinLocale } = await getLocale(interaction.guildId);
 
     const embed = new EmbedBuilder()
