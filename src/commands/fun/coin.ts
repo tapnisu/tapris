@@ -1,5 +1,5 @@
 import { Command } from "#interfaces/index.js";
-import { choices } from "#lib/coin.js";
+import { choices, flipCoin } from "#lib/coin.js";
 import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
@@ -26,22 +26,16 @@ export const command: Command = {
   run: async (client, interaction) => {
     await interaction.deferReply();
 
+    const choice = interaction.options.getString("choice");
+    const winner = flipCoin(choices);
+
     const { coinLocale } = await getLocale(interaction.guildId);
 
-    const choice = interaction.options.getString("choice");
     const embed = new EmbedBuilder()
-      .setTitle(
-        coinLocale.winner(
-          choice == choices[0] ? coinLocale.choices[0] : coinLocale.choices[1]
-        )
-      )
+      .setTitle(coinLocale.winner(winner))
       .setColor(client.env.BOT_COLOR)
       .setDescription(
-        `${
-          choice.toLocaleLowerCase() == choice
-            ? coinLocale.youWon
-            : coinLocale.youLost
-        }`
+        choice == winner ? coinLocale.youWon : coinLocale.youLost
       );
 
     const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([

@@ -1,5 +1,5 @@
 import { Component } from "#interfaces/index.js";
-import { choices } from "#lib/coin.js";
+import { choices, flipCoin } from "#lib/coin.js";
 import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
@@ -13,23 +13,20 @@ const FLIP_COIN_REGEX = /^(?:flip_coin_)(coin|tail)$/;
 export const button: Component = {
   customId: FLIP_COIN_REGEX,
   run: async (client, interaction) => {
+    await interaction.deferReply();
+
     const choice = interaction.customId.match(FLIP_COIN_REGEX)[1];
+    const winner = flipCoin(choices);
+
+    console.log(winner);
 
     const { coinLocale } = await getLocale(interaction.guildId);
 
     const embed = new EmbedBuilder()
-      .setTitle(
-        coinLocale.winner(
-          choice == choices[0] ? coinLocale.choices[0] : coinLocale.choices[1]
-        )
-      )
+      .setTitle(coinLocale.winner(winner))
       .setColor(client.env.BOT_COLOR)
       .setDescription(
-        `${
-          choice.toLocaleLowerCase() == choice
-            ? coinLocale.youWon
-            : coinLocale.youLost
-        }`
+        choice == winner ? coinLocale.youWon : coinLocale.youLost
       );
 
     const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
@@ -43,7 +40,7 @@ export const button: Component = {
         .setStyle(ButtonStyle.Primary)
     ]);
 
-    return await interaction.update({
+    return await interaction.followUp({
       embeds: [embed],
       components: [buttonsRow]
     });
