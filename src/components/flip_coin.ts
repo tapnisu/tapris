@@ -18,8 +18,6 @@ export const button: Component = {
     const choice = interaction.customId.match(FLIP_COIN_REGEX)[1];
     const winner = flipCoin(choices);
 
-    console.log(winner);
-
     const { coinLocale } = await getLocale(interaction.guildId);
 
     const embed = new EmbedBuilder()
