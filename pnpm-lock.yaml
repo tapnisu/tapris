@@ -48,8 +48,8 @@ dependencies:
     specifier: '>=5.3.1'
     version: 5.3.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
   sodium-native:
-    specifier: ^4.0.8
-    version: 4.0.8
+    specifier: ^4.0.9
+    version: 4.0.9
   typeface-jetbrains-mono:
     specifier: ^2.0.1
     version: 2.0.1
@@ -2775,8 +2775,8 @@ packages:
       smart-buffer: 4.2.0
     dev: false
 
-  /sodium-native@4.0.8:
-    resolution: {integrity: sha512-2MOwB92RlCF0Y+teiTOgRMaKvcgXbXvwmSlyHaY5Gy8d4W3Bm++9cMv+hB/gf8INdMUxo69DbmGcvJ7HzLSL9w==}
+  /sodium-native@4.0.9:
+    resolution: {integrity: sha512-nuEaJkwQMjzZOgD6N/yTJAWuzeOq+HKnBR7Qo+geZGorf/AkyBEtwIEjnd2YSs21w/TuFKCgbo2i6j7Uv+kVDQ==}
     requiresBuild: true
     dependencies:
       node-gyp-build: 4.8.0

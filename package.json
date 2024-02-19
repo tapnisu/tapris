@@ -52,7 +52,7 @@
     "ffmpeg-static": "^5.2.0",
     "genshin-db": "^5.1.1",
     "html-to-text": "^9.0.5",
-    "sodium-native": "^4.0.8",
+    "sodium-native": "^4.0.9",
     "typeface-jetbrains-mono": "^2.0.1",
     "waifu.js": "^1.0.0",
     "youtube-sr": "^4.3.10",
