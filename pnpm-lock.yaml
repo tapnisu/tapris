@@ -39,8 +39,8 @@ dependencies:
     specifier: ^5.2.0
     version: 5.2.0
   genshin-db:
-    specifier: ^5.1.0
-    version: 5.1.0
+    specifier: ^5.1.1
+    version: 5.1.1
   html-to-text:
     specifier: ^9.0.5
     version: 9.0.5
@@ -1692,8 +1692,8 @@ packages:
       wide-align: 1.1.5
     dev: false
 
-  /genshin-db@5.1.0:
-    resolution: {integrity: sha512-/ZzeHiwJ0IDK+/14+5mBcqYZvnpc/1ZtDbsIpGPA1NUpuC/YDn9oH91Rq+0qUebbvhJZ7zJvPvEttegWCvPzdw==}
+  /genshin-db@5.1.1:
+    resolution: {integrity: sha512-ieJusS16LqWhbRoi46990KjzbgmGbjf+aDltyRe04zKP3n0vxyBuHLfXwvEmwYZzK8MCB54hyiU2QeYYCpc0Vw==}
     dependencies:
       fuzzysort: 1.9.0
       pako: 2.1.0
