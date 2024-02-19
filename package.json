@@ -50,7 +50,7 @@
     "dotenv": "^16.4.4",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.2.0",
-    "genshin-db": "^5.1.0",
+    "genshin-db": "^5.1.1",
     "html-to-text": "^9.0.5",
     "sodium-native": "^4.0.8",
     "typeface-jetbrains-mono": "^2.0.1",
