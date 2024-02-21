@@ -47,7 +47,7 @@
     "avconv": "^3.1.0",
     "axios": "^1.6.7",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.4",
+    "dotenv": "^16.4.5",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.2.0",
     "genshin-db": "^5.1.1",
