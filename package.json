@@ -73,7 +73,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.2.5",
     "prisma": "^5.12.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "peerDependencies": {
     "pm2": ">=5.3.1"
