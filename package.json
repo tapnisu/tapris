@@ -55,7 +55,7 @@
     "sodium-native": "^4.1.1",
     "typeface-jetbrains-mono": "^2.0.1",
     "waifu.js": "^1.0.0",
-    "youtube-sr": "^4.3.10",
+    "youtube-sr": "^4.3.11",
     "ytdl-core": "^4.11.5"
   },
   "optionalDependencies": {

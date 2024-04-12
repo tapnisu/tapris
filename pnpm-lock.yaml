@@ -57,8 +57,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   youtube-sr:
-    specifier: ^4.3.10
-    version: 4.3.10
+    specifier: ^4.3.11
+    version: 4.3.11
   ytdl-core:
     specifier: ^4.11.5
     version: 4.11.5
@@ -3119,8 +3119,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /youtube-sr@4.3.10:
-    resolution: {integrity: sha512-YTpIWy2c1XLN4VpsUuZTDNXpJ2sLZQyG0kX1vq3nymHhDKro2SoeODey3pZazW+6AjfmNxoSnI8pCSzPrEa3jw==}
+  /youtube-sr@4.3.11:
+    resolution: {integrity: sha512-3oHiS2x7PpMiDRW7Cq8nz1bkAIBOJHoOwkPl/oncM/+A9/3xxMDgMLGW2dsBEP1DHFyRXYTVABgfbdwHF8sXXQ==}
     dev: false
 
   /ytdl-core@4.11.5:
