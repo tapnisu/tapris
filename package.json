@@ -49,7 +49,6 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "ffmpeg": "^0.0.4",
-    "ffmpeg-static": "^5.2.0",
     "genshin-db": "^5.1.4",
     "html-to-text": "^9.0.5",
     "sodium-native": "^4.1.1",
@@ -61,6 +60,8 @@
   "optionalDependencies": {
     "bufferutil": "^4.0.8",
     "erlpack": "^0.1.4",
+    "ffmpeg-static": "^5.2.0",
+    "pm2": "^5.3.1",
     "utf-8-validate": "^6.0.3",
     "zlib-sync": "^0.1.9"
   },
@@ -68,24 +69,13 @@
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
-    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "eslint": "^8.57.0",
+    "node-gyp": "^10.1.0",
     "prettier": "^3.2.5",
     "prisma": "^5.13.0",
     "typescript": "^5.4.5"
-  },
-  "peerDependencies": {
-    "node-gyp": ">=10.1.0",
-    "pm2": ">=5.3.1"
-  },
-  "peerDependenciesMeta": {
-    "pm2": {
-      "optional": true
-    },
-    "node-gyp": {
-      "optional": true
-    }
   },
   "engines": {
     "node": ">=18"
