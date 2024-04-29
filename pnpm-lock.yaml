@@ -21,7 +21,7 @@ importers:
         specifier: ^0.1.52
         version: 0.1.52
       '@prisma/client':
-        specifier: ^5.12.1
+        specifier: ^5.13.0
         version: 5.13.0(prisma@5.13.0)
       avconv:
         specifier: ^3.1.0
@@ -89,7 +89,7 @@ importers:
         specifier: ^7.7.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser':
-        specifier: ^7.7.0
+        specifier: ^7.7.1
         version: 7.7.1(eslint@8.57.0)(typescript@5.4.5)
       eslint:
         specifier: ^8.57.0
