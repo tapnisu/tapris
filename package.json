@@ -76,7 +76,8 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "pm2": ">=5.3.1"
+    "pm2": ">=5.3.1",
+    "node-gyp": ">=10.1.0"
   },
   "peerDependenciesMeta": {
     "pm2": {
@@ -84,7 +85,7 @@
     }
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "imports": {
     "#commands/*": "./dist/commands/*",
