@@ -25,7 +25,7 @@ class ExtendedClient extends Client {
   ) {
     super(options);
 
-    this.token = this.env.TOKEN;
+    this.token = this.env.TAPRIS_TOKEN;
 
     // Set commands to the bot
     readdirSync("dist/commands").map(async (dir) => {

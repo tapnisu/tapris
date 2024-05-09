@@ -1,0 +1,27 @@
+name: tapris
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: tapris
+      POSTGRES_USER: tapris
+      POSTGRES_PASSWORD: chisaki
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      TAPRIS_TOKEN: ${TAPRIS_TOKEN}
+      TAPRIS_DATABASE_URL: postgres://tapris:chisaki@db:5432/tapris?schema=public
+    depends_on:
+      - db
+
+volumes:
+  db_data:

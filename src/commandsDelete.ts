@@ -3,11 +3,11 @@ import config from "./core/env.js";
 
 console.warn("Use https://github.com/tapris-bot/dsc-commands-remover instead");
 
-const rest = new REST({ version: "10" }).setToken(config.TOKEN);
+const rest = new REST({ version: "10" }).setToken(config.TAPRIS_TOKEN);
 const client = new Client({
   intents: []
 });
-await client.login(config.TOKEN);
+await client.login(config.TAPRIS_TOKEN);
 
 const commands = (await rest.get(
   Routes.applicationCommands(client.user.id)
