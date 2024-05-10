@@ -1,5 +1,5 @@
 <p align="center">
- <img width=400px src="assets/avatar.png" alt="Bot logo">
+ <img width=400px src="assets/avatar.png" alt="Tapris from Gabriel DropOut episode 5">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Multipurpose discord bot</h3>
 </p>
@@ -17,64 +17,57 @@ from Gabriel DropOut manga.
 
 ## How to use
 
-You can invite the bot by
+You can invite the bot using
 [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
-Type "/" to see commands!
-
-## Used technologies
-
-- NodeJS
-- TypeScript
-- Discord.js
-- Prisma ORM
 
 ## Contribute
 
-1. Create bot on a [Discord developer portal](https://discord.com/developers/applications).
+1. Create bot using [Discord developer portal](https://discord.com/developers/applications).
 
 2. Install [Node.js](https://nodejs.org/en/download).
 
-3. Install [pnpm](https://pnpm.io/installation).
+3. Install [pnpm](https://pnpm.io/) using [Corepack](https://nodejs.org/api/corepack.html):
 
-4. (Windows) Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools#build-tools-for-visual-studio-2022).
+   ```sh
+   corepack enable
+   pnpm install
+   ```
 
-5. (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
+4. Build dependencies:
 
-6. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)):
+   - (Windows) Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools#build-tools-for-visual-studio-2022).
+
+   - (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
+
+5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)):
 
    ```env
    TAPRIS_TOKEN="DISCORD_BOT_TOKEN"
    TAPRIS_DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
    ```
 
-7. Install dependencies:
+6. Install dependencies:
 
    ```sh
    pnpm install
    ```
 
-8. Migrate your database using prisma:
+7. Apply pending database migrations
 
    ```sh
    pnpm prisma migrate
    ```
 
-9. Build bot:
+8. Build bot:
 
    ```sh
    pnpm build
    ```
 
-10. Start bot:
+9. Start bot:
 
-    ```sh
-    pnpm start
-    ```
-
-11. Or you can start bot using pm2:
-
-    ```sh
-    pnpm pm2:start
-    ```
+   ```sh
+   pnpm start
+   ```
 
 Now you have a running bot!
