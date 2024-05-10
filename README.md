@@ -56,7 +56,7 @@ Type "/" to see commands!
 8. Migrate your database using prisma:
 
    ```sh
-   pnpm prisma:migrate
+   pnpm prisma migrate
    ```
 
 9. Build bot:
