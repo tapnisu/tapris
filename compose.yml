@@ -1,8 +1,20 @@
 name: tapris
 services:
+  bot:
+    image: tapnisu/tapris
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    environment:
+      TAPRIS_TOKEN: ${TAPRIS_TOKEN}
+      TAPRIS_DATABASE_URL: postgres://tapris:chisaki@db:5432/tapris?schema=public
+    depends_on:
+      - db
+    restart: always
+
   db:
     image: postgres:16
-    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     environment:
       POSTGRES_DB: tapris
       POSTGRES_USER: tapris
@@ -11,17 +23,17 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    restart: always
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     environment:
-      TAPRIS_TOKEN: ${TAPRIS_TOKEN}
-      TAPRIS_DATABASE_URL: postgres://tapris:chisaki@db:5432/tapris?schema=public
-    depends_on:
-      - db
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_LABEL_ENABLE=true
 
 volumes:
   db_data:
