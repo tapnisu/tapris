@@ -1,14 +1,14 @@
-FROM node:20-bookworm-slim as base
+FROM node:20-alpine3.19 as base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 COPY . /app
 WORKDIR /app
 RUN corepack enable
 RUN corepack install
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
   ffmpeg \
   libsodium-dev \
-  build-essential
+  alpine-sdk
 
 FROM base AS prod-deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
