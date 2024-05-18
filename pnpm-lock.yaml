@@ -44,6 +44,9 @@ importers:
       html-to-text:
         specifier: ^9.0.5
         version: 9.0.5
+      prisma:
+        specifier: ^5.14.0
+        version: 5.14.0
       sodium-native:
         specifier: ^4.1.1
         version: 4.1.1
@@ -100,9 +103,6 @@ importers:
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
-      prisma:
-        specifier: ^5.14.0
-        version: 5.14.0
       typescript:
         specifier: ^5.4.5
         version: 5.4.5

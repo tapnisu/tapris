@@ -37,7 +37,7 @@ You can invite the bot using
 
    - (Windows) Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools#build-tools-for-visual-studio-2022).
 
-   - (Linux) Install `python3`, `ffmpeg`, `pkg-config`, `libsodium`, `libtool`, `autoconf`, `automake`, `binutils`.
+   - (Linux) Install `ffmpeg`, `libsodium-dev`, `build-essential`.
 
 5. Set up your [.env](.env.sample) (sample in [.env.sample](.env.sample)):
 
