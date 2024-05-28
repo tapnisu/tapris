@@ -7,14 +7,13 @@ import { EmbedBuilder } from "discord.js";
 export const command: Command = {
   name: "genshincodes",
   description: "Codes for Genshin Impact",
-  disabled: true,
   run: async (client, interaction) => {
     await interaction.deferReply();
 
     const res = await axios.get<GIPNResponse>(
-      "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
+      "https://raw.githubusercontent.com/ataraxyaffliction/ataraxyaffliction.github.io/main/re/promos.json"
     );
-    const codes = res.data.CODES.filter((code) => code.is_expired);
+    const codes = res.data.CODES.filter((code) => !code.expired);
 
     const { genshincodesLocale } = await getLocale(interaction.guildId);
 
@@ -25,9 +24,9 @@ export const command: Command = {
       .setURL(genshincodesLocale.url)
       .addFields(
         codes.map((code) => ({
-          name: code.code,
-          value: code.reward_array
-            .map((reward) => `${reward.name}: ${reward.count}`)
+          name: `\`${code.code}\` (${code.period})`,
+          value: code.rewards
+            .map((reward) => `${reward.reward}: ${reward.quantity}`)
             .join("\n"),
           inline: true
         }))
