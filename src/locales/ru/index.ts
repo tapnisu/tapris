@@ -7,7 +7,6 @@ export * as clearLocale from "./clear.js";
 export * as coinLocale from "./coin.js";
 export * as errorLocale from "./error.js";
 export * as genshinLocale from "./genshin.js";
-export * as genshincodesLocale from "./genshincodes.js";
 export * as githubLocale from "./github.js";
 export * as guildLocale from "./guild.js";
 export * as gunLocale from "./gun.js";

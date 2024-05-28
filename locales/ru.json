@@ -14,5 +14,8 @@
   "anime_nsfw": "NSFW",
   "anime_episodeCount": "Количество эпизодов",
   "anime_episodeLength": "Продолжительность эпизода",
-  "anime_unknown": "Неизвестно"
+  "anime_unknown": "Неизвестно",
+  "genshincodes_title": "Промокоды для Genshin Impact",
+  "genshincodes_description": "Вы можете активировать их в игре и получать награды!",
+  "genshincodes_url": "https://genshin.mihoyo.com/ru/gift"
 }

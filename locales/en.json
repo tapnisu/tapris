@@ -14,5 +14,8 @@
   "anime_nsfw": "NSFW",
   "anime_episodeCount": "Episode count",
   "anime_episodeLength": "Episode length",
-  "anime_unknown": "Unknown"
+  "anime_unknown": "Unknown",
+  "genshincodes_title": "Genshin Impact codes",
+  "genshincodes_description": "You can activate them in game, and get rewards!",
+  "genshincodes_url": "https://genshin.mihoyo.com/en/gift"
 }

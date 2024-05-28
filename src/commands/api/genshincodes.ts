@@ -1,13 +1,12 @@
 import { GIPNResponse } from "#interfaces/genshinCodes.js";
 import { Command } from "#interfaces/index.js";
-import getLocale from "#locales/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 
 export const command: Command = {
   name: "genshincodes",
   description: "Codes for Genshin Impact",
-  run: async (client, interaction) => {
+  run: async (client, interaction, i18n) => {
     await interaction.deferReply();
 
     const res = await axios.get<GIPNResponse>(
@@ -15,13 +14,11 @@ export const command: Command = {
     );
     const codes = res.data.CODES.filter((code) => !code.expired);
 
-    const { genshincodesLocale } = await getLocale(interaction.guildId);
-
     const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
-      .setTitle(genshincodesLocale.title)
-      .setDescription(genshincodesLocale.description)
-      .setURL(genshincodesLocale.url)
+      .setTitle(i18n.__("genshincodes_title"))
+      .setDescription(i18n.__("genshincodes_description"))
+      .setURL(i18n.__("genshincodes_url"))
       .addFields(
         codes.map((code) => ({
           name: `\`${code.code}\` (${code.period})`,
