@@ -7,5 +7,12 @@
   "music_invalidUrl": "Url is invalid!",
   "music_videoNotFound": "Video not found!",
   "music_playlistNotFound": "Playlist not found!",
-  "music_success": "Added to queue!"
+  "music_success": "Added to queue!",
+  "anime_animeNotFound": "Anime not found! :no_entry_sign:",
+  "anime_averageRating": "Average rating",
+  "anime_ageRating": "Age rating",
+  "anime_nsfw": "NSFW",
+  "anime_episodeCount": "Episode count",
+  "anime_episodeLength": "Episode length",
+  "anime_unknown": "Unknown"
 }

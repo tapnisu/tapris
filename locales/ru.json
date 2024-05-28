@@ -7,5 +7,12 @@
   "music_invalidUrl": "Недействительная ссылка!",
   "music_videoNotFound": "Видео не найдено!",
   "music_playlistNotFound": "Плейлист не найдет!",
-  "music_success": "Добавлено в очередь!"
+  "music_success": "Добавлено в очередь!",
+  "anime_animeNotFound": "Аниме не найдено! :no_entry_sign:",
+  "anime_averageRating": "Средний рейтинг",
+  "anime_ageRating": "Возрастные ограничения",
+  "anime_nsfw": "NSFW",
+  "anime_episodeCount": "Количество эпизодов",
+  "anime_episodeLength": "Продолжительность эпизода",
+  "anime_unknown": "Неизвестно"
 }
