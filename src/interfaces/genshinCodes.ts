@@ -3,19 +3,15 @@ export interface GIPNResponse {
 }
 
 export interface Code {
-  reward: string;
-  date: string;
+  period: string;
   code: string;
-  is_expired: boolean;
-  region: number;
-  reward_array: RewardArray[];
+  expired: boolean;
+  rewards: Reward[];
 }
 
-export interface RewardArray {
-  image_path: ImagePath;
-  name: Name;
-  count: string;
-  rarity: Rarity;
+export interface Reward {
+  reward: string;
+  quantity: string;
 }
 
 export enum ImagePath {
