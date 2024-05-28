@@ -12,7 +12,6 @@ export * as genshinLocale from "./genshin.js";
 export * as genshincodesLocale from "./genshincodes.js";
 export * as githubLocale from "./github.js";
 export * as guildLocale from "./guild.js";
-export * as guildCreateLocale from "./guildCreate.js";
 export * as gunLocale from "./gun.js";
 export * as inviteLocale from "./invite.js";
 export * as kickLocale from "./kick.js";

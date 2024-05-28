@@ -5,11 +5,13 @@ import {
   InteractionResponse,
   Message
 } from "discord.js";
+import { I18n } from "i18n";
 
 interface Run {
   (
     client: Client,
-    interaction: ChatInputCommandInteraction
+    interaction: ChatInputCommandInteraction,
+    i18n: I18n
   ): Promise<Message<boolean> | InteractionResponse<boolean>>;
 }
 

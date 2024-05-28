@@ -20,8 +20,9 @@ RUN pnpm prisma generate
 RUN pnpm run build
 
 FROM base
-COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
+COPY --from=build /app/locales /app/locales
 COPY --from=build /app/prisma /app/prisma
+COPY --from=prod-deps /app/node_modules /app/node_modules
 
 CMD [ "pnpm", "run", "start" ]
