@@ -3,7 +3,6 @@ import { readdirSync } from "fs";
 import { Command, Component, Env, Event } from "#interfaces/index.js";
 import { I18n } from "i18n";
 import env from "./env.js";
-import path from "path";
 
 class ExtendedClient extends Client {
   public events: Collection<string, Event> = new Collection();
@@ -13,7 +12,7 @@ class ExtendedClient extends Client {
   public i18n = new I18n({
     defaultLocale: "en",
     locales: ["en", "ru"],
-    directory: path.join(__dirname, "locales")
+    directory: "locales"
   });
 
   constructor(

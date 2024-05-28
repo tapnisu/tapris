@@ -1,5 +1,3 @@
-export * as aboutLocale from "./about.js";
-export * as addLocale from "./add.js";
 export * as animeLocale from "./anime.js";
 export * as avatarLocale from "./avatar.js";
 export * as azurLocale from "./azur.js";

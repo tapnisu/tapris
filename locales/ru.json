@@ -1,0 +1,11 @@
+{
+  "unknownError": "Произошла неизвестная ошибка!",
+  "about_description": "Бот созданный [tapnisu](https://tapni.su/). Вы можете изменить язык при помощи команды `/changelang lang`",
+  "invite": "Пригласить",
+  "about_amountOfGuilds": "Количество серверов",
+  "about_amountOfCommands": "Количество команд",
+  "music_invalidUrl": "Недействительная ссылка!",
+  "music_videoNotFound": "Видео не найдено!",
+  "music_playlistNotFound": "Плейлист не найдет!",
+  "music_success": "Добавлено в очередь!"
+}

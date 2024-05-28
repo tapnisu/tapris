@@ -1,5 +1,11 @@
 {
   "unknownError": "Unknown error happened!",
-  "guildCreate_description": "Multipurpose discord bot made by [tapnisu](https://tapni.su/). You can change language using `/changelang lang` command",
-  "invite": "Invite"
+  "about_description": "Multipurpose discord bot made by [tapnisu](https://tapni.su/). You can change language using `/changelang lang` command",
+  "invite": "Invite",
+  "about_amountOfGuilds": "Amount of guilds",
+  "about_amountOfCommands": "Amount of commands",
+  "music_invalidUrl": "Url is invalid!",
+  "music_videoNotFound": "Video not found!",
+  "music_playlistNotFound": "Playlist not found!",
+  "music_success": "Added to queue!"
 }

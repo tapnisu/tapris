@@ -59,7 +59,7 @@ export const event: Event = {
       .setColor(client.env.BOT_COLOR)
       .setTitle(client.user.username)
       .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-      .setDescription(client.i18n.__("guildCreate_description"));
+      .setDescription(client.i18n.__("about_description"));
 
     return guild.systemChannel.send({
       embeds: [embed],
