@@ -17,5 +17,11 @@
   "anime_unknown": "Unknown",
   "genshincodes_title": "Genshin Impact codes",
   "genshincodes_description": "You can activate them in game, and get rewards!",
-  "genshincodes_url": "https://genshin.mihoyo.com/en/gift"
+  "genshincodes_url": "https://genshin.mihoyo.com/en/gift",
+  "github_type": "Type",
+  "github_publicRepos": "Public repositories",
+  "github_gists": "Gists",
+  "github_location": "Location",
+  "github_blog": "Blog",
+  "github_twitter": "Twitter"
 }

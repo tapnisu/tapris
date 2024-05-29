@@ -17,5 +17,11 @@
   "anime_unknown": "Неизвестно",
   "genshincodes_title": "Промокоды для Genshin Impact",
   "genshincodes_description": "Вы можете активировать их в игре и получать награды!",
-  "genshincodes_url": "https://genshin.mihoyo.com/ru/gift"
+  "genshincodes_url": "https://genshin.mihoyo.com/ru/gift",
+  "github_type": "Тип",
+  "github_publicRepos": "Публичных репозиториев",
+  "github_gists": "Gists",
+  "github_location": "Местоположение",
+  "github_blog": "Блог",
+  "github_twitter": "Twitter"
 }
