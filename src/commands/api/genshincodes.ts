@@ -16,9 +16,9 @@ export const command: Command = {
 
     const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
-      .setTitle(i18n.__("genshincodes_title"))
-      .setDescription(i18n.__("genshincodes_description"))
-      .setURL(i18n.__("genshincodes_url"))
+      .setTitle(i18n.__("genshinCodes_title"))
+      .setDescription(i18n.__("genshinCodes_description"))
+      .setURL(i18n.__("genshinCodes_url"))
       .addFields(
         codes.map((code) => ({
           name: `\`${code.code}\` (${code.period})`,
