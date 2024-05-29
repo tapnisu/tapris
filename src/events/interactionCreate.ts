@@ -25,7 +25,7 @@ export const event: Event = {
             console.error(err);
 
             await interaction.followUp({
-              content: client.i18n.__("unknown-error"),
+              content: client.i18n.__("unknownError"),
               ephemeral: true
             });
           });
@@ -49,7 +49,7 @@ export const event: Event = {
             console.error(err);
 
             await interaction.followUp({
-              content: client.i18n.__("unknown-error"),
+              content: client.i18n.__("unknownError"),
               ephemeral: true
             });
           });
