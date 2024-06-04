@@ -30,7 +30,7 @@ You can invite the bot using
 
    ```sh
    corepack enable
-   pnpm install
+   corepack install
    ```
 
 4. Build dependencies:
