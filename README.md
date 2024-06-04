@@ -1,7 +1,7 @@
 <p align="center">
  <img width=400px src="assets/avatar.png" alt="Tapris from Gabriel DropOut episode 5">
  <h1 align="center">Tapris</h1>
- <h3 align="center">Mu discord bot</h3>
+ <h3 align="center">Multipurpose discord bot</h3>
 </p>
 
 <p align="center">
