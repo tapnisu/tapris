@@ -48,6 +48,7 @@
     "ffmpeg": "^0.0.4",
     "genshin-db": "^5.1.4",
     "html-to-text": "^9.0.5",
+    "i18n": "^0.15.1",
     "sodium-native": "^4.1.1",
     "typeface-jetbrains-mono": "^2.0.1",
     "waifu.js": "^1.0.0",
@@ -62,6 +63,7 @@
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
+    "@types/i18n": "^0.13.12",
     "@types/node": "^20.14.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",

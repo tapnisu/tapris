@@ -9,13 +9,13 @@ export const event: Event = {
       if (!(await getGuild(guild.id))) await createGuild(guild.id);
     });
 
-    client.user.setActivity("Type '/' to check bot commands!");
+    client.user.setActivity("Oh, hi!");
 
-    const commands = client.application?.commands;
-
-    client.commands.forEach((command) => {
-      commands?.create(command as ApplicationCommandDataResolvable);
-    });
+    client.commands.forEach((command) =>
+      client.application?.commands?.create(
+        command as ApplicationCommandDataResolvable
+      )
+    );
 
     console.log(`${client.user.tag} is up!`);
   }

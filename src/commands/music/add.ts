@@ -1,6 +1,5 @@
 import { getGuild, updateGuild } from "#db/index.js";
 import { Command } from "#interfaces/index.js";
-import getLocale from "#locales/index.js";
 import { YouTube } from "youtube-sr";
 import ytdl from "ytdl-core";
 
@@ -28,19 +27,18 @@ export const command: Command = {
     }
   ],
   guildsOnly: true,
-  run: async (client, interaction) => {
+  run: async (_client, interaction, i18n) => {
     await interaction.deferReply();
 
     const type = interaction.options.getString("type");
     const request = interaction.options.getString("request");
 
     const guild = await getGuild(interaction.guildId);
-    const { addLocale } = await getLocale(interaction.guildId);
 
     if (type == "video-url") {
       if (!ytdl.validateURL(request))
         return await interaction.followUp({
-          content: addLocale.invalidUrl
+          content: i18n.__("music_invalidUrl")
         });
 
       guild.queue = [...guild.queue, request];
@@ -55,7 +53,7 @@ export const command: Command = {
 
       if (result.length == 0)
         return await interaction.followUp({
-          content: addLocale.videoNotFound
+          content: i18n.__("music_videoNotFound")
         });
 
       guild.queue = [...guild.queue, result[0].id];
@@ -70,7 +68,7 @@ export const command: Command = {
 
       if (result.length == 0)
         return await interaction.followUp({
-          content: addLocale.playlistNotFound
+          content: i18n.__("music_playlistNotFound")
         });
 
       guild.queue = [
@@ -95,11 +93,11 @@ export const command: Command = {
         updateGuild(guild);
       } catch {
         return await interaction.followUp({
-          content: addLocale.playlistNotFound
+          content: i18n.__("music_playlistNotFound")
         });
       }
     }
 
-    return await interaction.followUp(addLocale.success);
+    return await interaction.followUp(i18n.__("music_success"));
   }
 };

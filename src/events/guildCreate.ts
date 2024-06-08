@@ -1,6 +1,5 @@
 import { createGuild, getGuild } from "#db/index.js";
 import { Event } from "#interfaces/index.js";
-import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,
   ButtonBuilder,
@@ -27,7 +26,7 @@ export const event: Event = {
     if (!(await getGuild(guild.id))) await createGuild(guild.id);
     if (!guild.systemChannel) return;
 
-    const link: string = client.generateInvite({
+    const link = client.generateInvite({
       scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
       permissions: [
         "KickMembers",
@@ -46,12 +45,13 @@ export const event: Event = {
       ]
     });
 
-    const { guildCreateLocale } = await getLocale(guild.id);
+    const guildEntry = await getGuild(guild.id);
+    client.i18n.setLocale(guildEntry.lang);
 
     const buttonsRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
       new ButtonBuilder()
         .setURL(link)
-        .setLabel(guildCreateLocale.invite)
+        .setLabel(client.i18n.__("invite"))
         .setStyle(ButtonStyle.Link)
     ]);
 
@@ -59,7 +59,7 @@ export const event: Event = {
       .setColor(client.env.BOT_COLOR)
       .setTitle(client.user.username)
       .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-      .setDescription(guildCreateLocale.description);
+      .setDescription(client.i18n.__("about_description"));
 
     return guild.systemChannel.send({
       embeds: [embed],

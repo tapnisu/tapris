@@ -1,6 +1,7 @@
 import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
 import { Command, Component, Env, Event } from "#interfaces/index.js";
+import { I18n } from "i18n";
 import env from "./env.js";
 
 class ExtendedClient extends Client {
@@ -8,6 +9,11 @@ class ExtendedClient extends Client {
   public commands: Collection<string, Command> = new Collection();
   public components: Collection<string, Component> = new Collection();
   public env: Env = env as unknown as Env;
+  public i18n = new I18n({
+    defaultLocale: "en",
+    locales: ["en", "ru"],
+    directory: "locales"
+  });
 
   constructor(
     options: ClientOptions = {
@@ -16,7 +22,6 @@ class ExtendedClient extends Client {
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildVoiceStates,
-        // IntentsBitField.Flags.MessageContent,
         IntentsBitField.Flags.GuildModeration,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildPresences
