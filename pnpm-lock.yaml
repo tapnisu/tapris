@@ -21,8 +21,8 @@ importers:
         specifier: ^0.1.53
         version: 0.1.53
       '@prisma/client':
-        specifier: ^5.14.0
-        version: 5.14.0(prisma@5.15.0)
+        specifier: ^5.15.0
+        version: 5.15.0(prisma@5.15.0)
       avconv:
         specifier: ^3.1.0
         version: 3.1.0
@@ -303,8 +303,8 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@prisma/client@5.14.0':
-    resolution: {integrity: sha512-akMSuyvLKeoU4LeyBAUdThP/uhVP3GuLygFE3MlYzaCb3/J8SfsYBE5PkaFuLuVpLyA6sFoW+16z/aPhNAESqg==}
+  '@prisma/client@5.15.0':
+    resolution: {integrity: sha512-wPTeTjbd2Q0abOeffN7zCDCbkp9C9cF+e9HPiI64lmpehyq2TepgXE+sY7FXr7Rhbb21prLMnhXX27/E11V09w==}
     engines: {node: '>=16.13'}
     peerDependencies:
       prisma: '*'
@@ -1860,7 +1860,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@prisma/client@5.14.0(prisma@5.15.0)':
+  '@prisma/client@5.15.0(prisma@5.15.0)':
     optionalDependencies:
       prisma: 5.15.0
 
