@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tapris-bot/tapris-node.git"
+    "url": "git+https://github.com/tapnisu/tapris.git"
   },
   "bugs": {
-    "url": "https://github.com/tapris-bot/tapris-node/issues"
+    "url": "https://github.com/tapnisu/tapris/issues"
   },
   "keywords": [
     "bot",

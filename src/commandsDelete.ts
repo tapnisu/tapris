@@ -1,7 +1,7 @@
 import { ApplicationCommand, Client, REST, Routes } from "discord.js";
 import config from "./core/env.js";
 
-console.warn("Use https://github.com/tapris-bot/dsc-commands-remover instead");
+console.warn("Use https://github.com/tapnisu/dsc-commands-remover instead");
 
 const rest = new REST({ version: "10" }).setToken(config.TAPRIS_TOKEN);
 const client = new Client({
