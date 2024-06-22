@@ -1,15 +1,20 @@
 FROM node:20-alpine3.20 as base
+LABEL authors="tapnisu"
+
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
 COPY . /app
 WORKDIR /app
-RUN corepack enable
-RUN corepack install
+
 RUN apk add --no-cache \
   alpine-sdk \
   ffmpeg \
   libsodium-dev \
   python3
+
+RUN corepack enable
+RUN corepack install
 
 FROM base AS prod-deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
