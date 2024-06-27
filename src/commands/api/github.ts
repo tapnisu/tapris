@@ -1,5 +1,5 @@
-import { GithubResponse } from "#interfaces/github.js";
-import { Command } from "#interfaces/index.js";
+import type { GithubResponse } from "#interfaces/github.js";
+import type { Command } from "#interfaces/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 

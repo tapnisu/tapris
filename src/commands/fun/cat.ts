@@ -1,4 +1,4 @@
-import { Command } from "#interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 

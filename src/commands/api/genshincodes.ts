@@ -1,5 +1,5 @@
-import { GIPNResponse } from "#interfaces/genshinCodes.js";
-import { Command } from "#interfaces/index.js";
+import type { GIPNResponse } from "#interfaces/genshinCodes.js";
+import type { Command } from "#interfaces/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 

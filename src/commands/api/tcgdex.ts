@@ -1,5 +1,5 @@
-import { Command } from "#interfaces/index.js";
-import { Datum, PokemontcgResponse } from "#interfaces/pokemonTcg.js";
+import type { Command } from "#interfaces/index.js";
+import type { Datum, PokemontcgResponse } from "#interfaces/pokemonTcg.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";

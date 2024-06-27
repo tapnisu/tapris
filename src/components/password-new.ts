@@ -1,4 +1,4 @@
-import { Component } from "#interfaces/index.js";
+import type { Component } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,

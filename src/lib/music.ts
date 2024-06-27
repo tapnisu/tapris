@@ -7,10 +7,10 @@ import {
   StreamType,
   VoiceConnection
 } from "@discordjs/voice";
-import { Guild } from "../../prisma/client/index.js";
-import { CommandInteraction, EmbedBuilder } from "discord.js";
+import type { Guild } from "../../prisma/client/index.js";
+import { type CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
-import Client from "#core/index.js";
+import type Client from "#core/index.js";
 
 export class Music {
   public queue: string[];

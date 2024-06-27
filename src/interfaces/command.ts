@@ -1,11 +1,11 @@
 import Client from "#core/index.js";
-import {
+import type {
   ApplicationCommandOption,
   ChatInputCommandInteraction,
   InteractionResponse,
   Message
 } from "discord.js";
-import { I18n } from "i18n";
+import type { I18n } from "i18n";
 
 interface Run {
   (

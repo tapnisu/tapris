@@ -1,4 +1,4 @@
-import { Command } from "#interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 import { EmbedBuilder } from "discord.js";
 
 export const command: Command = {

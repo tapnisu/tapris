@@ -1,11 +1,11 @@
 import { getGuild, updateGuild } from "#db/index.js";
-import { Command } from "#interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import {
-  DiscordGatewayAdapterCreator,
+  type DiscordGatewayAdapterCreator,
   joinVoiceChannel
 } from "@discordjs/voice";
-import { GuildMember } from "discord.js";
+import type { GuildMember } from "discord.js";
 
 export const command: Command = {
   name: "leave",

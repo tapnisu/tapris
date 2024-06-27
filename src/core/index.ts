@@ -1,6 +1,6 @@
-import { Client, ClientOptions, Collection, IntentsBitField } from "discord.js";
+import { Client, type ClientOptions, Collection, IntentsBitField } from "discord.js";
 import { readdirSync } from "fs";
-import { Command, Component, Env, Event } from "#interfaces/index.js";
+import type { Command, Component, Env, Event } from "#interfaces/index.js";
 import { I18n } from "i18n";
 import env from "./env.js";
 

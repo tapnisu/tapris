@@ -1,5 +1,5 @@
-import { Command } from "#interfaces/index.js";
-import { KitsuResponse } from "#interfaces/kitsu.js";
+import type { Command } from "#interfaces/index.js";
+import type { KitsuResponse } from "#interfaces/kitsu.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 

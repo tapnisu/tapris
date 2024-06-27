@@ -1,4 +1,4 @@
-import { Command } from "#interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 import { choices, flipCoin } from "#lib/coin.js";
 import getLocale from "#locales/index.js";
 import {

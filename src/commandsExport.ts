@@ -1,6 +1,6 @@
 import { readdir } from "fs/promises";
 import prettier from "prettier";
-import { Command } from "./interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 
 const commandsDirs = await readdir("dist/commands");
 

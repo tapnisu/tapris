@@ -3,7 +3,7 @@ import { Command } from "#interfaces/index.js";
 import { play } from "#lib/music.js";
 import getLocale from "#locales/index.js";
 import {
-  DiscordGatewayAdapterCreator,
+  type DiscordGatewayAdapterCreator,
   joinVoiceChannel
 } from "@discordjs/voice";
 import { GuildMember } from "discord.js";

@@ -1,5 +1,5 @@
-import { AzurResponse } from "#interfaces/azurLane.js";
-import { Command } from "#interfaces/index.js";
+import type { AzurResponse } from "#interfaces/azurLane.js";
+import type { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";

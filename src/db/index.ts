@@ -1,4 +1,4 @@
-import { Guild, PrismaClient } from "../../prisma/client/index.js";
+import { type Guild, PrismaClient } from "../../prisma/client/index.js";
 
 const prisma = new PrismaClient();
 

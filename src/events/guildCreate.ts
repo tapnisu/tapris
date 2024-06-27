@@ -1,11 +1,11 @@
 import { createGuild, getGuild } from "#db/index.js";
-import { Event } from "#interfaces/index.js";
+import type { Event } from "#interfaces/index.js";
 import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder,
-  Guild,
+  type Guild,
   OAuth2Scopes
 } from "discord.js";
 

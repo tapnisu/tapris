@@ -1,5 +1,5 @@
 import { getGuild, updateGuild } from "#db/index.js";
-import { Component } from "#interfaces/index.js";
+import type { Component } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import {
   ActionRowBuilder,

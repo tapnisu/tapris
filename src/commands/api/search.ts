@@ -1,5 +1,5 @@
-import { DuckduckgoResponse } from "#interfaces/duckDuckGo.js";
-import { Command } from "#interfaces/index.js";
+import type { DuckduckgoResponse } from "#interfaces/duckDuckGo.js";
+import type { Command } from "#interfaces/index.js";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 

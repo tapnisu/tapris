@@ -1,5 +1,5 @@
 // TODO: Update everything to genshin-db v5
-import { Command } from "#interfaces/index.js";
+import type { Command } from "#interfaces/index.js";
 import getLocale from "#locales/index.js";
 import { EmbedBuilder } from "discord.js";
 import genshindb from "genshin-db";

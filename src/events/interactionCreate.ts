@@ -1,6 +1,6 @@
 import { getGuild } from "#db/index.js";
-import { Command, Component, Event } from "#interfaces/index.js";
-import { Interaction, InteractionType } from "discord.js";
+import type { Command, Component, Event } from "#interfaces/index.js";
+import { type Interaction, InteractionType } from "discord.js";
 
 export const event: Event = {
   name: "interactionCreate",
