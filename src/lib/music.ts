@@ -50,7 +50,7 @@ export const play = async (
   date.setSeconds(Number(info.videoDetails.lengthSeconds));
   const timeString = date.toISOString().substr(11, 8);
 
-  const Embed = new EmbedBuilder()
+  const embed = new EmbedBuilder()
     .setColor(client.env.BOT_COLOR)
     .setTitle(info.videoDetails.title)
     .setURL(info.videoDetails.video_url)
@@ -70,7 +70,7 @@ export const play = async (
     .setImage(info.videoDetails.thumbnails.at(-1).url)
     .setTimestamp(new Date(info.videoDetails.publishDate));
 
-  await interaction.followUp({ embeds: [Embed] });
+  await interaction.followUp({ embeds: [embed] });
 
   const player = new AudioPlayer();
 

@@ -29,11 +29,11 @@ export const command: Command = {
       )
     ).data;
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(nekosResponse.cat)
       .setImage(catApiResponse[0].url);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

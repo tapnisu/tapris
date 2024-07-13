@@ -43,10 +43,10 @@ export const command: Command = {
         .setStyle(ButtonStyle.Link)
     ]);
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(inviteLocale.clickToInvite);
 
-    return await interaction.followUp({ embeds: [Embed], components: [row] });
+    return await interaction.followUp({ embeds: [embed], components: [row] });
   }
 };

@@ -17,11 +17,11 @@ export const command: Command = {
 
     const text = interaction.options.getString("text");
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(encodeURI(text))
       .setDescription(text);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

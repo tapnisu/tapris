@@ -11,10 +11,10 @@ export const command: Command = {
   run: async (client, interaction) => {
     await interaction.deferReply();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setImage(await waifuClient.sfw.waifu());
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

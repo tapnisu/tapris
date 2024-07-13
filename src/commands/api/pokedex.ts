@@ -223,7 +223,7 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(
           pokedexLocale.move.embedTitle(
@@ -264,7 +264,7 @@ export const command: Command = {
             inline: true
           }
         );
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
 
     if (requestType == "ability") {
@@ -279,12 +279,12 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(pokedexLocale.ability.embedTitle(response.name, response.num))
         .setDescription(response.shortDesc);
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
 
     if (requestType == "item") {
@@ -299,12 +299,12 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(pokedexLocale.item.embedTitle(response.name, response.num))
         .setDescription(response.desc);
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
   }
 };

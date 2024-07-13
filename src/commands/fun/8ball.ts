@@ -17,11 +17,11 @@ export const command: Command = {
       await axios.get<Response8ball>("https://nekos.life/api/v2/8ball")
     ).data;
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(response.response)
       .setImage(response.url);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

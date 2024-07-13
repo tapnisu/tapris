@@ -35,13 +35,13 @@ export const command: Command = {
         .setStyle(ButtonStyle.Link)
     ]);
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(link)
       .setURL(link);
 
     return await interaction.followUp({
-      embeds: [Embed],
+      embeds: [embed],
       components: [buttonsRow]
     });
   }

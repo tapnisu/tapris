@@ -32,11 +32,11 @@ export const command: Command = {
 
     await interaction.deferReply();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(response.Results[0].FirstURL)
       .setURL(response.Results[0].FirstURL);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

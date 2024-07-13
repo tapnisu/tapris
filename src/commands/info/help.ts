@@ -19,22 +19,19 @@ export const command: Command = {
     const command = client.commands.get(request);
 
     if (command) {
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(command.name)
-        .setDescription(command.description);
-
-      command.options.forEach((option) => {
-        Embed.addFields([
-          {
+        .setDescription(command.description)
+        .addFields(
+          command.options.map((option) => ({
             name: `${option.name}`,
             value: option.description ?? "-",
             inline: true
-          }
-        ]);
-      });
+          }))
+        );
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
 
     const embed = new EmbedBuilder()

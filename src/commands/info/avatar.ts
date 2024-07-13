@@ -26,7 +26,7 @@ export const command: Command = {
     const user = interaction.options.getUser("user");
     const avatarUrl = user.displayAvatarURL();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setAuthor({
         iconURL: avatarUrl,
@@ -41,6 +41,6 @@ export const command: Command = {
         .setStyle(ButtonStyle.Link)
     ]);
 
-    return await interaction.followUp({ embeds: [Embed], components: [row] });
+    return await interaction.followUp({ embeds: [embed], components: [row] });
   }
 };

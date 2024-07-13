@@ -10,7 +10,7 @@ export const command: Command = {
     await interaction.deferReply();
     const { guildLocale } = await getLocale(interaction.guildId);
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(interaction.guild.name)
       .setThumbnail(
@@ -48,6 +48,6 @@ export const command: Command = {
         { name: guildLocale.id, value: interaction.guild.id, inline: true }
       ]);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

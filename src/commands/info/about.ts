@@ -7,7 +7,7 @@ export const command: Command = {
   run: async (client, interaction, i18n) => {
     await interaction.deferReply();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(interaction.guild.name)
       .setThumbnail(client.user.displayAvatarURL())
@@ -27,6 +27,6 @@ export const command: Command = {
         }
       ]);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

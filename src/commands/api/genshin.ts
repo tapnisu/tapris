@@ -54,7 +54,7 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(character.name)
         .setDescription(character.description)
@@ -113,7 +113,7 @@ export const command: Command = {
           `https://api.genshin.dev/characters/${request}/gacha-splash.png`
         );
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
 
     if (requestType == "weapon") {
@@ -127,7 +127,7 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(weapon.name)
         // @ts-expect-error: v4 types are not in genshin-db v5
@@ -177,7 +177,7 @@ export const command: Command = {
           `https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.filename_gacha}.png`
         );
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
 
     if (requestType == "artifact") {
@@ -191,7 +191,7 @@ export const command: Command = {
 
       await interaction.deferReply();
 
-      const Embed = new EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setColor(client.env.BOT_COLOR)
         .setTitle(artifact.name)
         .setDescription(
@@ -220,7 +220,7 @@ export const command: Command = {
           }
         ]);
 
-      return await interaction.followUp({ embeds: [Embed] });
+      return await interaction.followUp({ embeds: [embed] });
     }
   }
 };

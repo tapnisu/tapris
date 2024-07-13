@@ -41,7 +41,7 @@ export const command: Command = {
 
     await interaction.deferReply();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(`${data.supertype}: ${data.name}`)
       .setDescription(`${data.set.series}: ${data.set.name}`)
@@ -54,6 +54,6 @@ export const command: Command = {
       .setImage(data.images.large)
       .setTimestamp(new Date(data.set.releaseDate));
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

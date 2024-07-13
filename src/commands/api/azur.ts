@@ -43,7 +43,7 @@ export const command: Command = {
 
     await interaction.deferReply();
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(client.env.BOT_COLOR)
       .setTitle(response.name)
       .setURL(`https://azurlane.koumakan.jp/wiki/${request}`)
@@ -60,6 +60,6 @@ export const command: Command = {
         }
       ]);
 
-    return await interaction.followUp({ embeds: [Embed] });
+    return await interaction.followUp({ embeds: [embed] });
   }
 };
