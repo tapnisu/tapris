@@ -13,8 +13,8 @@
     "test": "node --test",
     "commands:export": "node ./dist/commandsExport.js",
     "commands:delete": "node ./dist/commandsDelete.js",
-    "format": "npx prettier . --check",
-    "format:fix": "npx prettier . --write",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix"
   },
