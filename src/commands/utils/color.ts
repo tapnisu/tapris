@@ -46,16 +46,16 @@ export const command: Command = {
       name: "ColorHexSend.png"
     });
 
-    const Embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setTitle(colorString)
       .setImage("attachment://ColorHexSend.png");
 
     try {
-      Embed.setColor(colorString as ColorResolvable);
+      embed.setColor(colorString as ColorResolvable);
     } catch {
-      Embed.setColor(client.env.BOT_COLOR);
+      embed.setColor(client.env.BOT_COLOR);
     }
 
-    return await interaction.followUp({ embeds: [Embed], files: [attachment] });
+    return await interaction.followUp({ embeds: [embed], files: [attachment] });
   }
 };

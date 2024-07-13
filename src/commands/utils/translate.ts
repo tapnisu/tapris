@@ -26,35 +26,40 @@ export const command: Command = {
 
     const { translateLocale } = await getLocale(interaction.guildId);
 
-    try {
-      const response = await translate(text, { to: language });
+    const response = await (async () => {
+      try {
+        await translate(text, { to: language });
+      } catch {
+        return null;
+      }
+    })();
 
-      await interaction.deferReply();
-
-      const Embed = new EmbedBuilder()
-        .setColor(client.env.BOT_COLOR)
-        .setTitle(translateLocale.textIn(language))
-        .setDescription(response.text)
-        .addFields([
-          {
-            name: translateLocale.origLang,
-            value: response.from.language.iso,
-            inline: true
-          },
-          {
-            name: translateLocale.origMessage,
-            value: text,
-            inline: true
-          }
-        ])
-        .setTimestamp();
-
-      return await interaction.followUp({ embeds: [Embed] });
-    } catch {
+    if (!response)
       return await interaction.reply({
         content: translateLocale.invalidLanguage,
         ephemeral: true
       });
-    }
+
+    await interaction.deferReply();
+
+    const embed = new EmbedBuilder()
+      .setColor(client.env.BOT_COLOR)
+      .setTitle(translateLocale.textIn(language))
+      .setDescription(response.text)
+      .addFields([
+        {
+          name: translateLocale.origLang,
+          value: response.from.language.iso,
+          inline: true
+        },
+        {
+          name: translateLocale.origMessage,
+          value: text,
+          inline: true
+        }
+      ])
+      .setTimestamp();
+
+    return await interaction.followUp({ embeds: [embed] });
   }
 };

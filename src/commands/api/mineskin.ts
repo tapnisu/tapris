@@ -54,8 +54,6 @@ export const command: Command = {
     const nickname = interaction.options.getString("user");
     const { mineskinLocale } = await getLocale(interaction.guildId);
 
-    await interaction.deferReply();
-
     const response = await (async () => {
       try {
         return (
@@ -70,8 +68,11 @@ export const command: Command = {
 
     if (!response)
       return await interaction.followUp({
-        content: mineskinLocale.notFound
+        content: mineskinLocale.notFound,
+        ephemeral: true
       });
+
+    await interaction.deferReply();
 
     const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
       new ButtonBuilder()
