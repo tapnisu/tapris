@@ -19,20 +19,24 @@ export const command: Command = {
     const name = interaction.options.getString("name");
     const { tcgdexLocale } = await getLocale(interaction.guildId);
 
-    let response: PokemontcgResponse;
+    const response = await (async () => {
+      try {
+        return (
+          await axios.get<PokemontcgResponse>(
+            `https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
+          )
+        ).data;
+      } catch {
+        return null;
+      }
+    })();
 
-    try {
-      response = (
-        await axios.get(
-          `https://api.pokemontcg.io/v2/cards?q=name:${encodeURI(name)}`
-        )
-      ).data;
-    } catch {
+    if (!response)
       return await interaction.reply({
         content: tcgdexLocale.notFound,
         ephemeral: true
       });
-    }
+
     const data: Datum = response.data[0];
 
     await interaction.deferReply();

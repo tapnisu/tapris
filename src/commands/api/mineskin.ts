@@ -54,21 +54,24 @@ export const command: Command = {
     const nickname = interaction.options.getString("user");
     const { mineskinLocale } = await getLocale(interaction.guildId);
 
-    let response: AshconResponse;
-
     await interaction.deferReply();
 
-    try {
-      response = (
-        await axios.get(
-          `https://api.ashcon.app/mojang/v2/user/${encodeURI(nickname)}`
-        )
-      ).data;
-    } catch {
+    const response = await (async () => {
+      try {
+        return (
+          await axios.get<AshconResponse>(
+            `https://api.ashcon.app/mojang/v2/user/${encodeURI(nickname)}`
+          )
+        ).data;
+      } catch {
+        return null;
+      }
+    })();
+
+    if (!response)
       return await interaction.followUp({
         content: mineskinLocale.notFound
       });
-    }
 
     const row = new ActionRowBuilder<ButtonBuilder>().addComponents([
       new ButtonBuilder()
