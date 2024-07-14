@@ -22,8 +22,10 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 FROM os-build-deps AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-COPY . /app
+COPY ./prisma /app/prisma
 RUN pnpm prisma generate
+
+COPY . /app
 RUN pnpm run build
 
 FROM base
