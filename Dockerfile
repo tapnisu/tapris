@@ -4,23 +4,25 @@ LABEL authors="tapnisu"
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-COPY . /app
 WORKDIR /app
 
+RUN apk add --no-cache ffmpeg
+COPY package.json pnpm-lock.yaml /app/
+RUN corepack enable && corepack install
+
+FROM base as os-build-deps
 RUN apk add --no-cache \
   alpine-sdk \
-  ffmpeg \
   libsodium-dev \
   python3
 
-RUN corepack enable
-RUN corepack install
-
-FROM base AS prod-deps
+FROM os-build-deps AS prod-deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-FROM base AS build
+FROM os-build-deps AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+COPY . /app
 RUN pnpm prisma generate
 RUN pnpm run build
 

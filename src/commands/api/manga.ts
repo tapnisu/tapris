@@ -24,8 +24,10 @@ export const command: Command = {
     const query = interaction.options.getString("query");
     const { mangaLocale } = await getLocale(interaction.guildId);
 
-    const response: SearchResult[] = (
-      await axios.get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
+    const response = (
+      await axios.get<SearchResult[]>(
+        `https://manga.deno.dev/api/search?q=${encodeURI(query)}`
+      )
     ).data;
 
     if (response.length == 0)

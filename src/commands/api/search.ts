@@ -18,8 +18,8 @@ export const command: Command = {
   run: async (client, interaction) => {
     const text = interaction.options.getString("text");
 
-    const response: DuckduckgoResponse = (
-      await axios.get(
+    const response = (
+      await axios.get<DuckduckgoResponse>(
         `https://api.duckduckgo.com/?q=${encodeURI(text)}&format=json`
       )
     ).data;

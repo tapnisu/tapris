@@ -12,11 +12,9 @@ interface Exports {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   BattleItems: any;
-  _: boolean;
 }
 
 const exports = {} as Exports;
-exports._ = true;
 
 eval(
   (await axios.get("https://play.pokemonshowdown.com/data/pokedex.js")).data
@@ -27,4 +25,7 @@ eval(
 );
 eval((await axios.get("https://play.pokemonshowdown.com/data/items.js")).data);
 
-export { exports };
+export const BattlePokedex = exports.BattlePokedex;
+export const BattleMovedex = exports.BattleMovedex;
+export const BattleAbilities = exports.BattleAbilities;
+export const BattleItems = exports.BattleItems;

@@ -1,5 +1,10 @@
 import type { Command } from "#interfaces/index.js";
-import { exports } from "#lib/pokedex.js";
+import {
+  BattleAbilities,
+  BattleItems,
+  BattleMovedex,
+  BattlePokedex
+} from "#lib/pokedex.js";
 import { calcWeaknesses } from "#lib/pokemonTypeChart.js";
 import getLocale from "#locales/index.js";
 import { EmbedBuilder } from "discord.js";
@@ -34,8 +39,7 @@ export const command: Command = {
     const { pokedexLocale } = await getLocale(interaction.guildId);
 
     if (requestType == "pokemon") {
-      const response =
-        exports.BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
+      const response = BattlePokedex[request.replace(/ |-/g, "").toLowerCase()];
 
       if (!response)
         return await interaction.reply({
@@ -212,8 +216,7 @@ export const command: Command = {
       return await interaction.followUp({ embeds: [embed] });
     }
     if (requestType == "move") {
-      const response =
-        exports.BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
+      const response = BattleMovedex[request.replace(/ |-/g, "").toLowerCase()];
 
       if (!response)
         return await interaction.reply({
@@ -269,7 +272,7 @@ export const command: Command = {
 
     if (requestType == "ability") {
       const response =
-        exports.BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
+        BattleAbilities[request.replace(/ |-/g, "").toLowerCase()];
 
       if (!response)
         return await interaction.reply({
@@ -288,8 +291,7 @@ export const command: Command = {
     }
 
     if (requestType == "item") {
-      const response =
-        exports.BattleItems[request.replace(/ |-/g, "").toLowerCase()];
+      const response = BattleItems[request.replace(/ |-/g, "").toLowerCase()];
 
       if (!response)
         return await interaction.reply({
