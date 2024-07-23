@@ -1,4 +1,4 @@
-FROM node:20-alpine3.20 as base
+FROM node:20-alpine3.20 AS base
 LABEL authors="tapnisu"
 
 ENV PNPM_HOME="/pnpm"
@@ -10,7 +10,7 @@ RUN apk add --no-cache ffmpeg
 COPY package.json pnpm-lock.yaml /app/
 RUN corepack enable && corepack install
 
-FROM base as os-build-deps
+FROM base AS os-build-deps
 RUN apk add --no-cache \
   alpine-sdk \
   libsodium-dev \
