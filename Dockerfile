@@ -17,7 +17,7 @@ RUN apk add --no-cache \
   python3
 
 FROM os-build-deps AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install prisma --save-prod --prod
 
 FROM os-build-deps AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
@@ -34,4 +34,4 @@ COPY --from=build /app/locales /app/locales
 COPY --from=build /app/prisma /app/prisma
 COPY --from=prod-deps /app/node_modules /app/node_modules
 
-CMD [ "pnpm", "run", "start" ]
+CMD [ "pnpm", "run", "start:migrate:prod" ]

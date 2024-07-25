@@ -9,17 +9,7 @@ services:
       TAPRIS_DATABASE_URL: postgres://tapris:chisaki@db:5432/tapris?schema=public
     depends_on:
       - db
-      - prisma
     restart: unless-stopped
-
-  prisma:
-    image: tapnisu/tapris-prisma
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
-    environment:
-      TAPRIS_DATABASE_URL: postgres://tapris:chisaki@db:5432/tapris?schema=public
-    depends_on:
-      - db
 
   db:
     image: postgres:16-alpine
