@@ -7,7 +7,7 @@ import {
   StreamType,
   VoiceConnection
 } from "@discordjs/voice";
-import type { Guild } from "../../prisma/client/index.js";
+import type { Guild } from "@prisma/client";
 import { type CommandInteraction, EmbedBuilder } from "discord.js";
 import ytdl from "ytdl-core";
 import type Client from "#core/index.js";

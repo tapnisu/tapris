@@ -1,30 +1,34 @@
-import { type Guild, PrismaClient } from "../../prisma/client/index.js";
+import { type Guild, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const createGuild = async (id: string) =>
-  await prisma.guild.create({
+export async function createGuild(id: string) {
+  return await prisma.guild.create({
     data: { id: id, lang: "en", queue: [] }
   });
+}
 
-export const updateGuild = async (guild: Guild) =>
-  await prisma.guild.update({
+export async function updateGuild(guild: Guild) {
+  return await prisma.guild.update({
     where: {
       id: guild.id
     },
     data: guild
   });
+}
 
-export const getGuild = async (id: string) =>
-  await prisma.guild.findUnique({
+export async function getGuild(id: string) {
+  return await prisma.guild.findUnique({
     where: {
       id: id
     }
   });
+}
 
-export const deleteGuild = async (id: string) =>
-  await prisma.guild.delete({
+export async function deleteGuild(id: string) {
+  return await prisma.guild.delete({
     where: {
       id: id
     }
   });
+}

@@ -19,6 +19,9 @@ RUN apk add --no-cache \
 FROM os-build-deps AS prod-deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install prisma --save-prod --prod
 
+COPY ./prisma /app/prisma
+RUN pnpm prisma generate
+
 FROM os-build-deps AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
