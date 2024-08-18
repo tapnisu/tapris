@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN apk add --no-cache ffmpeg
 COPY package.json pnpm-lock.yaml /app/
-RUN corepack enable && corepack install
+RUN corepack enable && corepack prepare
 
 FROM base AS os-build-deps
 RUN apk add --no-cache \
