@@ -39,14 +39,14 @@
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.17.0",
     "@iamtraction/google-translate": "^2.0.1",
-    "@napi-rs/canvas": "^0.1.53",
-    "@prisma/client": "^5.17.0",
+    "@napi-rs/canvas": "^0.1.54",
+    "@prisma/client": "^5.19.0",
     "avconv": "^3.1.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.5",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "ffmpeg": "^0.0.4",
-    "genshin-db": "^5.1.7",
+    "genshin-db": "^5.1.8",
     "html-to-text": "^9.0.5",
     "i18n": "^0.15.1",
     "sodium-native": "^4.1.1",
@@ -62,18 +62,18 @@
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
-    "@eslint/js": "^9.7.0",
+    "@eslint/js": "^9.9.1",
     "@types/i18n": "^0.13.12",
-    "@types/node": "^20.14.11",
-    "eslint": "^9.7.0",
+    "@types/node": "^20.16.2",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.8.0",
+    "globals": "^15.9.0",
     "node-gyp": "^10.2.0",
     "prettier": "^3.3.3",
-    "prisma": "^5.17.0",
+    "prisma": "^5.19.0",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.17.0"
+    "typescript-eslint": "^8.3.0"
   },
   "engines": {
     "node": ">=18"
@@ -89,5 +89,5 @@
     "#db/*": "./dist/db/*"
   },
   "type": "module",
-  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
+  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
 }
