@@ -13,10 +13,10 @@
     "test": "node --test",
     "commands:export": "node ./dist/commandsExport.js",
     "commands:delete": "node ./dist/commandsDelete.js",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "format": "prettier . --check --ignore-path .gitignore",
+    "format:fix": "prettier . --write --ignore-path .gitignore",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": {
     "email": "0xalekseirybin@gmail.com",
@@ -62,6 +62,7 @@
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.0",
     "@eslint/js": "^9.9.1",
     "@types/i18n": "^0.13.12",
     "@types/node": "^20.16.2",
