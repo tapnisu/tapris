@@ -2,8 +2,6 @@ name: Release
 
 on:
   push:
-    tags:
-      - v[0-9]+.*
 
 jobs:
   docker:
@@ -22,9 +20,6 @@ jobs:
             type=schedule
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
             type=sha
 
       - name: Set up QEMU
