@@ -39,8 +39,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4
       genshin-db:
-        specifier: ^5.1.9
-        version: 5.1.9
+        specifier: ^5.1.10
+        version: 5.1.10
       html-to-text:
         specifier: ^9.0.5
         version: 9.0.5
@@ -157,6 +157,7 @@ packages:
   '@discordjs/voice@0.17.0':
     resolution: {integrity: sha512-hArn9FF5ZYi1IkxdJEVnJi+OxlwLV0NJYWpKXsmNOojtGtAZHxmsELA+MZlu2KW1F/K1/nt7lFOfcMXNYweq9w==}
     engines: {node: '>=16.11.0'}
+    deprecated: This version uses deprecated encryption modes. Please use a newer version.
 
   '@discordjs/ws@1.1.1':
     resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
@@ -527,6 +528,7 @@ packages:
 
   boolean@3.2.0:
     resolution: {integrity: sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -858,8 +860,8 @@ packages:
     engines: {node: '>=10'}
     deprecated: This package is no longer supported.
 
-  genshin-db@5.1.9:
-    resolution: {integrity: sha512-tg4jXyJvYamCv5SHaVU2UEP1/3jj9OLzlbSCEwMFwcNAKMcSx6FnsU6+7O92IyQ9V1pED0Z6kL+uCkS7I+eoHw==}
+  genshin-db@5.1.10:
+    resolution: {integrity: sha512-a0Q+htj5rN52s644jufaKmS3UKIzlQYC1ifZLwwHOVwRQnkq60bKgY89OqA2ErxJfM/DrxMdgPgw1C2rLWF0VA==}
 
   get-stream@5.2.0:
     resolution: {integrity: sha512-nBF+F1rAZVCu/p7rjzgA+Yb4lfYXrpl7a6VmJrU8wF9I1CKvP/QwPNZHnOlwbTkY6dvtFIzFMSyQXbLoTQPRpA==}
@@ -2453,7 +2455,7 @@ snapshots:
       strip-ansi: 6.0.1
       wide-align: 1.1.5
 
-  genshin-db@5.1.9:
+  genshin-db@5.1.10:
     dependencies:
       fuzzysort: 1.9.0
       pako: 2.1.0
