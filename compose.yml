@@ -1,7 +1,7 @@
 name: tapris
 services:
   bot:
-    image: tapnisu/tapris:main
+    image: tapnisu/tapris
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     environment:
