@@ -23,15 +23,5 @@ services:
       - db_data:/var/lib/postgresql/data
     restart: unless-stopped
 
-  watchtower:
-    image: containrrr/watchtower
-    command:
-      - "--label-enable"
-      - "--interval"
-      - "30"
-      - "--cleanup"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
 volumes:
   db_data:
