@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --fix"
   },
   "author": {
-    "email": "0xalekseirybin@gmail.com",
+    "email": "aleksei@tapni.su",
     "name": "Aleksei Rybin",
     "url": "https://tapni.su/"
   },
