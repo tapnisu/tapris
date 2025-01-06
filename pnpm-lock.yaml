@@ -39,8 +39,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4
       genshin-db:
-        specifier: ^5.1.10
-        version: 5.1.10
+        specifier: ^5.1.11
+        version: 5.1.11
       html-to-text:
         specifier: ^9.0.5
         version: 9.0.5
@@ -905,8 +905,8 @@ packages:
     engines: {node: '>=10'}
     deprecated: This package is no longer supported.
 
-  genshin-db@5.1.10:
-    resolution: {integrity: sha512-a0Q+htj5rN52s644jufaKmS3UKIzlQYC1ifZLwwHOVwRQnkq60bKgY89OqA2ErxJfM/DrxMdgPgw1C2rLWF0VA==}
+  genshin-db@5.1.11:
+    resolution: {integrity: sha512-p0zKAd36G3leTeibq16QsfPScxnIfKazrb2s115ux257Kn73UdUoDpfhv0Lu+gqlxNeFjNNolOqfgaPbn0htrQ==}
 
   get-stream@5.2.0:
     resolution: {integrity: sha512-nBF+F1rAZVCu/p7rjzgA+Yb4lfYXrpl7a6VmJrU8wF9I1CKvP/QwPNZHnOlwbTkY6dvtFIzFMSyQXbLoTQPRpA==}
@@ -2521,7 +2521,7 @@ snapshots:
       strip-ansi: 6.0.1
       wide-align: 1.1.5
 
-  genshin-db@5.1.10:
+  genshin-db@5.1.11:
     dependencies:
       fuzzysort: 1.9.0
       pako: 2.1.0
