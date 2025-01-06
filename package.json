@@ -46,7 +46,7 @@
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
     "ffmpeg": "^0.0.4",
-    "genshin-db": "^5.1.10",
+    "genshin-db": "^5.1.11",
     "html-to-text": "^9.0.5",
     "i18n": "^0.15.1",
     "sodium-native": "^4.3.1",
