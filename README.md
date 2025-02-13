@@ -29,6 +29,7 @@ You can invite the bot using
 3. Install [pnpm](https://pnpm.io/) using [Corepack](https://nodejs.org/api/corepack.html):
 
    ```sh
+   npm install --global corepack
    corepack enable
    corepack install
    ```
