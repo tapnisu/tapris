@@ -49,7 +49,6 @@ export const command: Command = {
       required: true
     }
   ],
-  disabled: true,
   run: async (client, interaction) => {
     const nickname = interaction.options.getString("user");
     const { mineskinLocale } = await getLocale(interaction.guildId);
