@@ -15,7 +15,7 @@ export const command: Command = {
   run: async (client, interaction) => {
     await interaction.deferReply();
 
-    const link: string = await client.generateInvite({
+    const link: string = client.generateInvite({
       scopes: [OAuth2Scopes.Bot, OAuth2Scopes.ApplicationsCommands],
       permissions: [
         "KickMembers",
