@@ -26,7 +26,7 @@ export const command: Command = {
 
     const response = (
       await axios.get<SearchResult[]>(
-        `https://manga.deno.dev/api/search?q=${encodeURI(query)}`
+        `https://www.nelomanga.com/home/search/json?searchword=${encodeURIComponent(query.replaceAll(" ", "_"))}`
       )
     ).data;
 
@@ -43,10 +43,10 @@ export const command: Command = {
       .setTitle(response[0].name)
       .addFields({
         name: mangaLocale.lastChapter,
-        value: response[0].lastChapter,
+        value: response[0].chapterLatest,
         inline: true
       })
-      .setImage(response[0].thumbnail)
+      .setImage(response[0].thumb)
       .setURL(response[0].url)
       .setAuthor({ name: response[0].author });
 
