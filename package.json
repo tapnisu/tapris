@@ -36,8 +36,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.10.0",
-    "@discordjs/voice": "^0.18.0",
     "@iamtraction/google-translate": "^2.0.1",
     "@napi-rs/canvas": "^0.1.67",
     "@prisma/client": "^6.3.1",
@@ -45,15 +43,10 @@
     "axios": "^1.7.9",
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
-    "ffmpeg": "^0.0.4",
     "genshin-db": "^5.1.12",
     "html-to-text": "^9.0.5",
     "i18n": "^0.15.1",
-    "sodium-native": "^4.3.1",
-    "typeface-jetbrains-mono": "^2.0.1",
-    "waifu.js": "^1.0.0",
-    "youtube-sr": "^4.3.11",
-    "ytdl-core": "^4.11.5"
+    "typeface-jetbrains-mono": "^2.0.1"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.9",
@@ -92,12 +85,10 @@
   "type": "module",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@discordjs/opus",
       "@prisma/client",
       "@prisma/engines",
       "bufferutil",
       "erlpack",
-      "ffmpeg-static",
       "prisma",
       "utf-8-validate",
       "zlib-sync"
