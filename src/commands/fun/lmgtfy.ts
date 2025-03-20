@@ -18,13 +18,12 @@ export const command: Command = {
       required: true
     }
   ],
-  disabled: true,
   run: async (client, interaction) => {
     await interaction.deferReply();
     const { lmgtfyLocale } = await getLocale(interaction.guildId);
 
     const question = interaction.options.getString("question");
-    const link = `https://lmgtfy.app/?q=${encodeURI(
+    const link = `https://letmegooglethat.com/?q=${encodeURIComponent(
       question.replace(/ /g, "+")
     )}`;
 
