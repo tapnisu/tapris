@@ -6,7 +6,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /app
 
-RUN apk add --no-cache ffmpeg openssl
+RUN apk add --no-cache openssl
 COPY package.json pnpm-lock.yaml /app/
 RUN npm install --global corepack@latest && corepack enable && corepack prepare --activate
 
@@ -19,7 +19,6 @@ RUN pnpm prisma generate
 FROM prod-deps AS build
 RUN apk add --no-cache \
   alpine-sdk \
-  libsodium-dev \
   python3
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
