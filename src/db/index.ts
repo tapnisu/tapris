@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export async function createGuild(id: string) {
   return await prisma.guild.create({
-    data: { id: id, lang: "en", queue: [] }
+    data: { id: id, lang: "en" }
   });
 }
 
