@@ -10,6 +10,5 @@ datasource db {
 model Guild {
   id    String    @id
   lang  String
-  queue String[]
   gun   Boolean[]
 }

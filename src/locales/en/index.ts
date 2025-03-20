@@ -1,5 +1,4 @@
 export * as avatarLocale from "./avatar.js";
-export * as azurLocale from "./azur.js";
 export * as banLocale from "./ban.js";
 export * as changelangLocale from "./changelang.js";
 export * as clearLocale from "./clear.js";
@@ -14,7 +13,6 @@ export * as leaveLocale from "./leave.js";
 export * as lmgtfyLocale from "./lmgtfy.js";
 export * as mangaLocale from "./manga.js";
 export * as mineskinLocale from "./mineskin.js";
-export * as musicLocale from "./music.js";
 export * as passwordLocale from "./password.js";
 export * as pokedexLocale from "./pokedex.js";
 export * as queueLocale from "./queue.js";
